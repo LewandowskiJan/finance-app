@@ -1,0 +1,10 @@
+<mat-card [ngSwitch]="status?.connectionStatus">
+  <span *ngSwitchCase="Status.SUCCESS">
+    <mat-icon color="accent" aria-hidden="false" aria-label="check_circle icon"> check_circle </mat-icon>
+  </span>
+  <span *ngSwitchCase="Status.ERROR">
+    <mat-icon color="primary" aria-hidden="false" aria-label="check_circle icon"> cancel </mat-icon>
+  </span>
+  <span *ngSwitchDefault><mat-spinner [diameter]="24"></mat-spinner></span>
+  {{ service?.microServicesName }}
+</mat-card>

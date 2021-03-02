@@ -1,0 +1,10 @@
+<div class="check-result">
+  <h2>Total: {{ checked }}</h2>
+  <h2>Failed: {{ failed }}</h2>
+  <button mat-icon-button *ngIf="failed === 0" disabled>
+    <mat-icon>check_circle</mat-icon>
+  </button>
+  <button mat-icon-button *ngIf="failed > 0" disabled>
+    <mat-icon>cancel</mat-icon>
+  </button>
+</div>

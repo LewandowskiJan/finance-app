@@ -1,0 +1,19 @@
+<mat-toolbar [color]="(failed | async) > 0 ? 'primary' : 'accent'">
+  <mat-toolbar-row>
+    <span><h1>API services connection test</h1></span>
+    <button
+      mat-icon-button
+      class="example-icon favorite-icon"
+      aria-label="Example icon-button with heart icon"
+      routerLink="test-connection"
+      (click)="checkApiServicesConnection()"
+    >
+      <mat-icon>refresh</mat-icon>
+    </button>
+
+    <span class="example-spacer"></span>
+    <app-check-result [failed]="failed | async" [checked]="checked | async"></app-check-result>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<app-test-cards [testConnectionServicesArray]="microServicesCheck"></app-test-cards>
