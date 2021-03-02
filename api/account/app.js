@@ -4,8 +4,11 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const checkConnectionRoute = require('./app/routes/checkConnectionRoute.route');
+const dotenv = require('dotenv');
+dotenv.config({ path: './environments/dev.env' });
 
-const database = 'mongodb://finance-app-db/finance-app-db-dev';
+const database = process.env.DATABASE_URL;
+const PORT = process.env.PORT;
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -34,4 +37,4 @@ db.on('error', function (error) {
 
 app.use('/api/account', cors(), checkConnectionRoute);
 
-app.listen(process.env.PORT || 80, () => console.log('Server is up!'));
+app.listen(PORT, () => console.log('Server is up!'));
