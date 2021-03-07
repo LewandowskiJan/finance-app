@@ -1,0 +1,33 @@
+<mat-card>
+  <form [formGroup]="categoryForm" #form="ngForm" (ngSubmit)="createCategory()">
+    <mat-form-field appearance="fill">
+      <mat-label>Icon</mat-label>
+      <mat-select formControlName="utfIcon">
+        <mat-option *ngFor="let icon of icons" [value]="icon">
+          <span [innerHTML]="icon"></span>
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="utfIcon.hasError('required')">You must make a selection</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Category Name</mat-label>
+      <input formControlName="name" matInput placeholder="Ex. Food" />
+      <mat-error *ngIf="name.hasError('required')"> Name is <strong>required</strong> </mat-error>
+    </mat-form-field>
+  </form>
+
+  <button class="category-add-button" mat-raised-button (click)="createCategory()">&#9203; Add category</button>
+</mat-card>
+
+<mat-card class="category-card" *ngFor="let category of categories$ | async">
+  <mat-card-header>
+    <div mat-card-avatar><span [innerHTML]="category?.utfIcon"></span></div>
+    <mat-card-title>{{ category?.name }}</mat-card-title>
+    <mat-card-subtitle>added: {{ category?.dateOfCreate | date: 'YYYY-MM-dd' }}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-actions>
+    <button mat-button>EDIT</button>
+    <button mat-button (click)="deleteCategory(category?._id)">DELETE</button>
+  </mat-card-actions>
+</mat-card>

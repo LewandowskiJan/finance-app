@@ -14,8 +14,10 @@ import { MaterialModule } from '@external-modules/material/material.module';
 import { RxAngularModule } from '@external-modules/rx-angular/rx-angular.module';
 import { TestConnectionService } from '@src/app/external-modules/test-page/services/test-connection.service';
 
+import { ApiService } from './domain/services/api.service';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import { CategoryModule } from './modules/category/category.module';
 import { LayoutModule } from './core/layout/layout.module';
 import { environment } from '@src/environments/environment';
 import { localStorageKeys } from './configuration/localStorageKeys';
@@ -34,6 +36,7 @@ const metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer];
   declarations: [AppComponent],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     RxAngularModule,
     MaterialModule,
@@ -41,6 +44,7 @@ const metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer];
     ReactiveFormsModule,
     FormsModule,
     LayoutModule,
+    CategoryModule,
 
     /**
      * StoreModule.forRoot is imported once in the root module, accepting a reducer
@@ -81,7 +85,7 @@ const metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer];
      */
     EffectsModule.forRoot([]),
   ],
-  providers: [TestConnectionService],
+  providers: [TestConnectionService, ApiService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
