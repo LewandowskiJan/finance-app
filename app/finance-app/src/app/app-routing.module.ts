@@ -13,6 +13,10 @@ const routes: Routes = [
     path: 'category',
     loadChildren: () => import('./modules/category/category.module').then((m) => m.CategoryModule),
   },
+  {
+    path: 'account',
+    loadChildren: () => import('./modules/account/account.module').then((m) => m.AccountModule),
+  },
   { path: '', redirectTo: '/', pathMatch: 'full' },
   { path: '**', component: WelcomePageComponent },
 ];

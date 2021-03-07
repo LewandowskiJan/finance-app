@@ -14,6 +14,7 @@ import { MaterialModule } from '@external-modules/material/material.module';
 import { RxAngularModule } from '@external-modules/rx-angular/rx-angular.module';
 import { TestConnectionService } from '@src/app/external-modules/test-page/services/test-connection.service';
 
+import { AccountModule } from './modules/account/account.module';
 import { ApiService } from './domain/services/api.service';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -45,6 +46,7 @@ const metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer];
     FormsModule,
     LayoutModule,
     CategoryModule,
+    AccountModule,
 
     /**
      * StoreModule.forRoot is imported once in the root module, accepting a reducer
