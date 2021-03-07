@@ -85,7 +85,7 @@ exports.updateAccountById = async (req, res) => {
     const account = await Account.findOne({ _id: id });
     const balanceHistory = await BalanceHistory.find({ accountId: id });
 
-    const response = { ...account._doc, balanceHistory: [balanceHistory] };
+    const response = { ...account._doc, balanceHistory: balanceHistory };
     res.json(response);
   } catch (err) {
     res.json(err);
