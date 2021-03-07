@@ -3,8 +3,11 @@ const app = express();
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-const checkConnectionRoute = require('./app/routes/checkConnectionRoute.route');
 const dotenv = require('dotenv');
+
+const checkConnectionRoute = require('./app/routes/checkConnectionRoute.route');
+const categoryRoute = require('./app/routes/categoryRoute.route');
+
 dotenv.config({ path: './environments/dev.env' });
 
 const database = process.env.DATABASE_URL;
@@ -36,5 +39,6 @@ db.on('error', function (error) {
 });
 
 app.use('/api/account', cors(), checkConnectionRoute);
+app.use('/api/account/category', cors(), categoryRoute);
 
 app.listen(PORT, () => console.log('Server is up!'));
