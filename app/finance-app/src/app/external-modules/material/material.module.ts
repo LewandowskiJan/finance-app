@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 
+import { MatBadgeModule } from '@angular/material/badge';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -17,49 +18,35 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
 
+import { ScrollingModule } from '@angular/cdk/scrolling';
+
+const modules: any[] = [
+  MatInputModule,
+  MatCardModule,
+  MatBadgeModule,
+  MatButtonModule,
+  MatListModule,
+  MatIconModule,
+  MatToolbarModule,
+  MatProgressBarModule,
+  MatProgressSpinnerModule,
+  MatDialogModule,
+  MatInputModule,
+  MatTableModule,
+  MatPaginatorModule,
+  MatButtonModule,
+  MatSortModule,
+  MatProgressSpinnerModule,
+  MatIconModule,
+  MatSelectModule,
+  MatSidenavModule,
+  MatMenuModule,
+  MatSlideToggleModule,
+  ScrollingModule,
+];
+
 @NgModule({
-  imports: [
-    MatInputModule,
-    MatCardModule,
-    MatButtonModule,
-    MatListModule,
-    MatIconModule,
-    MatToolbarModule,
-    MatProgressSpinnerModule,
-    MatDialogModule,
-    MatInputModule,
-    MatTableModule,
-    MatPaginatorModule,
-    MatButtonModule,
-    MatSortModule,
-    MatProgressSpinnerModule,
-    MatIconModule,
-    MatSelectModule,
-    MatSidenavModule,
-    MatMenuModule,
-    MatSlideToggleModule,
-  ],
-  exports: [
-    MatInputModule,
-    MatCardModule,
-    MatButtonModule,
-    MatSidenavModule,
-    MatListModule,
-    MatIconModule,
-    MatToolbarModule,
-    MatProgressSpinnerModule,
-    MatDialogModule,
-    MatInputModule,
-    MatTableModule,
-    MatPaginatorModule,
-    MatButtonModule,
-    MatSortModule,
-    MatProgressSpinnerModule,
-    MatIconModule,
-    MatSelectModule,
-    MatProgressBarModule,
-    MatMenuModule,
-    MatSlideToggleModule,
-  ],
+  imports: [...modules],
+  exports: [...modules],
 })
 export class MaterialModule {}
