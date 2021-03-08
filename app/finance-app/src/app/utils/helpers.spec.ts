@@ -7,7 +7,7 @@ interface TestObject {
   items: number;
 }
 
-fdescribe('Helpers compareAndPickDifference', () => {
+describe('Helpers compareAndPickDifference', () => {
   let beforeUpdate: Partial<TestObject>;
 
   beforeEach(() => {
