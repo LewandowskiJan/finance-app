@@ -5,9 +5,9 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 
-const checkConnectionRoute = require('./app/routes/checkConnectionRoute.route');
-const categoryRoute = require('./app/routes/categoryRoute.route');
-const accountRoute = require('./app/routes/accountRoute.route');
+const checkConnectionRoute = require('./app/routes/checkConnection.route');
+const categoryRoute = require('./app/routes/category.route');
+const accountRoute = require('./app/routes/account.route');
 
 dotenv.config({ path: './environments/dev.env' });
 

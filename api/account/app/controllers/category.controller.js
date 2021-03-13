@@ -1,43 +1,55 @@
-const Category = require('../models/category');
-const Formatter = require('./../util/formatters');
-
-exports.getAllCategories = async (req, res) => {
-  Category.find((err, categories) => {
-    err ? res.json(err) : res.status(200).json(categories);
-  });
-};
+const CategoryDao = require('../dao/category.dao');
 
 exports.addCategory = async (req, res) => {
-  const newCategory = new Category();
-  newCategory.name = req.body.name;
-  newCategory.utfIcon = req.body.utfIcon;
-
-  newCategory.save((err, createdCategory) => {
-    err ? res.status(400).json(Formatter.bindErrorMsg(err)) : res.status(201).json(createdCategory);
-  });
+  try {
+    const result = await CategoryDao.addCategory(req);
+    res.json(result);
+  } catch (error) {
+    res.status(400).json(error);
+  }
 };
 
 exports.getCategoryById = async (req, res) => {
-  const id = req.params.id;
-  Category.findOne({ _id: id }, (err, category) => {
-    err ? res.json(err) : res.status(200).json(category);
-  });
+  try {
+    const result = await CategoryDao.findCategoryById(req);
+    res.json(result);
+  } catch (error) {
+    res.status(400).json(error);
+  }
 };
 
-exports.deleteCategoryById = async (req, res) => {
-  const id = req.params.id;
-  Category.findOneAndDelete({ _id: id }, (err, deletedCategory) => {
-    err ? res.status(400).json(err) : res.json(deletedCategory);
-  });
+exports.getAllCategories = async (req, res) => {
+  try {
+    const result = await CategoryDao.findCategories(req);
+    res.json(result);
+  } catch (error) {
+    res.status(400).json(error);
+  }
+};
+
+exports.findCategoryByName = async (req, res) => {
+  try {
+    const result = await CategoryDao.searchForCategory(req);
+    res.json(result);
+  } catch (error) {
+    res.status(400).json(error);
+  }
 };
 
 exports.updateCategoryById = async (req, res) => {
-  const id = req.params.id;
-  const updatingProperties = req.body;
+  try {
+    const result = await CategoryDao.updateCategoryById(req);
+    res.json(result);
+  } catch (error) {
+    res.status(400).json(error);
+  }
+};
 
-  await Category.updateOne({ _id: id }, updatingProperties, { runValidators: true });
-
-  await Category.findOne({ _id: id }, (err, category) => {
-    err ? res.status(400).json(err) : res.json(category);
-  });
+exports.deleteCategoryById = async (req, res) => {
+  try {
+    const result = await CategoryDao.deleteCategoryById(req);
+    res.json(result);
+  } catch (error) {
+    res.status(400).json(error);
+  }
 };
