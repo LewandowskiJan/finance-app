@@ -8,13 +8,18 @@ exports.add = async (req, databaseSchema) => {
 
 // READ
 exports.find = async (req, databaseSchema) => {
+  let search = {};
+
+  if (!req || !req.body) {
+    return await databaseSchema.find();
+  }
+
   const searchProperties = Object.keys(req.body)
     .map((key) => {
       return { [key]: req.body[key] };
     })
     .filter((result) => !result.searchStrategy);
 
-  let search = {};
   switch (req.body.searchStrategy) {
     case SearchStrategy.MATCH_ALL:
       search = { $and: searchProperties };
@@ -41,6 +46,14 @@ exports.search = async (req, databaseSchema, options = { limit: 10 }) => {
   return await databaseSchema.find(searchProperties).limit(options.limit).exec();
 };
 
+exports.searchBy = async (searchBy, databaseSchema, options = { limit: 10 }) => {
+  const searchProperties = Object.keys(searchBy).map((key) => {
+    return { [key]: { $regex: searchBy[key] } };
+  });
+
+  return await databaseSchema.find(searchProperties).limit(options.limit).exec();
+};
+
 // UPDATE
 exports.updateOne = async (req, databaseSchema) => {
   return await databaseSchema.findOneAndUpdate({ _id: req.params.id }, req.body, {
@@ -53,4 +66,8 @@ exports.updateOne = async (req, databaseSchema) => {
 //DELETE
 exports.findByIdAndDelete = async (req, databaseSchema) => {
   return await databaseSchema.findOneAndDelete({ _id: req.params.id });
+};
+
+exports.delete = async (req, databaseSchema) => {
+  return await databaseSchema.deleteMany(req);
 };

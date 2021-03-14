@@ -1,5 +1,5 @@
 const DataObjectAccess = require('./shared/DataObjectAccess');
-const Target = require('../models/category');
+const Target = require('../models/target');
 
 exports.addTarget = async (req) => {
   return await DataObjectAccess.add(req, Target);
