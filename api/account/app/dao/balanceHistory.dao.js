@@ -1,11 +1,11 @@
 const DataObjectAccess = require('./shared/DataObjectAccess');
-const BalanceHistory = require('../models/balanceHistory');
+const BalanceHistory = require('./../models/balanceHistory');
 
 exports.addBalanceHistory = async (req) => {
   return await DataObjectAccess.add(req, BalanceHistory);
 };
 
-exports.findCategories = async (req) => {
+exports.findBalanceHistories = async (req = {}) => {
   return await DataObjectAccess.find(req, BalanceHistory);
 };
 
