@@ -1,55 +1,55 @@
 const TypeDao = require('../dao/type.dao');
 
-exports.addType = async (req, res) => {
+exports.addType = async (req, res, next) => {
   try {
     const result = await TypeDao.addType(req);
     res.json(result);
   } catch (error) {
-    res.status(400).json(error);
+    return next(error);
   }
 };
 
-exports.getTypeById = async (req, res) => {
+exports.getTypeById = async (req, res, next) => {
   try {
     const result = await TypeDao.findTypeById(req);
     res.json(result);
   } catch (error) {
-    res.status(400).json(error);
+    return next(error);
   }
 };
 
-exports.getAllTypes = async (req, res) => {
+exports.getAllTypes = async (req, res, next) => {
   try {
     const result = await TypeDao.findTypes(req);
     res.json(result);
   } catch (error) {
-    res.status(400).json(error);
+    return next(error);
   }
 };
 
-exports.findTypeByName = async (req, res) => {
+exports.findTypeByName = async (req, res, next) => {
   try {
     const result = await TypeDao.searchForType(req);
     res.json(result);
   } catch (error) {
-    res.status(400).json(error);
+    return next(error);
   }
 };
 
-exports.updateTypeById = async (req, res) => {
+exports.updateTypeById = async (req, res, next) => {
   try {
     const result = await TypeDao.updateTypeById(req);
     res.json(result);
   } catch (error) {
-    res.status(400).json(error);
+    return next(error);
   }
 };
 
-exports.deleteTypeById = async (req, res) => {
+exports.deleteTypeById = async (req, res, next) => {
   try {
     const result = await TypeDao.deleteTypeById(req);
     res.json(result);
   } catch (error) {
-    res.status(400).json(error);
+    return next(error);
   }
 };

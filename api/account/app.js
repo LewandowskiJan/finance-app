@@ -3,6 +3,7 @@ const app = express();
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const dotenv = require('dotenv');
+const errorController = require('./app/errorHandler/controllers/error.controller');
 
 const checkConnectionRoute = require('./app/routes/checkConnection.route');
 const accountRoute = require('./app/routes/account.route');
@@ -46,6 +47,7 @@ app.use('/api/dictionary/project', cors(), projectRoute);
 app.use('/api/dictionary/target', cors(), targetRoute);
 app.use('/api/dictionary/type', cors(), typeRoute);
 
+app.use(errorController);
 app.listen(PORT, () => console.log('Server is up!'));
 
 module.exports = app;
