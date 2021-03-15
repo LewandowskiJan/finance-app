@@ -4,8 +4,8 @@ exports.checkConnection = async (req, res, next) => {
   try {
     const newCheck = new CheckConnection();
     newCheck.connectionStatus = 'Success';
-    await newCheck.save();
-    res.json(connectionStatus);
+    const result = await newCheck.save();
+    res.json(result);
   } catch (error) {
     return next(error);
   }

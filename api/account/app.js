@@ -28,7 +28,7 @@ app.use(express.json());
 
 const mongooseConnect = require('./helpers/dbConnect');
 
-if (process.env.NODE_ENV !== 'test') {
+if (process.env.NODE_ENV === 'test') {
   mongooseConnect.testDbConnect().on('error', (err) => console.log('connection to db failed'));
 } else {
   mongooseConnect.dbConnect().on('error', (err) => console.log('connection to db failed'));
