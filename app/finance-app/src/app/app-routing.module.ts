@@ -9,6 +9,14 @@ const routes: Routes = [
     path: 'test-connection',
     loadChildren: () => import('./external-modules/test-page/test-page.module').then((m) => m.TestPageModule),
   },
+  {
+    path: 'category',
+    loadChildren: () => import('./modules/category/category.module').then((m) => m.CategoryModule),
+  },
+  {
+    path: 'account',
+    loadChildren: () => import('./modules/account/account.module').then((m) => m.AccountModule),
+  },
   { path: '', redirectTo: '/', pathMatch: 'full' },
   { path: '**', component: WelcomePageComponent },
 ];

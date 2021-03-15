@@ -1,9 +1,12 @@
-const CheckConnection = require('../models/check-connection');
+const CheckConnection = require('../models/checkConnection');
 
-exports.checkConnection = async (req, res) => {
-  const newCheck = new CheckConnection();
-  newCheck.connectionStatus = 'Success';
-  newCheck.save((err, connectionStatus) => {
-    err ? res.json(err) : res.json(connectionStatus);
-  });
+exports.checkConnection = async (req, res, next) => {
+  try {
+    const newCheck = new CheckConnection();
+    newCheck.connectionStatus = 'Success';
+    await newCheck.save();
+    res.json(connectionStatus);
+  } catch (error) {
+    return next(error);
+  }
 };

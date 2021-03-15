@@ -1,0 +1,29 @@
+<mat-card>
+  <form [formGroup]="accountForm" #form="ngForm" (ngSubmit)="createAccount()">
+    <mat-form-field class="example-full-width">
+      <mat-label>Account Name</mat-label>
+      <input formControlName="name" matInput placeholder="Ex. Food" />
+      <mat-error *ngIf="name.hasError('required')"> Name is <strong>required</strong> </mat-error>
+    </mat-form-field>
+  </form>
+
+  <button class="account-add-button" mat-raised-button (click)="createAccount()">&#9203; Add account</button>
+</mat-card>
+
+<mat-card class="account-card" *ngFor="let account of accounts$ | async">
+  <mat-card-header>
+    <mat-card-title>{{ account?.name }}</mat-card-title>
+    <mat-card-subtitle>added: {{ account?.dateOfCreate | date: 'YYYY-MM-dd' }}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-list role="list">
+      <mat-list-item role="listitem" *ngFor="let balanceHistory of account.balanceHistory">
+        {{ balanceHistory.date | date: 'YYYY-MM-dd' }} - {{ balanceHistory.balance }} PLN
+      </mat-list-item>
+    </mat-list>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button (click)="openEditAccountDialog(account)">EDIT</button>
+    <button mat-button (click)="deleteAccount(account?._id)">DELETE</button>
+  </mat-card-actions>
+</mat-card>

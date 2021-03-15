@@ -21,7 +21,7 @@
   animation-timing-function: ease-out;
   animation-delay: 0;
   animation-direction: alternate;
-  animation-iteration-count: infinite;
+  animation-iteration-count: initial;
   animation-fill-mode: forwards;
   animation-play-state: running;
 }
@@ -32,7 +32,7 @@
   animation-timing-function: ease-out;
   animation-delay: 0;
   animation-direction: alternate;
-  animation-iteration-count: infinite;
+  animation-iteration-count: initial;
   animation-fill-mode: forwards;
   animation-play-state: running;
 }
@@ -43,42 +43,48 @@
   animation-timing-function: ease-out;
   animation-delay: 0;
   animation-direction: alternate;
-  animation-iteration-count: infinite;
+  animation-iteration-count: initial;
   animation-fill-mode: forwards;
   animation-play-state: running;
 }
 
 @keyframes stretch-1 {
   0% {
-    height: 10px;
-    background-color: red;
+    height: 20px;
+    background-color: green;
   }
 
   50% {
+    height: 5px;
+    background-color: red;
+  }
+
+
+  75% {
     height: 15px;
-    background-color: orange;
+    background-color: yellowgreen;
   }
 
   100% {
     height: 20px;
-    background-color: yellow;
+    background-color: lightgreen;
   }
 }
 
 @keyframes stretch-2 {
   0% {
-    height: 25px;
-    background-color: yellow;
+    height: 5px;
+    background-color: red;
   }
 
   50% {
-    height: 15px;
-    background-color: greenyellow;
+    height: 10px;
+    background-color: yellowgreen;
   }
 
   100% {
-    height: 5px;
-    background-color: red;
+    height: 25px;
+    background-color: greenyellow;
   }
 }
 
@@ -92,6 +98,7 @@
     height: 10px;
     background-color: yellow;
   }
+
 
   100% {
     height: 30px;

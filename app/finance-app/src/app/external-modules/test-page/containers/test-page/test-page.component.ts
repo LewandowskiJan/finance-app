@@ -22,9 +22,4 @@ export class TestPageComponent implements OnInit {
   ngOnInit(): void {
     this.testConnectionService.reset();
   }
-
-  public checkApiServicesConnection(): void {
-    this.testConnectionService.reset();
-    this.microServicesCheck = this.testConnectionService.microServicesCheckConnectionTestArray;
-  }
 }
