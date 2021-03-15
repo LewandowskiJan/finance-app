@@ -15,7 +15,7 @@ const handleValidationError = (err, res) => {
   let fields = Object.values(err.errors).map((el) => el.path);
   let code = HttpErrorStatus.BAD_REQUEST;
   if (errors.length > 1) {
-    const formattedErrors = errors.join('');
+    const formattedErrors = errors;
     res.status(code).send({ messages: formattedErrors, fields: fields });
   } else {
     res.status(code).send({ messages: errors, fields: fields });
@@ -25,7 +25,8 @@ const handleValidationError = (err, res) => {
 module.exports = (err, req, res, next) => {
   try {
     if (err.name === MongooseErrorStatus.VALIDATION_ERROR) return (err = handleValidationError(err, res));
-    if (err.code && err.code == MongoDbErrorStatus.DUPLICATE_KEY_ERROR) return (err = handleDuplicateKeyError(err, res));
+    if (err.code && err.code == MongoDbErrorStatus.DUPLICATE_KEY_ERROR)
+      return (err = handleDuplicateKeyError(err, res));
   } catch (err) {
     res.status(HttpErrorStatus.INTERNAL_ERROR).send('An unknown error occurred.');
   }
