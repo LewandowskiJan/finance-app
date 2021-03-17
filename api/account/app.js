@@ -9,6 +9,7 @@ const checkConnectionRoute = require('./app/routes/checkConnection.route');
 const accountRoute = require('./app/routes/account.route');
 const transferRoute = require('./app/routes/transfer.route');
 const transferLineRoute = require('./app/routes/transferLine.route');
+const balanceHistoryRoute = require('./app/routes/balanceHistory.route');
 
 const categoryRoute = require('./app/routes/category.route');
 const eventRoute = require('./app/routes/event.route');
@@ -38,6 +39,7 @@ app.use('/api/account', cors(), checkConnectionRoute);
 app.use('/api/account/account', cors(), accountRoute);
 app.use('/api/account/transfer', cors(), transferRoute);
 app.use('/api/account/transfer-line', cors(), transferLineRoute);
+app.use('/api/account/balanceHistory', cors(), balanceHistoryRoute);
 
 app.use('/api/dictionary/category', cors(), categoryRoute);
 app.use('/api/dictionary/event', cors(), eventRoute);

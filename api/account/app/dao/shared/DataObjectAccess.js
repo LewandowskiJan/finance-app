@@ -1,15 +1,18 @@
 const { SearchStrategy } = require('../../enums/SearchStrategy.enum');
 
 // CREATE
-exports.add = async (req, databaseSchema) => {
+exports.add = async (req, databaseSchema, options = {}) => {
   const newDatabaseObject = new databaseSchema({ ...req.body });
   return await newDatabaseObject.save();
 };
 
 // READ
+exports.findByOneProperty = async (req, databaseSchema) => {
+  return await databaseSchema.find(req);
+};
+
 exports.find = async (req, databaseSchema) => {
   let search = {};
-
   if (!req || !req.body) {
     return await databaseSchema.find();
   }
@@ -31,11 +34,12 @@ exports.find = async (req, databaseSchema) => {
       search = {};
   }
 
-  return await databaseSchema.find(search);
+  console.log(search);
+  return await databaseSchema.find(search).sort(options.sort ? options.sort : {});
 };
 
 exports.findById = async (req, databaseSchema) => {
-  return await databaseSchema.findOne({ _id: req.params.id });
+  return await databaseSchema.find({ _id: req.params.id });
 };
 
 exports.search = async (req, databaseSchema, options = { limit: 10 }) => {
