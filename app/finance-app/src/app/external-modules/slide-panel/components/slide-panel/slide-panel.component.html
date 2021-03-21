@@ -1,0 +1,8 @@
+<mat-card
+  ngClass="slide-panel"
+  [tabindex]="isOpen ? 0 : -1"
+  [@openClose]="isOpen ? 'open' : 'hide'"
+  [@displayForm]="isOpen ? 'display' : 'none'"
+>
+  <ng-content></ng-content>
+</mat-card>

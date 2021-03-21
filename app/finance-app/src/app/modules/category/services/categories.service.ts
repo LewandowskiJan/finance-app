@@ -14,13 +14,13 @@ export class CategoriesService {
   constructor(private apiService: ApiService) {}
 
   readCategories(): Observable<Category[] | HttpErrorResponse> {
-    return this.apiService.request<Category[], HttpErrorResponse>('account/category/all', {
+    return this.apiService.request<Category[], HttpErrorResponse>('dictionary/category/all', {
       method: HttpRequestMethods.GET,
     });
   }
 
   createCategory(category: Category): Observable<Category | HttpErrorResponse> {
-    return this.apiService.request<Category, HttpErrorResponse>('account/category/add', {
+    return this.apiService.request<Category, HttpErrorResponse>('dictionary/category/add', {
       method: HttpRequestMethods.POST,
       body: category,
     });
@@ -28,7 +28,7 @@ export class CategoriesService {
 
   deleteCategory(id: string): Observable<string | HttpErrorResponse> {
     return this.apiService
-      .request<string, HttpErrorResponse>('account/category/delete', {
+      .request<string, HttpErrorResponse>('dictionary/category/delete', {
         method: HttpRequestMethods.DELETE,
         pathParam: id,
       })

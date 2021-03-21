@@ -5,6 +5,7 @@ export interface Account {
   name: string;
   dateOfCreate: Date;
   isActive: boolean;
+  isExternal: boolean;
   balance: string;
   balanceHistory: BalanceHistory;
   deletedDetails?: any;

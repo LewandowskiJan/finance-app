@@ -46,7 +46,6 @@ export class AccountsService {
       })
       .pipe(
         map((account: Account) => {
-          console.log(account);
           return {
             id: account._id,
             changes: { ...account },

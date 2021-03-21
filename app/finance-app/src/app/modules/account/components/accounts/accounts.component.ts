@@ -11,7 +11,7 @@ import { Observable } from 'rxjs';
 import * as fromAccounts from '../../reducers';
 import * as fromRoot from '../../../../reducers';
 
-import { compareAndPickDifference, notNull } from '@src/app/utils/helpers';
+import { compareAndPickDifference } from '@src/app/utils/helpers';
 
 import { Account } from '../../model/Account';
 import { AccountEditComponent } from './../account-edit/account-edit.component';
@@ -43,6 +43,10 @@ export class AccountsComponent implements OnInit {
     return this.accountForm.get('name');
   }
 
+  get isExternal() {
+    return this.accountForm.get('name');
+  }
+
   ngOnInit(): void {
     this.showAccount();
   }
@@ -71,6 +75,7 @@ export class AccountsComponent implements OnInit {
   private buildForm(): void {
     this.accountForm = this.formBuilder.group({
       name: ['', Validators.required],
+      isExternal: [false, Validators.required],
     });
   }
 

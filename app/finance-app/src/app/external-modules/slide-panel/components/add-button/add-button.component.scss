@@ -1,0 +1,27 @@
+.bottom-corner-button {
+  position: absolute;
+  display: block;
+  bottom: 30px;
+  right: 30px;
+  z-index: 999;
+}
+
+.animation-wrapper {
+  width: 60px;
+  height: 60px;
+  position: relative;
+  transform-style: preserve-3d;
+}
+
+.front,
+.back {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  backface-visibility: hidden;
+
+}
+
+.front {
+  transform: rotateY(180deg);
+}

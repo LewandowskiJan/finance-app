@@ -7,6 +7,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 
 import { MaterialModule } from '@src/app/external-modules/material/material.module';
+import { SlidePanelModule } from '@src/app/external-modules/slide-panel/slide-panel.module';
 
 import { AccountContainerComponent } from './containers/account-container/account-container.component';
 import { AccountRoutingModule } from './account-routing.module';
@@ -29,6 +30,7 @@ import { AccountsComponent } from './components/accounts/accounts.component';
     MaterialModule,
     StoreModule.forFeature(fromAccount.accountsModuleFeatureKey, fromAccount.reducers),
     EffectsModule.forFeature([AccountsEffects]),
+    SlidePanelModule,
   ],
   providers: [AccountsService],
 })

@@ -2,12 +2,20 @@
 
 form {
   display: flex;
+  width: 100%;
+}
+
+.checkbox {
+  margin: 15px 0;
+}
+
+.example-margin {
+  margin-right: 10px;
 }
 
 .category-card {
   display: flex;
   flex-direction: row;
-  // margin: 5px 0;
 }
 
 mat-card {
@@ -16,7 +24,7 @@ mat-card {
 }
 
 mat-form-field:first-child {
-  width: 120px;
+  width: 150px;
 }
 
 ::ng-deep {
@@ -35,4 +43,13 @@ mat-form-field {
   &::ng-deep.mat-form-field-wrapper {
     height: 50px;
   }
+}
+
+.list-container {
+  height: calc(100vh - 250px);
+}
+
+.account-form {
+  display: flex;
+  flex-direction: row;
 }

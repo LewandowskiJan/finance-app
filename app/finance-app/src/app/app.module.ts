@@ -13,6 +13,7 @@ import { localStorageSync } from 'ngrx-store-localstorage';
 import { MaterialModule } from '@external-modules/material/material.module';
 import { RxAngularModule } from '@external-modules/rx-angular/rx-angular.module';
 import { TestConnectionService } from '@src/app/external-modules/test-page/services/test-connection.service';
+import { environment } from '@src/environments/environment';
 
 import { AccountModule } from './modules/account/account.module';
 import { ApiService } from './domain/services/api.service';
@@ -20,7 +21,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { CategoryModule } from './modules/category/category.module';
 import { LayoutModule } from './core/layout/layout.module';
-import { environment } from '@src/environments/environment';
+import { SlidePanelModule } from './external-modules/slide-panel/slide-panel.module';
 import { localStorageKeys } from './configuration/localStorageKeys';
 
 import { ROOT_REDUCERS } from './reducers';
@@ -47,6 +48,7 @@ const metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer];
     LayoutModule,
     CategoryModule,
     AccountModule,
+    SlidePanelModule,
 
     /**
      * StoreModule.forRoot is imported once in the root module, accepting a reducer
