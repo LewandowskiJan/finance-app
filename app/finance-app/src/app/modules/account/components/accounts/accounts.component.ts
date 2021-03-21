@@ -43,6 +43,10 @@ export class AccountsComponent implements OnInit {
     return this.accountForm.get('name');
   }
 
+  get alias() {
+    return this.accountForm.get('alias');
+  }
+
   get isExternal() {
     return this.accountForm.get('name');
   }
@@ -75,6 +79,7 @@ export class AccountsComponent implements OnInit {
   private buildForm(): void {
     this.accountForm = this.formBuilder.group({
       name: ['', Validators.required],
+      alias: ['', Validators.required],
       isExternal: [false, Validators.required],
     });
   }

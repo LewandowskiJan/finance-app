@@ -1,21 +1,26 @@
 @use './../../../../../assets/scroll';
 
-form {
+
+.account-form {
   display: flex;
   width: 100%;
-}
+  align-items: center;
+  flex-direction: column;
 
-.checkbox {
-  margin: 15px 0;
-}
+  @media (min-width: 768px) {
+    flex-direction: row;
+  }
 
-.example-margin {
-  margin-right: 10px;
-}
 
-.category-card {
-  display: flex;
-  flex-direction: row;
+  .checkbox-field {
+    min-width: 100px;
+    justify-content: space-between;
+    margin: 15px 0;
+  }
+
+  mat-form-field {
+    width: 150px;
+  }
 }
 
 mat-card {
@@ -23,9 +28,6 @@ mat-card {
   margin: 5px;
 }
 
-mat-form-field:first-child {
-  width: 150px;
-}
 
 ::ng-deep {
   .mat-select-panel {
@@ -47,9 +49,4 @@ mat-form-field {
 
 .list-container {
   height: calc(100vh - 250px);
-}
-
-.account-form {
-  display: flex;
-  flex-direction: row;
 }

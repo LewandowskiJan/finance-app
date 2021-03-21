@@ -7,6 +7,11 @@ let accountSchema = mongoose.Schema({
     required: true,
     unique: true,
   },
+  alias: {
+    type: String,
+    required: true,
+    unique: true,
+  },
   dateOfCreate: {
     type: Date,
     default: Date.now,
