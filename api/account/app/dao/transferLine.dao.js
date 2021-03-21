@@ -3,7 +3,6 @@ const DataObjectAccess = require('./shared/DataObjectAccess');
 
 exports.addTransferLines = async (transfer, id) => {
   const transferLines = [];
-  console.log(transfer, id);
   for (const line of transfer.transferLines) {
     const addedTransferLine = await this.addTransferLine({ body: { ...line, transferId: id } });
     transferLines.push(addedTransferLine._id);

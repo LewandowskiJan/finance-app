@@ -14,7 +14,6 @@ exports.addTransfer = async (req, res, next) => {
     const newTransfer = await TransferDao.addTransfer(req.body, next);
     res.json(newTransfer);
   } catch (error) {
-    console.log(error);
     return next(error);
   }
 };

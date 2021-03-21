@@ -11,7 +11,7 @@ exports.findByOneProperty = async (req, databaseSchema) => {
   return await databaseSchema.find(req);
 };
 
-exports.find = async (req, databaseSchema) => {
+exports.find = async (req, databaseSchema, options = {}) => {
   let search = {};
   if (!req || !req.body) {
     return await databaseSchema.find();
@@ -34,7 +34,6 @@ exports.find = async (req, databaseSchema) => {
       search = {};
   }
 
-  console.log(search);
   return await databaseSchema.find(search).sort(options.sort ? options.sort : {});
 };
 

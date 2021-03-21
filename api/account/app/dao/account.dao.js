@@ -5,7 +5,7 @@ const BalanceHistory = require('../models/balanceHistory');
 exports.updateAccountBalance = async (accountId, transferValue) => {
   const account = await Account.findOne({ _id: accountId });
 
-  if (transferValue < 0 && account.balance < -transferValue) {
+  if (!account.isExternal && transferValue < 0 && account.balance < -transferValue) {
     return null;
   }
   const balance = (parseFloat(account.balance) + parseFloat(transferValue)).toFixed(4).toString();
@@ -39,17 +39,10 @@ exports.getAccountByOneProperty = async (req = {}) => {
 };
 
 exports.createAccount = async (req) => {
-  let newAccount = new Account();
-  newAccount.name = req.body.name;
+  const newAccount = new Account({ ...req.body });
   const savedAccount = await newAccount.save();
 
-  let newBalanceHistory = new BalanceHistory();
-  newBalanceHistory.accountId = savedAccount._id;
-  newBalanceHistory.date = savedAccount.dateOfCreate;
-  const savedBalanceHistory = await newBalanceHistory.save();
-
-  savedAccount.balanceHistory = { savedBalanceHistory };
-  return { ...newAccount._doc, balanceHistory: [newBalanceHistory] };
+  return { ...savedAccount._doc };
 };
 
 exports.findAccountById = async (req) => {

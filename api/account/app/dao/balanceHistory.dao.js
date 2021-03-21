@@ -34,12 +34,13 @@ exports.deleteManyBalanceHistoriesBy = async (req) => {
 
 exports.generateBalanceHistoryByAccountId = async (req) => {
   const accountId = req.body.accountId;
-  const account = await AccountDao.getAccountByOneProperty({ _id: accountId });
+
   await this.deleteManyBalanceHistoriesBy({ accountId: accountId });
+  const account = await AccountDao.getAccountByOneProperty({ _id: accountId });
 
   const listOfTransfers = await TransferDao.findTransfer(
     { accountFrom: accountId, accountTo: accountId, searchStrategy: SearchStrategy.MATCH_SOME },
-    { sort: 'date' }
+    { sort: '-date' }
   );
 
   const formattedList = listOfTransfers.map((transfer) => {
@@ -55,23 +56,23 @@ exports.generateBalanceHistoryByAccountId = async (req) => {
   let startBalance = parseFloat(account[0].balance);
   const balanceHistoryArray = [];
 
-  const newBalanceHistory = new BalanceHistory({
-    balance: startBalance,
-    date: account.dateOfCreate,
-    accountId: accountId,
-  });
-  balanceHistoryArray.push(newBalanceHistory);
-
   for (const transfer of formattedList) {
-    startBalance = (parseFloat(startBalance) - parseFloat(transfer.value)).toFixed(4).toString();
-
     const newBalanceHistory = new BalanceHistory({
       balance: startBalance,
       date: transfer.date,
       accountId: accountId,
     });
     balanceHistoryArray.push(newBalanceHistory);
+
+    startBalance = (parseFloat(startBalance) + parseFloat(transfer.value)).toFixed(4).toString();
   }
+
+  const newBalanceHistory = new BalanceHistory({
+    balance: '0.0',
+    date: account[0].dateOfCreate,
+    accountId: accountId,
+  });
+  balanceHistoryArray.push(newBalanceHistory);
 
   return await BalanceHistory.insertMany(balanceHistoryArray);
 };

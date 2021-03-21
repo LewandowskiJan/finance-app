@@ -15,6 +15,11 @@ let accountSchema = mongoose.Schema({
     type: Boolean,
     default: true,
   },
+  isExternal: {
+    type: Boolean,
+    default: true,
+    required: true,
+  },
   balance: {
     type: String,
     default: '0.0',
