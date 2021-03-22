@@ -28,7 +28,7 @@ export class CategoriesService {
 
   deleteCategory(id: string): Observable<string | HttpErrorResponse> {
     return this.apiService
-      .request<string, HttpErrorResponse>('dictionary/category/delete', {
+      .request<string, HttpErrorResponse>('dictionary/category', {
         method: HttpRequestMethods.DELETE,
         pathParam: id,
       })

@@ -60,6 +60,7 @@ export class AccountsComponent implements OnInit {
   }
 
   public createAccount(): void {
+    this.accountForm.markAsTouched();
     this.accountForm.updateValueAndValidity();
     if (!this.accountForm.valid) {
       return;

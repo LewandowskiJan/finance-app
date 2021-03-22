@@ -12,6 +12,8 @@ import { CategoryContainerComponent } from './containers/category-container/cate
 import { CategoryRoutingModule } from './category-routing.module';
 import { MaterialModule } from './../../external-modules/material/material.module';
 
+import { SlidePanelModule } from '@src/app/external-modules/slide-panel/slide-panel.module';
+
 import * as fromCategories from './reducers';
 
 @NgModule({
@@ -26,6 +28,7 @@ import * as fromCategories from './reducers';
     MaterialModule,
     StoreModule.forFeature(fromCategories.categoriesModuleFeatureKey, fromCategories.reducers),
     EffectsModule.forFeature([CategoriesEffects]),
+    SlidePanelModule,
   ],
   providers: [CategoriesService],
 })
