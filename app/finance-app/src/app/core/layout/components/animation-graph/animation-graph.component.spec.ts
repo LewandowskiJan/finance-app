@@ -8,9 +8,8 @@ describe('AnimationGraphComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AnimationGraphComponent ]
-    })
-    .compileComponents();
+      declarations: [AnimationGraphComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

@@ -11,7 +11,8 @@ export class SideNavigationComponent implements OnInit {
   @Input() sideNavigationLinks: SideNavigationLink[] = [
     { name: 'Dashboard', routerLink: '/' },
     { name: 'Test-connection', routerLink: 'test-connection' },
-    { name: 'Category', routerLink: 'category' },
+    { name: 'Categories', routerLink: 'category' },
+    { name: 'Accounts', routerLink: 'account' },
   ];
 
   constructor() {}

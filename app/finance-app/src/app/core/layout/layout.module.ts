@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import { EffectsModule } from '@ngrx/effects';
+import { StoreModule } from '@ngrx/store';
 
 import { MaterialModule } from '@external-modules/material/material.module';
 
@@ -14,12 +15,30 @@ import { LayoutEffect } from './effects/layout.effect';
 import { LayoutService } from './service/layout.service';
 import { MainComponent } from './containers/main/main.component';
 import { SideNavigationComponent } from './components/side-navigation/side-navigation.component';
+
+import { AlertDialogComponent } from './components/alert-dialog/alert-dialog.component';
 import { WelcomePageComponent } from './components/welcome-page/welcome-page.component';
 
+import * as fromLayout from './reducers';
 @NgModule({
-  declarations: [FooterComponent, HeaderComponent, MainComponent, WelcomePageComponent, AnimationGraphComponent, SideNavigationComponent],
+  declarations: [
+    FooterComponent,
+    HeaderComponent,
+    MainComponent,
+    WelcomePageComponent,
+    AnimationGraphComponent,
+    SideNavigationComponent,
+    AlertDialogComponent,
+  ],
   exports: [FooterComponent, HeaderComponent, MainComponent],
-  imports: [BrowserAnimationsModule, RouterModule, CommonModule, MaterialModule, EffectsModule.forFeature([LayoutEffect])],
+  imports: [
+    BrowserAnimationsModule,
+    RouterModule,
+    CommonModule,
+    MaterialModule,
+    EffectsModule.forFeature([LayoutEffect]),
+    StoreModule.forFeature(fromLayout.layoutModuleFeatureKey, fromLayout.reducers),
+  ],
   providers: [LayoutService],
 })
 export class LayoutModule {}

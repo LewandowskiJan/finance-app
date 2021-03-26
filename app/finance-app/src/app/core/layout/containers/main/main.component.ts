@@ -2,7 +2,12 @@ import { ChangeDetectionStrategy, Component, OnInit, ViewChild } from '@angular/
 import { Event, NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Router } from '@angular/router';
 import { MatDrawer } from '@angular/material/sidenav';
 
+import { Store, select } from '@ngrx/store';
+
 import { Observable } from 'rxjs';
+
+import * as fromLayout from '../../reducers';
+import * as fromRoot from '../../../../reducers';
 
 @Component({
   selector: 'app-main',
@@ -12,29 +17,42 @@ import { Observable } from 'rxjs';
 })
 export class MainComponent implements OnInit {
   @ViewChild('drawer', { static: true }) public drawer!: MatDrawer;
-  loading = false;
-  toggled$: Observable<any>;
+  public loading = false;
+  public toggled$: Observable<any>;
 
-  constructor(private router: Router) {
+  public alert$: any;
+
+  constructor(private store: Store<fromRoot.State & fromLayout.State>, private router: Router) {
+    this.alert$ = this.store.pipe(select(fromLayout.selectAlert));
+    this.toggled$ = this.store.pipe(select(fromLayout.selectSideNavigationState));
+
     this.router.events.subscribe((event: Event) => {
-      switch (true) {
-        case event instanceof NavigationStart: {
-          this.loading = true;
-          break;
-        }
-
-        case event instanceof NavigationEnd:
-        case event instanceof NavigationCancel:
-        case event instanceof NavigationError: {
-          this.loading = false;
-          break;
-        }
-        default: {
-          break;
-        }
-      }
+      this.pageLoading(event);
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.toggled$.subscribe((isSideNavigationOpen: boolean) => {
+      isSideNavigationOpen ? this.drawer.open() : this.drawer.close();
+    });
+  }
+
+  private pageLoading(event: Event): void {
+    switch (true) {
+      case event instanceof NavigationStart: {
+        this.loading = true;
+        break;
+      }
+
+      case event instanceof NavigationEnd:
+      case event instanceof NavigationCancel:
+      case event instanceof NavigationError: {
+        this.loading = false;
+        break;
+      }
+      default: {
+        break;
+      }
+    }
+  }
 }

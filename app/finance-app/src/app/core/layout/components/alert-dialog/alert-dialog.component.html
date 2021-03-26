@@ -1,0 +1,13 @@
+<div class="dialog-header">
+  <mat-icon [ngClass]="data?.alertStatus">{{ data?.alertStatus }}</mat-icon>
+  <h2 mat-dialog-title class="dialog-title">{{ data?.alertData.header }}</h2>
+</div>
+<mat-dialog-content class="mat-typography">
+  <h3>{{ data?.alertData.title }}</h3>
+  <p>{{ data?.alertData.message }}</p>
+</mat-dialog-content>
+<div class="dialog-footer">
+  <mat-dialog-actions align="end">
+    <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Ok</button>
+  </mat-dialog-actions>
+</div>
