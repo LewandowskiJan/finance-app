@@ -1,0 +1,7 @@
+@use './../../../../../../assets/scroll.scss';
+
+::ng-deep {
+  .cdk-overlay-pane>.mat-autocomplete-panel {
+    @extend %custom-scroll;
+  }
+}

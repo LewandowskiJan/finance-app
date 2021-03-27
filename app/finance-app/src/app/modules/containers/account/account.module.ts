@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 
+import { ComboBoxModule } from './../../shared/combo-box/combo-box.module';
 import { MaterialModule } from '@modules/external/material/material.module';
 import { SlidePanelModule } from '@modules/shared/slide-panel/slide-panel.module';
 
@@ -28,7 +29,8 @@ import { AccountsComponent } from './components/accounts/accounts.component';
     FormsModule,
     ReactiveFormsModule,
     MaterialModule,
-    StoreModule.forFeature(fromAccount.accountsModuleFeatureKey, fromAccount.reducers),
+    ComboBoxModule,
+    StoreModule.forFeature(fromAccount.accountsListFeatureKey, fromAccount.reducers),
     EffectsModule.forFeature([AccountsEffects]),
     SlidePanelModule,
   ],

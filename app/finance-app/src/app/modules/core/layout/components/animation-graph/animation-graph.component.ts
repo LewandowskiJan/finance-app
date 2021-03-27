@@ -6,10 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./animation-graph.component.scss']
 })
 export class AnimationGraphComponent implements OnInit {
-
   constructor() { }
 
   ngOnInit(): void {
   }
-
 }

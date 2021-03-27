@@ -11,7 +11,7 @@ const modules: any[] = [CommonModule, MaterialModule];
 
 @NgModule({
   imports: [...modules],
-  exports: [...modules, AddButtonComponent, SlidePanelComponent, SlidePanelContainerComponent],
+  exports: [AddButtonComponent, SlidePanelComponent, SlidePanelContainerComponent],
   declarations: [AddButtonComponent, SlidePanelComponent, SlidePanelContainerComponent],
 })
 export class SlidePanelModule {}

@@ -17,6 +17,10 @@ const routes: Routes = [
     path: 'account',
     loadChildren: () => import('./modules/containers/account/account.module').then((m) => m.AccountModule),
   },
+  {
+    path: 'transfer',
+    loadChildren: () => import('./modules/containers/transfer/transfer.module').then((m) => m.TransferModule),
+  },
   { path: '', redirectTo: '/', pathMatch: 'full' },
   { path: '**', component: WelcomePageComponent },
 ];

@@ -1,5 +1,3 @@
 <mat-nav-list>
-  <a mat-list-item *ngFor="let link of sideNavigationLinks" routerLink="{{ link.routerLink }}"
-    >{{ link.name }}
-  </a>
+  <a mat-list-item *ngFor="let link of sideNavigationLinks" [routerLink]="[link.routerLink]">{{ link.name }} </a>
 </mat-nav-list>

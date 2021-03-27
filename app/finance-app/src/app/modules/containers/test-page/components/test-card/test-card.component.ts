@@ -1,8 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 
-import { Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
-
 import { ConnectionStatus } from './../../configuration/connection-status';
 import { MicroService } from './../../configuration/microService';
 import { Status } from './../../configuration/status';

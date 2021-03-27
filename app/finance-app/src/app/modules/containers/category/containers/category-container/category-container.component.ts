@@ -3,7 +3,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { Store, select } from '@ngrx/store';
 
-import { map, tap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 
 import * as fromCategories from '../../reducers';

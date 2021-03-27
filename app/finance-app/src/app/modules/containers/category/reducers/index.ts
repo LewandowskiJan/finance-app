@@ -1,7 +1,6 @@
 import { Action, combineReducers, createFeatureSelector, createSelector } from '@ngrx/store';
 
 import * as fromCategories from './categories.reducer';
-import * as fromRoot from '../../../../reducers';
 
 import { Category } from '../model/Category';
 
@@ -11,7 +10,7 @@ export interface CategoryState {
   [fromCategories.categoriesFeatureKey]: fromCategories.State;
 }
 
-export interface State extends fromRoot.State {
+export interface State {
   [categoriesModuleFeatureKey]: CategoryState;
 }
 

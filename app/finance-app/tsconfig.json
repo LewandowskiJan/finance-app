@@ -19,7 +19,7 @@
     "module": "es2020",
     "lib": ["es2018", "dom"]
   },
-  "include": ["./src/main.ts", "./src/polyfills.ts", "./src/style.scss", "./src/**/*.spec.ts"],
+  "include": ["./src/main.ts", "./src/polyfills.ts", "./src/style.scss"],
   "angularCompilerOptions": {
     "enableIvy": true,
     "enableI18nLegacyMessageIdFormat": false,

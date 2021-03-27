@@ -122,3 +122,5 @@ export const reducer = createReducer(
     adapter.addOne(account, { ...state, loading: false, loaded: true, failure: false, error: null })
   )
 );
+
+export const getIds = (state: State) => state.ids;

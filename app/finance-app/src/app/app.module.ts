@@ -15,7 +15,9 @@ import { RxAngularModule } from '@modules/external/rx-angular/rx-angular.module'
 
 import { AccountModule } from '@modules/containers/account/account.module';
 import { CategoryModule } from '@modules/containers/category/category.module';
+import { ComboBoxModule } from './modules/shared/combo-box/combo-box.module';
 import { TestConnectionService } from '@modules/containers/test-page/services/test-connection.service';
+import { TransferModule } from './modules/containers/transfer/transfer.module';
 
 import { LayoutModule } from '@modules/core/layout/layout.module';
 
@@ -52,7 +54,9 @@ const metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer];
     LayoutModule,
     CategoryModule,
     AccountModule,
+    TransferModule,
     SlidePanelModule,
+    ComboBoxModule,
 
     /**
      * StoreModule.forRoot is imported once in the root module, accepting a reducer
