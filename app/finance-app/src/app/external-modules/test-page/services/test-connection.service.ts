@@ -1,10 +1,13 @@
-import { ConnectionStatus } from './../configuration/connection-status';
-import { HttpClient } from '@angular/common/http';
+import { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-import { BehaviorSubject, Observable, from } from 'rxjs';
-import { catchError, tap } from 'rxjs/operators';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { catchError, map, tap } from 'rxjs/operators';
 
+import { ApiService } from '@src/app/domain/services/api.service';
+import { HttpRequestMethods } from '@src/app/domain/model/HttpRequestMethods';
+
+import { ConnectionStatus } from './../configuration/connection-status';
 import { MicroService } from '../configuration/microService';
 import { Status } from '../configuration/status';
 
@@ -13,7 +16,7 @@ export class TestConnectionService {
   public microServicesCheckConnectionTestArray: MicroService[] = [
     {
       microServicesName: 'api/account/checkConnection',
-      microServiceCheckEndpoint: this.checkConnectionWithAccount(),
+      microServiceCheckEndpoint: this.checkConnectionWithAccount().pipe(map((result) => result)),
     },
     {
       microServicesName: 'api/authorization/checkConnection',
@@ -27,7 +30,7 @@ export class TestConnectionService {
   private failure: number = 0;
   private checked: number = 0;
 
-  constructor(private httpClient: HttpClient) {}
+  constructor(private apiService: ApiService) {}
 
   public reset(): void {
     this.failure = 0;
@@ -37,25 +40,30 @@ export class TestConnectionService {
   }
 
   public checkConnectionWithAuthorization(): Observable<ConnectionStatus> {
-    return this.checkConnection('http://localhost:8000/api/authorization/checkConnection');
+    return this.checkConnection('http://localhost:8000/api', 'authorization/checkConnection');
   }
 
   public checkConnectionWithAccount(): Observable<ConnectionStatus> {
-    return this.checkConnection('http://localhost:8001/api/account/checkConnection');
+    return this.checkConnection('http://localhost:8001/api', 'account/checkConnection');
   }
 
-  private checkConnection(url: string): Observable<ConnectionStatus> {
-    return from(this.httpClient.get(url)).pipe(
-      catchError(() => {
-        this.failure++;
-        this.apiFailed.next(this.failure);
-        return [{ connectionStatus: Status.ERROR }];
-      }),
-      tap(() => {
-        this.checked++;
-        this.apiChecked.next(this.checked);
-      })
-    ) as Observable<{
+  private checkConnection(endpoint: string, url: string): Observable<ConnectionStatus> {
+    return this.apiService
+      .request<ConnectionStatus, HttpErrorResponse>(url, { method: HttpRequestMethods.GET, endpoint: endpoint })
+      .pipe(
+        catchError(() => {
+          this.failure++;
+          this.apiFailed.next(this.failure);
+          return [{ connectionStatus: Status.ERROR }];
+        }),
+        tap(() => {
+          this.checked++;
+          this.apiChecked.next(this.checked);
+        }),
+        map((result: { connectionStatus: Status }) => {
+          return result.connectionStatus ? { connectionStatus: result.connectionStatus } : { connectionStatus: Status.ERROR };
+        })
+      ) as Observable<{
       connectionStatus: Status;
     }>;
   }
