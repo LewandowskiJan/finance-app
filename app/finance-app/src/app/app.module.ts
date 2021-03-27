@@ -10,18 +10,22 @@ import { StoreRouterConnectingModule } from '@ngrx/router-store';
 
 import { localStorageSync } from 'ngrx-store-localstorage';
 
-import { MaterialModule } from '@external-modules/material/material.module';
-import { RxAngularModule } from '@external-modules/rx-angular/rx-angular.module';
-import { TestConnectionService } from '@src/app/external-modules/test-page/services/test-connection.service';
-import { environment } from '@src/environments/environment';
+import { MaterialModule } from '@modules/external/material/material.module';
+import { RxAngularModule } from '@modules/external/rx-angular/rx-angular.module';
 
-import { AccountModule } from './modules/account/account.module';
-import { ApiService } from './domain/services/api.service';
+import { AccountModule } from '@modules/containers/account/account.module';
+import { CategoryModule } from '@modules/containers/category/category.module';
+import { TestConnectionService } from '@modules/containers/test-page/services/test-connection.service';
+
+import { LayoutModule } from '@modules/core/layout/layout.module';
+
+import { ApiService } from './modules/domain/services/api.service';
+import { SlidePanelModule } from '@modules/shared/slide-panel/slide-panel.module';
+
+import { environment } from '@environments/environment';
+
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { CategoryModule } from './modules/category/category.module';
-import { LayoutModule } from './core/layout/layout.module';
-import { SlidePanelModule } from './external-modules/slide-panel/slide-panel.module';
 import { localStorageKeys } from './configuration/localStorageKeys';
 
 import { ROOT_REDUCERS } from './reducers';

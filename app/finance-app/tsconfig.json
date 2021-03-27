@@ -4,11 +4,10 @@
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
     "paths": {
-      "@src/*": ["src/*"],
-      "@app/*": ["src/app/*"],
-      "@core/*": ["src/app/core/*"],
+      "@modules/*": ["src/app/modules/*"],
       "@environments/*": ["src/environments/*"],
-      "@external-modules/*": ["src/app/external-modules/*"]
+      "@app/*": ["src/app/*"],
+      "@src/*": ["src/*"]
     },
     "sourceMap": true,
     "declaration": false,
