@@ -11,7 +11,6 @@ import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { localStorageSync } from 'ngrx-store-localstorage';
 
 import { MaterialModule } from '@modules/external/material/material.module';
-import { RxAngularModule } from '@modules/external/rx-angular/rx-angular.module';
 
 import { AccountModule } from '@modules/containers/account/account.module';
 import { CategoryModule } from '@modules/containers/category/category.module';
@@ -46,7 +45,6 @@ const metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer];
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    RxAngularModule,
     MaterialModule,
     HttpClientModule,
     ReactiveFormsModule,

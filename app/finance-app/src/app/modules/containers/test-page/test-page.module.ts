@@ -2,7 +2,6 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
 import { MaterialModule } from './../../external/material/material.module';
-import { RxAngularModule } from './../../external/rx-angular/rx-angular.module';
 
 import { CheckResultComponent } from './components/check-result/check-result.component';
 import { TestCardComponent } from './components/test-card/test-card.component';
@@ -14,7 +13,7 @@ import { TestPageRoutingModule } from './test-page-routing.module';
 @NgModule({
   declarations: [TestPageComponent, TestCardsComponent, TestCardComponent, CheckResultComponent],
   exports: [TestPageRoutingModule],
-  imports: [CommonModule, RxAngularModule, MaterialModule],
+  imports: [CommonModule, MaterialModule],
   providers: [TestConnectionService],
 })
 export class TestPageModule {}
