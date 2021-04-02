@@ -71,3 +71,12 @@ exports.updateAccountById = async (req, res, next) => {
     return next(error);
   }
 };
+
+exports.findAccountByName = async (req, res, next) => {
+  try {
+    const result = await AccountDao.searchForAccount(req);
+    res.json(result);
+  } catch (error) {
+    return next(error);
+  }
+};

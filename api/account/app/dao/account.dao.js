@@ -52,3 +52,7 @@ exports.findAccountById = async (req) => {
 exports.deleteAccountById = async (req) => {
   return await DataObjectAccess.findByIdAndDelete(req, Account);
 };
+
+exports.searchForAccount = async (req) => {
+  return await DataObjectAccess.search(req, Account);
+};
