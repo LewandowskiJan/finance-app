@@ -23,7 +23,6 @@ describe('TransferEditComponent', () => {
         provideMockStore(),
         { provide: MAT_DIALOG_DATA, useValue: {} },
         { provide: MatDialogRef, useValue: {} },
-        MatDatepickerModule,
       ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
     }).compileComponents();

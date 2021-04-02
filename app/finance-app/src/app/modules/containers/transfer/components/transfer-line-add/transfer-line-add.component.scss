@@ -1,0 +1,8 @@
+.transfer-line-group {
+  display: flex;
+  flex-direction: column;
+
+  @media (min-width: 600px) {
+    display: block;
+  }
+}

@@ -7,6 +7,7 @@ export interface Account {
   isActive: boolean;
   isExternal: boolean;
   balance: string;
+  currency: string;
   balanceHistory: BalanceHistory;
   deletedDetails?: any;
 }

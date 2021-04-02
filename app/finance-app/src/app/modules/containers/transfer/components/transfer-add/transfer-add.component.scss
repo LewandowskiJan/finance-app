@@ -1,0 +1,98 @@
+.transfer-form {
+  display: flex;
+  flex-wrap: wrap;
+
+  .transfer-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin: 5px 0;
+
+    @media (min-width: 768px) {
+      min-width: 50%;
+      flex-direction: row;
+    }
+
+    &.value-currency-group {
+      flex-direction: row;
+
+      .value-field {
+        margin: 0;
+        width: 68%;
+      }
+
+      .currency-field {
+        margin: 0;
+        width: 30%;
+      }
+
+      @media (min-width: 768px) {
+
+        .value-field,
+        .currency-field {
+          margin: 0 10px;
+          width: 100%;
+        }
+      }
+    }
+
+    .change-account-button,
+    .transfer-field {
+      margin: 0 10px;
+    }
+
+    .change-account-button {
+      padding-bottom: 1.34375em;
+      display: flex;
+      align-items: center;
+
+      .account-balance-to,
+      .account-balance-from {
+        width: 100px;
+        height: 30px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        padding: 5px;
+        text-align: center;
+      }
+
+      .account-balance-to {
+        color: green;
+      }
+
+      .account-balance-from {
+        color: rgb(184, 0, 0);
+      }
+    }
+
+    .transfer-field {
+      width: 100%;
+    }
+  }
+
+  .transfer-line-forms {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    .transfer-line-form {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  .button-footer {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+
+    .button {
+      display: flex;
+      width: 100%;
+      justify-content: center;
+    }
+  }
+}

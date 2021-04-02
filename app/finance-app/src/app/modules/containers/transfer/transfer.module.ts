@@ -16,12 +16,21 @@ import { TransfersEffects } from './effects/transfers.effects';
 import { TransfersService } from './services/transfers.service';
 
 import * as fromTransfer from './reducers';
+import { TransferAddComponent } from './components/transfer-add/transfer-add.component';
 import { TransferEditComponent } from './components/transfer-edit/transfer-edit.component';
+import { TransferFormContainerComponent } from './containers/transfer-form-container/transfer-form-container.component';
+import { TransferLineAddComponent } from './components/transfer-line-add/transfer-line-add.component';
 import { TransfersComponent } from './components/transfers/transfers.component';
 
 @NgModule({
-  declarations: [TransfersContainerComponent, TransferEditComponent, TransfersComponent],
-  exports: [],
+  declarations: [
+    TransfersContainerComponent,
+    TransferEditComponent,
+    TransfersComponent,
+    TransferFormContainerComponent,
+    TransferAddComponent,
+    TransferLineAddComponent,
+  ],
   imports: [
     RouterModule,
     TransferRoutingModule,

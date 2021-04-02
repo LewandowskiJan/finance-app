@@ -21,10 +21,10 @@ export class TransfersService {
     });
   }
 
-  createTransfer(category: Transfer): Observable<Transfer | HttpErrorResponse> {
+  createTransfer(transfer: Transfer): Observable<Transfer | HttpErrorResponse> {
     return this.apiService.request<Transfer, HttpErrorResponse>('account/transfer/add', {
       method: HttpRequestMethods.POST,
-      body: category,
+      body: transfer,
     });
   }
 

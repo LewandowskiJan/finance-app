@@ -34,6 +34,7 @@ describe('AccountsComponent', () => {
             isExternal: false,
             balance: '1200.54',
             balanceHistory: null,
+            currency: 'PLN',
           },
           2345: {
             _id: '2345',
@@ -43,6 +44,7 @@ describe('AccountsComponent', () => {
             isExternal: true,
             balance: '139.14',
             balanceHistory: null,
+            currency: 'PLN',
           },
         },
       },
