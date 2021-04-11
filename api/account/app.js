@@ -38,12 +38,12 @@ if (process.env.NODE_ENV === 'test') {
 app.use('/api/account', cors(), checkConnectionRoute);
 app.use('/api/account/account', cors(), accountRoute);
 app.use('/api/account/transfer', cors(), transferRoute);
-app.use('/api/account/transfer-line', cors(), transferLineRoute);
+app.use('/api/account/transferline', cors(), transferLineRoute);
 app.use('/api/account/balanceHistory', cors(), balanceHistoryRoute);
 
 app.use('/api/dictionary/category', cors(), categoryRoute);
 app.use('/api/dictionary/event', cors(), eventRoute);
-app.use('/api/dictionary/expenses-group', cors(), expensesGroupRoute);
+app.use('/api/dictionary/expensesgroup', cors(), expensesGroupRoute);
 app.use('/api/dictionary/product', cors(), productRoute);
 app.use('/api/dictionary/project', cors(), projectRoute);
 app.use('/api/dictionary/target', cors(), targetRoute);

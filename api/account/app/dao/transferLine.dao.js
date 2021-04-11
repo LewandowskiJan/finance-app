@@ -4,7 +4,10 @@ const DataObjectAccess = require('./shared/DataObjectAccess');
 exports.addTransferLines = async (transfer, id) => {
   const transferLines = [];
   for (const line of transfer.transferLines) {
-    const addedTransferLine = await this.addTransferLine({ body: { ...line, transferId: id } });
+    const valueInPln = parseFloat(line.value) * parseFloat(transfer.exchangeRate);
+    const addedTransferLine = await this.addTransferLine({
+      body: { ...line, transferId: id, exchangeRate: transfer.exchangeRate, valueInPln: valueInPln.toFixed(4) },
+    });
     transferLines.push(addedTransferLine._id);
   }
 

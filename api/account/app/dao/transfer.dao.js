@@ -11,6 +11,7 @@ exports.addTransfer = async (transfer) => {
     accountFrom: transfer.accountFrom,
     accountTo: transfer.accountTo,
     currency: transfer.currency,
+    date: new Date(transfer.date),
   });
 
   let valueInPln;
@@ -26,7 +27,11 @@ exports.addTransfer = async (transfer) => {
   newTransfer.valueInPln = valueInPln;
   newTransfer.transferLineIds = transferLines;
 
-  const updatedAccountFrom = await AccountDao.updateAccountBalance(transfer.accountFrom, `-${transfer.value}`, transfer);
+  const updatedAccountFrom = await AccountDao.updateAccountBalance(
+    transfer.accountFrom,
+    `-${transfer.value}`,
+    transfer
+  );
   if (!updatedAccountFrom) {
     throw new Error(OperationErrorStatus.LACK_OF_FOUNDS_ERROR);
   }
