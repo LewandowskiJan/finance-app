@@ -2,6 +2,9 @@ const DataObjectAccess = require('./shared/DataObjectAccess');
 const Category = require('../models/category');
 
 exports.addCategory = async (req) => {
+  if (!req.body.utfIcon) {
+    req.body.utfIcon = '&#128176;';
+  }
   return await DataObjectAccess.add(req, Category);
 };
 

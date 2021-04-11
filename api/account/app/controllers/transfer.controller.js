@@ -18,6 +18,15 @@ exports.addTransfer = async (req, res, next) => {
   }
 };
 
+exports.addTransfers = async (req, res, next) => {
+  try {
+    const newTransfers = await TransferDao.addTransfers(req.body, next);
+    res.json(newTransfers);
+  } catch (error) {
+    return next(error);
+  }
+};
+
 exports.getTransferById = async (req, res, next) => {
   try {
     const newTransfer = await TransferDao.findTransfer(req.body);

@@ -1,14 +1,25 @@
 const DataObjectAccess = require('./shared/DataObjectAccess');
 const Account = require('../models/account');
-const BalanceHistory = require('../models/balanceHistory');
 
-exports.updateAccountBalance = async (accountId, transferValue) => {
-  const account = await Account.findOne({ _id: accountId });
+exports.updateAccountBalance = async (accountId, transferValue, transfer) => {
+  const account = await Account.findById(accountId);
 
   if (!account.isExternal && transferValue < 0 && account.balance < -transferValue) {
     return null;
   }
-  const balance = (parseFloat(account.balance) + parseFloat(transferValue)).toFixed(4).toString();
+
+  let balance;
+
+  if (transfer.currency !== account.currency) {
+    const value =
+      transfer.currency === 'PLN'
+        ? parseFloat(parseFloat(transferValue) / parseFloat(transfer.exchangeRate)).toFixed(4)
+        : parseFloat(parseFloat(transferValue) * parseFloat(transfer.exchangeRate)).toFixed(4);
+
+    balance = (parseFloat(account.balance) + parseFloat(value)).toFixed(4).toString();
+  } else {
+    balance = (parseFloat(account.balance) + parseFloat(transferValue)).toFixed(4).toString();
+  }
 
   await Account.updateOne(
     { _id: accountId },
@@ -55,4 +66,8 @@ exports.deleteAccountById = async (req) => {
 
 exports.searchForAccount = async (req) => {
   return await DataObjectAccess.search(req, Account);
+};
+
+exports.resterAllAccountsBalance = async () => {
+  return await Account.updateMany({}, { balance: '0', isExternal: true });
 };

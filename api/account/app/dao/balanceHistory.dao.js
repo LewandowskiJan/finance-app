@@ -39,13 +39,14 @@ exports.generateBalanceHistoryByAccountId = async (req) => {
   const account = await AccountDao.getAccountByOneProperty({ _id: accountId });
 
   const listOfTransfers = await TransferDao.findTransfer(
-    { accountFrom: accountId, accountTo: accountId, searchStrategy: SearchStrategy.MATCH_SOME },
+    { body: { accountFrom: accountId, accountTo: accountId, searchStrategy: SearchStrategy.MATCH_SOME } },
     { sort: '-date' }
   );
 
   const formattedList = listOfTransfers.map((transfer) => {
-    const value = transfer.accountFrom === accountId ? `-${transfer.value}` : transfer.value;
-    const valueInPln = transfer.accountFrom === accountId ? `-${transfer.valueInPln}` : transfer.valueInPln;
+    const value = transfer.accountTo === accountId ? `-${parseFloat(transfer.value)}` : parseFloat(transfer.value);
+    const valueInPln =
+      transfer.accountTo === accountId ? `-${parseFloat(transfer.valueInPln)}` : parseFloat(transfer.valueInPln);
     return {
       ...transfer._doc,
       value: value,
@@ -53,7 +54,7 @@ exports.generateBalanceHistoryByAccountId = async (req) => {
     };
   });
 
-  let startBalance = parseFloat(account[0].balance);
+  let startBalance = parseFloat(account[0].balance).toFixed(4);
   const balanceHistoryArray = [];
 
   for (const transfer of formattedList) {
@@ -64,7 +65,7 @@ exports.generateBalanceHistoryByAccountId = async (req) => {
     });
     balanceHistoryArray.push(newBalanceHistory);
 
-    startBalance = (parseFloat(startBalance) + parseFloat(transfer.value)).toFixed(4).toString();
+    startBalance = (parseFloat(startBalance) + parseFloat(transfer.value)).toFixed(4);
   }
 
   const newBalanceHistory = new BalanceHistory({

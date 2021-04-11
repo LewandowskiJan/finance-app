@@ -80,3 +80,12 @@ exports.findAccountByName = async (req, res, next) => {
     return next(error);
   }
 };
+
+exports.resetAllAccountsBalance = async (req, res, next) => {
+  try {
+    const result = await AccountDao.resterAllAccountsBalance();
+    res.json(result);
+  } catch (error) {
+    return next(error);
+  }
+};

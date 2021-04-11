@@ -5,7 +5,7 @@ const AccountDao = require('./account.dao');
 const TransferLineDao = require('./transferLine.dao');
 const { OperationErrorStatus } = require('../errorHandler/models/OperationErrorStatus.enum');
 
-exports.addTransfer = async (transfer, next) => {
+exports.addTransfer = async (transfer) => {
   let newTransfer = new Transfer({
     value: transfer.value,
     accountFrom: transfer.accountFrom,
@@ -26,14 +26,26 @@ exports.addTransfer = async (transfer, next) => {
   newTransfer.valueInPln = valueInPln;
   newTransfer.transferLineIds = transferLines;
 
-  const updatedAccountFrom = await AccountDao.updateAccountBalance(transfer.accountFrom, `-${transfer.value}`);
+  const updatedAccountFrom = await AccountDao.updateAccountBalance(transfer.accountFrom, `-${transfer.value}`, transfer);
   if (!updatedAccountFrom) {
     throw new Error(OperationErrorStatus.LACK_OF_FOUNDS_ERROR);
   }
-  await AccountDao.updateAccountBalance(transfer.accountTo, transfer.value);
+
+  await AccountDao.updateAccountBalance(transfer.accountTo, transfer.value, transfer);
 
   const savedTransfer = await newTransfer.save();
   return savedTransfer;
+};
+
+exports.addTransfers = async (transfers) => {
+  addedTransfers = [];
+
+  for (const transfer of transfers) {
+    const currentTransfer = await this.addTransfer(transfer);
+    addedTransfers.push(currentTransfer);
+  }
+
+  return addedTransfers;
 };
 
 const calculateValue = (value, exchangeRate) => {

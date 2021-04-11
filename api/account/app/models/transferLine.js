@@ -10,6 +10,13 @@ let transferLineSchema = mongoose.Schema({
     type: String,
     required: true,
   },
+  exchangeRate: {
+    type: String,
+    required: true,
+  },
+  valueInPln: {
+    type: String,
+  },
   transferId: {
     type: String,
     required: true,
@@ -18,7 +25,7 @@ let transferLineSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-  groupId: {
+  expensesGroupId: {
     type: String,
     required: true,
   },
@@ -31,7 +38,13 @@ let transferLineSchema = mongoose.Schema({
   targetId: {
     type: String,
   },
+  typeId: {
+    type: String,
+  },
   eventId: {
+    type: String,
+  },
+  importance: {
     type: String,
   },
 });

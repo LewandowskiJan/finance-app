@@ -38,7 +38,7 @@ exports.find = async (req, databaseSchema, options = {}) => {
 };
 
 exports.findById = async (req, databaseSchema) => {
-  return await databaseSchema.find({ _id: req.params.id });
+  return await databaseSchema.findOne({ _id: req.params.id });
 };
 
 exports.search = async (req, databaseSchema, options = { limit: 10 }) => {
