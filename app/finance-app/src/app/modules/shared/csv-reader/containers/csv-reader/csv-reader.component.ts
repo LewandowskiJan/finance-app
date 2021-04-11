@@ -1,37 +1,11 @@
-import { HttpErrorResponse } from './../../../../domain/model/HttpErrorResponse';
-import { ApiService } from './../../../../domain/services/api.service';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 
 import { BehaviorSubject } from 'rxjs';
 
+import { ApiService } from './../../../../domain/services/api.service';
 import { CsvRecord } from '../../model/CsvRecord';
+import { HttpErrorResponse } from '@modules/domain/model/HttpErrorResponse';
 import { HttpRequestMethods } from '@modules/domain/model/HttpRequestMethods';
-
-export interface Record {
-  date: string;
-  accountFrom: string;
-  accountTo: string;
-  value: string;
-  description: string;
-  currency: string;
-  exchangeRate: string;
-  valueInPln?: string;
-
-  transferLines: {
-    categoryId: string;
-    expensesGroupId: string;
-    productId: string;
-    targetId: string;
-    eventId: string;
-    projectId: string;
-    currency: string;
-    exchangeRate: string;
-    importance: string;
-    value: string;
-    typeId: string;
-    valueInPln?: string;
-  };
-}
 
 @Component({
   selector: 'app-csv-reader',
@@ -53,7 +27,6 @@ export class CsvReaderComponent implements OnInit {
   ngOnInit(): void {}
 
   public uploadListener($event: any): void {
-    const text = [];
     const files = $event.srcElement.files;
     if (this.isValidCSVFile(files[0])) {
       const input = $event.target;
@@ -79,13 +52,11 @@ export class CsvReaderComponent implements OnInit {
   }
 
   public getDataRecordsArrayFromCSVFile(csvRecordsArray: any, headerLength: any) {
-    // console.log(csvRecordsArray);
-
     const csvArr = [];
     for (let i = 1; i < csvRecordsArray.length; i++) {
       const currentRecord = (<string>csvRecordsArray[i]).split(';');
       if (currentRecord.length === headerLength) {
-        const icsvRecord: Record = {
+        const csvRecord: CsvRecord = {
           date: currentRecord[0].trim(),
           accountFrom: currentRecord[1].trim(),
           accountTo: currentRecord[2].trim(),
@@ -93,7 +64,6 @@ export class CsvReaderComponent implements OnInit {
           description: currentRecord[13].trim(),
           currency: currentRecord[14].trim(),
           exchangeRate: currentRecord[15].trim().replace(',', '.'),
-          // valueInPln: currentRecord[18].trim(),
           transferLines: {
             categoryId: currentRecord[4].trim(),
             expensesGroupId: currentRecord[5].trim(),
@@ -107,26 +77,11 @@ export class CsvReaderComponent implements OnInit {
             value: currentRecord[16].trim().replace(',', '.'),
             typeId: currentRecord[18].trim(),
             valueInPln: currentRecord[17].trim(),
-            // valueInPln: currentRecord[17].trim(),
           },
         };
-
-        // const csvRecord: CsvRecord = new CsvRecord();
-        // csvRecord._id = currentRecord[0].trim();
-        // csvRecord.currency = currentRecord[1].trim();
-        // csvRecord.exchangeRate = currentRecord[2].trim();
-        // csvRecord.transferLineIds = currentRecord[3].trim();
-        // csvRecord.accountFrom = currentRecord[4].trim();
-        // csvRecord.accountTo = currentRecord[5].trim();
-        // csvRecord.date = currentRecord[5].trim();
-        // csvRecord.valueInPln = currentRecord[5].trim();
-        // csvRecord.__v = currentRecord[5].trim();
-
-        // csvArr.push(csvRecord);
-        csvArr.push(icsvRecord);
+        csvArr.push(csvRecord);
       }
     }
-    // console.log(csvArr);
     return csvArr;
   }
   isValidCSVFile(file: any) {
@@ -152,11 +107,7 @@ export class CsvReaderComponent implements OnInit {
 
   mapArrayToJson(): void {
     this.header;
-    // this.records.map((record) => {
-    //   return record;
-    // });
 
-    // _.groupBy
     function groupBy(arr, key) {
       const reducer = (grouped, item) => {
         const groupValue = item[key];
@@ -210,12 +161,6 @@ export class CsvReaderComponent implements OnInit {
     });
 
     this.result = result2;
-    console.log(result2);
-    // this.resultJson$.next(JSON.stringify(result2));
-    // const result1 = groupBy(result, 'accountFrom');
-    // const result2 = groupBy(result1, 'accountTo');
-
-    // console.log(results);
   }
 
   public async sendToServer(): Promise<void> {
