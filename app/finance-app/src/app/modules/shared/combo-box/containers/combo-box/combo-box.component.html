@@ -1,11 +1,23 @@
-<form class="example-form">
-  <mat-form-field class="example-full-width" appearance="fill">
+<form>
+  <mat-form-field appearance="fill" class="combo-box-field">
     <mat-label>{{ label }}</mat-label>
-    <input type="text" placeholder="Pick one" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto" />
+    <input type="text" placeholder="Pick one" aria-label="search-input" matInput [formControl]="myControl" [matAutocomplete]="auto" />
     <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-      <mat-option *ngFor="let option of filteredOptions | async" [value]="option.name">
-        {{ option.name }}
+      <mat-option *ngFor="let option of filteredOptions | async" [value]="option[comboBoxConfiguration.queryParamKey]">
+        {{ option[comboBoxConfiguration.queryParamKey] }}
       </mat-option>
     </mat-autocomplete>
+    <span matSuffix>
+      <button
+        mat-icon-button
+        color="accent"
+        type="button"
+        aria-label="Example icon button with a vertical three dot icon"
+        *ngIf="isCreateButtonVisible | async"
+        (click)="create()"
+      >
+        <mat-icon>add_circle</mat-icon>
+      </button>
+    </span>
   </mat-form-field>
 </form>

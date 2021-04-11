@@ -19,4 +19,11 @@ export class ComboBoxService {
       method: HttpRequestMethods.GET,
     });
   }
+
+  public create(value: any, apiUrl: string): Observable<any[] | HttpErrorResponse> {
+    return this.apiService.request<any[], HttpErrorResponse>(apiUrl, {
+      body: value,
+      method: HttpRequestMethods.POST,
+    });
+  }
 }
