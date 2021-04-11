@@ -13,7 +13,7 @@ export class SideNavigationComponent implements OnInit {
     { name: 'Test-connection', routerLink: 'test-connection' },
     { name: 'Categories', routerLink: 'category' },
     { name: 'Accounts', routerLink: 'account' },
-    { name: 'Transfers', routerLink: 'transfer' },
+    { name: 'Transfers', routerLink: 'transfer/transfers' },
   ];
 
   constructor() {}

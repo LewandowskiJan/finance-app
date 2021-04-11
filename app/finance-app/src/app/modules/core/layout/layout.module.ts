@@ -17,6 +17,7 @@ import { MainComponent } from './containers/main/main.component';
 import { SideNavigationComponent } from './components/side-navigation/side-navigation.component';
 
 import { AlertDialogComponent } from './components/alert-dialog/alert-dialog.component';
+import { CsvReaderModule } from './../../shared/csv-reader/csv-reader.module';
 import { WelcomePageComponent } from './components/welcome-page/welcome-page.component';
 
 import * as fromLayout from './reducers';
@@ -36,6 +37,7 @@ import * as fromLayout from './reducers';
     RouterModule,
     CommonModule,
     MaterialModule,
+    CsvReaderModule,
     EffectsModule.forFeature([LayoutEffect]),
     StoreModule.forFeature(fromLayout.layoutModuleFeatureKey, fromLayout.reducers),
   ],
