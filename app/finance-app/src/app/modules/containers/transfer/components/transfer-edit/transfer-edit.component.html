@@ -18,7 +18,7 @@
 
     <mat-form-field>
       <mat-label>Value</mat-label>
-      <input formControlName="value" matInput placeholder="Ex. Food" />
+      <input formControlName="value" matInput placeholder="Ex. Food" appOnlyNumbers maxlength="13" />
       <mat-error *ngIf="value.hasError('required')"> Value is <strong>required</strong> </mat-error>
     </mat-form-field>
 

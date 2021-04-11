@@ -16,19 +16,10 @@
     }
 
     &.value-currency-group {
-      flex-direction: row;
-
-      .value-field {
-        margin: 0;
-        width: 68%;
-      }
-
-      .currency-field {
-        margin: 0;
-        width: 30%;
-      }
+      flex-direction: column;
 
       @media (min-width: 768px) {
+        flex-direction: row;
 
         .value-field,
         .currency-field {
@@ -40,6 +31,7 @@
 
     .change-account-button,
     .transfer-field {
+      width: 100%;
       margin: 0 10px;
     }
 
@@ -47,6 +39,7 @@
       padding-bottom: 1.34375em;
       display: flex;
       align-items: center;
+      justify-content: center;
 
       .account-balance-to,
       .account-balance-from {
@@ -86,13 +79,8 @@
 
   .button-footer {
     display: flex;
-    width: 100%;
-    flex-direction: row;
-
-    .button {
-      display: flex;
-      width: 100%;
-      justify-content: center;
-    }
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
   }
 }

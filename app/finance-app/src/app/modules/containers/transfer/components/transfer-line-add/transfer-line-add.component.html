@@ -3,50 +3,68 @@
     <mat-form-field appearance="fill" class="transfer-line-field">
       <mat-label>Value </mat-label>
       <input formControlName="value" matInput placeholder="Ex. Food" />
+      <span matSuffix>{{ currency.value }}&nbsp;</span>
       <mat-error *ngIf="value.hasError('required')"> From Account is <strong>required</strong> </mat-error>
     </mat-form-field>
 
-        <mat-form-field appearance="fill" class="transfer-field">
-      <mat-label>Currency</mat-label>
-      <mat-select formControlName="currency">
-        <mat-option *ngFor="let currency of currencies" [value]="currency.value">
-          {{ currency.viewValue }}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
+    <div class="transfer-line-field">
+      <app-combo-box
+        (selectedValue)="selectCategory($event)"
+        [comboBoxProcessType]="comboBoxProcessType.CATEGORY_SEARCH_OR_CREATE"
+        [comboBoxType]="comboBoxType.SEARCH_OR_CREATE"
+        label="Category"
+      >
+      </app-combo-box>
+    </div>
 
-    <mat-form-field appearance="fill" class="transfer-line-field">
-      <mat-label>Category</mat-label>
-      <input formControlName="categoryId" matInput placeholder="Ex. Food" />
-      <mat-error *ngIf="categoryId.hasError('required')"> Category is <strong>required</strong> </mat-error>
-    </mat-form-field>
+    <div class="transfer-line-field">
+      <app-combo-box
+        (selectedValue)="selectGroup($event)"
+        [comboBoxProcessType]="comboBoxProcessType.GROUP_SEARCH_OR_CREATE"
+        [comboBoxType]="comboBoxType.SEARCH_OR_CREATE"
+        label="Group"
+      >
+      </app-combo-box>
+    </div>
 
-    <mat-form-field appearance="fill" class="transfer-line-field">
-      <mat-label>Group</mat-label>
-      <input formControlName="groupId" matInput placeholder="Ex. Food" />
-      <mat-error *ngIf="groupId.hasError('required')"> Group is <strong>required</strong> </mat-error>
-    </mat-form-field>
-  </div>
+    <div class="transfer-line-field">
+      <app-combo-box
+        (selectedValue)="selectProduct($event)"
+        [comboBoxProcessType]="comboBoxProcessType.PRODUCT_SEARCH_OR_CREATE"
+        [comboBoxType]="comboBoxType.SEARCH_OR_CREATE"
+        label="Product"
+      >
+      </app-combo-box>
+    </div>
 
-  <div class="transfer-line-group">
-    <mat-form-field appearance="fill" class="transfer-line-field">
-      <mat-label>Product</mat-label>
-      <input formControlName="productId" matInput placeholder="Ex. Food" />
-    </mat-form-field>
+    <div class="transfer-line-field">
+      <app-combo-box
+        (selectedValue)="selectProject($event)"
+        [comboBoxProcessType]="comboBoxProcessType.PROJECT_SEARCH_OR_CREATE"
+        [comboBoxType]="comboBoxType.SEARCH_OR_CREATE"
+        label="Project"
+      >
+      </app-combo-box>
+    </div>
 
-    <mat-form-field appearance="fill" class="transfer-line-field">
-      <mat-label>Project</mat-label>
-      <input formControlName="projectId" matInput placeholder="Ex. Food" />
-    </mat-form-field>
+    <div class="transfer-line-field">
+      <app-combo-box
+        (selectedValue)="selectEvent($event)"
+        [comboBoxProcessType]="comboBoxProcessType.EVENT_SEARCH_OR_CREATE"
+        [comboBoxType]="comboBoxType.SEARCH_OR_CREATE"
+        label="Event"
+      >
+      </app-combo-box>
+    </div>
 
-    <mat-form-field appearance="fill" class="transfer-line-field">
-      <mat-label>Target</mat-label>
-      <input formControlName="targetId" matInput placeholder="Ex. Food" />
-    </mat-form-field>
-
-    <mat-form-field appearance="fill" class="transfer-line-field">
-      <mat-label>Event</mat-label>
-      <input formControlName="eventId" matInput placeholder="Ex. Food" />
-    </mat-form-field>
+    <div class="transfer-line-field">
+      <app-combo-box
+        (selectedValue)="selectTarget($event)"
+        [comboBoxProcessType]="comboBoxProcessType.TARGET_SEARCH_OR_CREATE"
+        [comboBoxType]="comboBoxType.SEARCH_OR_CREATE"
+        label="Target"
+      >
+      </app-combo-box>
+    </div>
   </div>
 </div>

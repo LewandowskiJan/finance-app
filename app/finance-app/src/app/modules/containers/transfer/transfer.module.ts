@@ -1,4 +1,6 @@
+import { OnlyNumbersDirective } from '@modules/shared/utils/directives/only-numbers/only-numbers.directive';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
@@ -30,6 +32,7 @@ import { TransfersComponent } from './components/transfers/transfers.component';
     TransferFormContainerComponent,
     TransferAddComponent,
     TransferLineAddComponent,
+    OnlyNumbersDirective,
   ],
   imports: [
     RouterModule,
@@ -44,5 +47,6 @@ import { TransfersComponent } from './components/transfers/transfers.component';
     SlidePanelModule,
   ],
   providers: [TransfersService],
+  bootstrap: [TransfersContainerComponent],
 })
 export class TransferModule {}

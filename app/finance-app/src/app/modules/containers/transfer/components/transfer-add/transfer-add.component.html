@@ -32,48 +32,44 @@
   </div>
 
   <div class="transfer-group value-currency-group">
-    <mat-form-field appearance="fill" class="transfer-field currency-field">
-      <mat-label>Currency</mat-label>
-      <mat-select formControlName="currency">
-        <mat-option *ngFor="let currency of currencies" [value]="currency.value">
-          {{ currency.viewValue }}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
     <mat-form-field appearance="fill" class="transfer-field value-field">
       <mat-label>Value</mat-label>
-      <input formControlName="value" matInput placeholder="Ex. Food" />
+      <input formControlName="value" matInput placeholder="Ex. 1235" appOnlyNumbers maxlength="13" />
+      <span matSuffix>{{ currency.value }}&nbsp;</span>
       <mat-error *ngIf="value.hasError('required')"> Value is <strong>required</strong> </mat-error>
       <mat-error *ngIf="value.hasError('max')"> Not enough <strong>funds</strong> </mat-error>
     </mat-form-field>
-  </div>
 
-  <div class="transfer-group value-currency-group">
     <mat-form-field appearance="fill" class="transfer-field currency-field">
       <mat-label>Exchange Rate</mat-label>
-      <input formControlName="exchangeRate" matInput placeholder="Ex. Food" />
+      <input formControlName="exchangeRate" matInput placeholder="4.53" />
       <mat-error *ngIf="exchangeRate.hasError('required')"> Exchange Rate is <strong>required</strong> </mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="fill" class="transfer-field value-field">
       <mat-label>Value In Pln</mat-label>
-      <input formControlName="valueInPln" matInput placeholder="Ex. Food" />
-      <mat-error *ngIf="valueInPln.hasError('required')"> Value In Pln is <strong>required</strong> </mat-error>
+      <input formControlName="valueInPln" matInput placeholder="0" />
+      <span matSuffix>PLN&nbsp;</span>
     </mat-form-field>
   </div>
 
   <div class="transfer-line-forms">
     <ng-container formArrayName="transferLines">
       <div class="transfer-line-form" *ngFor="let transferLine of transferLines.controls; index as i">
-        <span>Transfer line {{ i }}:</span>
-        <button mat-button color="warn" type="button" (click)="removeTransferLineForm(i)">Delete</button>
+        <span>
+          <button mat-stroked-button color="warn" type="button" (click)="removeTransferLineForm(i)">Delete</button>
+          Transfer line {{ i }}:</span
+        >
         <app-transfer-line-add [transferLineForm]="transferLine"></app-transfer-line-add>
       </div>
     </ng-container>
 
     <div class="button-footer">
-      <button class="button" mat-raised-button color="accent" type="button" (click)="addTransferLineForm()">Add transfer line</button>
-      <button class="button" mat-raised-button color="accent" type="submit">Add transfer</button>
+      <button mat-mini-fab color="accent" type="button" aria-label="Add transfer line button" (click)="addTransferLineForm()">
+        <mat-icon>plus_one</mat-icon>
+      </button>
+
+      <button mat-fab aria-label="Add transfer button" type="submit">Submit</button>
     </div>
   </div>
 </form>

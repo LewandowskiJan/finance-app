@@ -99,7 +99,7 @@ export class TransferAddComponent implements OnInit {
   public addTransferLineForm(): void {
     this.transferLines.push(
       this.formBuilder.group({
-        value: ['', Validators.compose([(Validators.required, Validators.pattern('^[0-9]{1,10}([.][0-9]{1,4})?$'))])],
+        value: ['', Validators.compose([(Validators.required, Validators.pattern('^[0-9]{1,8}([.][0-9]{1,4})?$'))])],
         currency: [{ value: this.currency.value, disabled: true }, Validators.required],
         categoryId: ['', Validators.required],
         groupId: ['', Validators.required],
@@ -149,16 +149,13 @@ export class TransferAddComponent implements OnInit {
 
   public isTransferLinesValueSumNotEqualToTransferValue(): boolean {
     const transferLinesValue: string = this.transferLines.getRawValue().reduce((accumulator, currTl) => {
-      console.log(accumulator, currTl);
       return (accumulator + parseFloat(currTl.value)).toFixed(4);
     }, 0);
-    console.log(+this.value.value * 1000 === +transferLinesValue * 1000, +this.value.value * 1000, +transferLinesValue * 1000);
 
     return +this.value.value * 1000 === +transferLinesValue * 1000;
   }
 
   public areAccountsDifferent(): boolean {
-    console.log(this.accountFrom !== this.accountTo);
     return this.accountFrom.value !== this.accountTo.value;
   }
 

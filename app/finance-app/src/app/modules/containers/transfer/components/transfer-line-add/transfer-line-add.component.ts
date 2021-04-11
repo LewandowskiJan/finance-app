@@ -1,6 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 
+import { ComboBoxProcessType } from '@modules/shared/combo-box/configuration/combo-box-process-type.enum';
+import { ComboBoxType } from '@modules/shared/combo-box/configuration/combo-box-type.enum';
+
 import { Currency, CurrencySelect } from '../transfer-add/transfer-add.component';
 
 @Component({
@@ -10,6 +13,9 @@ import { Currency, CurrencySelect } from '../transfer-add/transfer-add.component
 })
 export class TransferLineAddComponent implements OnInit {
   @Input() public transferLineForm: FormGroup;
+
+  public comboBoxProcessType: typeof ComboBoxProcessType = ComboBoxProcessType;
+  public comboBoxType: typeof ComboBoxType = ComboBoxType;
 
   public get value(): FormControl {
     return this.transferLineForm.get('value') as FormControl;
@@ -51,4 +57,28 @@ export class TransferLineAddComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
+
+  public selectCategory($event: any): void {
+    this.categoryId.setValue($event._id);
+  }
+
+  public selectGroup($event: any): void {
+    this.groupId.setValue($event._id);
+  }
+
+  public selectEvent($event: any): void {
+    this.eventId.setValue($event._id);
+  }
+
+  public selectTarget($event: any): void {
+    this.targetId.setValue($event._id);
+  }
+
+  public selectProject($event: any): void {
+    this.projectId.setValue($event._id);
+  }
+
+  public selectProduct($event: any): void {
+    this.productId.setValue($event._id);
+  }
 }

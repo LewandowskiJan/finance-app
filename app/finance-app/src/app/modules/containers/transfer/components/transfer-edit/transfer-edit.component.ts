@@ -73,7 +73,7 @@ export class TransferEditComponent implements OnInit {
       _id: [this.data._id, Validators.required],
       currency: [this.data.currency, Validators.required],
       exchangeRate: [this.data.exchangeRate, Validators.required],
-      value: [this.data.value, Validators.compose([(Validators.required, Validators.pattern('^[0-9]{1,10}([.][0-9]{1,4})?$'))])],
+      value: [this.data.value, Validators.compose([(Validators.required, Validators.pattern('^[0-9]{1,8}([.][0-9]{1,4})?$'))])],
       accountFrom: [this.data.accountFrom, Validators.required],
       accountTo: [this.data.accountTo, Validators.required],
       date: [this.data.date, Validators.required],

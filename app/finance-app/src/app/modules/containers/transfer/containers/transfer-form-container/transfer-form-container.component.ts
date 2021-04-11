@@ -4,6 +4,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { map } from 'rxjs/operators';
 
 import { Account } from './../../../account/model/Account';
+import { ComboBoxProcessType } from './../../../../shared/combo-box/configuration/combo-box-process-type.enum';
+import { ComboBoxType } from './../../../../shared/combo-box/configuration/combo-box-type.enum';
 
 @Component({
   selector: 'app-transfer-form-container',
@@ -14,6 +16,8 @@ export class TransferFormContainerComponent implements OnInit {
   public transferForm: FormGroup;
   public transferFromDetails: any;
   public transferToDetails: any;
+  public comboBoxProcessType: typeof ComboBoxProcessType = ComboBoxProcessType;
+  public comboBoxType: typeof ComboBoxType = ComboBoxType;
 
   constructor(private formBuilder: FormBuilder) {}
 
@@ -73,7 +77,6 @@ export class TransferFormContainerComponent implements OnInit {
   }
 
   selectedAccountFrom($event: Account): void {
-    console.log($event);
     this.transferForm.patchValue({
       accountFrom: $event._id,
       currency: $event.currency,

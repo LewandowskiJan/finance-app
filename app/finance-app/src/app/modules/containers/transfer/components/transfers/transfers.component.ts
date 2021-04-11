@@ -48,10 +48,9 @@ export class TransfersComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      console.log(result);
-      // if (result) {
-      //   this.updateTransfer(transfer, result.form.value);
-      // }
+      if (result) {
+        this.updateTransfer(transfer, result.form.value);
+      }
     });
   }
 
