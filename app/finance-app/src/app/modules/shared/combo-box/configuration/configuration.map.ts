@@ -5,26 +5,26 @@ export const ComboBoxConfigurationMap: Map<ComboBoxProcessType, ComboBoxConfigur
   [ComboBoxProcessType.ACCOUNT_SEARCH, { searchUrl: 'account/account/find', queryParamKey: 'name' }],
   [
     ComboBoxProcessType.CATEGORY_SEARCH_OR_CREATE,
-    { searchUrl: 'dictionary/category/find', queryParamKey: 'name', createUrl: 'dictionary/category/add' },
+    { searchUrl: 'dictionary/category/find', queryParamKey: 'alias', createUrl: 'dictionary/category/add' },
   ],
   [
     ComboBoxProcessType.GROUP_SEARCH_OR_CREATE,
-    { searchUrl: 'dictionary/expenses-group/find', queryParamKey: 'name', createUrl: 'dictionary/expenses-group/add' },
+    { searchUrl: 'dictionary/expensesgroup/find', queryParamKey: 'alias', createUrl: 'dictionary/expenses-group/add' },
   ],
   [
     ComboBoxProcessType.EVENT_SEARCH_OR_CREATE,
-    { searchUrl: 'dictionary/event/find', queryParamKey: 'name', createUrl: 'dictionary/event/add' },
+    { searchUrl: 'dictionary/event/find', queryParamKey: 'alias', createUrl: 'dictionary/event/add' },
   ],
   [
     ComboBoxProcessType.PROJECT_SEARCH_OR_CREATE,
-    { searchUrl: 'dictionary/project/find', queryParamKey: 'name', createUrl: 'dictionary/project/add' },
+    { searchUrl: 'dictionary/project/find', queryParamKey: 'alias', createUrl: 'dictionary/project/add' },
   ],
   [
     ComboBoxProcessType.PRODUCT_SEARCH_OR_CREATE,
-    { searchUrl: 'dictionary/product/find', queryParamKey: 'name', createUrl: 'dictionary/product/add' },
+    { searchUrl: 'dictionary/product/find', queryParamKey: 'alias', createUrl: 'dictionary/product/add' },
   ],
   [
     ComboBoxProcessType.TARGET_SEARCH_OR_CREATE,
-    { searchUrl: 'dictionary/target/find', queryParamKey: 'name', createUrl: 'dictionary/target/add' },
+    { searchUrl: 'dictionary/target/find', queryParamKey: 'alias', createUrl: 'dictionary/target/add' },
   ],
 ]);

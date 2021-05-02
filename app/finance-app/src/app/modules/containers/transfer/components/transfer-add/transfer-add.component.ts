@@ -56,10 +56,6 @@ export class TransferAddComponent implements OnInit {
     { value: Currency.USD, viewValue: 'USD' },
   ];
 
-  private value$: Observable<string>;
-  private exchangeRate$: Observable<string>;
-  private valueInPln$: Observable<string>;
-
   public get currency(): FormControl {
     return this.transferForm.get('currency') as FormControl;
   }
@@ -102,11 +98,12 @@ export class TransferAddComponent implements OnInit {
         value: ['', Validators.compose([(Validators.required, Validators.pattern('^[0-9]{1,8}([.][0-9]{1,4})?$'))])],
         currency: [{ value: this.currency.value, disabled: true }, Validators.required],
         categoryId: ['', Validators.required],
-        groupId: ['', Validators.required],
+        expensesGroupId: ['', Validators.required],
         productId: [''],
         projectId: [''],
         targetId: [''],
         eventId: [''],
+        importance: [''],
       })
     );
   }
@@ -149,7 +146,8 @@ export class TransferAddComponent implements OnInit {
 
   public isTransferLinesValueSumNotEqualToTransferValue(): boolean {
     const transferLinesValue: string = this.transferLines.getRawValue().reduce((accumulator, currTl) => {
-      return (accumulator + parseFloat(currTl.value)).toFixed(4);
+      console.log(accumulator, currTl);
+      return parseFloat((accumulator + parseFloat(currTl.value)).toFixed(4));
     }, 0);
 
     return +this.value.value * 1000 === +transferLinesValue * 1000;

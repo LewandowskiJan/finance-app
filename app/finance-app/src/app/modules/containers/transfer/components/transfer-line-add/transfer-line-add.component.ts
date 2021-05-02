@@ -28,8 +28,8 @@ export class TransferLineAddComponent implements OnInit {
   public get categoryId(): FormControl {
     return this.transferLineForm.get('categoryId') as FormControl;
   }
-  public get groupId(): FormControl {
-    return this.transferLineForm.get('groupId') as FormControl;
+  public get expensesGroupId(): FormControl {
+    return this.transferLineForm.get('expensesGroupId') as FormControl;
   }
 
   public get productId(): FormControl {
@@ -48,6 +48,10 @@ export class TransferLineAddComponent implements OnInit {
     return this.transferLineForm.get('eventId') as FormControl;
   }
 
+  public get importance(): FormControl {
+    return this.transferLineForm.get('importance') as FormControl;
+  }
+
   public currencies: CurrencySelect[] = [
     { value: Currency.PLN, viewValue: 'PLN' },
     { value: Currency.EUR, viewValue: 'EUR' },
@@ -62,8 +66,8 @@ export class TransferLineAddComponent implements OnInit {
     this.categoryId.setValue($event._id);
   }
 
-  public selectGroup($event: any): void {
-    this.groupId.setValue($event._id);
+  public selectExpensesGroup($event: any): void {
+    this.expensesGroupId.setValue($event._id);
   }
 
   public selectEvent($event: any): void {
