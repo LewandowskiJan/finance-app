@@ -165,7 +165,6 @@ export class CsvReaderComponent implements OnInit {
 
   public async sendToServer(): Promise<void> {
     for (let i = 0; i < this.result.length; i = i + 50) {
-      console.log(this.result.slice(i, i + 50));
       await this.apiService
         .request<any[], HttpErrorResponse>('account/transfer/addMany', {
           body: this.result.slice(i, i + 50),

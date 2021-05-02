@@ -146,7 +146,6 @@ export class TransferAddComponent implements OnInit {
 
   public isTransferLinesValueSumNotEqualToTransferValue(): boolean {
     const transferLinesValue: string = this.transferLines.getRawValue().reduce((accumulator, currTl) => {
-      console.log(accumulator, currTl);
       return parseFloat((accumulator + parseFloat(currTl.value)).toFixed(4));
     }, 0);
 
