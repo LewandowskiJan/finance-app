@@ -17,7 +17,8 @@ export class AccountsService {
 
   readAccounts(): Observable<Account[] | HttpErrorResponse> {
     return this.apiService.request<Account[], HttpErrorResponse>('account/account/all', {
-      method: HttpRequestMethods.GET,
+      method: HttpRequestMethods.POST,
+      body: { options: { limit: 10 } },
     });
   }
 

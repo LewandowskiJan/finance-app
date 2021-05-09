@@ -65,12 +65,11 @@ const modules: any[] = [
   MatAutocompleteModule,
   MatNativeDateModule,
   MatDatepickerModule,
-  MomentDateModule,
   ScrollingModule,
 ];
 
 @NgModule({
-  imports: [...modules],
+  imports: [...modules, MomentDateModule],
   exports: [...modules],
   providers: [
     {

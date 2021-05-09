@@ -3,7 +3,7 @@ const BalanceHistoryDao = require('../dao/balanceHistory.dao');
 
 exports.getAllAccounts = async (req, res, next) => {
   try {
-    const accounts = await AccountDao.getAllAccounts();
+    const accounts = await AccountDao.getAllAccounts(req);
     res.json(accounts);
   } catch (error) {
     return next(error);

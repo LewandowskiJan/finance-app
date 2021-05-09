@@ -21,7 +21,8 @@ exports.find = async (req, databaseSchema, options = {}) => {
     .map((key) => {
       return { [key]: req.body[key] };
     })
-    .filter((result) => !result.searchStrategy);
+    .filter((result) => !result.searchStrategy)
+    .filter((result) => !result.options);
 
   switch (req.body.searchStrategy) {
     case SearchStrategy.MATCH_ALL:
@@ -34,7 +35,7 @@ exports.find = async (req, databaseSchema, options = {}) => {
       search = {};
   }
 
-  return await databaseSchema.find(search).sort(options.sort ? options.sort : {});
+  return await databaseSchema.find(search).sort(options.sort ? options.sort : {}).limit(options.limit ? options.limit : {});
 };
 
 exports.findById = async (req, databaseSchema) => {

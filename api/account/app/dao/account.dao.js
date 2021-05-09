@@ -42,7 +42,8 @@ exports.updateAccount = async (req) => {
 };
 
 exports.getAllAccounts = async (req = {}) => {
-  return await DataObjectAccess.find(req, Account);
+  console.log(req.body);
+  return await DataObjectAccess.find(req, Account, req.body.options);
 };
 
 exports.getAccountByOneProperty = async (req = {}) => {
