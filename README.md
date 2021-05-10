@@ -1,80 +1,131 @@
 # Finance-app
 
+## Table of contents
+* [General info](#general-info)
+* [Technologies](#technologies)
+* [Setup](#setup)
+
+## General info
+Project is creating to aggregate structured finance data.
+Full concept:
+- easy add data using UI
+- save data into mongo
+- use micro service on BE for:
+ * authorization
+ * manage data
+ * generate data to share/ import for BI tools (like PowerBi)
+
 This project is combine Angular 11 (FE) and Nodejs (BE) application.
+	
+## Technologies
+Project is created with:
+* Angular: 11.2.2
+* NgRx: 11.0.1
+* RxjS: 6.6
+* TypeScript: 4
 
-# Open locally
-0. open terminal
-1. git clone https://github.com/LewandowskiJan/finance-app.git
+* Node.js: 14.15.5
+* Express: 4.17.1
+* Mongoose: 5.11.17
+* Nodemon
 
-2. download node_modules
-// for frontend
-    - 'cd app/finance-app/'
-    - 'npm i'
+* MongoDb
+* Docker / docker-compose
 
-// for backend
-  * accounts
-    - 'cd api/account/'
-    - 'npm i'
-  * authorization
-    - 'cd api/authorization/'
-    - 'npm i'
+## Setup
+To run this project, install it locally using npm:
 
-3. Check mongo db is installed
-  * if not, check https://docs.mongodb.com/manual/installation/
+### Open locally
 
-4. Check mongo address
-  * open cmd and use commend: 'mongo'
+#### open terminal
+##### 1. git clone https://github.com/LewandowskiJan/finance-app.git
 
-5. Check 
-  * \finance-app\api\account\environments\dev.env
-  * \finance-app\api\authorization\environments\dev.env
-   - configure port DATABASE_URL, or change the database name
-  
-6. Run
- * in app/finance-app/ open terminal and paste 'ng serve'
- * in api/account/ open terminal and paste 'nodemon'
- * in api/authorization/ open terminal and paste 'nodemon'
+##### 2. download node_modules
+###### for frontend
 
- after lunch completed the app should start on:
- http://localhost:4200/
+```
+$ cd app/finance-app/
+$ npm i
+```
 
- to check connection, click 'Check connection' button on the first page.
+###### for backend
 
-# Quick-start
+* accounts-service
 
-## Build and deploy whole app
+```
+$ cd api/account/
+$ npm i
+```
+
+* authorization-service
+
+```
+$ cd api/authorization/
+$ npm i
+```
+
+##### 3. Check mongo db is installed
+
+* if not, check https://docs.mongodb.com/manual/installation/
+
+##### 4. Check mongo address
+
+* open cmd and use commend: 'mongo'
+
+##### 5. Check
+
+- \finance-app\api\account\environments\dev.env
+- \finance-app\api\authorization\environments\dev.env
+
+* configure port DATABASE_URL, or change the database name
+
+##### 6. Run
+
+* in cmd run 'mongod'
+```
+$ mongod
+```
+* in app/finance-app/ open terminal and paste 'ng serve'
+```
+$ cd app/finance-app/
+$ ng serve
+```
+* in api/account/ open terminal and paste 'nodemon'
+```
+$ cd api/account/
+$ nodemon
+```
+* in api/authorization/ open terminal and paste 'nodemon'
+```
+$ cd api/authorization/
+$ nodemon
+```
+
+after lunch completed the app should start on:
+http://localhost:4200/
+
+to check connection, click 'Check connection' button on the first page.
+
+
+### Open using docker
+
+#### Image must to have
+
+- mongo -> https://hub.docker.com/_/mongo
+
+after clone completed
+```
+$ cd finance-app
+```
+
+#### Build, deploy and run whole app
 
 Run `docker-compose up --build`
 
-## Run app
+#### Just run the app
 
-Run `docker-compose up`
+and then run `docker-compose up`
 
-## ./app/finance-app
-
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.1.
-
-## Development server
-
-Go to `cd app/finance-app`
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+```
+docker-compose up
+```
