@@ -1,7 +1,0 @@
-@import './../../../../../assets/scroll.scss';
-
-main,
-mat-drawer::ng-deep>div {
-  height: calc(100vh - 64px - 64px);
-  @extend %custom-scroll;
-}

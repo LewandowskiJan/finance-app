@@ -11,8 +11,17 @@ exports.getAllTransfers = async (req, res, next) => {
 
 exports.addTransfer = async (req, res, next) => {
   try {
-    const newTransfer = await TransferDao.addTransfer(req.body);
+    const newTransfer = await TransferDao.addTransfer(req.body, next);
     res.json(newTransfer);
+  } catch (error) {
+    return next(error);
+  }
+};
+
+exports.addTransfers = async (req, res, next) => {
+  try {
+    const newTransfers = await TransferDao.addTransfers(req.body, next);
+    res.json(newTransfers);
   } catch (error) {
     return next(error);
   }
@@ -20,7 +29,7 @@ exports.addTransfer = async (req, res, next) => {
 
 exports.getTransferById = async (req, res, next) => {
   try {
-    const newTransfer = await TransferDao.addTransfer(req.body);
+    const newTransfer = await TransferDao.findTransfer(req.body);
     res.json(newTransfer);
   } catch (error) {
     return next(error);

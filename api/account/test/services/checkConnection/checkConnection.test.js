@@ -10,7 +10,7 @@ const expect = chai.expect;
 chai.use(chaiHttp);
 
 describe('GET /api/account/checkConnection', function () {
-basicSetup();
+  basicSetup();
 
   it('should create and return a new checkConnection item', function () {
     let res;

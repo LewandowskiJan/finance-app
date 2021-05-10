@@ -3,31 +3,46 @@ version: '3.1'
 services:
   database:
     image: mongo
-    container_name: 'finance-app-db'
+    container_name: finance-app-db
     ports:
-      - '27017-27019:27017-27019'
+      - 27017:27017
+    networks:
+      - finance-app-network
   authorization-service:
+    container_name: authorization-service
     build:
       context: './api/authorization'
       dockerfile: Dockerfile
+    environment:
+      env_file: .env
+      NODE_ENV: production
     volumes:
-      - ./api/authorization:/home/node/api
+      - ./api/authorization:/home/node/api/authorization
     ports:
-      - 8000:80
+      - 8080:8080
     depends_on:
       - database
+    networks:
+      - finance-app-network
   account-service:
+    container_name: account-service
     build:
       context: './api/account'
       dockerfile: Dockerfile
+    environment:
+      env_file: .env
+      NODE_ENV: production
     volumes:
-      - ./api/account:/home/node/api
+      - ./api/account:/home/node/api/account
     ports:
-      - 8001:80
+      - 8081:8081
     depends_on:
       - database
       - authorization-service
+    networks:
+      - finance-app-network
   finance-app:
+    container_name: finance-app
     build:
       context: './app/finance-app'
       dockerfile: Dockerfile
@@ -39,3 +54,6 @@ services:
       - database
       - account-service
       - authorization-service
+networks:
+  finance-app-network:
+    driver: bridge

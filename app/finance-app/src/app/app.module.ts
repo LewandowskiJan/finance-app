@@ -10,17 +10,23 @@ import { StoreRouterConnectingModule } from '@ngrx/router-store';
 
 import { localStorageSync } from 'ngrx-store-localstorage';
 
-import { MaterialModule } from '@external-modules/material/material.module';
-import { RxAngularModule } from '@external-modules/rx-angular/rx-angular.module';
-import { TestConnectionService } from '@src/app/external-modules/test-page/services/test-connection.service';
+import { MaterialModule } from '@modules/external/material/material.module';
 
-import { AccountModule } from './modules/account/account.module';
-import { ApiService } from './domain/services/api.service';
+import { AccountModule } from '@modules/containers/account/account.module';
+import { CategoryModule } from '@modules/containers/category/category.module';
+import { ComboBoxModule } from './modules/shared/combo-box/combo-box.module';
+import { TestConnectionService } from '@modules/containers/test-page/services/test-connection.service';
+import { TransferModule } from './modules/containers/transfer/transfer.module';
+
+import { LayoutModule } from '@modules/core/layout/layout.module';
+
+import { ApiService } from './modules/domain/services/api.service';
+import { SlidePanelModule } from '@modules/shared/slide-panel/slide-panel.module';
+
+import { environment } from '@environments/environment';
+
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { CategoryModule } from './modules/category/category.module';
-import { LayoutModule } from './core/layout/layout.module';
-import { environment } from '@src/environments/environment';
 import { localStorageKeys } from './configuration/localStorageKeys';
 
 import { ROOT_REDUCERS } from './reducers';
@@ -39,7 +45,6 @@ const metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer];
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    RxAngularModule,
     MaterialModule,
     HttpClientModule,
     ReactiveFormsModule,
@@ -47,6 +52,9 @@ const metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer];
     LayoutModule,
     CategoryModule,
     AccountModule,
+    TransferModule,
+    SlidePanelModule,
+    ComboBoxModule,
 
     /**
      * StoreModule.forRoot is imported once in the root module, accepting a reducer

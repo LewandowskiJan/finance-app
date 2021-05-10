@@ -1,0 +1,43 @@
+<input type="file" #csvReader name="Upload CSV" id="txtFileUpload" (change)="uploadListener($event)" accept=".csv" />
+<code>
+{{ resultJson$ | async}}
+</code>
+<!-- <table class="minimalistBlack" *ngIf="(records$ | async).length > 0">
+  <thead>
+    <tr>
+      <th *ngFor="let columnName of tableHeader$ | async">{{ columnName }}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let record of records$ | async; let i = index">
+      <td>
+        <span>{{ record?._id }}</span>
+      </td>
+      <td>
+        <span>{{ record?.currency }}</span>
+      </td>
+      <td>
+        <span>{{ record?.exchangeRate }}</span>
+      </td>
+      <td>
+        <span>{{ record?.transferLineIds }}</span>
+      </td>
+      <td>
+        <span>{{ record?.accountFrom }}</span>
+      </td>
+      <td>
+        <span>{{ record?.accountTo }}</span>
+      </td>
+      <td>
+        <span>{{ record?.date }}</span>
+      </td>
+      <td>
+        <span>{{ record?.valueInPln }}</span>
+      </td>
+      <td>
+        <span>{{ record?.__v }}</span>
+      </td>
+    </tr>
+  </tbody>
+</table> -->
+<button (click)="sendToServer()">send</button>

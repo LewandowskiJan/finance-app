@@ -3,19 +3,21 @@ const DataObjectAccess = require('./shared/DataObjectAccess');
 const Transfer = require('../models/transfer');
 const AccountDao = require('./account.dao');
 const TransferLineDao = require('./transferLine.dao');
+const { OperationErrorStatus } = require('../errorHandler/models/OperationErrorStatus.enum');
 
 exports.addTransfer = async (transfer) => {
-  newTransfer = new Transfer();
-  newTransfer.value = transfer.value;
-  newTransfer.accountFrom = transfer.accountFrom;
-  newTransfer.accountTo = transfer.accountTo;
-  newTransfer.currency = transfer.currency;
+  let newTransfer = new Transfer({
+    value: transfer.value,
+    accountFrom: transfer.accountFrom,
+    accountTo: transfer.accountTo,
+    currency: transfer.currency,
+    date: new Date(transfer.date),
+  });
 
   let valueInPln;
-
   if (transfer.exchangeRate) {
     newTransfer.exchangeRate = transfer.exchangeRate;
-    valueInPln = this.calculateValue(transfer.value, transfer.exchangeRate).toString();
+    valueInPln = calculateValue(transfer.value, transfer.exchangeRate).toString();
   } else {
     valueInPln = transfer.value;
   }
@@ -25,23 +27,38 @@ exports.addTransfer = async (transfer) => {
   newTransfer.valueInPln = valueInPln;
   newTransfer.transferLineIds = transferLines;
 
-  const res1 = await AccountDao.updateAccount(transfer.accountFrom, `-${valueInPln}`);
-  if (res1) {
-    const res2 = await AccountDao.updateAccount(transfer.accountTo, valueInPln);
-    await newTransfer.save();
-    return newTransfer;
-  } else {
-    return { msg: 'too less money' };
+  const updatedAccountFrom = await AccountDao.updateAccountBalance(
+    transfer.accountFrom,
+    `-${transfer.value}`,
+    transfer
+  );
+  if (!updatedAccountFrom) {
+    throw new Error(OperationErrorStatus.LACK_OF_FOUNDS_ERROR);
   }
+
+  await AccountDao.updateAccountBalance(transfer.accountTo, transfer.value, transfer);
+
+  const savedTransfer = await newTransfer.save();
+  return savedTransfer;
 };
 
+exports.addTransfers = async (transfers) => {
+  addedTransfers = [];
 
-calculateValue = (value, exchangeRate) => {
+  for (const transfer of transfers) {
+    const currentTransfer = await this.addTransfer(transfer);
+    addedTransfers.push(currentTransfer);
+  }
+
+  return addedTransfers;
+};
+
+const calculateValue = (value, exchangeRate) => {
   return (parseFloat(value) * parseFloat(exchangeRate)).toFixed(4);
 };
 
-exports.findTransfer = async (req) => {
-  return await DataObjectAccess.find(req, Transfer);
+exports.findTransfer = async (req, options) => {
+  return await DataObjectAccess.find(req, Transfer, options);
 };
 
 exports.findAllTransfers = async (req) => {
@@ -73,9 +90,9 @@ exports.updateTransfer = async (req) => {
   newTransfer.valueInPln = valueInPln;
   newTransfer.transferLineIds = transferLines;
 
-  const res1 = await AccountDao.updateAccount(transfer.accountFrom, `-${valueInPln}`);
+  const res1 = await AccountDao.updateAccountBalance(transfer.accountFrom, `-${valueInPln}`);
   if (res1) {
-    const res2 = await AccountDao.updateAccount(transfer.accountTo, valueInPln);
+    const res2 = await AccountDao.updateAccountBalance(transfer.accountTo, valueInPln);
 
     updatedTransfer.balanceHistoryIdFrom = re1;
     updatedTransfer.balanceHistoryIdTo = res2;

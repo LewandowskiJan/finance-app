@@ -1,0 +1,31 @@
+<button mat-button [routerLink]="['/transfer/transfers']">Transfers</button>
+
+<mat-card>
+  <div class="account-details">
+    <app-combo-box
+      (selectedValue)="selectedAccountFrom($event)"
+      [comboBoxProcessType]="comboBoxProcessType.ACCOUNT_SEARCH"
+      [comboBoxType]="comboBoxType.SEARCH_AND_FIND"
+      [label]="'From Account'"
+    ></app-combo-box>
+    <span>Name: {{ transferFromDetails?.name }} | Balance: {{ transferFromDetails?.balance }}</span>
+  </div>
+  <div class="account-details">
+    <app-combo-box
+      (selectedValue)="selectedAccountTo($event)"
+      [comboBoxProcessType]="comboBoxProcessType.ACCOUNT_SEARCH"
+      [comboBoxType]="comboBoxType.SEARCH_AND_FIND"
+      [label]="'To Account'"
+    ></app-combo-box>
+    <span>Name: {{ transferToDetails?.name }} | Balance: {{ transferToDetails?.balance }}</span>
+  </div>
+</mat-card>
+<div class="transfer-form">
+  <mat-card>
+    <app-transfer-add
+      [transferForm]="transferForm"
+      [balanceTo]="transferToDetails?.balance"
+      [balanceFrom]="transferFromDetails?.balance"
+    ></app-transfer-add>
+  </mat-card>
+</div>

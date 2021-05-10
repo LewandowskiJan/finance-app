@@ -1,0 +1,54 @@
+<h1 mat-dialog-title>Dialog with elements</h1>
+<div mat-dialog-content>
+  <form [formGroup]="transferForm" #form="ngForm">
+    <mat-form-field appearance="fill">
+      <mat-label>Currency</mat-label>
+      <select matNativeControl required formControlName="currency">
+        <option value="PLN">PLN</option>
+        <option value="EUR">EUR</option>
+        <option value="USD">USD</option>
+      </select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Exchange Rate</mat-label>
+      <input formControlName="exchangeRate" matInput placeholder="Ex. Food" />
+      <mat-error *ngIf="exchangeRate.hasError('required')"> Exchange Rate is <strong>required</strong> </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Value</mat-label>
+      <input formControlName="value" matInput placeholder="Ex. Food" appOnlyNumbers maxlength="13" />
+      <mat-error *ngIf="value.hasError('required')"> Value is <strong>required</strong> </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label> From Account</mat-label>
+      <input formControlName="accountFrom" matInput placeholder="Ex. Food" />
+      <mat-error *ngIf="accountFrom.hasError('required')"> From Account <strong>required</strong> </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>To Account</mat-label>
+      <input formControlName="accountTo" matInput placeholder="Ex. Food" />
+      <mat-error *ngIf="accountTo.hasError('required')"> To Account <strong>required</strong> </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Transfer date</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="date" />
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Value in Pln</mat-label>
+      <input formControlName="valueInPln" matInput placeholder="Ex. Food" />
+      <mat-error *ngIf="valueInPln.hasError('required')">Value in Pln <strong>required</strong> </mat-error>
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-button [mat-dialog-close]="form" cdkFocusInitial>Ok</button>
+  <button mat-button mat-dialog-close>Close</button>
+</div>

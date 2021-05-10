@@ -1,0 +1,7 @@
+.slide-panel {
+  width: calc(100% - 42px);
+  position: absolute;
+  bottom: 10px;
+  left: 5px;
+  box-shadow: 0px -5px 15px 5px rgba($color: #222222, $alpha: .8);
+}

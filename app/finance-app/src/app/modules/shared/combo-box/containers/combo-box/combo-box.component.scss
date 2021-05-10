@@ -1,0 +1,15 @@
+@use './../../../../../../assets/scroll.scss';
+
+.combo-box-field {
+  width: 100%;
+
+  @media (min-width: 600px) {
+    width: 206px;
+  }
+}
+
+::ng-deep {
+  .cdk-overlay-pane>.mat-autocomplete-panel {
+    @extend %custom-scroll;
+  }
+}

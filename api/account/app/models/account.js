@@ -7,6 +7,11 @@ let accountSchema = mongoose.Schema({
     required: true,
     unique: true,
   },
+  alias: {
+    type: String,
+    required: true,
+    unique: true,
+  },
   dateOfCreate: {
     type: Date,
     default: Date.now,
@@ -14,6 +19,11 @@ let accountSchema = mongoose.Schema({
   isActive: {
     type: Boolean,
     default: true,
+  },
+  isExternal: {
+    type: Boolean,
+    default: true,
+    required: true,
   },
   balance: {
     type: String,

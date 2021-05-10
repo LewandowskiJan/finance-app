@@ -1,10 +1,19 @@
-const Account = require('../models/account');
-const BalanceHistory = require('../models/balanceHistory');
+const AccountDao = require('../dao/account.dao');
+const BalanceHistoryDao = require('../dao/balanceHistory.dao');
 
 exports.getAllAccounts = async (req, res, next) => {
   try {
-    const accounts = await Account.find();
-    const historyBalances = await BalanceHistory.find();
+    const accounts = await AccountDao.getAllAccounts(req);
+    res.json(accounts);
+  } catch (error) {
+    return next(error);
+  }
+};
+
+exports.getAllAccountsWithBalanceHistory = async (req, res, next) => {
+  try {
+    const accounts = await AccountDao.getAllAccounts();
+    const historyBalances = await BalanceHistoryDao.findBalanceHistories();
 
     const result = accounts.map((account) => {
       return {
@@ -20,25 +29,8 @@ exports.getAllAccounts = async (req, res, next) => {
 
 exports.addAccount = async (req, res, next) => {
   try {
-    let newAccount = new Account();
-    newAccount.name = req.body.name;
-
-    newAccount.save((error) => {
-      let newBalanceHistory = new BalanceHistory();
-
-      newBalanceHistory.accountId = newAccount._id;
-      newBalanceHistory.date = newAccount.dateOfCreate;
-      error
-        ? res.status(400).json(Formatter.bindErrorMsg(error))
-        : newBalanceHistory.save((err, historyBalance) => {
-            if (err) {
-              return res.status(400).json(Formatter.bindErrorMsg(err));
-            }
-            newAccount.balanceHistory = { newBalanceHistory };
-            const response = { ...newAccount._doc, balanceHistory: [newBalanceHistory] };
-            res.json(response);
-          });
-    });
+    const createdAccount = await AccountDao.createAccount(req);
+    res.json(createdAccount);
   } catch (error) {
     return next(error);
   }
@@ -46,16 +38,8 @@ exports.addAccount = async (req, res, next) => {
 
 exports.getAccountById = async (req, res, next) => {
   try {
-    const id = req.params.id;
-    const account = await Account.findOne({ _id: id });
-    const balanceHistory = await BalanceHistory.find({ accountId: id });
-
-    if (!account) {
-      res.json({});
-    } else {
-      const response = { ...account._doc, balanceHistory: [balanceHistory] };
-      res.json(response);
-    }
+    const foundAccount = await AccountDao.findAccountById(req);
+    res.json(foundAccount);
   } catch (error) {
     return next(error);
   }
@@ -63,14 +47,13 @@ exports.getAccountById = async (req, res, next) => {
 
 exports.deleteAccountById = async (req, res, next) => {
   try {
-    const id = req.params.id;
-    const account = await Account.findOneAndDelete({ _id: id }).catch((err) => res.status(400).json(err));
-    const balanceHistory = await BalanceHistory.deleteMany({ accountId: id });
+    const account = await AccountDao.deleteAccountById(req);
+    await BalanceHistoryDao.deleteManyBalanceHistoriesBy({ accountId: req.params.id });
 
     if (!account) {
       res.json({});
     } else {
-      const response = { ...account._doc, deletedDetails: [balanceHistory] };
+      const response = { ...account._doc };
       res.json(response);
     }
   } catch (error) {
@@ -80,27 +63,28 @@ exports.deleteAccountById = async (req, res, next) => {
 
 exports.updateAccountById = async (req, res, next) => {
   try {
-    const id = req.params.id;
-    const updatingProperties = req.body;
-
-    if (req.body.balance) {
-      let newBalanceHistory = new BalanceHistory();
-      newBalanceHistory.balance = req.body.balance;
-      newBalanceHistory.accountId = id;
-      await newBalanceHistory.save();
-    }
-
-    await Account.updateOne({ _id: id }, updatingProperties, {
-      new: true,
-      runValidators: true,
-      context: 'query',
-    });
-
-    const account = await Account.findOne({ _id: id });
-    const balanceHistory = await BalanceHistory.find({ accountId: id });
-
-    const response = { ...account._doc, balanceHistory: balanceHistory };
+    const response = await AccountDao.updateAccount(req);
+    const mappedReq = { body: { accountId: req.params.id } };
+    await BalanceHistoryDao.generateBalanceHistoryByAccountId(mappedReq);
     res.json(response);
+  } catch (error) {
+    return next(error);
+  }
+};
+
+exports.findAccountByName = async (req, res, next) => {
+  try {
+    const result = await AccountDao.searchForAccount(req);
+    res.json(result);
+  } catch (error) {
+    return next(error);
+  }
+};
+
+exports.resetAllAccountsBalance = async (req, res, next) => {
+  try {
+    const result = await AccountDao.resterAllAccountsBalance();
+    res.json(result);
   } catch (error) {
     return next(error);
   }

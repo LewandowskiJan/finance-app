@@ -1,0 +1,52 @@
+@use './../../../../../../assets/scroll.scss';
+
+
+.account-form {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  flex-direction: column;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+  }
+
+
+  .checkbox-field {
+    min-width: 100px;
+    justify-content: space-between;
+    margin: 15px 0;
+  }
+
+  mat-form-field {
+    width: 150px;
+  }
+}
+
+mat-card {
+  flex-direction: row;
+  margin: 5px;
+}
+
+
+::ng-deep {
+  .mat-select-panel {
+    @extend %custom-scroll;
+  }
+}
+
+.category-add-button {
+  margin: 15px 0;
+}
+
+mat-form-field {
+  margin: 0px 20px 0 0;
+
+  &::ng-deep.mat-form-field-wrapper {
+    height: 50px;
+  }
+}
+
+.list-container {
+  height: calc(100vh - 250px);
+}

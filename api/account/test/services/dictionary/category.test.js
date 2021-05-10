@@ -38,4 +38,20 @@ describe('POST: /api/dictionary/category/add route to insert data', function () 
         })
     );
   });
+
+  it('should create and return a new category item', function () {
+    let res;
+    // 1) First, call the API
+    return chai
+      .request(app)
+      .post('/api/dictionary/category/add')
+      .send({ name: 'test2' })
+      .then((_res) => {
+        res = _res;
+        expect(res).to.have.status(400);
+        expect(res).to.be.json;
+        expect(res.body).to.be.a('object');
+        expect(res.body).to.have.keys('messages', 'fields');
+      });
+  });
 });

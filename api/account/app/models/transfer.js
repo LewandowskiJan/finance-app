@@ -10,14 +10,6 @@ let transferSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-  balanceHistoryIdFrom: {
-    type: String,
-    required: true,
-  },
-  balanceHistoryIdTo: {
-    type: String,
-    required: true,
-  },
   value: {
     type: String,
     required: true,
@@ -34,6 +26,11 @@ let transferSchema = mongoose.Schema({
   },
   valueInPln: {
     type: String,
+  },
+  date: {
+    type: Date,
+    required: true,
+    default: Date.now,
   },
   description: {
     type: String,

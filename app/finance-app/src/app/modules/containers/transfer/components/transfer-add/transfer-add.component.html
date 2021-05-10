@@ -1,0 +1,75 @@
+<form class="transfer-form" [formGroup]="transferForm" #form="ngForm" (ngSubmit)="addTransfer()">
+  <mat-form-field appearance="fill" class="transfer-field">
+    <mat-label>Transfer date</mat-label>
+    <input matInput [matDatepicker]="picker" formControlName="date" />
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+  <div class="transfer-group">
+    <mat-form-field appearance="fill" class="transfer-field">
+      <mat-label>From Account </mat-label>
+      <input formControlName="accountFrom" matInput placeholder="Ex. Food" />
+      <mat-error *ngIf="accountFrom.hasError('required')"> From Account is <strong>required</strong> </mat-error>
+    </mat-form-field>
+
+    <div class="change-account-button">
+      <div class="account-balance-from">
+        {{ +balanceFrom - +value.value | number: '1.0-2' }}
+      </div>
+      <button mat-mini-fab aria-label="Change accounts button" type="button" disabled>
+        <mat-icon>multiple_stop</mat-icon>
+      </button>
+      <div class="account-balance-to">
+        {{ +balanceTo + +value.value | number: '1.0-2' }}
+      </div>
+    </div>
+
+    <mat-form-field appearance="fill" class="transfer-field">
+      <mat-label>To Account</mat-label>
+      <input formControlName="accountTo" matInput placeholder="Ex. Food" />
+      <mat-error *ngIf="accountTo.hasError('required')"> To Account is <strong>required</strong> </mat-error>
+    </mat-form-field>
+  </div>
+
+  <div class="transfer-group value-currency-group">
+    <mat-form-field appearance="fill" class="transfer-field value-field">
+      <mat-label>Value</mat-label>
+      <input formControlName="value" matInput placeholder="Ex. 1235" appOnlyNumbers maxlength="13" />
+      <span matSuffix>{{ currency.value }}&nbsp;</span>
+      <mat-error *ngIf="value.hasError('required')"> Value is <strong>required</strong> </mat-error>
+      <mat-error *ngIf="value.hasError('max')"> Not enough <strong>funds</strong> </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="transfer-field currency-field">
+      <mat-label>Exchange Rate</mat-label>
+      <input formControlName="exchangeRate" matInput placeholder="4.53" />
+      <mat-error *ngIf="exchangeRate.hasError('required')"> Exchange Rate is <strong>required</strong> </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="transfer-field value-field">
+      <mat-label>Value In Pln</mat-label>
+      <input formControlName="valueInPln" matInput placeholder="0" />
+      <span matSuffix>PLN&nbsp;</span>
+    </mat-form-field>
+  </div>
+
+  <div class="transfer-line-forms">
+    <ng-container formArrayName="transferLines">
+      <div class="transfer-line-form" *ngFor="let transferLine of transferLines.controls; index as i">
+        <span>
+          <button mat-stroked-button color="warn" type="button" (click)="removeTransferLineForm(i)">Delete</button>
+          Transfer line {{ i }}:</span
+        >
+        <app-transfer-line-add [transferLineForm]="transferLine"></app-transfer-line-add>
+      </div>
+    </ng-container>
+
+    <div class="button-footer">
+      <button mat-mini-fab color="accent" type="button" aria-label="Add transfer line button" (click)="addTransferLineForm()">
+        <mat-icon>plus_one</mat-icon>
+      </button>
+
+      <button mat-fab aria-label="Add transfer button" type="submit">Submit</button>
+    </div>
+  </div>
+</form>

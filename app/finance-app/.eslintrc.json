@@ -36,6 +36,7 @@
     ],
     "indent": "off",
     "no-unused-vars": ["warn"],
-    "comma-dangle": "off"
+    "comma-dangle": "off",
+    "quote-props": "off"
   }
 }

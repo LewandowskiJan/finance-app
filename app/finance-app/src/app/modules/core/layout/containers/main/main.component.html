@@ -1,0 +1,11 @@
+<app-header></app-header>
+<mat-drawer-container class="example-container" [hasBackdrop]="false">
+  <mat-drawer #drawer [mode]="'side'"><app-side-navigation></app-side-navigation></mat-drawer>
+  <mat-drawer-content>
+    <mat-progress-bar *ngIf="loading" color="accent" mode="indeterminate"> </mat-progress-bar>
+    <main>
+      <router-outlet></router-outlet>
+    </main>
+  </mat-drawer-content>
+</mat-drawer-container>
+<app-footer></app-footer>

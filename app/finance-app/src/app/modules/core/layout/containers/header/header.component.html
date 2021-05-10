@@ -1,0 +1,10 @@
+<mat-toolbar>
+  <button mat-icon-button aria-label="icon-button with menu icon" (click)="toggleMenu()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <button mat-icon-button class="logo" aria-label="home-button with logo icon">
+    <app-animation-graph></app-animation-graph>
+  </button>
+  <button mat-button [routerLink]="['/']"><h1>App QuickStart</h1></button>
+  <span class="example-spacer"></span>
+</mat-toolbar>

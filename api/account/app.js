@@ -9,6 +9,7 @@ const checkConnectionRoute = require('./app/routes/checkConnection.route');
 const accountRoute = require('./app/routes/account.route');
 const transferRoute = require('./app/routes/transfer.route');
 const transferLineRoute = require('./app/routes/transferLine.route');
+const balanceHistoryRoute = require('./app/routes/balanceHistory.route');
 
 const categoryRoute = require('./app/routes/category.route');
 const eventRoute = require('./app/routes/event.route');
@@ -19,7 +20,7 @@ const targetRoute = require('./app/routes/target.route');
 const typeRoute = require('./app/routes/type.route');
 
 dotenv.config({ path: './environments/dev.env' });
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 8081;
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -28,20 +29,17 @@ app.use(express.json());
 
 const mongooseConnect = require('./helpers/dbConnect');
 
-if (process.env.NODE_ENV !== 'test') {
-  mongooseConnect.testDbConnect().on('error', (err) => console.log('connection to db failed'));
-} else {
-  mongooseConnect.dbConnect().on('error', (err) => console.log('connection to db failed'));
-}
+mongooseConnect.dbConnect(process.env.NODE_ENV).on('error', (err) => console.log('connection to db failed'));
 
 app.use('/api/account', cors(), checkConnectionRoute);
 app.use('/api/account/account', cors(), accountRoute);
 app.use('/api/account/transfer', cors(), transferRoute);
-app.use('/api/account/transfer-line', cors(), transferLineRoute);
+app.use('/api/account/transferline', cors(), transferLineRoute);
+app.use('/api/account/balanceHistory', cors(), balanceHistoryRoute);
 
 app.use('/api/dictionary/category', cors(), categoryRoute);
 app.use('/api/dictionary/event', cors(), eventRoute);
-app.use('/api/dictionary/expenses-group', cors(), expensesGroupRoute);
+app.use('/api/dictionary/expensesgroup', cors(), expensesGroupRoute);
 app.use('/api/dictionary/product', cors(), productRoute);
 app.use('/api/dictionary/project', cors(), projectRoute);
 app.use('/api/dictionary/target', cors(), targetRoute);
