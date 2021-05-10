@@ -10,6 +10,8 @@ import { HttpQueryParams } from '../model/HttpQueryParams';
 import { HttpRequestMethods } from '../model/HttpRequestMethods';
 import { HttpRequestOption } from '../model/HttpRequestOptions';
 
+import { environment } from './../../../../environments/environment';
+
 import * as fromLayout from '../../core/layout/reducers';
 import * as fromRoot from '../../../reducers';
 import { AlertStatus } from '@modules/core/layout/model/AlertStatus.enum';
@@ -19,8 +21,8 @@ import { LayoutActions } from '@modules/core/layout/actions';
   providedIn: 'root',
 })
 export class ApiService {
-  private baseUrlAccount = 'http://localhost:8001/api';
-  private baseUrlAuthorization = 'http://localhost:8000/api';
+  private baseUrlAccount = environment.accountApiUrl;
+  private baseUrlAuthorization = 'http://authorization:8080/api';
 
   private readonly END_POINT: string;
 

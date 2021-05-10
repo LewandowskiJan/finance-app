@@ -16,7 +16,7 @@ export class TestConnectionService {
   public microServicesCheckConnectionTestArray: MicroService[] = [
     {
       microServicesName: 'api/account/checkConnection',
-      microServiceCheckEndpoint: this.checkConnectionWithAccount().pipe(map((result) => result)),
+      microServiceCheckEndpoint: this.checkConnectionWithAccount(),
     },
     {
       microServicesName: 'api/authorization/checkConnection',
@@ -40,11 +40,11 @@ export class TestConnectionService {
   }
 
   public checkConnectionWithAuthorization(): Observable<ConnectionStatus> {
-    return this.checkConnection('http://localhost:8000/api', 'authorization/checkConnection');
+    return this.checkConnection('http://localhost:8080/api', 'authorization/checkConnection');
   }
 
   public checkConnectionWithAccount(): Observable<ConnectionStatus> {
-    return this.checkConnection('http://localhost:8001/api', 'account/checkConnection');
+    return this.checkConnection('http://localhost:8081/api', 'account/checkConnection');
   }
 
   private checkConnection(endpoint: string, url: string): Observable<ConnectionStatus> {

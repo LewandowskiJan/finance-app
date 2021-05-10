@@ -20,7 +20,7 @@ const targetRoute = require('./app/routes/target.route');
 const typeRoute = require('./app/routes/type.route');
 
 dotenv.config({ path: './environments/dev.env' });
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 8081;
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -29,11 +29,7 @@ app.use(express.json());
 
 const mongooseConnect = require('./helpers/dbConnect');
 
-if (process.env.NODE_ENV === 'test') {
-  mongooseConnect.testDbConnect().on('error', (err) => console.log('connection to db failed'));
-} else {
-  mongooseConnect.dbConnect().on('error', (err) => console.log('connection to db failed'));
-}
+mongooseConnect.dbConnect(process.env.NODE_ENV).on('error', (err) => console.log('connection to db failed'));
 
 app.use('/api/account', cors(), checkConnectionRoute);
 app.use('/api/account/account', cors(), accountRoute);
