@@ -111,6 +111,7 @@ to check connection, click 'Check connection' button on the first page.
 
 #### Image must to have
 
+- docker -> https://www.docker.com/get-started
 - mongo -> https://hub.docker.com/_/mongo
 
 after clone completed
