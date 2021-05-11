@@ -9,7 +9,7 @@ exports.requestParseToOptionObj = (req = {}) => {
   const { limit, sort, search, searchStrategy, searchBy } = options;
 
   return {
-    limit: limit || 0,
+    limit: limit || 10,
     sort: sort || [],
     body: body || undefined,
     params: params || undefined,
