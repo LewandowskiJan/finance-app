@@ -1,9 +1,12 @@
 const AccountDao = require('../dao/account.dao');
 const BalanceHistoryDao = require('../dao/balanceHistory.dao');
+const { requestParseToOptionObj: requestParseToObj } = require('./shared/requestParser');
 
 exports.getAllAccounts = async (req, res, next) => {
+  const options = requestParseToObj(req);
+
   try {
-    const accounts = await AccountDao.getAllAccounts(req);
+    const accounts = await AccountDao.getAllAccounts(options);
     res.json(accounts);
   } catch (error) {
     return next(error);
@@ -11,9 +14,11 @@ exports.getAllAccounts = async (req, res, next) => {
 };
 
 exports.getAllAccountsWithBalanceHistory = async (req, res, next) => {
+  const options = requestParseToObj(req);
+
   try {
-    const accounts = await AccountDao.getAllAccounts();
-    const historyBalances = await BalanceHistoryDao.findBalanceHistories();
+    const accounts = await AccountDao.getAllAccounts(options);
+    const historyBalances = await BalanceHistoryDao.findBalanceHistories(options);
 
     const result = accounts.map((account) => {
       return {
@@ -28,8 +33,10 @@ exports.getAllAccountsWithBalanceHistory = async (req, res, next) => {
 };
 
 exports.addAccount = async (req, res, next) => {
+  const options = requestParseToObj(req);
+
   try {
-    const createdAccount = await AccountDao.createAccount(req);
+    const createdAccount = await AccountDao.createAccount(options);
     res.json(createdAccount);
   } catch (error) {
     return next(error);
@@ -37,8 +44,10 @@ exports.addAccount = async (req, res, next) => {
 };
 
 exports.getAccountById = async (req, res, next) => {
+  const options = requestParseToObj(req);
+
   try {
-    const foundAccount = await AccountDao.findAccountById(req);
+    const foundAccount = await AccountDao.findAccountById(options);
     res.json(foundAccount);
   } catch (error) {
     return next(error);
@@ -46,9 +55,11 @@ exports.getAccountById = async (req, res, next) => {
 };
 
 exports.deleteAccountById = async (req, res, next) => {
+  const options = requestParseToObj(req);
+
   try {
-    const account = await AccountDao.deleteAccountById(req);
-    await BalanceHistoryDao.deleteManyBalanceHistoriesBy({ accountId: req.params.id });
+    const account = await AccountDao.deleteAccountById(options);
+    await BalanceHistoryDao.deleteManyBalanceHistoriesBy({ accountId: options.params.id });
 
     if (!account) {
       res.json({});
@@ -62,9 +73,11 @@ exports.deleteAccountById = async (req, res, next) => {
 };
 
 exports.updateAccountById = async (req, res, next) => {
+  const options = requestParseToObj(req);
+
   try {
-    const response = await AccountDao.updateAccount(req);
-    const mappedReq = { body: { accountId: req.params.id } };
+    const response = await AccountDao.updateAccount(options);
+    const mappedReq = { body: { accountId: options.params.id } };
     await BalanceHistoryDao.generateBalanceHistoryByAccountId(mappedReq);
     res.json(response);
   } catch (error) {
@@ -73,8 +86,10 @@ exports.updateAccountById = async (req, res, next) => {
 };
 
 exports.findAccountByName = async (req, res, next) => {
+  const options = requestParseToObj(req);
+
   try {
-    const result = await AccountDao.searchForAccount(req);
+    const result = await AccountDao.searchForAccount(options);
     res.json(result);
   } catch (error) {
     return next(error);
@@ -82,8 +97,10 @@ exports.findAccountByName = async (req, res, next) => {
 };
 
 exports.resetAllAccountsBalance = async (req, res, next) => {
+  const options = requestParseToObj(req);
+
   try {
-    const result = await AccountDao.resterAllAccountsBalance();
+    const result = await AccountDao.resterAllAccountsBalance(options);
     res.json(result);
   } catch (error) {
     return next(error);

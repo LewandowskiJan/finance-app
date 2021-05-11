@@ -1,26 +1,26 @@
-const DataObjectAccess = require('./shared/DataObjectAccess');
+const DataObjectAccess = require('./shared/dataAccessObject');
 const Project = require('../models/project');
 
-exports.addProject = async (req) => {
-  return await DataObjectAccess.add(req, Project);
+exports.addProject = async (options) => {
+  return await DataObjectAccess.add(options, Project);
 };
 
-exports.findProjects = async (req) => {
-  return await DataObjectAccess.find(req, Project);
+exports.findProjects = async (options) => {
+  return await DataObjectAccess.find(options, Project);
 };
 
-exports.findProjectById = async (req) => {
-  return await DataObjectAccess.findById(req, Project);
+exports.findProjectById = async (options) => {
+  return await DataObjectAccess.findById(options, Project);
 };
 
-exports.searchForProject = async (req) => {
-  return await DataObjectAccess.search(req, Project);
+exports.searchForProject = async (options) => {
+  return await DataObjectAccess.search(options, Project);
 };
 
-exports.updateProjectById = async (req) => {
-  return await DataObjectAccess.updateOne(req, Project);
+exports.updateProjectById = async (options) => {
+  return await DataObjectAccess.updateOne(options, Project);
 };
 
-exports.deleteProjectById = async (req) => {
-  return await DataObjectAccess.findByIdAndDelete(req, Project);
+exports.deleteProjectById = async (options) => {
+  return await DataObjectAccess.findByIdAndDelete(options, Project);
 };

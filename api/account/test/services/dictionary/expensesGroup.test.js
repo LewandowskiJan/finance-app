@@ -9,15 +9,15 @@ const ExpensesGroup = require('../../../app/models/expensesGroup');
 const expect = chai.expect;
 chai.use(chaiHttp);
 
-describe('POST: /api/dictionary/expenses-group/add route to insert data', function () {
+describe('POST: /api/dictionary/expensesgroup/add route to insert data', function () {
   basicSetup();
-  it('should create and return a new expenses-group item', function () {
+  it('should create and return a new expensesgroup item', function () {
     let res;
     // 1) First, call the API
     return (
       chai
         .request(app)
-        .post('/api/dictionary/expenses-group/add')
+        .post('/api/dictionary/expensesgroup/add')
         .send({ name: 'test2' })
         .then((_res) => {
           res = _res;

@@ -1,5 +1,5 @@
 const TransferLine = require('../models/transferLine');
-const DataObjectAccess = require('./shared/DataObjectAccess');
+const DataObjectAccess = require('./shared/dataAccessObject');
 
 exports.addTransferLines = async (transfer, id) => {
   const transferLines = [];
@@ -14,12 +14,12 @@ exports.addTransferLines = async (transfer, id) => {
   return transferLines;
 };
 
-exports.addTransferLine = async (req) => {
-  return await DataObjectAccess.add(req, TransferLine);
+exports.addTransferLine = async (options) => {
+  return await DataObjectAccess.add(options, TransferLine);
 };
 
-exports.findByPropertiesTransferLines = async (req) => {
-  return await DataObjectAccess.find(req, TransferLine);
+exports.findByPropertiesTransferLines = async (options) => {
+  return await DataObjectAccess.find(options, TransferLine);
 };
 
 exports.deleteTransferLines = async (id) => {

@@ -45,7 +45,7 @@ describe('POST: /api/dictionary/category/add route to insert data', function () 
     return chai
       .request(app)
       .post('/api/dictionary/category/add')
-      .send({ name: 'test2' })
+      .send({})
       .then((_res) => {
         res = _res;
         expect(res).to.have.status(400);

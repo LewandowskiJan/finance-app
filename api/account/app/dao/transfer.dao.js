@@ -1,9 +1,10 @@
-const DataObjectAccess = require('./shared/DataObjectAccess');
+const DataObjectAccess = require('./shared/dataAccessObject');
 
 const Transfer = require('../models/transfer');
 const AccountDao = require('./account.dao');
 const TransferLineDao = require('./transferLine.dao');
 const { OperationErrorStatus } = require('../errorHandler/models/OperationErrorStatus.enum');
+const { SearchStrategy } = require('../enums/SearchStrategy.enum');
 
 exports.addTransfer = async (transfer) => {
   let newTransfer = new Transfer({
@@ -57,14 +58,22 @@ const calculateValue = (value, exchangeRate) => {
   return (parseFloat(value) * parseFloat(exchangeRate)).toFixed(4);
 };
 
-exports.findTransfer = async (req, options) => {
-  return await DataObjectAccess.find(req, Transfer, options);
+exports.findTransfer = async (options) => {
+  return await DataObjectAccess.find(options, Transfer);
 };
 
-exports.findAllTransfers = async (req) => {
+exports.findAllTransfers = async (options) => {
   try {
-    const transfers = await DataObjectAccess.find(req, Transfer);
-    const transferLines = await TransferLineDao.findByPropertiesTransferLines();
+    const transfers = await DataObjectAccess.find(options, Transfer);
+
+    const searchQuery = {
+      search: {
+        transferId: transfers.map((transfer) => transfer._id.toString()),
+      },
+      searchStrategy: SearchStrategy.MATCH_SOME,
+    };
+
+    const transferLines = await TransferLineDao.findByPropertiesTransferLines(searchQuery);
     return transfers.map((transfer) => {
       return {
         ...transfer._doc,
@@ -76,15 +85,15 @@ exports.findAllTransfers = async (req) => {
   }
 };
 
-exports.updateTransfer = async (req) => {
-  const updatedTransfer = await DataObjectAccess.findById(req, Transfer);
+exports.updateTransfer = async (options) => {
+  const updatedTransfer = await DataObjectAccess.findById(options, Transfer);
 
-  if (req.body.value || req.body.exchangeRate) {
-    updatedTransfer.exchangeRate = req.body.exchangeRate;
+  if (options.body.value || options.body.exchangeRate) {
+    updatedTransfer.exchangeRate = options.body.exchangeRate;
     valueInPln = (parseFloat(transfer.value) * parseFloat(transfer.exchangeRate)).toFixed(4).toString();
   }
 
-  await TransferLineDao.deleteTransferLines(req.body._id);
+  await TransferLineDao.deleteTransferLines(options.body._id);
   const transferLines = await TransferLineDao.addTransferLines(transfer, newTransfer._id);
 
   newTransfer.valueInPln = valueInPln;

@@ -3,9 +3,8 @@ const DB_URI_PROD = process.env.DATABASE_URL_PROD;
 const DB_URI_DEV = process.env.DATABASE_URL_DEV;
 
 function dbConnect(env) {
-  console.log(env);
   const dbUri = env === 'production' ? DB_URI_PROD : DB_URI_DEV;
-  console.log(dbUri);
+  
   mongoose.connect(dbUri, {
     promiseLibrary: require('bluebird'),
     useNewUrlParser: true,

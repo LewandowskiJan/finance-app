@@ -1,8 +1,11 @@
 const TransferDao = require('../dao/transfer.dao');
+const { requestParseToOptionObj: requestParseToObj } = require('./shared/requestParser');
 
 exports.getAllTransfers = async (req, res, next) => {
+  const options = requestParseToObj(req);
+
   try {
-    const transfers = await TransferDao.findAllTransfers(req.body);
+    const transfers = await TransferDao.findAllTransfers(options);
     res.json(transfers);
   } catch (error) {
     return next(error);
@@ -10,8 +13,10 @@ exports.getAllTransfers = async (req, res, next) => {
 };
 
 exports.addTransfer = async (req, res, next) => {
+  const options = requestParseToObj(req);
+
   try {
-    const newTransfer = await TransferDao.addTransfer(req.body, next);
+    const newTransfer = await TransferDao.addTransfer(options);
     res.json(newTransfer);
   } catch (error) {
     return next(error);
@@ -19,8 +24,10 @@ exports.addTransfer = async (req, res, next) => {
 };
 
 exports.addTransfers = async (req, res, next) => {
+  const options = requestParseToObj(req);
+
   try {
-    const newTransfers = await TransferDao.addTransfers(req.body, next);
+    const newTransfers = await TransferDao.addTransfers(options);
     res.json(newTransfers);
   } catch (error) {
     return next(error);
@@ -28,8 +35,10 @@ exports.addTransfers = async (req, res, next) => {
 };
 
 exports.getTransferById = async (req, res, next) => {
+  const options = requestParseToObj(req);
+
   try {
-    const newTransfer = await TransferDao.findTransfer(req.body);
+    const newTransfer = await TransferDao.findTransfer(options);
     res.json(newTransfer);
   } catch (error) {
     return next(error);

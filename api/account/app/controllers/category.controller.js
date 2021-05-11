@@ -1,8 +1,11 @@
 const CategoryDao = require('../dao/category.dao');
+const { requestParseToOptionObj: requestParseToObj } = require('./shared/requestParser');
 
 exports.addCategory = async (req, res, next) => {
+  const options = requestParseToObj(req);
+
   try {
-    const result = await CategoryDao.addCategory(req);
+    const result = await CategoryDao.addCategory(options);
     res.json(result);
   } catch (error) {
     return next(error);
@@ -10,8 +13,10 @@ exports.addCategory = async (req, res, next) => {
 };
 
 exports.getCategoryById = async (req, res, next) => {
+  const options = requestParseToObj(req);
+
   try {
-    const result = await CategoryDao.findCategoryById(req);
+    const result = await CategoryDao.findCategoryById(options);
     res.json(result);
   } catch (error) {
     return next(error);
@@ -19,8 +24,10 @@ exports.getCategoryById = async (req, res, next) => {
 };
 
 exports.getAllCategories = async (req, res, next) => {
+  const options = requestParseToObj(req);
+
   try {
-    const result = await CategoryDao.findCategories(req);
+    const result = await CategoryDao.findCategories(options);
     res.json(result);
   } catch (error) {
     return next(error);
@@ -28,8 +35,10 @@ exports.getAllCategories = async (req, res, next) => {
 };
 
 exports.findCategoryByName = async (req, res, next) => {
+  const options = requestParseToObj(req);
+
   try {
-    const result = await CategoryDao.searchForCategory(req);
+    const result = await CategoryDao.searchForCategory(options);
     res.json(result);
   } catch (error) {
     return next(error);
@@ -37,8 +46,10 @@ exports.findCategoryByName = async (req, res, next) => {
 };
 
 exports.updateCategoryById = async (req, res, next) => {
+  const options = requestParseToObj(req);
+
   try {
-    const result = await CategoryDao.updateCategoryById(req);
+    const result = await CategoryDao.updateCategoryById(options);
     res.json(result);
   } catch (error) {
     return next(error);
@@ -46,8 +57,10 @@ exports.updateCategoryById = async (req, res, next) => {
 };
 
 exports.deleteCategoryById = async (req, res, next) => {
+  const options = requestParseToObj(req);
+
   try {
-    const result = await CategoryDao.deleteCategoryById(req);
+    const result = await CategoryDao.deleteCategoryById(options);
     res.json(result);
   } catch (error) {
     return next(error);

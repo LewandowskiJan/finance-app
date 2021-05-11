@@ -1,26 +1,26 @@
-const DataObjectAccess = require('./shared/DataObjectAccess');
+const DataObjectAccess = require('./shared/dataAccessObject');
 const ExpensesGroup = require('../models/expensesGroup');
 
-exports.addExpensesGroup = async (req) => {
-  return await DataObjectAccess.add(req, ExpensesGroup);
+exports.addExpensesGroup = async (options) => {
+  return await DataObjectAccess.add(options, ExpensesGroup);
 };
 
-exports.findExpensesGroups = async (req) => {
-  return await DataObjectAccess.find(req, ExpensesGroup);
+exports.findExpensesGroups = async (options) => {
+  return await DataObjectAccess.find(options, ExpensesGroup);
 };
 
-exports.findExpensesGroupById = async (req) => {
-  return await DataObjectAccess.findById(req, ExpensesGroup);
+exports.findExpensesGroupById = async (options) => {
+  return await DataObjectAccess.findById(options, ExpensesGroup);
 };
 
-exports.searchForExpensesGroup = async (req) => {
-  return await DataObjectAccess.search(req, ExpensesGroup);
+exports.searchForExpensesGroup = async (options) => {
+  return await DataObjectAccess.search(options, ExpensesGroup);
 };
 
-exports.updateExpensesGroupById = async (req) => {
-  return await DataObjectAccess.updateOne(req, ExpensesGroup);
+exports.updateExpensesGroupById = async (options) => {
+  return await DataObjectAccess.updateOne(options, ExpensesGroup);
 };
 
-exports.deleteExpensesGroupById = async (req) => {
-  return await DataObjectAccess.findByIdAndDelete(req, ExpensesGroup);
+exports.deleteExpensesGroupById = async (options) => {
+  return await DataObjectAccess.findByIdAndDelete(options, ExpensesGroup);
 };
