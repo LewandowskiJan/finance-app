@@ -1,26 +1,26 @@
-const DataObjectAccess = require('./shared/DataObjectAccess');
+const DataObjectAccess = require('./shared/dataAccessObject');
 const Event = require('../models/event');
 
-exports.addEvent = async (req) => {
-  return await DataObjectAccess.add(req, Event);
+exports.addEvent = async (options) => {
+  return await DataObjectAccess.add(options, Event);
 };
 
-exports.findEvents = async (req) => {
-  return await DataObjectAccess.find(req, Event);
+exports.findEvents = async (options) => {
+  return await DataObjectAccess.find(options, Event);
 };
 
-exports.findEventById = async (req) => {
-  return await DataObjectAccess.findById(req, Event);
+exports.findEventById = async (options) => {
+  return await DataObjectAccess.findById(options, Event);
 };
 
-exports.searchForEvent = async (req) => {
-  return await DataObjectAccess.search(req, Event);
+exports.searchForEvent = async (options) => {
+  return await DataObjectAccess.search(options, Event);
 };
 
-exports.updateEventById = async (req) => {
-  return await DataObjectAccess.updateOne(req, Event);
+exports.updateEventById = async (options) => {
+  return await DataObjectAccess.updateOne(options, Event);
 };
 
-exports.deleteEventById = async (req) => {
-  return await DataObjectAccess.findByIdAndDelete(req, Event);
+exports.deleteEventById = async (options) => {
+  return await DataObjectAccess.findByIdAndDelete(options, Event);
 };

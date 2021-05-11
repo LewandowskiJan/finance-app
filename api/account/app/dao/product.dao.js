@@ -1,26 +1,26 @@
-const DataObjectAccess = require('./shared/DataObjectAccess');
+const DataObjectAccess = require('./shared/dataAccessObject');
 const Product = require('../models/product');
 
-exports.addProduct = async (req) => {
-  return await DataObjectAccess.add(req, Product);
+exports.addProduct = async (options) => {
+  return await DataObjectAccess.add(options, Product);
 };
 
-exports.findProducts = async (req) => {
-  return await DataObjectAccess.find(req, Product);
+exports.findProducts = async (options) => {
+  return await DataObjectAccess.find(options, Product);
 };
 
-exports.findProductById = async (req) => {
-  return await DataObjectAccess.findById(req, Product);
+exports.findProductById = async (options) => {
+  return await DataObjectAccess.findById(options, Product);
 };
 
-exports.searchForProduct = async (req) => {
-  return await DataObjectAccess.search(req, Product);
+exports.searchForProduct = async (options) => {
+  return await DataObjectAccess.search(options, Product);
 };
 
-exports.updateProductById = async (req) => {
-  return await DataObjectAccess.updateOne(req, Product);
+exports.updateProductById = async (options) => {
+  return await DataObjectAccess.updateOne(options, Product);
 };
 
-exports.deleteProductById = async (req) => {
-  return await DataObjectAccess.findByIdAndDelete(req, Product);
+exports.deleteProductById = async (options) => {
+  return await DataObjectAccess.findByIdAndDelete(options, Product);
 };

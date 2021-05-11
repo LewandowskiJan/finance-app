@@ -1,6 +1,9 @@
 const CheckConnection = require('../models/checkConnection');
+const { requestParseToOptionObj: requestParseToObj } = require('./shared/requestParser');
 
 exports.checkConnection = async (req, res, next) => {
+  const options = requestParseToObj(req);
+
   try {
     const newCheck = new CheckConnection();
     newCheck.connectionStatus = 'Success';

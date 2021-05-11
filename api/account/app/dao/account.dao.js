@@ -1,4 +1,4 @@
-const DataObjectAccess = require('./shared/DataObjectAccess');
+const DataObjectAccess = require('./shared/dataAccessObject');
 const Account = require('../models/account');
 
 exports.updateAccountBalance = async (accountId, transferValue, transfer) => {
@@ -41,32 +41,31 @@ exports.updateAccount = async (req) => {
   return await DataObjectAccess.updateOne(req, Account);
 };
 
-exports.getAllAccounts = async (req = {}) => {
-  console.log(req.body);
-  return await DataObjectAccess.find(req, Account, req.body.options);
+exports.getAllAccounts = async (options = {}) => {
+  return await DataObjectAccess.find(options, Account);
 };
 
-exports.getAccountByOneProperty = async (req = {}) => {
-  return await DataObjectAccess.findByOneProperty(req, Account);
+exports.getAccountByOneProperty = async (options = {}) => {
+  return await DataObjectAccess.findByOneProperty(options, Account);
 };
 
-exports.createAccount = async (req) => {
-  const newAccount = new Account({ ...req.body });
+exports.createAccount = async (options) => {
+  const newAccount = new Account({ ...options.body });
   const savedAccount = await newAccount.save();
 
   return { ...savedAccount._doc };
 };
 
-exports.findAccountById = async (req) => {
-  return await DataObjectAccess.findById(req, Account);
+exports.findAccountById = async (options) => {
+  return await DataObjectAccess.findById(options, Account);
 };
 
-exports.deleteAccountById = async (req) => {
-  return await DataObjectAccess.findByIdAndDelete(req, Account);
+exports.deleteAccountById = async (options) => {
+  return await DataObjectAccess.findByIdAndDelete(options, Account);
 };
 
-exports.searchForAccount = async (req) => {
-  return await DataObjectAccess.search(req, Account);
+exports.searchForAccount = async (options) => {
+  return await DataObjectAccess.search(options, Account);
 };
 
 exports.resterAllAccountsBalance = async () => {

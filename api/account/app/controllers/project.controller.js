@@ -1,8 +1,11 @@
 const ProjectDao = require('../dao/project.dao');
+const { requestParseToOptionObj: requestParseToObj } = require('./shared/requestParser');
 
 exports.addProject = async (req, res, next) => {
+  const options = requestParseToObj(req);
+
   try {
-    const result = await ProjectDao.addProject(req);
+    const result = await ProjectDao.addProject(options);
     res.json(result);
   } catch (error) {
     return next(error);
@@ -10,8 +13,10 @@ exports.addProject = async (req, res, next) => {
 };
 
 exports.getProjectById = async (req, res, next) => {
+  const options = requestParseToObj(req);
+
   try {
-    const result = await ProjectDao.findProjectById(req);
+    const result = await ProjectDao.findProjectById(options);
     res.json(result);
   } catch (error) {
     return next(error);
@@ -19,8 +24,10 @@ exports.getProjectById = async (req, res, next) => {
 };
 
 exports.getAllProjects = async (req, res, next) => {
+  const options = requestParseToObj(req);
+
   try {
-    const result = await ProjectDao.findProjects(req);
+    const result = await ProjectDao.findProjects(options);
     res.json(result);
   } catch (error) {
     return next(error);
@@ -28,8 +35,10 @@ exports.getAllProjects = async (req, res, next) => {
 };
 
 exports.findProjectByName = async (req, res, next) => {
+  const options = requestParseToObj(req);
+
   try {
-    const result = await ProjectDao.searchForProject(req);
+    const result = await ProjectDao.searchForProject(options);
     res.json(result);
   } catch (error) {
     return next(error);
@@ -37,8 +46,10 @@ exports.findProjectByName = async (req, res, next) => {
 };
 
 exports.updateProjectById = async (req, res, next) => {
+  const options = requestParseToObj(req);
+
   try {
-    const result = await ProjectDao.updateProjectById(req);
+    const result = await ProjectDao.updateProjectById(options);
     res.json(result);
   } catch (error) {
     return next(error);
@@ -46,8 +57,10 @@ exports.updateProjectById = async (req, res, next) => {
 };
 
 exports.deleteProjectById = async (req, res, next) => {
+  const options = requestParseToObj(req);
+
   try {
-    const result = await ProjectDao.deleteProjectById(req);
+    const result = await ProjectDao.deleteProjectById(options);
     res.json(result);
   } catch (error) {
     return next(error);

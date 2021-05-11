@@ -17,7 +17,8 @@ export class TransfersService {
 
   readTransfers(): Observable<Transfer[] | HttpErrorResponse> {
     return this.apiService.request<Transfer[], HttpErrorResponse>('account/transfer/all', {
-      method: HttpRequestMethods.GET,
+      method: HttpRequestMethods.POST,
+      body: { options: { limit: 10 } },
     });
   }
 

@@ -1,29 +1,29 @@
-const DataObjectAccess = require('./shared/DataObjectAccess');
+const DataObjectAccess = require('./shared/dataAccessObject');
 const Category = require('../models/category');
 
-exports.addCategory = async (req) => {
-  if (!req.body.utfIcon) {
-    req.body.utfIcon = '&#128176;';
+exports.addCategory = async (options) => {
+  if (!options.body.utfIcon) {
+    options.body.utfIcon = '&#128176;';
   }
-  return await DataObjectAccess.add(req, Category);
+  return await DataObjectAccess.add(options, Category);
 };
 
-exports.findCategories = async (req) => {
-  return await DataObjectAccess.find(req, Category);
+exports.findCategories = async (options) => {
+  return await DataObjectAccess.find(options, Category);
 };
 
-exports.findCategoryById = async (req) => {
-  return await DataObjectAccess.findById(req, Category);
+exports.findCategoryById = async (options) => {
+  return await DataObjectAccess.findById(options, Category);
 };
 
-exports.searchForCategory = async (req) => {
-  return await DataObjectAccess.search(req, Category);
+exports.searchForCategory = async (options) => {
+  return await DataObjectAccess.search(options, Category);
 };
 
-exports.updateCategoryById = async (req) => {
-  return await DataObjectAccess.updateOne(req, Category);
+exports.updateCategoryById = async (options) => {
+  return await DataObjectAccess.updateOne(options, Category);
 };
 
-exports.deleteCategoryById = async (req) => {
-  return await DataObjectAccess.findByIdAndDelete(req, Category);
+exports.deleteCategoryById = async (options) => {
+  return await DataObjectAccess.findByIdAndDelete(options, Category);
 };
