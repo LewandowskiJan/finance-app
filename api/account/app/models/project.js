@@ -1,7 +1,7 @@
-let mongoose = require('mongoose');
-let uniqueValidator = require('mongoose-unique-validator');
+const mongoose = require('mongoose');
+const uniqueValidator = require('mongoose-unique-validator');
 
-let projectSchema = mongoose.Schema({
+const projectSchema = mongoose.Schema({
   name: {
     type: String,
     required: true,
@@ -17,4 +17,4 @@ let projectSchema = mongoose.Schema({
   },
 });
 projectSchema.plugin(uniqueValidator);
-let Project = (module.exports = mongoose.model('Project', projectSchema));
+module.exports = mongoose.model('Project', projectSchema);

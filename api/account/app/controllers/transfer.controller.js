@@ -1,5 +1,5 @@
 const TransferDao = require('../dao/transfer.dao');
-const { requestParseToOptionObj: requestParseToObj } = require('./shared/requestParser');
+const {requestParseToOptionObj: requestParseToObj} = require('./shared/requestParser');
 
 exports.getAllTransfers = async (req, res, next) => {
   const options = requestParseToObj(req);

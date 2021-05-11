@@ -1,5 +1,5 @@
 const ProjectDao = require('../dao/project.dao');
-const { requestParseToOptionObj: requestParseToObj } = require('./shared/requestParser');
+const {requestParseToOptionObj: requestParseToObj} = require('./shared/requestParser');
 
 exports.addProject = async (req, res, next) => {
   const options = requestParseToObj(req);

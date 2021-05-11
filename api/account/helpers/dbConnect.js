@@ -6,6 +6,11 @@ const databases = {
   test: process.env.DATABASE_URL_TEST,
 };
 
+/**
+ * Open database connection.
+ * @param { string } env the environment.
+ * @return { mongoose.Connection }.
+ */
 function dbConnect(env) {
   const dbUri = databases[env];
 
@@ -20,8 +25,12 @@ function dbConnect(env) {
   return mongoose.connection;
 }
 
+/**
+ * Close database connection.
+ * @return { Promise<void> } .
+ */
 function dbClose() {
   return mongoose.disconnect();
 }
 
-module.exports = { dbConnect, dbClose };
+module.exports = {dbConnect, dbClose};

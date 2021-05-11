@@ -12,9 +12,9 @@ exports.updateAccountBalance = async (accountId, transferValue, transfer) => {
 
   if (transfer.currency !== account.currency) {
     const value =
-      transfer.currency === 'PLN'
-        ? parseFloat(parseFloat(transferValue) / parseFloat(transfer.exchangeRate)).toFixed(4)
-        : parseFloat(parseFloat(transferValue) * parseFloat(transfer.exchangeRate)).toFixed(4);
+      transfer.currency === 'PLN' ?
+        parseFloat(parseFloat(transferValue) / parseFloat(transfer.exchangeRate)).toFixed(4) :
+        parseFloat(parseFloat(transferValue) * parseFloat(transfer.exchangeRate)).toFixed(4);
 
     balance = (parseFloat(account.balance) + parseFloat(value)).toFixed(4).toString();
   } else {
@@ -22,16 +22,16 @@ exports.updateAccountBalance = async (accountId, transferValue, transfer) => {
   }
 
   await Account.updateOne(
-    { _id: accountId },
-    { $set: { balance: balance } },
-    {
-      new: true,
-      runValidators: true,
-      context: 'query',
-    }
+      {_id: accountId},
+      {$set: {balance: balance}},
+      {
+        new: true,
+        runValidators: true,
+        context: 'query',
+      },
   );
 
-  const response = { ...account._doc, balance: balance };
+  const response = {...account._doc, balance: balance};
   return response;
 };
 
@@ -50,10 +50,10 @@ exports.getAccountByOneProperty = async (options = {}) => {
 };
 
 exports.createAccount = async (options) => {
-  const newAccount = new Account({ ...options.body });
+  const newAccount = new Account({...options.body});
   const savedAccount = await newAccount.save();
 
-  return { ...savedAccount._doc };
+  return {...savedAccount._doc};
 };
 
 exports.findAccountById = async (options) => {
@@ -69,5 +69,5 @@ exports.searchForAccount = async (options) => {
 };
 
 exports.resterAllAccountsBalance = async () => {
-  return await Account.updateMany({}, { balance: '0', isExternal: true });
+  return await Account.updateMany({}, {balance: '0', isExternal: true});
 };

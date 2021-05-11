@@ -1,16 +1,16 @@
 const mongoose = require('mongoose');
 const mongooseConnect = require('./../../helpers/dbConnect');
 
-let basicSetup = () => {
-  before(function () {
+const basicSetup = () => {
+  before(function() {
     return mongooseConnect.dbConnect('test').then(() => mongoose.connection.db.dropDatabase());
   });
 
-  afterEach(function () {
+  afterEach(function() {
     return mongoose.connection.db.dropDatabase();
   });
 
-  after(function () {
+  after(function() {
     return mongooseConnect.dbClose();
   });
 };

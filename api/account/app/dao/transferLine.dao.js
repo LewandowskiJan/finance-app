@@ -6,7 +6,7 @@ exports.addTransferLines = async (transfer, id) => {
   for (const line of transfer.transferLines) {
     const valueInPln = parseFloat(line.value) * parseFloat(transfer.exchangeRate);
     const addedTransferLine = await this.addTransferLine({
-      body: { ...line, transferId: id, exchangeRate: transfer.exchangeRate, valueInPln: valueInPln.toFixed(4) },
+      body: {...line, transferId: id, exchangeRate: transfer.exchangeRate, valueInPln: valueInPln.toFixed(4)},
     });
     transferLines.push(addedTransferLine._id);
   }
@@ -23,5 +23,5 @@ exports.findByPropertiesTransferLines = async (options) => {
 };
 
 exports.deleteTransferLines = async (id) => {
-  return await DataObjectAccess.delete({ transferId: id }, TransferLine);
+  return await DataObjectAccess.delete({transferId: id}, TransferLine);
 };

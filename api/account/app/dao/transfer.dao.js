@@ -3,11 +3,11 @@ const DataObjectAccess = require('./shared/dataAccessObject');
 const Transfer = require('../models/transfer');
 const AccountDao = require('./account.dao');
 const TransferLineDao = require('./transferLine.dao');
-const { OperationErrorStatus } = require('../errorHandler/models/OperationErrorStatus.enum');
-const { SearchStrategy } = require('../enums/SearchStrategy.enum');
+const {OperationErrorStatus} = require('../errorHandler/models/OperationErrorStatus.enum');
+const {SearchStrategy} = require('../enums/SearchStrategy.enum');
 
 exports.addTransfer = async (transfer) => {
-  let newTransfer = new Transfer({
+  const newTransfer = new Transfer({
     value: transfer.value,
     accountFrom: transfer.accountFrom,
     accountTo: transfer.accountTo,
@@ -29,9 +29,9 @@ exports.addTransfer = async (transfer) => {
   newTransfer.transferLineIds = transferLines;
 
   const updatedAccountFrom = await AccountDao.updateAccountBalance(
-    transfer.accountFrom,
-    `-${transfer.value}`,
-    transfer
+      transfer.accountFrom,
+      `-${transfer.value}`,
+      transfer,
   );
   if (!updatedAccountFrom) {
     throw new Error(OperationErrorStatus.LACK_OF_FOUNDS_ERROR);
@@ -109,6 +109,6 @@ exports.updateTransfer = async (options) => {
     await newTransfer.save();
     return newTransfer;
   } else {
-    return { msg: 'too less money' };
+    return {msg: 'too less money'};
   }
 };

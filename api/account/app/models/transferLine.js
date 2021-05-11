@@ -1,7 +1,7 @@
-let mongoose = require('mongoose');
-let uniqueValidator = require('mongoose-unique-validator');
+const mongoose = require('mongoose');
+const uniqueValidator = require('mongoose-unique-validator');
 
-let transferLineSchema = mongoose.Schema({
+const transferLineSchema = mongoose.Schema({
   value: {
     type: String,
     required: true,
@@ -49,4 +49,4 @@ let transferLineSchema = mongoose.Schema({
   },
 });
 transferLineSchema.plugin(uniqueValidator);
-let TransferLine = (module.exports = mongoose.model('TransferLine', transferLineSchema));
+module.exports = mongoose.model('TransferLine', transferLineSchema);

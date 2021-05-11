@@ -19,12 +19,12 @@ const projectRoute = require('./app/routes/project.route');
 const targetRoute = require('./app/routes/target.route');
 const typeRoute = require('./app/routes/type.route');
 
-dotenv.config({ path: './environments/dev.env' });
+dotenv.config({path: './environments/dev.env'});
 const PORT = process.env.PORT || 8081;
 
 app.use(cors());
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.json());
 
 const mongooseConnect = require('./helpers/dbConnect');

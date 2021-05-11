@@ -1,7 +1,7 @@
-let mongoose = require('mongoose');
-let uniqueValidator = require('mongoose-unique-validator');
+const mongoose = require('mongoose');
+const uniqueValidator = require('mongoose-unique-validator');
 
-let groupSchema = mongoose.Schema({
+const groupSchema = mongoose.Schema({
   name: {
     type: String,
     required: true,
@@ -17,4 +17,4 @@ let groupSchema = mongoose.Schema({
   },
 });
 groupSchema.plugin(uniqueValidator);
-let Group = (module.exports = mongoose.model('Group', groupSchema));
+module.exports = mongoose.model('Group', groupSchema);

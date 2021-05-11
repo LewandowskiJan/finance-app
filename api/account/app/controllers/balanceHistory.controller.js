@@ -1,5 +1,5 @@
 const BalanceHistoryDao = require('../dao/balanceHistory.dao');
-const { requestParseToOptionObj: requestParseToObj } = require('./shared/requestParser');
+const {requestParseToOptionObj: requestParseToObj} = require('./shared/requestParser');
 
 exports.generateBalanceHistoryByAccountId = async (req, res, next) => {
   const options = requestParseToObj(req);
