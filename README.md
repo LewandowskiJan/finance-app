@@ -6,6 +6,10 @@
 - [Technologies](#technologies)
 - [Setup](#setup)
 
+### Others
+
+- [Contributors (commit rules)](./github/contributors.md)
+
 ## General info
 
 Project is creating to aggregate structured finance data.
@@ -48,9 +52,11 @@ Project is created with:
 #### open terminal
 
 ##### 1. Clone repository
+
 ```
 git clone https://github.com/LewandowskiJan/finance-app.git
 ```
+
 ##### 2. download node_modules
 
 ###### for frontend
@@ -128,6 +134,7 @@ to check connection, click 'Check connection' button on the first page.
 ### Docker
 
 ##### 1. Clone repository
+
 ```
 git clone https://github.com/LewandowskiJan/finance-app.git
 ```
