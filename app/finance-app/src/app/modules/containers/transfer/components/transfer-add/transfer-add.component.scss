@@ -1,100 +1,124 @@
 .transfer-form {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
+  height: calc(100vh - 160px - 160px);
+  margin-top: 10px;
+  width: 100%;
+  justify-content: space-between;
 
-  .transfer-group {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    margin: 5px 0;
+  @media (min-width: 768px) {
+    height: calc(100vh - 160px - 175px);
+  }
 
-    @media (min-width: 768px) {
-      min-width: 50%;
-      flex-direction: row;
-    }
+  .transfer-container {
+    padding: 0 10px;
 
-    &.value-currency-group {
+    .transfer-group {
+      display: flex;
       flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      margin: 5px 0;
 
       @media (min-width: 768px) {
+        min-width: 50%;
         flex-direction: row;
+      }
 
-        .value-field,
-        .currency-field {
-          margin: 0 10px;
-          width: 100%;
+      &.value-currency-group {
+        flex-direction: column;
+
+        @media (min-width: 768px) {
+          flex-direction: row;
+
+          .value-field,
+          .currency-field {
+            margin: 0 10px;
+            width: 100%;
+          }
         }
       }
-    }
 
-    .change-account-button,
-    .transfer-field {
-      width: 100%;
-      margin: 0 10px;
-    }
-
-    .change-account-button {
-      padding-bottom: 1.34375em;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      .account-balance-to,
-      .account-balance-from {
-        width: 100px;
-        height: 30px;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        padding: 5px;
-        text-align: center;
+      .change-account-button,
+      .transfer-field {
+        width: 100%;
+        margin: 0 10px;
       }
 
-      .account-balance-to {
-        color: green;
+      .change-account-button {
+        padding-bottom: 1.34375em;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .account-balance-to,
+        .account-balance-from {
+          width: 100px;
+          height: 30px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          padding: 5px;
+          text-align: center;
+        }
+
+        .account-balance-to {
+          color: green;
+        }
+
+        .account-balance-from {
+          color: rgb(184, 0, 0);
+        }
       }
 
-      .account-balance-from {
-        color: rgb(184, 0, 0);
+      .transfer-field {
+        width: 100%;
       }
-    }
-
-    .transfer-field {
-      width: 100%;
     }
   }
 
-  .transfer-line-forms {
+  .transfer-lines-container {
     display: flex;
-    flex-direction: column;
-    width: 100%;
 
-    .transfer-line-form {
+    .transfer-line-forms {
       display: flex;
       flex-direction: column;
+      width: 100%;
+
+      .transfer-line-form {
+        display: flex;
+        flex-direction: column;
+      }
+    }
+
+    .transfer-line-action {
+      padding: 10px 0;
     }
   }
 
-  .transfer-line-action {
-    padding: 10px 0;
+  .divider {
+    display: flex;
+    flex: 1 0 auto;
   }
 
-  .transfer-value-left-banner {
+  .transfer-footer {
     display: flex;
-    position: fixed;
-    bottom: 60px;
-    margin-left: -15px;
-    width: calc(100vw - 2px);
+    align-content: flex-end;
 
-    .button-footer {
-      display: flex;
-      justify-content: flex-end;
-      width: 100%;
+    position: sticky;
+    bottom: 0px;
+    width: 100%;
 
-      button {
-        margin-left: 10px;
+    .transfer-value-left-banner {
+      .button-footer {
+        display: flex;
+        justify-content: flex-end;
+        width: 100%;
+
+        button {
+          margin-left: 10px;
+        }
       }
     }
 
