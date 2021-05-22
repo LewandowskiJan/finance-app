@@ -2,7 +2,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DATE_FORMATS, MatDateFormats } from '@angular/material/core';
 
-import { Observable } from 'rxjs';
+import { Observable, combineLatest } from 'rxjs';
+import { map, share, startWith } from 'rxjs/operators';
 
 import { Store } from '@ngrx/store';
 
@@ -16,11 +17,7 @@ import { AlertStatus } from '@modules/core/layout/model/AlertStatus.enum';
 import { DialogData } from '@modules/core/layout/model/DialogData';
 import { LayoutActions } from '@modules/core/layout/actions';
 
-export enum Currency {
-  PLN = 'PLN',
-  EUR = 'EUR',
-  USD = 'USD',
-}
+import { Currency } from '@modules/shared/models/currency.enum';
 
 export interface CurrencySelect {
   value: Currency;
@@ -46,9 +43,13 @@ export const MY_FORMATS: MatDateFormats = {
   providers: [{ provide: MAT_DATE_FORMATS, useValue: MY_FORMATS }],
 })
 export class TransferAddComponent implements OnInit {
-  @Input() transferForm: FormGroup;
-  @Input() balanceFrom: string;
-  @Input() balanceTo: string;
+  @Input() public transferForm: FormGroup;
+  @Input() public balanceFrom: string;
+  @Input() public balanceTo: string;
+
+  public restOfTransferValue$: Observable<string>;
+  public isAddTransferLineButtonDisable$: Observable<boolean>;
+  public isSubmitButtonDisable$: Observable<boolean>;
 
   public currencies: CurrencySelect[] = [
     { value: Currency.PLN, viewValue: 'PLN' },
@@ -90,7 +91,10 @@ export class TransferAddComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder, private store: Store<fromLayout.State & fromTransfer.State>) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.restOfTransferValue$ = this.setupTransferLineRestValue();
+    this.isAddTransferLineButtonDisable$ = this.setupAddTransferLineButtonsDisable();
+  }
 
   public addTransferLineForm(): void {
     this.transferLines.push(
@@ -164,5 +168,30 @@ export class TransferAddComponent implements OnInit {
       alertStatus: AlertStatus.ERROR,
     };
     this.store.dispatch(LayoutActions.openAlertDialog({ alert: alertData }));
+  }
+
+  private setupAddTransferLineButtonsDisable(): Observable<boolean> {
+    return combineLatest([this.value.valueChanges, this.accountFrom.valueChanges, this.accountTo.valueChanges]).pipe(
+      map((res) => !res.every(Boolean)),
+      startWith(true),
+      share()
+    );
+  }
+
+  private setupTransferLineRestValue(): Observable<string> {
+    return combineLatest([
+      this.value.valueChanges,
+      this.transferLines.valueChanges.pipe(map((transferLineControls: FormControl[]) => this.sumTransferLinesValue(transferLineControls))),
+    ]).pipe(
+      map((transferLinesValue) => parseFloat(transferLinesValue[0]) - transferLinesValue[1]),
+      map((restOfTransferValue) => restOfTransferValue.toFixed(4))
+    );
+  }
+
+  private sumTransferLinesValue(formControls: FormControl[]) {
+    return formControls.reduce((totalTransferLinesValue: number, transferLineFormControl: FormControl) => {
+      const currentValue = transferLineFormControl.value ? transferLineFormControl.value : 0;
+      return totalTransferLinesValue + parseFloat(currentValue);
+    }, 0);
   }
 }

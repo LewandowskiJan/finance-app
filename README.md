@@ -6,6 +6,10 @@
 - [Technologies](#technologies)
 - [Setup](#setup)
 
+### Others
+
+- [Contributors (commit rules)](./github/contributors.md)
+
 ## General info
 
 Project is creating to aggregate structured finance data.
@@ -19,20 +23,20 @@ Full concept:
 * manage data
 * generate data to share/ import for BI tools (like PowerBi)
 
-This project is combine Angular 11 (FE) and Nodejs (BE) application.
+This project is combine Angular 2+ (FE) and Nodejs (BE) application.
 
 ## Technologies
 
 Project is created with:
 
-- Angular: 11.2.2
-- NgRx: 11.0.1
-- RxjS: 6.6
-- TypeScript: 4
+- Angular: v.12
+- NgRx: v.12
+- RxjS
+- TypeScript
 
-- Node.js: 14.15.5
-- Express: 4.17.1
-- Mongoose: 5.11.17
+- Node.js: v.14
+- Express
+- Mongoose
 - Nodemon
 
 - MongoDb
@@ -48,9 +52,11 @@ Project is created with:
 #### open terminal
 
 ##### 1. Clone repository
+
 ```
 git clone https://github.com/LewandowskiJan/finance-app.git
 ```
+
 ##### 2. download node_modules
 
 ###### for frontend
@@ -128,6 +134,7 @@ to check connection, click 'Check connection' button on the first page.
 ### Docker
 
 ##### 1. Clone repository
+
 ```
 git clone https://github.com/LewandowskiJan/finance-app.git
 ```

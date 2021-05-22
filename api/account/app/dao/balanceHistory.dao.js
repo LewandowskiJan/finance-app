@@ -39,8 +39,8 @@ exports.generateBalanceHistoryByAccountId = async (options) => {
   const account = await AccountDao.getAccountByOneProperty({ _id: accountId });
 
   const listOfTransfers = await TransferDao.findTransfer(
-    { body: { accountFrom: accountId, accountTo: accountId, searchStrategy: SearchStrategy.MATCH_SOME } },
-    { sort: '-date' }
+      { body: { accountFrom: accountId, accountTo: accountId, searchStrategy: SearchStrategy.MATCH_SOME } },
+      { sort: '-date' },
   );
 
   const formattedList = listOfTransfers.map((transfer) => {

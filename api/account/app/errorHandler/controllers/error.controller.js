@@ -11,9 +11,9 @@ const handleDuplicateKeyError = (err, res) => {
 };
 
 const handleValidationError = (err, res) => {
-  let errors = Object.values(err.errors).map((el) => el.message);
-  let fields = Object.values(err.errors).map((el) => el.path);
-  let code = HttpErrorStatus.BAD_REQUEST;
+  const errors = Object.values(err.errors).map((el) => el.message);
+  const fields = Object.values(err.errors).map((el) => el.path);
+  const code = HttpErrorStatus.BAD_REQUEST;
   if (errors.length > 1) {
     const formattedErrors = errors;
     res.status(code).send({ messages: formattedErrors, fields: fields });
@@ -23,20 +23,21 @@ const handleValidationError = (err, res) => {
 };
 
 const handleNoMoneyError = (err, res) => {
-  let code = HttpErrorStatus.BAD_REQUEST;
+  const code = HttpErrorStatus.BAD_REQUEST;
   res.status(code).send({ error: OperationErrorStatus.LACK_OF_FOUNDS_ERROR, messages: 'No enough money' });
 };
 
-//error controller function
+// error controller function
 module.exports = (err, req, res, next) => {
   try {
     if (err.name === MongooseErrorStatus.VALIDATION_ERROR) return (err = handleValidationError(err, res));
-    if (err.code && err.code == MongoDbErrorStatus.DUPLICATE_KEY_ERROR)
+    if (err.code && err.code == MongoDbErrorStatus.DUPLICATE_KEY_ERROR) {
       return (err = handleDuplicateKeyError(err, res));
+    }
     if (err.message === OperationErrorStatus.LACK_OF_FOUNDS_ERROR) return (err = handleNoMoneyError(err, res));
   } catch (err) {
     res
-      .status(HttpErrorStatus.INTERNAL_ERROR)
-      .send({ error: OperationErrorStatus.OPERATION_FAILED, messages: 'An unknown error occurred.' });
+        .status(HttpErrorStatus.INTERNAL_ERROR)
+        .send({ error: OperationErrorStatus.OPERATION_FAILED, messages: 'An unknown error occurred.' });
   }
 };

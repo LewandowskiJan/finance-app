@@ -3,9 +3,10 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { map } from 'rxjs/operators';
 
+import { ComboBoxProcessType } from '@modules/shared/combo-box/configuration/combo-box-process-type.enum';
+import { ComboBoxType } from '@modules/shared/combo-box/configuration/combo-box-type.enum';
+
 import { Account } from './../../../account/model/Account';
-import { ComboBoxProcessType } from './../../../../shared/combo-box/configuration/combo-box-process-type.enum';
-import { ComboBoxType } from './../../../../shared/combo-box/configuration/combo-box-type.enum';
 
 @Component({
   selector: 'app-transfer-form-container',

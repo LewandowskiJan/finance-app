@@ -1,7 +1,7 @@
-let mongoose = require('mongoose');
-let uniqueValidator = require('mongoose-unique-validator');
+const mongoose = require('mongoose');
+const uniqueValidator = require('mongoose-unique-validator');
 
-let targetSchema = mongoose.Schema({
+const targetSchema = mongoose.Schema({
   name: {
     type: String,
     required: true,
@@ -17,4 +17,4 @@ let targetSchema = mongoose.Schema({
   },
 });
 targetSchema.plugin(uniqueValidator);
-let Target = (module.exports = mongoose.model('Target', targetSchema));
+module.exports = mongoose.model('Target', targetSchema);

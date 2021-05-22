@@ -1,7 +1,7 @@
-let mongoose = require('mongoose');
-let uniqueValidator = require('mongoose-unique-validator');
+const mongoose = require('mongoose');
+const uniqueValidator = require('mongoose-unique-validator');
 
-let balanceHistorySchema = mongoose.Schema({
+const balanceHistorySchema = mongoose.Schema({
   balance: {
     type: String,
     required: true,
@@ -21,4 +21,4 @@ let balanceHistorySchema = mongoose.Schema({
   },
 });
 balanceHistorySchema.plugin(uniqueValidator);
-let BalanceHistory = (module.exports = mongoose.model('BalanceHistory', balanceHistorySchema));
+module.exports = mongoose.model('BalanceHistory', balanceHistorySchema);

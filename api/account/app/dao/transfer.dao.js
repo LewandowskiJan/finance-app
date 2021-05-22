@@ -7,7 +7,7 @@ const { OperationErrorStatus } = require('../errorHandler/models/OperationErrorS
 const { SearchStrategy } = require('../enums/SearchStrategy.enum');
 
 exports.addTransfer = async (transfer) => {
-  let newTransfer = new Transfer({
+  const newTransfer = new Transfer({
     value: transfer.value,
     accountFrom: transfer.accountFrom,
     accountTo: transfer.accountTo,

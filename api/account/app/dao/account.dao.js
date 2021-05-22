@@ -12,9 +12,9 @@ exports.updateAccountBalance = async (accountId, transferValue, transfer) => {
 
   if (transfer.currency !== account.currency) {
     const value =
-      transfer.currency === 'PLN'
-        ? parseFloat(parseFloat(transferValue) / parseFloat(transfer.exchangeRate)).toFixed(4)
-        : parseFloat(parseFloat(transferValue) * parseFloat(transfer.exchangeRate)).toFixed(4);
+      transfer.currency === 'PLN' ?
+        parseFloat(parseFloat(transferValue) / parseFloat(transfer.exchangeRate)).toFixed(4) :
+        parseFloat(parseFloat(transferValue) * parseFloat(transfer.exchangeRate)).toFixed(4);
 
     balance = (parseFloat(account.balance) + parseFloat(value)).toFixed(4).toString();
   } else {
@@ -22,13 +22,13 @@ exports.updateAccountBalance = async (accountId, transferValue, transfer) => {
   }
 
   await Account.updateOne(
-    { _id: accountId },
-    { $set: { balance: balance } },
-    {
-      new: true,
-      runValidators: true,
-      context: 'query',
-    }
+      { _id: accountId },
+      { $set: { balance: balance } },
+      {
+        new: true,
+        runValidators: true,
+        context: 'query',
+      },
   );
 
   const response = { ...account._doc, balance: balance };

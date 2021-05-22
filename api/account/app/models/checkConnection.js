@@ -1,7 +1,7 @@
-let mongoose = require('mongoose');
-let uniqueValidator = require('mongoose-unique-validator');
+const mongoose = require('mongoose');
+const uniqueValidator = require('mongoose-unique-validator');
 
-let checkConnectionSchema = mongoose.Schema({
+const checkConnectionSchema = mongoose.Schema({
   connectionStatus: {
     type: String,
     required: true,
@@ -13,4 +13,4 @@ let checkConnectionSchema = mongoose.Schema({
   },
 });
 checkConnectionSchema.plugin(uniqueValidator);
-let CheckConnection = (module.exports = mongoose.model('CheckConnection', checkConnectionSchema));
+module.exports = mongoose.model('CheckConnection', checkConnectionSchema);
