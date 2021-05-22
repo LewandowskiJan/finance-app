@@ -1,12 +1,12 @@
-import { OnlyNumbersDirective } from '@modules/shared/utils/directives/only-numbers/only-numbers.directive';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
+
+import { OnlyNumbersDirective } from '@modules/shared/utils/directives/only-numbers/only-numbers.directive';
 
 import { ComboBoxModule } from '../../shared/combo-box/combo-box.module';
 import { MaterialModule } from './../../external/material/material.module';
@@ -22,7 +22,8 @@ import { TransferAddComponent } from './components/transfer-add/transfer-add.com
 import { TransferEditComponent } from './components/transfer-edit/transfer-edit.component';
 import { TransferFormContainerComponent } from './containers/transfer-form-container/transfer-form-container.component';
 import { TransferLineAddComponent } from './components/transfer-line-add/transfer-line-add.component';
-import { TransfersComponent } from './components/transfers/transfers.component';
+import { TransfersComponent } from './containers/transfers/transfers.component';
+
 
 @NgModule({
   declarations: [

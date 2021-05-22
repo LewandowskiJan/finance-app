@@ -56,20 +56,38 @@
   <div class="transfer-line-forms">
     <ng-container formArrayName="transferLines">
       <div class="transfer-line-form" *ngFor="let transferLine of transferLines.controls; index as i">
-        <span>
+        <span class="transfer-line-action">
           <button mat-stroked-button color="warn" type="button" (click)="removeTransferLineForm(i)">Delete</button>
           Transfer line {{ i }}:</span
         >
         <app-transfer-line-add [transferLineForm]="transferLine"></app-transfer-line-add>
       </div>
     </ng-container>
+  </div>
+  <mat-toolbar color="primary" class="transfer-value-left-banner">
+    <span *ngIf="restOfTransferValue$ | async as rest">Left: {{ rest }}</span>
 
     <div class="button-footer">
-      <button mat-mini-fab color="accent" type="button" aria-label="Add transfer line button" (click)="addTransferLineForm()">
+      <button
+        mat-raised-button
+        color="accent"
+        type="button"
+        aria-label="Add transfer line button"
+        (click)="addTransferLineForm()"
+        [disabled]="isAddTransferLineButtonDisable$ | async"
+      >
         <mat-icon>plus_one</mat-icon>
       </button>
 
-      <button mat-fab aria-label="Add transfer button" type="submit">Submit</button>
+      <button
+        mat-raised-button
+        color="accent"
+        aria-label="Add transfer button"
+        type="submit"
+        [disabled]="(isAddTransferLineButtonDisable$ | async) || !transferForm.valid || !transferLines.length"
+      >
+        Submit
+      </button>
     </div>
-  </div>
+  </mat-toolbar>
 </form>

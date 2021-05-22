@@ -12,7 +12,8 @@ import * as fromTransfers from '../../reducers';
 import { compareAndPickDifference } from '@modules/shared/utils/helpers';
 
 import { Transfer } from '../../model/Transfer';
-import { TransferEditComponent } from '../transfer-edit/transfer-edit.component';
+
+import { TransferEditComponent } from './../../components/transfer-edit/transfer-edit.component';
 import { TransfersActions } from '../../actions';
 import { Update } from '@ngrx/entity';
 
@@ -24,9 +25,11 @@ import { Update } from '@ngrx/entity';
 })
 export class TransfersComponent implements OnInit {
   public transfers$: Observable<Transfer[]>;
+  public transferList$: Observable<Transfer[]>;
 
   constructor(public dialog: MatDialog, private store: Store<fromRoot.State & fromTransfers.State>) {
     this.transfers$ = this.store.pipe(select(fromTransfers.selectTransfersCollection));
+    this.transferList$ = this.store.pipe(select(fromTransfers.selectTransferListCollection));
   }
 
   ngOnInit(): void {

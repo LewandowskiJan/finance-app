@@ -77,10 +77,26 @@
     }
   }
 
-  .button-footer {
+  .transfer-line-action {
+    padding: 10px 0;
+  }
+
+  .transfer-value-left-banner {
     display: flex;
     position: fixed;
-    bottom: 80px;
-    right: 20px;
+    bottom: 60px;
+    margin-left: -15px;
+    width: calc(100vw - 2px);
+
+    .button-footer {
+      display: flex;
+      justify-content: flex-end;
+      width: 100%;
+
+      button {
+        margin-left: 10px;
+      }
+    }
+
   }
 }
