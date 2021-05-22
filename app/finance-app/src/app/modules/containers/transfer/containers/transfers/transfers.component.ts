@@ -29,7 +29,6 @@ export class TransfersComponent implements OnInit {
 
   constructor(public dialog: MatDialog, private store: Store<fromRoot.State & fromTransfers.State>) {
     this.transfers$ = this.store.pipe(select(fromTransfers.selectTransfersCollection));
-    this.transferList$ = this.store.pipe(select(fromTransfers.selectTransferListCollection));
   }
 
   ngOnInit(): void {

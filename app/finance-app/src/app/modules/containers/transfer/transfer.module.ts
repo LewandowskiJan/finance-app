@@ -47,7 +47,6 @@ import { TransfersComponent } from './containers/transfers/transfers.component';
     EffectsModule.forFeature([TransfersEffects]),
     SlidePanelModule,
   ],
-  providers: [TransfersService],
   bootstrap: [TransfersContainerComponent],
 })
 export class TransferModule {}

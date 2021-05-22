@@ -22,7 +22,7 @@ export function reducers(state: TransferState | undefined, action: Action) {
 
 export const selectTransferState = createFeatureSelector<State, TransferState>(transfersModuleFeatureKey);
 
-export const selectTransfersEntitiesState = createSelector(selectTransferState, (state) => state.transfersList);
+export const selectTransfersEntitiesState = createSelector(selectTransferState, (state) => state.transfers);
 
 export const {
   selectIds: selectTransfersIds,

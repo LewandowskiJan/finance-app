@@ -17,11 +17,7 @@ import { AlertStatus } from '@modules/core/layout/model/AlertStatus.enum';
 import { DialogData } from '@modules/core/layout/model/DialogData';
 import { LayoutActions } from '@modules/core/layout/actions';
 
-export enum Currency {
-  PLN = 'PLN',
-  EUR = 'EUR',
-  USD = 'USD',
-}
+import { Currency } from '@modules/shared/models/currency.enum';
 
 export interface CurrencySelect {
   value: Currency;

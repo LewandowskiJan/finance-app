@@ -20,6 +20,7 @@
       justify-content: space-between;
       width: 100%;
       margin: 5px 0;
+      gap: 10px;
 
       @media (min-width: 768px) {
         min-width: 50%;
@@ -34,7 +35,6 @@
 
           .value-field,
           .currency-field {
-            margin: 0 10px;
             width: 100%;
           }
         }
@@ -43,7 +43,6 @@
       .change-account-button,
       .transfer-field {
         width: 100%;
-        margin: 0 10px;
       }
 
       .change-account-button {
@@ -80,6 +79,7 @@
 
   .transfer-lines-container {
     display: flex;
+    padding: 0 10px;
 
     .transfer-line-forms {
       display: flex;

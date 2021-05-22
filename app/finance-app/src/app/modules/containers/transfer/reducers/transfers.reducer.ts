@@ -4,7 +4,7 @@ import { createReducer, on } from '@ngrx/store';
 import { Transfer } from '../model/Transfer';
 import { TransfersActions } from '../actions';
 
-export const transfersFeatureKey = 'transfersList';
+export const transfersFeatureKey = 'transfers';
 
 /**
  * @ngrx/entity provides a predefined interface for handling

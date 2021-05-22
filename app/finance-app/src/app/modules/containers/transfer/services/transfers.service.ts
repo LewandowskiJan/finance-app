@@ -11,14 +11,14 @@ import { HttpRequestMethods } from '@src/app/modules/domain/model/HttpRequestMet
 
 import { Transfer } from '../model/Transfer';
 
-@Injectable()
+@Injectable({ providedIn: 'any' })
 export class TransfersService {
   constructor(private apiService: ApiService) {}
 
   readTransfers(): Observable<Transfer[] | HttpErrorResponse> {
     return this.apiService.request<Transfer[], HttpErrorResponse>('account/transfer/all', {
       method: HttpRequestMethods.POST,
-      body: { options: { limit: 10 } },
+      body: { options: { limit: 25 } },
     });
   }
 

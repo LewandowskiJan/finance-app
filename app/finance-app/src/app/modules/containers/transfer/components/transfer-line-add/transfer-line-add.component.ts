@@ -3,8 +3,9 @@ import { FormControl, FormGroup } from '@angular/forms';
 
 import { ComboBoxProcessType } from '@modules/shared/combo-box/configuration/combo-box-process-type.enum';
 import { ComboBoxType } from '@modules/shared/combo-box/configuration/combo-box-type.enum';
+import { Currency } from '@modules/shared/models/currency.enum';
 
-import { Currency, CurrencySelect } from '../transfer-add/transfer-add.component';
+import { CurrencySelect } from '../transfer-add/transfer-add.component';
 
 @Component({
   selector: 'app-transfer-line-add',
