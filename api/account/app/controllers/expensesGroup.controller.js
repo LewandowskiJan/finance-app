@@ -1,5 +1,5 @@
 const ExpensesGroupDao = require('../dao/expensesGroup.dao');
-const {requestParseToOptionObj: requestParseToObj} = require('./shared/requestParser');
+const { requestParseToOptionObj: requestParseToObj } = require('./shared/requestParser');
 
 exports.addExpensesGroup = async (req, res, next) => {
   const options = requestParseToObj(req);

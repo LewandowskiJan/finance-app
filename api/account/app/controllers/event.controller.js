@@ -1,5 +1,5 @@
 const EventDao = require('../dao/event.dao');
-const {requestParseToOptionObj: requestParseToObj} = require('./shared/requestParser');
+const { requestParseToOptionObj: requestParseToObj } = require('./shared/requestParser');
 
 exports.addEvent = async (req, res, next) => {
   const options = requestParseToObj(req);

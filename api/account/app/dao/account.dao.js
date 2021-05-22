@@ -22,8 +22,8 @@ exports.updateAccountBalance = async (accountId, transferValue, transfer) => {
   }
 
   await Account.updateOne(
-      {_id: accountId},
-      {$set: {balance: balance}},
+      { _id: accountId },
+      { $set: { balance: balance } },
       {
         new: true,
         runValidators: true,
@@ -31,7 +31,7 @@ exports.updateAccountBalance = async (accountId, transferValue, transfer) => {
       },
   );
 
-  const response = {...account._doc, balance: balance};
+  const response = { ...account._doc, balance: balance };
   return response;
 };
 
@@ -50,10 +50,10 @@ exports.getAccountByOneProperty = async (options = {}) => {
 };
 
 exports.createAccount = async (options) => {
-  const newAccount = new Account({...options.body});
+  const newAccount = new Account({ ...options.body });
   const savedAccount = await newAccount.save();
 
-  return {...savedAccount._doc};
+  return { ...savedAccount._doc };
 };
 
 exports.findAccountById = async (options) => {
@@ -69,5 +69,5 @@ exports.searchForAccount = async (options) => {
 };
 
 exports.resterAllAccountsBalance = async () => {
-  return await Account.updateMany({}, {balance: '0', isExternal: true});
+  return await Account.updateMany({}, { balance: '0', isExternal: true });
 };

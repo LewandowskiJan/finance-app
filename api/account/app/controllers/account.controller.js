@@ -1,6 +1,6 @@
 const AccountDao = require('../dao/account.dao');
 const BalanceHistoryDao = require('../dao/balanceHistory.dao');
-const {requestParseToOptionObj: requestParseToObj} = require('./shared/requestParser');
+const { requestParseToOptionObj: requestParseToObj } = require('./shared/requestParser');
 
 exports.getAllAccounts = async (req, res, next) => {
   const options = requestParseToObj(req);
@@ -59,12 +59,12 @@ exports.deleteAccountById = async (req, res, next) => {
 
   try {
     const account = await AccountDao.deleteAccountById(options);
-    await BalanceHistoryDao.deleteManyBalanceHistoriesBy({accountId: options.params.id});
+    await BalanceHistoryDao.deleteManyBalanceHistoriesBy({ accountId: options.params.id });
 
     if (!account) {
       res.json({});
     } else {
-      const response = {...account._doc};
+      const response = { ...account._doc };
       res.json(response);
     }
   } catch (error) {
@@ -77,7 +77,7 @@ exports.updateAccountById = async (req, res, next) => {
 
   try {
     const response = await AccountDao.updateAccount(options);
-    const mappedReq = {body: {accountId: options.params.id}};
+    const mappedReq = { body: { accountId: options.params.id } };
     await BalanceHistoryDao.generateBalanceHistoryByAccountId(mappedReq);
     res.json(response);
   } catch (error) {

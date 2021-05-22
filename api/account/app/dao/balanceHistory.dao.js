@@ -2,7 +2,7 @@ const DataObjectAccess = require('./shared/dataAccessObject');
 const BalanceHistory = require('./../models/balanceHistory');
 const TransferDao = require('./transfer.dao');
 const AccountDao = require('./account.dao');
-const {SearchStrategy} = require('../enums/SearchStrategy.enum');
+const { SearchStrategy } = require('../enums/SearchStrategy.enum');
 
 exports.addBalanceHistory = async (options) => {
   return await DataObjectAccess.add(options, BalanceHistory);
@@ -35,12 +35,12 @@ exports.deleteManyBalanceHistoriesBy = async (options) => {
 exports.generateBalanceHistoryByAccountId = async (options) => {
   const accountId = options.body.accountId;
 
-  await this.deleteManyBalanceHistoriesBy({accountId: accountId});
-  const account = await AccountDao.getAccountByOneProperty({_id: accountId});
+  await this.deleteManyBalanceHistoriesBy({ accountId: accountId });
+  const account = await AccountDao.getAccountByOneProperty({ _id: accountId });
 
   const listOfTransfers = await TransferDao.findTransfer(
-      {body: {accountFrom: accountId, accountTo: accountId, searchStrategy: SearchStrategy.MATCH_SOME}},
-      {sort: '-date'},
+      { body: { accountFrom: accountId, accountTo: accountId, searchStrategy: SearchStrategy.MATCH_SOME } },
+      { sort: '-date' },
   );
 
   const formattedList = listOfTransfers.map((transfer) => {

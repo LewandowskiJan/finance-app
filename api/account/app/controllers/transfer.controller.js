@@ -1,5 +1,5 @@
 const TransferDao = require('../dao/transfer.dao');
-const {requestParseToOptionObj: requestParseToObj} = require('./shared/requestParser');
+const { requestParseToOptionObj: requestParseToObj } = require('./shared/requestParser');
 
 exports.getAllTransfers = async (req, res, next) => {
   const options = requestParseToObj(req);
@@ -16,7 +16,7 @@ exports.addTransfer = async (req, res, next) => {
   const options = requestParseToObj(req);
 
   try {
-    const newTransfer = await TransferDao.addTransfer(options);
+    const newTransfer = await TransferDao.addTransfer(options.body);
     res.json(newTransfer);
   } catch (error) {
     return next(error);

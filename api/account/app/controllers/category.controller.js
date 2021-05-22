@@ -1,5 +1,5 @@
 const CategoryDao = require('../dao/category.dao');
-const {requestParseToOptionObj: requestParseToObj} = require('./shared/requestParser');
+const { requestParseToOptionObj: requestParseToObj } = require('./shared/requestParser');
 
 exports.addCategory = async (req, res, next) => {
   const options = requestParseToObj(req);
