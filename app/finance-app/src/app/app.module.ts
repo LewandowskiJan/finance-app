@@ -1,6 +1,6 @@
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 
 import { ActionReducer, MetaReducer, StoreModule } from '@ngrx/store';
@@ -10,17 +10,17 @@ import { StoreRouterConnectingModule } from '@ngrx/router-store';
 
 import { localStorageSync } from 'ngrx-store-localstorage';
 
+import { AuthenticationInterceptor } from '@my-lib/util';
+
 import { MaterialModule } from '@modules/external/material/material.module';
 
 import { AccountModule } from '@modules/containers/account/account.module';
 import { CategoryModule } from '@modules/containers/category/category.module';
 import { ComboBoxModule } from './modules/shared/combo-box/combo-box.module';
-import { TestConnectionService } from '@modules/containers/test-page/services/test-connection.service';
 import { TransferModule } from './modules/containers/transfer/transfer.module';
 
 import { LayoutModule } from '@modules/core/layout/layout.module';
 
-import { ApiService } from './modules/domain/services/api.service';
 import { SlidePanelModule } from '@modules/shared/slide-panel/slide-panel.module';
 
 import { environment } from '@environments/environment';
@@ -95,7 +95,7 @@ const metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer];
      */
     EffectsModule.forRoot([]),
   ],
-  providers: [TestConnectionService, ApiService],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthenticationInterceptor, multi: true }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

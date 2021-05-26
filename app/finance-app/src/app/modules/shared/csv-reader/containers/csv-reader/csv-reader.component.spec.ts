@@ -1,4 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+
+import { provideMockStore } from '@ngrx/store/testing';
 
 import { CsvReaderComponent } from './csv-reader.component';
 
@@ -9,6 +13,9 @@ describe('CsvReaderComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [CsvReaderComponent],
+      imports: [HttpClientTestingModule],
+      providers: [provideMockStore()],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
     }).compileComponents();
   });
 

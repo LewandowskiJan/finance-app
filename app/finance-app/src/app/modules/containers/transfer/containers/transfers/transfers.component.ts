@@ -16,6 +16,7 @@ import { Transfer } from '../../model/Transfer';
 import { TransferEditComponent } from './../../components/transfer-edit/transfer-edit.component';
 import { TransfersActions } from '../../actions';
 import { Update } from '@ngrx/entity';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-transfers',
@@ -36,7 +37,7 @@ export class TransfersComponent implements OnInit {
   }
 
   public showTransfer(): void {
-    this.store.dispatch(TransfersActions.readTransfers());
+    // this.store.dispatch(TransfersActions.readTransfers());
   }
 
   public deleteTransfer(id: string): void {
@@ -49,7 +50,7 @@ export class TransfersComponent implements OnInit {
       disableClose: true,
     });
 
-    dialogRef.afterClosed().subscribe((result) => {
+    dialogRef.afterClosed().pipe(take(1)).subscribe((result) => {
       if (result) {
         this.updateTransfer(transfer, result.form.value);
       }

@@ -14,7 +14,7 @@ describe('TransfersComponent', () => {
 
   const initialState: State = {
     transfersModule: {
-      transfersList: {
+      transfers: {
         loaded: true,
         loading: false,
         failure: false,

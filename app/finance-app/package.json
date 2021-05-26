@@ -8,7 +8,8 @@
     "test": "ng test",
     "lint": "eslint src/app/** --ext ts,json --fix",
     "e2e": "ng e2e",
-    "postinstall": "ngcc"
+    "postinstall": "ngcc",
+    "build-lib:util": "ng build util"
   },
   "private": true,
   "dependencies": {
@@ -69,6 +70,7 @@
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "~1.6.0",
     "lint-staged": "~11.0.0",
+    "ng-packagr": "^12.0.0",
     "prettier": "~2.3.0",
     "prettier-eslint": "~12.0.0",
     "protractor": "~7.0.0",

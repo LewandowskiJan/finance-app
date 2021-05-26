@@ -4,14 +4,15 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { ApiService } from '@src/app/modules/domain/services/api.service';
-import { HttpRequestMethods } from '@src/app/modules/domain/model/HttpRequestMethods';
+import { HttpRequestMethods } from '@my-lib/util';
+
+import { GlobalApiService } from '@src/app/modules/shared/services/global-api.service';
 
 import { Category } from '../model/Category';
 
 @Injectable()
 export class CategoriesService {
-  constructor(private apiService: ApiService) {}
+  constructor(private apiService: GlobalApiService) {}
 
   readCategories(): Observable<Category[] | HttpErrorResponse> {
     return this.apiService.request<Category[], HttpErrorResponse>('dictionary/category/all', {
@@ -20,10 +21,9 @@ export class CategoriesService {
   }
 
   createCategory(category: Category): Observable<Category | HttpErrorResponse> {
-    return this.apiService
-      .request<Category, HttpErrorResponse>('dictionary/category/add', {
-        method: HttpRequestMethods.POST,
-        body: category,
+    return this.apiService.request<Category, HttpErrorResponse>('dictionary/category/add', {
+      method: HttpRequestMethods.POST,
+      body: category,
     });
   }
 

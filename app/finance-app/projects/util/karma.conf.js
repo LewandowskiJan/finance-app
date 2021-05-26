@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 // Karma configuration file, see link for more information
 // https://karma-runner.github.io/1.0/config/configuration-file.html
 
@@ -26,8 +25,7 @@ module.exports = function (config) {
       suppressAll: true, // removes the duplicated traces
     },
     coverageReporter: {
-      // eslint-disable-next-line @typescript-eslint/no-var-requires
-      dir: require('path').join(__dirname, './coverage/finance-app'),
+      dir: require('path').join(__dirname, '../../coverage/util'),
       subdir: '.',
       reporters: [{ type: 'html' }, { type: 'text-summary' }],
     },

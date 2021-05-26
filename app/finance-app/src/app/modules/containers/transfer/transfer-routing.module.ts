@@ -10,13 +10,13 @@ const routes: Routes = [
     path: '',
     component: TransfersContainerComponent,
     children: [
-      { path: 'transfers', component: TransfersComponent, data: { animationState: 'One' } },
-      { path: 'add', component: TransferFormContainerComponent, data: { animationState: 'Two' } },
+      { path: 'add', component: TransferFormContainerComponent, data: { animationState: 'One' } },
+      { path: 'added-list', component: TransfersComponent, data: { animationState: 'Two' } },
     ],
   },
   {
     path: '**',
-    redirectTo: 'transfers',
+    redirectTo: 'add',
   },
 ];
 
