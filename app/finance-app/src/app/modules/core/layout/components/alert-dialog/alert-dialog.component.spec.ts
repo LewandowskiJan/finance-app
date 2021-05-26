@@ -6,6 +6,8 @@ import { MockStore, provideMockStore } from '@ngrx/store/testing';
 
 import { AlertDialogComponent } from './alert-dialog.component';
 
+import 'jest';
+
 describe('AlertDialogComponent', () => {
   let component: AlertDialogComponent;
   let store: MockStore;

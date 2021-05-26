@@ -3,6 +3,8 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 import { SlidePanelContainerComponent } from './slide-panel-container.component';
 
+import 'jest';
+
 describe('SlidePanelContainerComponent', () => {
   let component: SlidePanelContainerComponent;
   let fixture: ComponentFixture<SlidePanelContainerComponent>;

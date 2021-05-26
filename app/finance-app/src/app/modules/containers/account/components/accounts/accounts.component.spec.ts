@@ -12,6 +12,8 @@ import { MaterialModule } from '@modules/external/material/material.module';
 import { AccountsComponent } from './accounts.component';
 import { State } from './../../reducers';
 
+import 'jest';
+
 describe('AccountsComponent', () => {
   let component: AccountsComponent;
   let store: MockStore;

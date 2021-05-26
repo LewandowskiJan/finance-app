@@ -2,6 +2,8 @@ import { ElementRef } from '@angular/core';
 
 import { OnlyNumbersDirective } from './only-numbers.directive';
 
+import 'jest';
+
 describe('OnlyNumbersDirective', () => {
   const nativeElement: any = { value: '' };
   const el = new ElementRef(nativeElement);
@@ -17,7 +19,7 @@ describe('OnlyNumbersDirective', () => {
     // when
     const test: boolean = directive.testValue(value);
     // then
-    expect(test).toBeFalse();
+    expect(test).toBeFalsy();
   });
 
   it('should return false when chars', () => {
@@ -26,7 +28,7 @@ describe('OnlyNumbersDirective', () => {
     // when
     const test: boolean = directive.testValue(value);
     // then
-    expect(test).toBeFalse();
+    expect(test).toBeFalsy();
   });
 
   it('should return false when mixed chars, numbers', () => {
@@ -35,7 +37,7 @@ describe('OnlyNumbersDirective', () => {
     // when
     const test: boolean = directive.testValue(value);
     // then
-    expect(test).toBeFalse();
+    expect(test).toBeFalsy();
   });
 
   it('should return false when more than 8 digits', () => {
@@ -44,7 +46,7 @@ describe('OnlyNumbersDirective', () => {
     // when
     const test: boolean = directive.testValue(value);
     // then
-    expect(test).toBeFalse();
+    expect(test).toBeFalsy();
   });
 
   it('should return false when more than 4 digits after . dot', () => {
@@ -53,7 +55,7 @@ describe('OnlyNumbersDirective', () => {
     // when
     const test: boolean = directive.testValue(value);
     // then
-    expect(test).toBeFalse();
+    expect(test).toBeFalsy();
   });
 
   it('should return true when empty', () => {
@@ -62,7 +64,7 @@ describe('OnlyNumbersDirective', () => {
     // when
     const test: boolean = directive.testValue(value);
     // then
-    expect(test).toBeTrue();
+    expect(test).toBeTruthy();
   });
 
   it('should return true when 8 digits before . dot', () => {
@@ -71,7 +73,7 @@ describe('OnlyNumbersDirective', () => {
     // when
     const test: boolean = directive.testValue(value);
     // then
-    expect(test).toBeTrue();
+    expect(test).toBeTruthy();
   });
 
   it('should return true when 8 digits and . dot', () => {
@@ -80,7 +82,7 @@ describe('OnlyNumbersDirective', () => {
     // when
     const test: boolean = directive.testValue(value);
     // then
-    expect(test).toBeTrue();
+    expect(test).toBeTruthy();
   });
 
   it('should return true when 8 digits before . dot and 4 after', () => {
@@ -89,7 +91,7 @@ describe('OnlyNumbersDirective', () => {
     // when
     const test: boolean = directive.testValue(value);
     // then
-    expect(test).toBeTrue();
+    expect(test).toBeTruthy();
   });
 
   it('should return true when 1 digit before . dot and 3 after', () => {
@@ -98,6 +100,6 @@ describe('OnlyNumbersDirective', () => {
     // when
     const test: boolean = directive.testValue(value);
     // then
-    expect(test).toBeTrue();
+    expect(test).toBeTruthy();
   });
 });

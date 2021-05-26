@@ -1,5 +1,6 @@
 import { compareAndPickDifference, isNullUndefined, notNull } from './helpers';
 
+import 'jest';
 interface TestObject {
   name: string;
   age: string;
@@ -95,7 +96,7 @@ describe('Helpers isNullUndefined', () => {
     // when
     const isNullOrUndefined: boolean = isNullUndefined(given);
     // then
-    expect(isNullOrUndefined).toBeTrue();
+    expect(isNullOrUndefined).toBeTruthy();
   });
 
   it('should return true when undefined', () => {
@@ -104,7 +105,7 @@ describe('Helpers isNullUndefined', () => {
     // when
     const isNullOrUndefined: boolean = isNullUndefined(given);
     // then
-    expect(isNullOrUndefined).toBeTrue();
+    expect(isNullOrUndefined).toBeTruthy();
   });
 
   it('should return false when string', () => {
@@ -113,7 +114,7 @@ describe('Helpers isNullUndefined', () => {
     // when
     const isNullOrUndefined: boolean = isNullUndefined(given);
     // then
-    expect(isNullOrUndefined).toBeFalse();
+    expect(isNullOrUndefined).toBeFalsy();
   });
 
   it('should return false when number', () => {
@@ -122,7 +123,7 @@ describe('Helpers isNullUndefined', () => {
     // when
     const isNullOrUndefined: boolean = isNullUndefined(given);
     // then
-    expect(isNullOrUndefined).toBeFalse();
+    expect(isNullOrUndefined).toBeFalsy();
   });
 });
 

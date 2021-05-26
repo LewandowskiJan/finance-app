@@ -2,6 +2,8 @@ import { TestBed } from '@angular/core/testing';
 
 import { AuthenticationInterceptor } from './authentication-interceptor.service';
 
+import 'jest';
+
 describe('AuthenticationInterceptor', () => {
   let service: AuthenticationInterceptor;
 

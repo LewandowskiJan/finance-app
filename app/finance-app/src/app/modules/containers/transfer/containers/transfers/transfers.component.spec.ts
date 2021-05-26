@@ -7,6 +7,8 @@ import { MockStore, provideMockStore } from '@ngrx/store/testing';
 import { State } from '../../reducers';
 import { TransfersComponent } from './transfers.component';
 
+import 'jest';
+
 describe('TransfersComponent', () => {
   let component: TransfersComponent;
   let store: MockStore;

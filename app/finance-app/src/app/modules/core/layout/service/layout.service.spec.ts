@@ -8,6 +8,8 @@ import { MaterialModule } from '@modules/external/material/material.module';
 
 import { LayoutService } from './layout.service';
 
+import 'jest';
+
 describe('LayoutService', () => {
   let service: LayoutService;
   let store: MockStore;

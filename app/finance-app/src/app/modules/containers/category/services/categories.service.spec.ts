@@ -5,6 +5,8 @@ import { MockStore, provideMockStore } from '@ngrx/store/testing';
 
 import { CategoriesService } from './categories.service';
 
+import 'jest';
+
 describe('CategoriesService', () => {
   let service: CategoriesService;
   let store: MockStore;

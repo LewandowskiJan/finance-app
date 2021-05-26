@@ -3,6 +3,8 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 import { AnimationGraphComponent } from './animation-graph.component';
 
+import 'jest';
+
 describe('AnimationGraphComponent', () => {
   let component: AnimationGraphComponent;
   let fixture: ComponentFixture<AnimationGraphComponent>;

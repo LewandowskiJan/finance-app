@@ -4,6 +4,8 @@ import { RouterTestingModule } from '@angular/router/testing';
 
 import { AccountContainerComponent } from './account-container.component';
 
+import 'jest';
+
 describe('AccountContainerComponent', () => {
   let component: AccountContainerComponent;
   let fixture: ComponentFixture<AccountContainerComponent>;

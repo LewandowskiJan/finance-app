@@ -6,6 +6,8 @@ import { MockStore, provideMockStore } from '@ngrx/store/testing';
 
 import { HeaderComponent } from './header.component';
 
+import 'jest';
+
 describe('HeaderComponent', () => {
   let component: HeaderComponent;
   let store: MockStore;

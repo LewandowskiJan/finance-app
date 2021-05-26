@@ -1,4 +1,3 @@
-import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
 
@@ -7,6 +6,8 @@ import { MockStore, provideMockStore } from '@ngrx/store/testing';
 import { ApiService, ApiServiceMock } from '@my-lib/util';
 
 import { GlobalApiService } from './global-api.service';
+
+import 'jest';
 
 describe('GlobalApiService', () => {
   let service: GlobalApiService;

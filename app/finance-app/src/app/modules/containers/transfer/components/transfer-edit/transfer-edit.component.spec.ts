@@ -10,6 +10,8 @@ import { MockStore, provideMockStore } from '@ngrx/store/testing';
 
 import { TransferEditComponent } from './transfer-edit.component';
 
+import 'jest';
+
 describe('TransferEditComponent', () => {
   let component: TransferEditComponent;
   let store: MockStore;

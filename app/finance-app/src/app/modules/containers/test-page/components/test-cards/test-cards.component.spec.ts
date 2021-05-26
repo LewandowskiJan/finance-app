@@ -2,6 +2,8 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TestCardsComponent } from './test-cards.component';
 
+import 'jest';
+
 describe('TestCardsComponent', () => {
   let component: TestCardsComponent;
   let fixture: ComponentFixture<TestCardsComponent>;

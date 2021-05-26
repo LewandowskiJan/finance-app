@@ -1,10 +1,10 @@
-import {} from 'jasmine';
-
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterTestingModule } from '@angular/router/testing';
 import { TestBed } from '@angular/core/testing';
 
 import { AppComponent } from './app.component';
+
+import 'jest';
 
 describe('AppComponent', () => {
   beforeEach(async () => {

@@ -8,6 +8,8 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 import { TransferLineAddComponent } from './transfer-line-add.component';
 
+import 'jest';
+
 describe('TransferLineAddComponent', () => {
   let component: TransferLineAddComponent;
   let fixture: ComponentFixture<TransferLineAddComponent>;

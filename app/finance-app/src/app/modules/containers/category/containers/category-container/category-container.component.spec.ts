@@ -10,6 +10,8 @@ import { MockStore, provideMockStore } from '@ngrx/store/testing';
 import { CategoryContainerComponent } from './category-container.component';
 import { State } from '../../reducers';
 
+import 'jest';
+
 describe('CategoryContainerComponent', () => {
   let component: CategoryContainerComponent;
   let store: MockStore;

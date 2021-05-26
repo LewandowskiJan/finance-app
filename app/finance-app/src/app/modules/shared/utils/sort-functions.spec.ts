@@ -1,5 +1,6 @@
 import { sortByKeyAsc, sortByKeyDesc } from './sort-functions';
 
+import 'jest';
 interface TestObject {
   name: string;
   age: string;

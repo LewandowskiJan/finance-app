@@ -3,6 +3,8 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 import { CheckResultComponent } from './check-result.component';
 
+import 'jest';
+
 describe('CheckResultComponent', () => {
   let component: CheckResultComponent;
   let fixture: ComponentFixture<CheckResultComponent>;
