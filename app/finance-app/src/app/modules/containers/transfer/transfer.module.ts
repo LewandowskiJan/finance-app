@@ -6,16 +6,13 @@ import { RouterModule } from '@angular/router';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 
-import { OnlyNumbersDirective } from '@modules/shared/utils/directives/only-numbers/only-numbers.directive';
-
 import { ComboBoxModule } from '../../shared/combo-box/combo-box.module';
-import { MaterialModule } from './../../external/material/material.module';
+import { MaterialModule } from '../../shared/material/material.module';
 import { SlidePanelModule } from './../../shared/slide-panel/slide-panel.module';
 
 import { TransferRoutingModule } from './transfer-routing.module';
 import { TransfersContainerComponent } from './containers/transfers-container/transfers-container.component';
 import { TransfersEffects } from './effects/transfers.effects';
-import { TransfersService } from './services/transfers.service';
 
 import * as fromTransfer from './reducers';
 import { TransferAddComponent } from './components/transfer-add/transfer-add.component';
@@ -23,7 +20,6 @@ import { TransferEditComponent } from './components/transfer-edit/transfer-edit.
 import { TransferFormContainerComponent } from './containers/transfer-form-container/transfer-form-container.component';
 import { TransferLineAddComponent } from './components/transfer-line-add/transfer-line-add.component';
 import { TransfersComponent } from './containers/transfers/transfers.component';
-
 
 @NgModule({
   declarations: [
@@ -33,7 +29,6 @@ import { TransfersComponent } from './containers/transfers/transfers.component';
     TransferFormContainerComponent,
     TransferAddComponent,
     TransferLineAddComponent,
-    OnlyNumbersDirective,
   ],
   imports: [
     RouterModule,

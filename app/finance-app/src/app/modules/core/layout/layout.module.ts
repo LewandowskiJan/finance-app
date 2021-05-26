@@ -6,7 +6,7 @@ import { RouterModule } from '@angular/router';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 
-import { MaterialModule } from '@modules/external/material/material.module';
+import { MaterialModule } from '@modules/shared/material/material.module';
 
 import { AnimationGraphComponent } from './components/animation-graph/animation-graph.component';
 import { FooterComponent } from './containers/footer/footer.component';

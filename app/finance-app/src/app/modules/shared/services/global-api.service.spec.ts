@@ -3,11 +3,11 @@ import { TestBed } from '@angular/core/testing';
 
 import { MockStore, provideMockStore } from '@ngrx/store/testing';
 
-import { ApiService, ApiServiceMock } from '@my-lib/util';
+import { ApiService, ApiServiceMock } from './../../../../../projects/util/src/lib/api-service';
 
 import { GlobalApiService } from './global-api.service';
 
-import 'jest';
+import 'jasmine';
 
 describe('GlobalApiService', () => {
   let service: GlobalApiService;

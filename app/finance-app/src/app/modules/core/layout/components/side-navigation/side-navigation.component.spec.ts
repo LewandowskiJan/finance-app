@@ -4,7 +4,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 
 import { SideNavigationComponent } from './side-navigation.component';
 
-import 'jest';
+import {} from 'jasmine';
 
 describe('SideNavigationComponent', () => {
   let component: SideNavigationComponent;

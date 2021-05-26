@@ -4,7 +4,7 @@ import { TestBed } from '@angular/core/testing';
 
 import { AppComponent } from './app.component';
 
-import 'jest';
+import {} from 'jasmine';
 
 describe('AppComponent', () => {
   beforeEach(async () => {

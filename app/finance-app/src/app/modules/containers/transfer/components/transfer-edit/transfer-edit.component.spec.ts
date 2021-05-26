@@ -10,7 +10,7 @@ import { MockStore, provideMockStore } from '@ngrx/store/testing';
 
 import { TransferEditComponent } from './transfer-edit.component';
 
-import 'jest';
+import {} from 'jasmine';
 
 describe('TransferEditComponent', () => {
   let component: TransferEditComponent;
@@ -21,11 +21,7 @@ describe('TransferEditComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [TransferEditComponent],
       imports: [ReactiveFormsModule, MatDialogModule, MatDatepickerModule, NoopAnimationsModule, MatNativeDateModule, FormsModule],
-      providers: [
-        provideMockStore(),
-        { provide: MAT_DIALOG_DATA, useValue: {} },
-        { provide: MatDialogRef, useValue: {} },
-      ],
+      providers: [provideMockStore(), { provide: MAT_DIALOG_DATA, useValue: {} }, { provide: MatDialogRef, useValue: {} }],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
     }).compileComponents();
   });

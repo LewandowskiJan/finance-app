@@ -2,7 +2,7 @@ import { ElementRef } from '@angular/core';
 
 import { OnlyNumbersDirective } from './only-numbers.directive';
 
-import 'jest';
+import {} from 'jasmine';
 
 describe('OnlyNumbersDirective', () => {
   const nativeElement: any = { value: '' };

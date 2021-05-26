@@ -3,7 +3,7 @@ import { TestBed } from '@angular/core/testing';
 
 import { ApiService } from './api.service';
 
-import 'jest';
+import {} from 'jasmine';
 
 describe('ApiService', () => {
   let service: ApiService;

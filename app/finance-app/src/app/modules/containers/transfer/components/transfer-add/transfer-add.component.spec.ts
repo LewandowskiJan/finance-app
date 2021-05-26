@@ -13,7 +13,7 @@ import { MockStore, provideMockStore } from '@ngrx/store/testing';
 
 import { TransferAddComponent } from './transfer-add.component';
 
-import 'jest';
+import {} from 'jasmine';
 
 describe('TransferAddComponent', () => {
   let component: TransferAddComponent;

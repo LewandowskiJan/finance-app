@@ -7,7 +7,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 
 import { ComboBoxModule } from './../../shared/combo-box/combo-box.module';
-import { MaterialModule } from '@modules/external/material/material.module';
+import { MaterialModule } from '@modules/shared/material/material.module';
 import { SlidePanelModule } from '@modules/shared/slide-panel/slide-panel.module';
 
 import { AccountContainerComponent } from './containers/account-container/account-container.component';

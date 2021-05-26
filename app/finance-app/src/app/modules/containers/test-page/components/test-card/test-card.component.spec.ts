@@ -3,7 +3,7 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 import { TestCardComponent } from './test-card.component';
 
-import 'jest';
+import {} from 'jasmine';
 
 describe('TestCardComponent', () => {
   let component: TestCardComponent;

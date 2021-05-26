@@ -7,12 +7,12 @@ import { RouterTestingModule } from '@angular/router/testing';
 
 import { MockStore, provideMockStore } from '@ngrx/store/testing';
 
-import { MaterialModule } from '@modules/external/material/material.module';
+import { MaterialModule } from './../../../../shared/material/material.module';
 
 import { AccountsComponent } from './accounts.component';
 import { State } from './../../reducers';
 
-import 'jest';
+import {} from 'jasmine';
 
 describe('AccountsComponent', () => {
   let component: AccountsComponent;

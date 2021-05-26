@@ -5,7 +5,7 @@ import { MockStore, provideMockStore } from '@ngrx/store/testing';
 
 import { ComboBoxService } from './combo-box.service';
 
-import 'jest';
+import {} from 'jasmine';
 
 describe('ComboBoxService', () => {
   let service: ComboBoxService;

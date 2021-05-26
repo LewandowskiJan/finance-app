@@ -11,7 +11,7 @@ import { Observable } from 'rxjs';
 import * as fromAccounts from '../../reducers';
 import * as fromRoot from './../../../../../reducers';
 
-import { compareAndPickDifference } from '@modules/shared/utils/helpers';
+import { compareAndPickDifference } from '@my-lib/util';
 
 import { Account } from '../../model/Account';
 import { AccountEditComponent } from './../account-edit/account-edit.component';

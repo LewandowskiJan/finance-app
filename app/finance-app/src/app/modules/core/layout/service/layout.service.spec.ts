@@ -4,11 +4,11 @@ import { TestBed } from '@angular/core/testing';
 
 import { MockStore, provideMockStore } from '@ngrx/store/testing';
 
-import { MaterialModule } from '@modules/external/material/material.module';
+import { MaterialModule } from './../../../shared/material/material.module';
 
 import { LayoutService } from './layout.service';
 
-import 'jest';
+import {} from 'jasmine';
 
 describe('LayoutService', () => {
   let service: LayoutService;

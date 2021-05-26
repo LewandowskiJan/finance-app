@@ -5,7 +5,7 @@ import { MockStore, provideMockStore } from '@ngrx/store/testing';
 
 import { FooterComponent } from './footer.component';
 
-import 'jest';
+import {} from 'jasmine';
 
 describe('FooterComponent', () => {
   let component: FooterComponent;

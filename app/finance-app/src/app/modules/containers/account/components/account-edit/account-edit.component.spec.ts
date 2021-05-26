@@ -4,13 +4,13 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
 
-import { MaterialModule } from '@modules/external/material/material.module';
+import { MaterialModule } from './../../../../shared/material/material.module';
 
 import { MockStore, provideMockStore } from '@ngrx/store/testing';
 
 import { AccountEditComponent } from './account-edit.component';
 
-import 'jest';
+import {} from 'jasmine';
 
 describe('AccountEditComponent', () => {
   let component: AccountEditComponent;

@@ -4,7 +4,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 
 import { AccountContainerComponent } from './account-container.component';
 
-import 'jest';
+import {} from 'jasmine';
 
 describe('AccountContainerComponent', () => {
   let component: AccountContainerComponent;
@@ -13,7 +13,7 @@ describe('AccountContainerComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [AccountContainerComponent],
-      imports:[RouterTestingModule],
+      imports: [RouterTestingModule],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
     }).compileComponents();
   });

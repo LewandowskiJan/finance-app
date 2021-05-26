@@ -1,6 +1,6 @@
-import { compareAndPickDifference, isNullUndefined, notNull } from './helpers';
+import { compareAndPickDifference, isNullUndefined, notNull } from './compare';
 
-import 'jest';
+import {} from 'jasmine';
 interface TestObject {
   name: string;
   age: string;

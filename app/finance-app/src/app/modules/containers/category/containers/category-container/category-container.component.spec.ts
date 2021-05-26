@@ -1,6 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { MaterialModule } from '@modules/external/material/material.module';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
@@ -8,9 +7,10 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { MockStore, provideMockStore } from '@ngrx/store/testing';
 
 import { CategoryContainerComponent } from './category-container.component';
+import { MaterialModule } from './../../../../shared/material/material.module';
 import { State } from '../../reducers';
 
-import 'jest';
+import {} from 'jasmine';
 
 describe('CategoryContainerComponent', () => {
   let component: CategoryContainerComponent;

@@ -3,7 +3,7 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 import { CheckResultComponent } from './check-result.component';
 
-import 'jest';
+import {} from 'jasmine';
 
 describe('CheckResultComponent', () => {
   let component: CheckResultComponent;
@@ -13,8 +13,7 @@ describe('CheckResultComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [CheckResultComponent],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
-    })
-    .compileComponents();
+    }).compileComponents();
   });
 
   beforeEach(() => {

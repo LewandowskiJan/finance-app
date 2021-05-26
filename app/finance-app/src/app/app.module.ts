@@ -12,7 +12,7 @@ import { localStorageSync } from 'ngrx-store-localstorage';
 
 import { AuthenticationInterceptor } from '@my-lib/util';
 
-import { MaterialModule } from '@modules/external/material/material.module';
+import { MaterialModule } from '@modules/shared/material/material.module';
 
 import { AccountModule } from '@modules/containers/account/account.module';
 import { CategoryModule } from '@modules/containers/category/category.module';

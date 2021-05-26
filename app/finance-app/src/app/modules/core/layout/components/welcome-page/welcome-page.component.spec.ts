@@ -4,7 +4,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 
 import { WelcomePageComponent } from './welcome-page.component';
 
-import 'jest';
+import {} from 'jasmine';
 
 describe('WelcomePageComponent', () => {
   let component: WelcomePageComponent;

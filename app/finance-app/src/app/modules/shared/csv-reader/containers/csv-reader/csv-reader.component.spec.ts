@@ -6,7 +6,7 @@ import { provideMockStore } from '@ngrx/store/testing';
 
 import { CsvReaderComponent } from './csv-reader.component';
 
-import 'jest';
+import {} from 'jasmine';
 
 describe('CsvReaderComponent', () => {
   let component: CsvReaderComponent;

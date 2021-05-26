@@ -3,7 +3,7 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 import { AnimationGraphComponent } from './animation-graph.component';
 
-import 'jest';
+import {} from 'jasmine';
 
 describe('AnimationGraphComponent', () => {
   let component: AnimationGraphComponent;

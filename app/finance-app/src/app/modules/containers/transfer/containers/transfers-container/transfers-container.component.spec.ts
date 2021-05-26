@@ -5,7 +5,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 
 import { TransfersContainerComponent } from './transfers-container.component';
 
-import 'jest';
+import {} from 'jasmine';
 
 describe('TransferContainerComponent', () => {
   let component: TransfersContainerComponent;

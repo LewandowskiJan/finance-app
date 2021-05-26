@@ -3,7 +3,7 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 import { SlidePanelContainerComponent } from './slide-panel-container.component';
 
-import 'jest';
+import {} from 'jasmine';
 
 describe('SlidePanelContainerComponent', () => {
   let component: SlidePanelContainerComponent;

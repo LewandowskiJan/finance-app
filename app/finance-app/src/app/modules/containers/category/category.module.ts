@@ -11,7 +11,7 @@ import { CategoriesService } from './services/categories.service';
 import { CategoryContainerComponent } from './containers/category-container/category-container.component';
 import { CategoryRoutingModule } from './category-routing.module';
 
-import { MaterialModule } from '@modules/external/material/material.module';
+import { MaterialModule } from '@modules/shared/material/material.module';
 
 import { SlidePanelModule } from '@modules/shared/slide-panel/slide-panel.module';
 

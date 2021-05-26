@@ -4,7 +4,7 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 import { TransferFormContainerComponent } from './transfer-form-container.component';
 
-import 'jest';
+import {} from 'jasmine';
 
 describe('TransferFormContainerComponent', () => {
   let component: TransferFormContainerComponent;

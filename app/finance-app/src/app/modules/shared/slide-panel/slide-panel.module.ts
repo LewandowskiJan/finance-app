@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
-import { MaterialModule } from '@modules/external/material/material.module';
+import { MaterialModule } from '@modules/shared/material/material.module';
 
 import { AddButtonComponent } from './components/add-button/add-button.component';
 import { SlidePanelComponent } from './components/slide-panel/slide-panel.component';

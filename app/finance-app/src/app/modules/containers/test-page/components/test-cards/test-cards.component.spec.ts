@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TestCardsComponent } from './test-cards.component';
 
-import 'jest';
+import {} from 'jasmine';
 
 describe('TestCardsComponent', () => {
   let component: TestCardsComponent;
