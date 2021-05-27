@@ -8,6 +8,8 @@ import { TestPageComponent } from './test-page.component';
 
 import { TestConnectionService } from '../../services/test-connection.service';
 
+import {} from 'jasmine';
+
 describe('TestPageComponent', () => {
   let component: TestPageComponent;
   let store: MockStore;

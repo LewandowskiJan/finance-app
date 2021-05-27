@@ -2,10 +2,10 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, ViewChil
 
 import { BehaviorSubject } from 'rxjs';
 
-import { ApiService } from './../../../../domain/services/api.service';
+import { HttpErrorResponse, HttpRequestMethods } from '@my-lib/util';
+
 import { CsvRecord } from '../../model/CsvRecord';
-import { HttpErrorResponse } from '@modules/domain/model/HttpErrorResponse';
-import { HttpRequestMethods } from '@modules/domain/model/HttpRequestMethods';
+import { GlobalApiService } from '../../../services/global-api.service';
 
 @Component({
   selector: 'app-csv-reader',
@@ -20,9 +20,9 @@ export class CsvReaderComponent implements OnInit {
   public records: any[] = [];
   public header: any[] = [];
   public result: any[] = [];
-  @ViewChild('csvReader') csvReader: any;
+  @ViewChild('csvReader', { static: true }) csvReader: any;
 
-  constructor(private cdr: ChangeDetectorRef, private apiService: ApiService) {}
+  constructor(private cdr: ChangeDetectorRef, private apiService: GlobalApiService) {}
 
   ngOnInit(): void {}
 

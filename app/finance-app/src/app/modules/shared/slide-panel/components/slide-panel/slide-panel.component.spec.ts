@@ -6,6 +6,8 @@ import { MockStore, provideMockStore } from '@ngrx/store/testing';
 
 import { SlidePanelComponent } from './slide-panel.component';
 
+import {} from 'jasmine';
+
 describe('SlidePanelComponent', () => {
   let component: SlidePanelComponent;
   let store: MockStore;

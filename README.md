@@ -63,6 +63,17 @@ git clone https://github.com/LewandowskiJan/finance-app.git
 
 ```
 $ cd app/finance-app/
+```
+
+- install local library
+
+```
+$ npm run lib-util:pack
+```
+
+- install deps
+
+```
 $ npm i
 ```
 
@@ -150,11 +161,40 @@ after clone completed
 $ cd finance-app
 ```
 
-##### Build, deploy and run whole app
+##### 3. After migration to local library
+
+We have to build and pack library by running:
+
+```
+$ npm run lib-util:pack
+```
+
+###### Important!
+
+If the package version was change, you have to:
+
+- update package.json
+
+```
+"dependencies": {
+    ..
+    "@my-lib/util": "file:dist/util/my-lib-util-0.0.1.tgz",
+    ..
+}
+
+```
+
+- run
+
+```
+$ npm install
+```
+
+##### 4.a Build, deploy and run whole app
 
 Run `docker-compose up --build`
 
-##### Just run the app
+##### 4.b Just run the app
 
 and then run `docker-compose up`
 

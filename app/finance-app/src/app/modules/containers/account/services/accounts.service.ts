@@ -6,14 +6,15 @@ import { map } from 'rxjs/operators';
 
 import { Update } from '@ngrx/entity';
 
-import { ApiService } from '@src/app/modules/domain/services/api.service';
-import { HttpRequestMethods } from '@src/app/modules/domain/model/HttpRequestMethods';
+import { HttpRequestMethods } from '@my-lib/util';
+
+import { GlobalApiService } from '@src/app/modules/shared/services/global-api.service';
 
 import { Account } from '../model/Account';
 
 @Injectable()
 export class AccountsService {
-  constructor(private apiService: ApiService) {}
+  constructor(private apiService: GlobalApiService) {}
 
   readAccounts(): Observable<Account[] | HttpErrorResponse> {
     return this.apiService.request<Account[], HttpErrorResponse>('account/account/all', {

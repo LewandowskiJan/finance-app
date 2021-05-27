@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output
 import { FormControl } from '@angular/forms';
 
 import { BehaviorSubject, Observable } from 'rxjs';
-import { startWith, switchMap, take, tap } from 'rxjs/operators';
+import { skip, startWith, switchMap, take, tap } from 'rxjs/operators';
 
 import { ComboBoxConfiguration } from '../../configuration/combo-box-configuration';
 import { ComboBoxConfigurationMap } from './../../configuration/configuration.map';
@@ -29,7 +29,6 @@ export class ComboBoxComponent implements OnInit {
   public options: any[] = [];
   public filteredOptions: Observable<any[]>;
   public isCreateButtonVisible: BehaviorSubject<boolean> = new BehaviorSubject(false);
-  private selected: any;
   private currentQuery: string;
   private comboBoxTypes: typeof ComboBoxType = ComboBoxType;
 
@@ -47,6 +46,7 @@ export class ComboBoxComponent implements OnInit {
   private setupSearchProcess(): Observable<any> {
     return this.myControl.valueChanges.pipe(
       startWith(''),
+      skip(3),
       switchMap((query: string) => {
         this.currentQuery = query;
         return this.comboBoxService

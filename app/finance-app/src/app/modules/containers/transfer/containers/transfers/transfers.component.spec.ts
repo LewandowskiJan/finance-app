@@ -7,6 +7,8 @@ import { MockStore, provideMockStore } from '@ngrx/store/testing';
 import { State } from '../../reducers';
 import { TransfersComponent } from './transfers.component';
 
+import {} from 'jasmine';
+
 describe('TransfersComponent', () => {
   let component: TransfersComponent;
   let store: MockStore;
@@ -14,7 +16,7 @@ describe('TransfersComponent', () => {
 
   const initialState: State = {
     transfersModule: {
-      transfersList: {
+      transfers: {
         loaded: true,
         loading: false,
         failure: false,

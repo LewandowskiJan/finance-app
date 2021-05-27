@@ -1,13 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { MaterialModule } from '@modules/external/material/material.module';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
+
+import { MaterialModule } from './../../../../shared/material/material.module';
 
 import { MockStore, provideMockStore } from '@ngrx/store/testing';
 
 import { AccountEditComponent } from './account-edit.component';
+
+import {} from 'jasmine';
 
 describe('AccountEditComponent', () => {
   let component: AccountEditComponent;

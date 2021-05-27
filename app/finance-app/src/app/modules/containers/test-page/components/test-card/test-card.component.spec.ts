@@ -3,6 +3,8 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 import { TestCardComponent } from './test-card.component';
 
+import {} from 'jasmine';
+
 describe('TestCardComponent', () => {
   let component: TestCardComponent;
   let fixture: ComponentFixture<TestCardComponent>;

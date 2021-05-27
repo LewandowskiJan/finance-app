@@ -1,21 +1,21 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-
 import { MatDialog } from '@angular/material/dialog';
 
 import { Store, select } from '@ngrx/store';
+import { Update } from '@ngrx/entity';
 
 import { Observable } from 'rxjs';
+import { take } from 'rxjs/operators';
 
 import * as fromRoot from '../../../../../reducers';
 import * as fromTransfers from '../../reducers';
 
-import { compareAndPickDifference } from '@modules/shared/utils/helpers';
+import { compareAndPickDifference } from '@my-lib/util';
 
 import { Transfer } from '../../model/Transfer';
 
 import { TransferEditComponent } from './../../components/transfer-edit/transfer-edit.component';
 import { TransfersActions } from '../../actions';
-import { Update } from '@ngrx/entity';
 
 @Component({
   selector: 'app-transfers',
@@ -36,7 +36,7 @@ export class TransfersComponent implements OnInit {
   }
 
   public showTransfer(): void {
-    this.store.dispatch(TransfersActions.readTransfers());
+    // this.store.dispatch(TransfersActions.readTransfers());
   }
 
   public deleteTransfer(id: string): void {
@@ -49,11 +49,14 @@ export class TransfersComponent implements OnInit {
       disableClose: true,
     });
 
-    dialogRef.afterClosed().subscribe((result) => {
-      if (result) {
-        this.updateTransfer(transfer, result.form.value);
-      }
-    });
+    dialogRef
+      .afterClosed()
+      .pipe(take(1))
+      .subscribe((result) => {
+        if (result) {
+          this.updateTransfer(transfer, result.form.value);
+        }
+      });
   }
 
   private updateTransfer(transfer: Transfer, updates: Transfer) {

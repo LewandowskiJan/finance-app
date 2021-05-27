@@ -9,6 +9,8 @@ import { MockStore, provideMockStore } from '@ngrx/store/testing';
 import { MainComponent } from './main.component';
 import { State } from './../../reducers';
 
+import {} from 'jasmine';
+
 describe('MainComponent', () => {
   let component: MainComponent;
   let store: MockStore;

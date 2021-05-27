@@ -4,8 +4,9 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 
-import { ApiService } from '@src/app/modules/domain/services/api.service';
-import { HttpRequestMethods } from '@src/app/modules/domain/model/HttpRequestMethods';
+import { HttpRequestMethods } from '@my-lib/util';
+
+import { GlobalApiService } from '@src/app/modules/shared/services/global-api.service';
 
 import { ConnectionStatus } from './../configuration/connection-status';
 import { MicroService } from '../configuration/microService';
@@ -30,7 +31,7 @@ export class TestConnectionService {
   private failure: number = 0;
   private checked: number = 0;
 
-  constructor(private apiService: ApiService) {}
+  constructor(private apiService: GlobalApiService) {}
 
   public reset(): void {
     this.failure = 0;
@@ -48,22 +49,20 @@ export class TestConnectionService {
   }
 
   private checkConnection(endpoint: string, url: string): Observable<ConnectionStatus> {
-    return this.apiService
-      .request<ConnectionStatus, HttpErrorResponse>(url, { method: HttpRequestMethods.GET, endpoint: endpoint })
-      .pipe(
-        catchError(() => {
-          this.failure++;
-          this.apiFailed.next(this.failure);
-          return [{ connectionStatus: Status.ERROR }];
-        }),
-        tap(() => {
-          this.checked++;
-          this.apiChecked.next(this.checked);
-        }),
-        map((result: { connectionStatus: Status }) => {
-          return result.connectionStatus ? { connectionStatus: result.connectionStatus } : { connectionStatus: Status.ERROR };
-        })
-      ) as Observable<{
+    return this.apiService.request<ConnectionStatus, HttpErrorResponse>(url, { method: HttpRequestMethods.GET, endpoint: endpoint }).pipe(
+      catchError(() => {
+        this.failure++;
+        this.apiFailed.next(this.failure);
+        return [{ connectionStatus: Status.ERROR }];
+      }),
+      tap(() => {
+        this.checked++;
+        this.apiChecked.next(this.checked);
+      }),
+      map((result: { connectionStatus: Status }) => {
+        return result.connectionStatus ? { connectionStatus: result.connectionStatus } : { connectionStatus: Status.ERROR };
+      })
+    ) as Observable<{
       connectionStatus: Status;
     }>;
   }

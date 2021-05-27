@@ -1,18 +1,20 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "experimentalDecorators": true,
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
     "paths": {
       "@modules/*": ["src/app/modules/*"],
       "@environments/*": ["src/environments/*"],
       "@app/*": ["src/app/*"],
-      "@src/*": ["src/*"]
+      "@src/*": ["src/*"],
+      "@my-lib/util/src/lib/*": ["projects/util/*", "projects/util"],
+      "@my-lib/util": ["dist/util/*", "dist/util"]
     },
     "sourceMap": true,
     "declaration": false,
     "downlevelIteration": true,
-    "experimentalDecorators": true,
     "moduleResolution": "node",
     "importHelpers": true,
     "target": "es2015",

@@ -1,5 +1,6 @@
-import { sortByKeyAsc, sortByKeyDesc } from './sort-functions';
+import { sortByKeyAsc, sortByKeyDesc } from './sort';
 
+import {} from 'jasmine';
 interface TestObject {
   name: string;
   age: string;
