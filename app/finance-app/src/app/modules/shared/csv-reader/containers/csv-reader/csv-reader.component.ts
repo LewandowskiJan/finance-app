@@ -20,7 +20,7 @@ export class CsvReaderComponent implements OnInit {
   public records: any[] = [];
   public header: any[] = [];
   public result: any[] = [];
-  @ViewChild('csvReader') csvReader: any;
+  @ViewChild('csvReader', { static: true }) csvReader: any;
 
   constructor(private cdr: ChangeDetectorRef, private apiService: GlobalApiService) {}
 
