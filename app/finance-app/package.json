@@ -9,7 +9,9 @@
     "lint": "eslint src/app/** --ext ts,json --fix",
     "e2e": "ng e2e",
     "postinstall": "ngcc",
-    "build-lib:util": "ng build util"
+    "lib-util:build": "ng build util",
+    "lib-util:watch": "ng build util --watch",
+    "lib-util:pack": "ng build util && cd dist/util && npm pack"
   },
   "private": true,
   "dependencies": {
@@ -25,6 +27,7 @@
     "@angular/platform-browser": "~12.0.0",
     "@angular/platform-browser-dynamic": "~12.0.0",
     "@angular/router": "~12.0.0",
+    "@my-lib/util": "file:dist/util/my-lib-util-0.0.1.tgz",
     "@ngrx/component": "^12.0.0",
     "@ngrx/component-store": "~12.0.0",
     "@ngrx/data": "~12.0.0",
