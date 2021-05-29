@@ -5,26 +5,12 @@
     {
       "files": ["src/*.ts"],
       "parserOptions": {
-        "project": ["tsconfig.lib.json", "tsconfig.spec.json"],
+        "project": ["app/finance-app/projects/util/tsconfig.lib.json", "app/finance-app/projects/util/tsconfig.spec.json"],
         "createDefaultProgram": true
       },
       "rules": {
-        "@angular-eslint/directive-selector": [
-          "error",
-          {
-            "type": "attribute",
-            "prefix": "lib",
-            "style": "camelCase"
-          }
-        ],
-        "@angular-eslint/component-selector": [
-          "error",
-          {
-            "type": "element",
-            "prefix": "lib",
-            "style": "kebab-case"
-          }
-        ]
+        "@angular-eslint/directive-selector": "off",
+        "@angular-eslint/component-selector": "off"
       }
     },
     {
