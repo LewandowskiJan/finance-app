@@ -1,9 +1,28 @@
 {
+  "scripts": {
+    "prepare": "husky install",
+    "postinstall": "husky install",
+    "release:major": "changelog -M && git add CHANGELOG.md && git commit -m 'updated CHANGELOG.md' && npm version major && git push origin && git push origin --tags",
+    "release:minor": "changelog -m && git add CHANGELOG.md && git commit -m 'updated CHANGELOG.md' && npm version minor && git push origin && git push origin --tags",
+    "release:patch": "changelog -p && git add CHANGELOG.md && git commit -m 'updated CHANGELOG.md' && npm version patch && git push origin && git push origin --tags"
+  },
   "devDependencies": {
     "eslint": "^7.20.0",
     "eslint-config-google": "^0.14.0",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-promise": "^4.3.1"
-  }
+    "eslint-plugin-promise": "^4.3.1",
+    "@commitlint/cli": "^8.3.5",
+    "@commitlint/config-conventional": "^8.3.4",
+    "generate-changelog": "^1.8.0",
+    "husky": "~6.0.0"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-commit": "cd app/finance-app/ && ng eslint && ng test",
+      "pre-push": "cd app/finance-app/ && ng build --aot true"
+    }
+  },
+  "version": "1.0.1"
 }
