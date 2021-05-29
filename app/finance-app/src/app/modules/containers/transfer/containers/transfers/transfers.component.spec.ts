@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { RouterTestingModule } from '@angular/router/testing';
 
 import { MockStore, provideMockStore } from '@ngrx/store/testing';
 
@@ -53,7 +54,7 @@ describe('TransfersComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [TransfersComponent],
-      imports: [MatDialogModule],
+      imports: [MatDialogModule, RouterTestingModule],
       providers: [provideMockStore({ initialState }), { provide: MAT_DIALOG_DATA, useValue: {} }, { provide: MatDialogRef, useValue: {} }],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
     }).compileComponents();

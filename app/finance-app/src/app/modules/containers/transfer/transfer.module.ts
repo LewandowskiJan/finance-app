@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import { EffectsModule } from '@ngrx/effects';
+import { ReactiveComponentModule } from '@ngrx/component';
 import { StoreModule } from '@ngrx/store';
 
 import { ComboBoxModule } from '../../shared/combo-box/combo-box.module';
@@ -15,6 +16,7 @@ import { TransfersContainerComponent } from './containers/transfers-container/tr
 import { TransfersEffects } from './effects/transfers.effects';
 
 import * as fromTransfer from './reducers';
+import { BannerModule } from '@modules/shared/banner/banner.module';
 import { TransferAddComponent } from './components/transfer-add/transfer-add.component';
 import { TransferEditComponent } from './components/transfer-edit/transfer-edit.component';
 import { TransferFormContainerComponent } from './containers/transfer-form-container/transfer-form-container.component';
@@ -31,7 +33,6 @@ import { TransfersComponent } from './containers/transfers/transfers.component';
     TransferLineAddComponent,
   ],
   imports: [
-    RouterModule,
     TransferRoutingModule,
     CommonModule,
     FormsModule,
@@ -41,6 +42,8 @@ import { TransfersComponent } from './containers/transfers/transfers.component';
     StoreModule.forFeature(fromTransfer.transfersModuleFeatureKey, fromTransfer.reducers),
     EffectsModule.forFeature([TransfersEffects]),
     SlidePanelModule,
+    BannerModule,
+    ReactiveComponentModule,
   ],
   bootstrap: [TransfersContainerComponent],
 })

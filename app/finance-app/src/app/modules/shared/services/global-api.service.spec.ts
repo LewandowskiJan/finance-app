@@ -7,7 +7,7 @@ import { ApiService, ApiServiceMock } from './../../../../../projects/util/src/l
 
 import { GlobalApiService } from './global-api.service';
 
-import 'jasmine';
+import {} from 'jasmine';
 
 describe('GlobalApiService', () => {
   let service: GlobalApiService;

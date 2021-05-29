@@ -1,7 +1,14 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
+import { Store } from '@ngrx/store';
+
+import { Observable } from 'rxjs';
+
 import { routeTransitionAnimations } from '../../../../shared/animations/route-transition-animations';
+
+import * as fromRoot from '@app/reducers';
+import * as fromTransfers from '../../reducers';
 
 @Component({
   selector: 'app-transfer-container',
@@ -11,9 +18,13 @@ import { routeTransitionAnimations } from '../../../../shared/animations/route-t
   animations: [routeTransitionAnimations],
 })
 export class TransfersContainerComponent implements OnInit {
-  constructor() {}
+  public errors$: Observable<boolean>;
 
-  ngOnInit(): void {}
+  constructor(private store: Store<fromRoot.State & fromTransfers.State>) {}
+
+  ngOnInit(): void {
+    this.errors$ = this.store.select(fromTransfers.selectError);
+  }
 
   public prepareRoute(outlet: RouterOutlet) {
     return outlet && outlet.activatedRouteData && outlet.activatedRouteData['animationState'];

@@ -48,7 +48,7 @@ describe('CategoryContainerComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [CategoryContainerComponent],
-      imports: [ReactiveFormsModule, MaterialModule, NoopAnimationsModule, RouterTestingModule],
+      imports: [MaterialModule, NoopAnimationsModule, RouterTestingModule],
       providers: [provideMockStore({ initialState })],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
     }).compileComponents();

@@ -1,5 +1,12 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 
+import { Observable } from 'rxjs';
+
+import { Store, select } from '@ngrx/store';
+
+import * as fromAccounts from '../../reducers';
+import * as fromRoot from '@app/reducers';
+
 @Component({
   selector: 'app-account-container',
   templateUrl: './account-container.component.html',
@@ -7,7 +14,11 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AccountContainerComponent implements OnInit {
-  constructor() {}
+  public errors$: Observable<boolean>;
 
-  ngOnInit(): void {}
+  constructor(private store: Store<fromRoot.State & fromAccounts.State>) {}
+
+  ngOnInit(): void {
+    this.errors$ = this.store.pipe(select(fromAccounts.selectError));
+  }
 }
