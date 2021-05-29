@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-slide-panel-container',
@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./slide-panel-container.component.scss'],
 })
 export class SlidePanelContainerComponent implements OnInit {
+  @Output() public formSubmitEmitter: EventEmitter<Account> = new EventEmitter();
+
   public isOpen = false;
 
   constructor() {}
@@ -14,5 +16,9 @@ export class SlidePanelContainerComponent implements OnInit {
 
   public toggle() {
     this.isOpen = !this.isOpen;
+  }
+
+  public emitFormValue(formValue: any) {
+    this.formSubmitEmitter.emit(formValue);
   }
 }

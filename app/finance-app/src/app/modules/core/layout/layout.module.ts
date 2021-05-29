@@ -6,6 +6,8 @@ import { RouterModule } from '@angular/router';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 
+import { BannerModule } from '@modules/shared/banner/banner.module';
+import { CsvReaderModule } from '@modules/shared/csv-reader/csv-reader.module';
 import { MaterialModule } from '@modules/shared/material/material.module';
 
 import { AnimationGraphComponent } from './components/animation-graph/animation-graph.component';
@@ -17,7 +19,6 @@ import { MainComponent } from './containers/main/main.component';
 import { SideNavigationComponent } from './components/side-navigation/side-navigation.component';
 
 import { AlertDialogComponent } from './components/alert-dialog/alert-dialog.component';
-import { CsvReaderModule } from './../../shared/csv-reader/csv-reader.module';
 import { WelcomePageComponent } from './components/welcome-page/welcome-page.component';
 
 import * as fromLayout from './reducers';
@@ -40,6 +41,7 @@ import * as fromLayout from './reducers';
     CsvReaderModule,
     EffectsModule.forFeature([LayoutEffect]),
     StoreModule.forFeature(fromLayout.layoutModuleFeatureKey, fromLayout.reducers),
+    BannerModule,
   ],
   providers: [LayoutService],
 })

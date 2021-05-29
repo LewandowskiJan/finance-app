@@ -4,24 +4,26 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import { EffectsModule } from '@ngrx/effects';
+import { ReactiveComponentModule } from '@ngrx/component';
 import { StoreModule } from '@ngrx/store';
 
 import { CategoriesEffects } from './effects/categories.effects';
-import { CategoriesService } from './services/categories.service';
 import { CategoryContainerComponent } from './containers/category-container/category-container.component';
 import { CategoryRoutingModule } from './category-routing.module';
+import { CategorySlidePanelConfiguration } from './configuration/category-slide-panel-configuration';
 
+import { BannerModule } from '@modules/shared/banner/banner.module';
 import { MaterialModule } from '@modules/shared/material/material.module';
-
 import { SlidePanelModule } from '@modules/shared/slide-panel/slide-panel.module';
 
 import * as fromCategories from './reducers';
+import { CategoryListComponent } from './components/category-list/category-list.component';
+import { SLIDE_PANEL_CONFIGURATION_TOKEN } from '@modules/shared/slide-panel/token/slide-panel-configuration-token';
 
 @NgModule({
-  declarations: [CategoryContainerComponent],
+  declarations: [CategoryContainerComponent, CategoryListComponent],
   exports: [],
   imports: [
-    RouterModule,
     CategoryRoutingModule,
     CommonModule,
     FormsModule,
@@ -30,7 +32,9 @@ import * as fromCategories from './reducers';
     StoreModule.forFeature(fromCategories.categoriesModuleFeatureKey, fromCategories.reducers),
     EffectsModule.forFeature([CategoriesEffects]),
     SlidePanelModule,
+    ReactiveComponentModule,
+    BannerModule,
   ],
-  providers: [CategoriesService],
+  providers: [{ provide: SLIDE_PANEL_CONFIGURATION_TOKEN, useValue: CategorySlidePanelConfiguration }],
 })
 export class CategoryModule {}

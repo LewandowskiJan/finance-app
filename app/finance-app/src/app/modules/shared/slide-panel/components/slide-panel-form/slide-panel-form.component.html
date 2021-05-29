@@ -1,0 +1,27 @@
+<form *ngIf="configuration" [formGroup]="slidePanelForm" #form="ngForm" (ngSubmit)="create()">
+  <mat-form-field class="icon-field" appearance="fill" *ngIf="configuration.utfIcon.enable">
+    <mat-label>{{ configuration.utfIcon.label }}</mat-label>
+    <mat-select formControlName="utfIcon">
+      <mat-option *ngFor="let icon of icons" [value]="icon">
+        <span [innerHTML]="icon"></span>
+      </mat-option>
+    </mat-select>
+    <mat-error *ngIf="utfIcon?.hasError('required')">You must make a selection</mat-error>
+  </mat-form-field>
+
+  <mat-form-field *ngIf="configuration.name.enable">
+    <mat-label>{{ configuration.name.label }}</mat-label>
+    <input formControlName="name" matInput placeholder="Ex. Food" />
+    <mat-error *ngIf="name.hasError('required')"> Name is <strong>required</strong> </mat-error>
+  </mat-form-field>
+  <mat-form-field *ngIf="configuration.alias.enable">
+    <mat-label>{{ configuration.alias.label }}</mat-label>
+    <input formControlName="alias" matInput placeholder="Ex. Food" />
+    <mat-error *ngIf="alias.hasError('required')"> Alias is <strong>required</strong> </mat-error>
+  </mat-form-field>
+  <div class="checkbox-field" *ngIf="configuration.isExternal.enable">
+    <mat-checkbox class="example-margin" formControlName="isExternal"></mat-checkbox>
+    <mat-label>{{ configuration.isExternal.label }}</mat-label>
+  </div>
+  <button color="accent" class="account-add-button" mat-raised-button type="submit">&#9203; {{ configuration.button.label }}</button>
+</form>

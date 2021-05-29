@@ -1,5 +1,5 @@
 <div class="list-container">
-  <button mat-button [routerLink]="['/transfer/add']">Add transfer</button>
+  <a mat-button routerLink="/transfer/add">Add transfer</a>
   <mat-card class="transfer-card" *ngFor="let transfer of transfers$ | async">
     <mat-card-header>
       <mat-card-title

@@ -1,10 +1,10 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { MatDialog } from '@angular/material/dialog';
 
 import { Store, select } from '@ngrx/store';
+import { Update } from '@ngrx/entity';
 
 import { Observable } from 'rxjs';
 
@@ -16,7 +16,6 @@ import { compareAndPickDifference } from '@my-lib/util';
 import { Account } from '../../model/Account';
 import { AccountEditComponent } from './../account-edit/account-edit.component';
 import { AccountsActions } from '../../actions';
-import { Update } from '@ngrx/entity';
 
 @Component({
   selector: 'app-accounts',
@@ -25,30 +24,10 @@ import { Update } from '@ngrx/entity';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AccountsComponent implements OnInit {
-  public accountForm: FormGroup;
   public accounts$: Observable<Account[]>;
 
-  constructor(
-    public dialog: MatDialog,
-    private store: Store<fromRoot.State & fromAccounts.State>,
-    private formBuilder: FormBuilder,
-    private router: Router
-  ) {
+  constructor(public dialog: MatDialog, private store: Store<fromRoot.State & fromAccounts.State>, private router: Router) {
     this.accounts$ = this.store.pipe(select(fromAccounts.selectAccountsCollection));
-
-    this.buildForm();
-  }
-
-  get name() {
-    return this.accountForm.get('name');
-  }
-
-  get alias() {
-    return this.accountForm.get('alias');
-  }
-
-  get isExternal() {
-    return this.accountForm.get('name');
   }
 
   ngOnInit(): void {
@@ -59,30 +38,16 @@ export class AccountsComponent implements OnInit {
     this.store.dispatch(AccountsActions.readAccounts());
   }
 
-  public createAccount(): void {
-    this.accountForm.markAsTouched();
-    this.accountForm.updateValueAndValidity();
-    if (!this.accountForm.valid) {
-      return;
-    }
-
+  public createAccount(formValue: Account): void {
     this.store.dispatch(
       AccountsActions.createAccount({
-        account: this.accountForm.getRawValue(),
+        account: formValue,
       })
     );
   }
 
   public deleteAccount(id: string): void {
     this.store.dispatch(AccountsActions.deleteAccount({ id }));
-  }
-
-  private buildForm(): void {
-    this.accountForm = this.formBuilder.group({
-      name: ['', Validators.required],
-      alias: ['', Validators.required],
-      isExternal: [false, Validators.required],
-    });
   }
 
   openEditAccountDialog(account: Account) {

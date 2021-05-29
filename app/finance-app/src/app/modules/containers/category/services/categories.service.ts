@@ -10,7 +10,7 @@ import { GlobalApiService } from '@src/app/modules/shared/services/global-api.se
 
 import { Category } from '../model/Category';
 
-@Injectable()
+@Injectable({ providedIn: 'any' })
 export class CategoriesService {
   constructor(private apiService: GlobalApiService) {}
 

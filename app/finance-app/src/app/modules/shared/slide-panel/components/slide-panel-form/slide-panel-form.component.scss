@@ -1,0 +1,12 @@
+form {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  gap: 15px;
+  flex-wrap: wrap;
+  padding-right: 80px;
+
+  .icon-field {
+    width: 120px;
+  }
+}

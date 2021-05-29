@@ -12,7 +12,9 @@ import { GlobalApiService } from '@src/app/modules/shared/services/global-api.se
 
 import { Account } from '../model/Account';
 
-@Injectable()
+@Injectable({
+  providedIn: 'any',
+})
 export class AccountsService {
   constructor(private apiService: GlobalApiService) {}
 

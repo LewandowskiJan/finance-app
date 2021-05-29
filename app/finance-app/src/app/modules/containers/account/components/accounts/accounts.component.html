@@ -1,33 +1,18 @@
 <div class="list-container">
-  <mat-card class="account-card" *ngFor="let account of accounts$ | async">
-    <mat-card-header>
-      <mat-card-title>{{ account?.name }} </mat-card-title>
-      <mat-card-subtitle>added: {{ account?.dateOfCreate | date: 'YYYY-MM-dd' }}</mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-content>{{ account.balance }} {{ account.currency }}</mat-card-content>
-    <mat-card-actions>
-      <button mat-button (click)="openEditAccountDialog(account)">EDIT</button>
-      <button mat-button (click)="deleteAccount(account?._id)">DELETE</button>
-    </mat-card-actions>
-  </mat-card>
+  <ng-container *ngrxLet="accounts$ as accounts; let c = $complete">
+    <app-no-data-info-banner *ngIf="c && accounts.length === 0"></app-no-data-info-banner>
+    <mat-card class="account-card" *ngFor="let account of accounts">
+      <mat-card-header>
+        <mat-card-title>{{ account?.name }} </mat-card-title>
+        <mat-card-subtitle>added: {{ account?.dateOfCreate | date: 'YYYY-MM-dd' }}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>{{ account.balance }} {{ account.currency }}</mat-card-content>
+      <mat-card-actions>
+        <button mat-button (click)="openEditAccountDialog(account)">EDIT</button>
+        <button mat-button (click)="deleteAccount(account?._id)">DELETE</button>
+      </mat-card-actions>
+    </mat-card>
+  </ng-container>
 </div>
 
-<app-slide-panel-container>
-  <form class="account-form" [formGroup]="accountForm" #form="ngForm" (ngSubmit)="createAccount()">
-    <mat-form-field>
-      <mat-label>Account Name</mat-label>
-      <input formControlName="name" matInput placeholder="Ex. Food" />
-      <mat-error *ngIf="name.hasError('required')"> Name is <strong>required</strong> </mat-error>
-    </mat-form-field>
-    <mat-form-field>
-      <mat-label>Alias Name</mat-label>
-      <input formControlName="alias" matInput placeholder="Ex. Food" />
-      <mat-error *ngIf="alias.hasError('required')"> Alias is <strong>required</strong> </mat-error>
-    </mat-form-field>
-    <div class="checkbox-field">
-      <mat-checkbox class="example-margin" formControlName="isExternal"></mat-checkbox>
-      <mat-label>Is external</mat-label>
-    </div>
-    <button color="accent" class="account-add-button" mat-raised-button type="submit">&#9203; Add account</button>
-  </form>
-</app-slide-panel-container>
+<app-slide-panel-container (formSubmitEmitter)="createAccount($event)"> </app-slide-panel-container>
