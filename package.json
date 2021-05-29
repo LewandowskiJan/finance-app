@@ -23,5 +23,6 @@
       "pre-commit": "cd app/finance-app/ && ng eslint && ng test",
       "pre-push": "cd app/finance-app/ && ng build --aot true"
     }
-  }
+  },
+  "version": "1.0.0"
 }
