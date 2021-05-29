@@ -8,7 +8,7 @@
 
 ### Others
 
-- [Contributors (commit rules)](./github/contributors.md)
+- [Contributors (commit rules)](./github/CONTRIBUTORS.md)
 
 ## General info
 
