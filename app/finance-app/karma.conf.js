@@ -31,14 +31,18 @@ module.exports = function (config) {
       subdir: '.',
       reporters: [{ type: 'html' }, { type: 'text-summary' }],
     },
+    browserConsoleLogOptions: {
+      level: 'log',
+    },
     reporters: ['progress', 'kjhtml'],
     port: 9876,
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,
-    browsers: ['ChromeHeadless'],
-    flags: ['--no-sandbox'],
-    singleRun: true,
+    browsers: ['Chrome'],
+    // browsers: ['ChromeHeadless'],
+    // flags: ['--no-sandbox'],
+    singleRun: false,
     restartOnFileChange: true,
   });
 };

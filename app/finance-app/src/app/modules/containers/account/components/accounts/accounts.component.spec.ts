@@ -7,14 +7,17 @@ import { RouterTestingModule } from '@angular/router/testing';
 
 import { MockStore, provideMockStore } from '@ngrx/store/testing';
 
+import { mapObjectToArray } from '@my-lib/util';
+
 import { MaterialModule } from './../../../../shared/material/material.module';
 import { SLIDE_PANEL_CONFIGURATION_TOKEN } from './../../../../shared/slide-panel/token/slide-panel-configuration-token';
 import { SlidePanelConfiguration } from '../../../../shared/slide-panel/model/slide-panel-configuration';
 
+import * as fromAccounts from '../../reducers';
 import { AccountsComponent } from './accounts.component';
-import { State } from './../../reducers';
 
 import {} from 'jasmine';
+import { cold } from 'jasmine-marbles';
 
 const slidePanelConfigurationMock: SlidePanelConfiguration = {
   name: { enable: true, label: 'Account name' },
@@ -29,7 +32,7 @@ describe('AccountsComponent', () => {
   let store: MockStore;
   let fixture: ComponentFixture<AccountsComponent>;
 
-  const initialState: State = {
+  const initialState: fromAccounts.State = {
     accountsModule: {
       accountsList: {
         loaded: true,
@@ -94,5 +97,13 @@ describe('AccountsComponent', () => {
     component.ngOnInit();
     fixture.detectChanges();
     expect(component).toBeTruthy();
+  });
+
+  it('should get dispatch data', () => {
+    const values = {
+      a: mapObjectToArray(initialState.accountsModule.accountsList.entities),
+    };
+
+    expect(component.accounts$).toBeObservable(cold('(a)', values));
   });
 });
