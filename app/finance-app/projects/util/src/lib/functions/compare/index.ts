@@ -1,1 +1,1 @@
-export { compareAndPickDifference, isNullUndefined, notNull } from './compare';
+export { compareAndPickDifference, isNullUndefined, notNull } from './compare.functions';

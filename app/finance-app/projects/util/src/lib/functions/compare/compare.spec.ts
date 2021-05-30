@@ -1,4 +1,4 @@
-import { compareAndPickDifference, isNullUndefined, notNull } from './compare';
+import { compareAndPickDifference, isNullUndefined, notNull } from './compare.functions';
 
 import {} from 'jasmine';
 interface TestObject {

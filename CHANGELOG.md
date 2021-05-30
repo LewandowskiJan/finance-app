@@ -1,4 +1,7 @@
-#### 1.0.2 (2021-05-29)
+#### 1.0.2 (2021-05-30)
+
+[lib-util] added map-object-to-array-function with jsdocs
+[finnace-app] account module added test
 
 ##### Chores
 

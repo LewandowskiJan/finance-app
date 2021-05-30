@@ -1,5 +1,6 @@
+import { CUSTOM_ELEMENTS_SCHEMA, DebugElement } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { By } from '@angular/platform-browser';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterTestingModule } from '@angular/router/testing';
 
@@ -7,7 +8,8 @@ import { MockStore, provideMockStore } from '@ngrx/store/testing';
 
 import { AccountContainerComponent } from './account-container.component';
 import { MaterialModule } from '../../../../shared/material/material.module';
-import { State } from '../../reducers';
+
+import * as fromAccounts from '../../reducers';
 
 import {} from 'jasmine';
 
@@ -16,7 +18,7 @@ describe('AccountContainerComponent', () => {
   let store: MockStore;
   let fixture: ComponentFixture<AccountContainerComponent>;
 
-  const initialState: State = {
+  const initialState: fromAccounts.State = {
     accountsModule: {
       accountsList: {
         loaded: true,
@@ -44,11 +46,35 @@ describe('AccountContainerComponent', () => {
 
   beforeEach(() => {
     fixture = TestBed.createComponent(AccountContainerComponent);
-    component = fixture.componentInstance;
+    component = fixture.debugElement.componentInstance;
     fixture.detectChanges();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should select error and display banner', () => {
+    fromAccounts.selectError.setResult(true);
+
+    store.refreshState();
+    fixture.detectChanges();
+
+    const component: DebugElement = fixture.debugElement;
+    const banner = component.query(By.css('app-network-error-banner'));
+
+    expect(banner).toBeDefined();
+  });
+
+  it('should not select error and not display banner', () => {
+    fromAccounts.selectError.setResult(false);
+
+    store.refreshState();
+    fixture.detectChanges();
+
+    const component: DebugElement = fixture.debugElement;
+    const banner = component.query(By.css('app-network-error-banner'));
+
+    expect(banner).toBeNull();
   });
 });
