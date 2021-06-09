@@ -1,4 +1,4 @@
-import { TransferLine } from './TransferLine';
+import { TransferLine } from './transfer-line';
 export interface Transfer {
   _id: string;
   currency: string;

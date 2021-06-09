@@ -12,7 +12,7 @@ import * as fromTransfers from '../../reducers';
 
 import { compareAndPickDifference } from '@my-lib/util';
 
-import { Transfer } from '../../model/Transfer';
+import { Transfer } from '../../model/transfer';
 
 import { TransferEditComponent } from './../../components/transfer-edit/transfer-edit.component';
 import { TransfersActions } from '../../actions';
@@ -36,7 +36,7 @@ export class TransfersComponent implements OnInit {
   }
 
   public showTransfer(): void {
-    // this.store.dispatch(TransfersActions.readTransfers());
+    this.store.dispatch(TransfersActions.readTransfers());
   }
 
   public deleteTransfer(id: string): void {

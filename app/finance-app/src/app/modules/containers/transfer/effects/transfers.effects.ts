@@ -6,7 +6,7 @@ import { Update } from '@ngrx/entity';
 import { catchError, map, switchMap } from 'rxjs/operators';
 import { of } from 'rxjs';
 
-import { Transfer } from '../model/Transfer';
+import { Transfer } from '../model/transfer';
 import { TransfersActions } from '../actions';
 import { TransfersService } from '../services/transfers.service';
 

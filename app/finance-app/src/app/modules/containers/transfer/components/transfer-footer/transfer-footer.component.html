@@ -1,0 +1,19 @@
+<mat-toolbar color="primary" class="transfer-value-left-banner">
+  <span>Left: {{ restOfTransferValue }}</span>
+
+  <div class="button-footer">
+    <button mat-raised-button color="accent" type="button" aria-label="Add transfer line button" (click)="addTransferLineForm()">
+      <mat-icon>plus_one</mat-icon>
+    </button>
+
+    <button
+      mat-raised-button
+      color="accent"
+      aria-label="Add transfer button"
+      type="submit"
+      [disabled]="!transferForm.valid || !transferLines.length"
+    >
+      Submit
+    </button>
+  </div>
+</mat-toolbar>

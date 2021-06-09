@@ -10,7 +10,7 @@ import { HttpRequestMethods } from '@my-lib/util';
 
 import { GlobalApiService } from '@src/app/modules/shared/services/global-api.service';
 
-import { Transfer } from '../model/Transfer';
+import { Transfer } from '../model/transfer';
 
 @Injectable({ providedIn: 'any' })
 export class TransfersService {

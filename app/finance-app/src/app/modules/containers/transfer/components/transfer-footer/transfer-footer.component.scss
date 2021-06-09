@@ -1,0 +1,20 @@
+    :host {
+      display: flex;
+      align-content: flex-end;
+
+      position: sticky;
+      bottom: 0px;
+      width: 100%;
+
+      .transfer-value-left-banner {
+        .button-footer {
+          display: flex;
+          justify-content: flex-end;
+          width: 100%;
+
+          button {
+            margin-left: 10px;
+          }
+        }
+      }
+    }

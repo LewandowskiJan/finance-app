@@ -1,26 +1,74 @@
-<a mat-button routerLink="/transfer/added-list">Transfers</a>
+<app-configuration-details></app-configuration-details>
+<form class="main-form" [formGroup]="transferForm">
+  <div class="transfer-form-container" *ngrxLet="configuration$ as configuration">
+    <mat-accordion class="headers-align">
+      <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
+        <mat-expansion-panel-header>
+          <mat-panel-title> Configure transfer </mat-panel-title>
+          <mat-panel-description>
+            Transfer details
+            <mat-icon>payment</mat-icon>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
 
-<mat-card class="account-details-container">
-  <div class="account-details">
-    <app-combo-box
-      (selectedValue)="selectedAccountFrom($event)"
-      [comboBoxProcessType]="comboBoxProcessType.ACCOUNT_SEARCH"
-      [comboBoxType]="comboBoxType.SEARCH_AND_FIND"
-      [label]="'From Account'"
-    ></app-combo-box>
-  </div>
-  <div class="account-details">
-    <app-combo-box
-      (selectedValue)="selectedAccountTo($event)"
-      [comboBoxProcessType]="comboBoxProcessType.ACCOUNT_SEARCH"
-      [comboBoxType]="comboBoxType.SEARCH_AND_FIND"
-      [label]="'To Account'"
-    ></app-combo-box>
-  </div>
-</mat-card>
+        <app-configuration-form [configurationForm]="transferConfigurationForm"></app-configuration-form>
 
-<app-transfer-add
-  [transferForm]="transferForm"
-  [balanceTo]="transferToDetails?.balance"
-  [balanceFrom]="transferFromDetails?.balance"
-></app-transfer-add>
+        <mat-action-row>
+          <button mat-button color="primary" type="button" (click)="nextStep()">Next</button>
+        </mat-action-row>
+      </mat-expansion-panel>
+
+      <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle>
+        <mat-expansion-panel-header>
+          <mat-panel-title> Destination </mat-panel-title>
+          <mat-panel-description>
+            To account
+            <mat-icon>credit_score</mat-icon>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+
+        <app-transfer-add [transferForm]="transferDestinationForm"></app-transfer-add>
+
+        <mat-action-row>
+          <button mat-button color="warn" type="button" (click)="prevStep()">Previous</button>
+          <button mat-button color="primary" type="button" (click)="nextStep()">Next</button>
+        </mat-action-row>
+      </mat-expansion-panel>
+
+      <mat-expansion-panel [expanded]="step === 2" (opened)="setStep(2)" hideToggle>
+        <mat-expansion-panel-header>
+          <mat-panel-title> Transfer lines </mat-panel-title>
+          <mat-panel-description>
+            Categorize your transfer
+            <mat-icon>payments</mat-icon>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+
+        <div class="transfer-lines-container">
+          <div class="transfer-line-forms">
+            <div class="transfer-line-form" *ngFor="let transferLine of transferLinesForm.controls; index as i">
+              <app-transfer-line-add
+                [index]="i"
+                [transferLineForm]="transferLine"
+                (deleteLine)="removeTransferLine(i)"
+              ></app-transfer-line-add>
+            </div>
+          </div>
+        </div>
+
+        <mat-action-row>
+          <button mat-button color="warn" (click)="prevStep()">Previous</button>
+          <button mat-button color="primary" (click)="nextStep()">End</button>
+        </mat-action-row>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+  <div class="divider"></div>
+
+  <app-transfer-footer
+    [transferForm]="transferForm"
+    [transferLines]="transferLinesForm"
+    (addTransferLine)="addTransferLine()"
+    class="transfer-footer"
+  ></app-transfer-footer>
+</form>

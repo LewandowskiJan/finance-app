@@ -1,0 +1,11 @@
+.form-container {
+  padding: 5px 0;
+}
+
+mat-form-field {
+  width: 100%;
+
+  @media (min-width: 600px) {
+    width: 201px;
+  }
+}

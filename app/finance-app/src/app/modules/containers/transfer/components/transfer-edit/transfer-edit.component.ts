@@ -1,10 +1,10 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-import { MAT_DATE_FORMATS, MAT_DATE_LOCALE, MatDateFormats } from '@angular/material/core';
+import { MAT_DATE_LOCALE, MatDateFormats } from '@angular/material/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
-import { Transfer } from '../../model/Transfer';
+import { Transfer } from '../../model/transfer';
 
 export const MY_FORMATS: MatDateFormats = {
   parse: {
@@ -23,7 +23,6 @@ export const MY_FORMATS: MatDateFormats = {
   templateUrl: './transfer-edit.component.html',
   styleUrls: ['./transfer-edit.component.scss'],
   providers: [
-    // { provide: MAT_DATE_FORMATS, useValue: MY_FORMATS },
     { provide: MAT_DATE_LOCALE, useValue: 'en-GB' },
   ],
 })

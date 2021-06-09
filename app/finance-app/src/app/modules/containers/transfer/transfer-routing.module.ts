@@ -11,7 +11,7 @@ const routes: Routes = [
     component: TransfersContainerComponent,
     children: [
       { path: 'add', component: TransferFormContainerComponent, data: { animationState: 'One' } },
-      { path: 'added-list', component: TransfersComponent, data: { animationState: 'Two' } },
+      { path: 'list', component: TransfersComponent, data: { animationState: 'Two' } },
     ],
   },
   {

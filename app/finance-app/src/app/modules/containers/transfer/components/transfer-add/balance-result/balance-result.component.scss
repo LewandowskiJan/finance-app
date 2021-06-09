@@ -1,0 +1,25 @@
+:host {
+  display: flex;
+}
+
+.account-balance-to,
+.account-balance-from {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 30px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding: 5px;
+  text-align: center;
+}
+
+.account-balance-to {
+  color: green;
+}
+
+.account-balance-from {
+  color: rgb(184, 0, 0);
+}
