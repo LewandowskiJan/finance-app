@@ -1,4 +1,4 @@
-import { sortByKeyAsc, sortByKeyDesc } from './sort';
+import { sortByKeyAsc, sortByKeyDesc } from './sort.functions';
 
 import {} from 'jasmine';
 interface TestObject {
