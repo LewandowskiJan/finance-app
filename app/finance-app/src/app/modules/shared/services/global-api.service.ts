@@ -1,19 +1,20 @@
 import { Injectable } from '@angular/core';
 
+import { catchError } from 'rxjs/operators';
+
 import { Store } from '@ngrx/store';
 
 import { Observable, throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
 
 import { ApiService, HttpRequestOption } from '@my-lib/util';
 
 import { environment } from '../../../../environments/environment';
-
-import * as fromLayout from '../../core/layout/reducers';
 import * as fromRoot from '../../../reducers';
+import * as fromLayout from '../../core/layout/reducers';
+
+import { LayoutActions } from '@modules/core/layout/actions';
 import { AlertStatus } from '@modules/core/layout/model/AlertStatus.enum';
 import { DialogData } from '@modules/core/layout/model/DialogData';
-import { LayoutActions } from '@modules/core/layout/actions';
 
 @Injectable({
   providedIn: 'root',

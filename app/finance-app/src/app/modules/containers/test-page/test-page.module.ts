@@ -6,8 +6,8 @@ import { MaterialModule } from '../../shared/material/material.module';
 import { CheckResultComponent } from './components/check-result/check-result.component';
 import { TestCardComponent } from './components/test-card/test-card.component';
 import { TestCardsComponent } from './components/test-cards/test-cards.component';
-import { TestConnectionService } from './services/test-connection.service';
 import { TestPageComponent } from './containers/test-page/test-page.component';
+import { TestConnectionService } from './services/test-connection.service';
 import { TestPageRoutingModule } from './test-page-routing.module';
 
 @NgModule({

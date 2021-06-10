@@ -6,8 +6,8 @@ import { Observable } from 'rxjs';
 
 import { CategoriesActions } from '../../actions';
 import { Category } from '../../model/Category';
-
 import * as fromCategories from '../../reducers';
+
 import * as fromRoot from '@app/reducers';
 
 @Component({

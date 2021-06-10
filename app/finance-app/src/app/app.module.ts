@@ -1,34 +1,30 @@
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
 
-import { ActionReducer, MetaReducer, StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
+import { ActionReducer, MetaReducer, StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 import { localStorageSync } from 'ngrx-store-localstorage';
 
 import { AuthenticationInterceptor } from '@my-lib/util';
 
-import { MaterialModule } from '@modules/shared/material/material.module';
-
 import { AccountModule } from '@modules/containers/account/account.module';
 import { CategoryModule } from '@modules/containers/category/category.module';
-import { ComboBoxModule } from './modules/shared/combo-box/combo-box.module';
-import { TransferModule } from './modules/containers/transfer/transfer.module';
-
+import { TransferModule } from '@modules/containers/transfer/transfer.module';
 import { LayoutModule } from '@modules/core/layout/layout.module';
-
+import { ComboBoxModule } from '@modules/shared/combo-box/combo-box.module';
+import { MaterialModule } from '@modules/shared/material/material.module';
 import { SlidePanelModule } from '@modules/shared/slide-panel/slide-panel.module';
 
 import { environment } from '@environments/environment';
 
-import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
 import { localStorageKeys } from './configuration/localStorageKeys';
-
 import { ROOT_REDUCERS } from './reducers';
 
 export function localStorageSyncReducer(reducer: ActionReducer<any>): ActionReducer<any> {

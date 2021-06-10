@@ -1,8 +1,8 @@
 import { EntityAdapter, EntityState, createEntityAdapter } from '@ngrx/entity';
 import { createReducer, on } from '@ngrx/store';
 
-import { Account } from '../model/Account';
 import { AccountsActions } from '../actions';
+import { Account } from '../model/Account';
 
 export const accountsFeatureKey = 'accountsList';
 

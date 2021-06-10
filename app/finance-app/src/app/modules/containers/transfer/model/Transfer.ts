@@ -1,4 +1,5 @@
 import { TransferLine } from './transfer-line';
+
 export interface Transfer {
   currency: string;
   exchangeRate: string;

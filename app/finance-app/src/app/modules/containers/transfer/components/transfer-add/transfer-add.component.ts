@@ -1,10 +1,11 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 
+import { Account } from './../../../account/model/Account';
+
 import { ComboBoxProcessType } from '@modules/shared/combo-box/configuration/combo-box-process-type.enum';
 import { ComboBoxType } from '@modules/shared/combo-box/configuration/combo-box-type.enum';
 
-import { Account } from './../../../account/model/Account';
 
 @Component({
   selector: 'app-transfer-add',

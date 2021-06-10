@@ -1,11 +1,12 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MockStore, provideMockStore } from '@ngrx/store/testing';
 
-import { ConfigurationDetailsComponent } from './configuration-details.component';
 import { Currency } from '../../../../shared/models/currency.enum';
 import { State } from '../../reducers';
+
+import { ConfigurationDetailsComponent } from './configuration-details.component';
 
 describe('ConfigurationDetailsComponent', () => {
   let component: ConfigurationDetailsComponent;

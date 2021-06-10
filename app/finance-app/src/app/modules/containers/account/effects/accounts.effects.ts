@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 
+import { catchError, map, switchMap } from 'rxjs/operators';
+
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Update } from '@ngrx/entity';
 
-import { catchError, map, switchMap } from 'rxjs/operators';
 import { of } from 'rxjs';
 
-import { Account } from '../model/Account';
 import { AccountsActions } from '../actions';
+import { Account } from '../model/Account';
 import { AccountsService } from '../services/accounts.service';
 
 @Injectable()

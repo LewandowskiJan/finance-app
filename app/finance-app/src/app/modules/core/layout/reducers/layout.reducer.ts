@@ -1,7 +1,7 @@
 import { createReducer, on } from '@ngrx/store';
 
-import { DialogData } from '../model/DialogData';
 import { LayoutActions } from '../actions';
+import { DialogData } from '../model/DialogData';
 
 export const layoutFeatureKey = 'layout';
 

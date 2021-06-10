@@ -1,13 +1,14 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterTestingModule } from '@angular/router/testing';
 
-import { TransfersContainerComponent } from './transfers-container.component';
-
 import { MockStore, provideMockStore } from '@ngrx/store/testing';
+
 import { Currency } from '../../../../shared/models/currency.enum';
 import { State } from '../../reducers';
+
+import { TransfersContainerComponent } from './transfers-container.component';
 
 import {} from 'jasmine';
 

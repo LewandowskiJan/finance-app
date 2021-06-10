@@ -1,8 +1,9 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
-import { Observable, Subject } from 'rxjs';
 import { share, startWith } from 'rxjs/operators';
+
+import { Observable, Subject } from 'rxjs';
 
 import { TransferLine } from '../../model/transfer-line';
 

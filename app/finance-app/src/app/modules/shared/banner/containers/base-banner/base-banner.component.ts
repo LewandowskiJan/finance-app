@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 
 import { BannerType } from '../../model/banner-type.enum';
+
 import { bannerIconConfiguration } from './../../configuration/banner-icon.configuration';
 
 @Component({

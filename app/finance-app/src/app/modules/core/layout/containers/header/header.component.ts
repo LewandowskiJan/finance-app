@@ -1,13 +1,15 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
+import { take } from 'rxjs/operators';
+
 import { Store, select } from '@ngrx/store';
 
 import { Observable } from 'rxjs';
-import { take } from 'rxjs/operators';
 
-import * as fromLayout from '../../reducers';
 import * as fromRoot from '../../../../../reducers';
 import { LayoutActions } from '../../actions';
+import * as fromLayout from '../../reducers';
+
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',

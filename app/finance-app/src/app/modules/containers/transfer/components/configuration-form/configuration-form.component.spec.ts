@@ -1,6 +1,6 @@
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
@@ -8,9 +8,10 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MockStore, provideMockStore } from '@ngrx/store/testing';
 
-import { ConfigurationFormComponent } from './configuration-form.component';
 import { Currency } from '../../../../shared/models/currency.enum';
 import { State } from '../../reducers';
+
+import { ConfigurationFormComponent } from './configuration-form.component';
 
 describe('ConfigurationFormComponent', () => {
   let component: ConfigurationFormComponent;

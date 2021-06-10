@@ -1,14 +1,15 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+
+import { Observable } from 'rxjs';
 
 import { HttpRequestMethods } from '@my-lib/util';
 
-import { GlobalApiService } from '@src/app/modules/shared/services/global-api.service';
-
 import { Category } from '../model/Category';
+
+import { GlobalApiService } from '@src/app/modules/shared/services/global-api.service';
 
 @Injectable({ providedIn: 'any' })
 export class CategoriesService {

@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { ComboBoxProcessType } from '@modules/shared/combo-box/configuration/combo-box-process-type.enum';
 
+import { ComboBoxProcessType } from '@modules/shared/combo-box/configuration/combo-box-process-type.enum';
 import { ComboBoxType } from '@modules/shared/combo-box/configuration/combo-box-type.enum';
 
 @Component({

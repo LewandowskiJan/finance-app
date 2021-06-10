@@ -4,8 +4,8 @@ import { BehaviorSubject } from 'rxjs';
 
 import { HttpErrorResponse, HttpRequestMethods } from '@my-lib/util';
 
-import { CsvRecord } from '../../model/CsvRecord';
 import { GlobalApiService } from '../../../services/global-api.service';
+import { CsvRecord } from '../../model/CsvRecord';
 
 export function groupBy(arr, key): any {
   const reducer = (grouped: any, item: any): any => {

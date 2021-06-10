@@ -1,21 +1,21 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 
-import { Store, select } from '@ngrx/store';
-import { Update } from '@ngrx/entity';
-
-import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
 
-import * as fromRoot from '../../../../../reducers';
-import * as fromTransfers from '../../reducers';
+import { Update } from '@ngrx/entity';
+import { Store, select } from '@ngrx/store';
+
+import { Observable } from 'rxjs';
 
 import { compareAndPickDifference } from '@my-lib/util';
 
+import * as fromRoot from '../../../../../reducers';
+import { TransfersActions } from '../../actions';
 import { Transfer } from '../../model/transfer';
+import * as fromTransfers from '../../reducers';
 
 import { TransferEditComponent } from './../../components/transfer-edit/transfer-edit.component';
-import { TransfersActions } from '../../actions';
 
 @Component({
   selector: 'app-transfers',

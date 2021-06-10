@@ -1,9 +1,9 @@
 import { combineReducers, createFeatureSelector, createSelector } from '@ngrx/store';
 
+import { Transfer } from '../model/transfer';
+
 import * as fromConfiguration from './configuration.reducer';
 import * as fromTransfers from './transfers.reducer';
-
-import { Transfer } from '../model/transfer';
 
 export const transfersModuleFeatureKey = 'transfersModule';
 

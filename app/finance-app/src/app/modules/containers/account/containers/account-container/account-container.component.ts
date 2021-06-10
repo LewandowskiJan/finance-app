@@ -1,10 +1,11 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 
-import { Observable } from 'rxjs';
-
 import { Store, select } from '@ngrx/store';
 
+import { Observable } from 'rxjs';
+
 import * as fromAccounts from '../../reducers';
+
 import * as fromRoot from '@app/reducers';
 
 @Component({

@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 import { SideNavigationLink } from '../../model/SideNavigationLink';
+
 import { navigationLinks } from './../../configuration/navigation-links';
 
 @Component({

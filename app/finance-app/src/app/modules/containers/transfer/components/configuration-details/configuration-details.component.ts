@@ -1,11 +1,13 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 
-import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { Store, select } from '@ngrx/store';
 
+import { Observable } from 'rxjs';
+
 import * as fromTransfers from '../../reducers';
+
 import { TransferConfiguration } from './../../model/transfer-configuration';
 
 @Component({

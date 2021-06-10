@@ -1,17 +1,17 @@
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterTestingModule } from '@angular/router/testing';
 
 import { MockStore, provideMockStore } from '@ngrx/store/testing';
 
 import { Currency } from '../../../../shared/models/currency.enum';
-
 import { State } from '../../reducers';
+
 import { TransferFormContainerComponent } from './transfer-form-container.component';
 
 import {} from 'jasmine';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('TransferFormContainerComponent', () => {
   let component: TransferFormContainerComponent;

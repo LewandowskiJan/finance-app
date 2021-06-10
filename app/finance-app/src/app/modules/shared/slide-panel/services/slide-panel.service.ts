@@ -1,7 +1,7 @@
 import { Inject, Injectable } from '@angular/core';
 
-import { SLIDE_PANEL_CONFIGURATION_TOKEN } from '../token/slide-panel-configuration-token';
 import { SlidePanelConfiguration } from '../model/slide-panel-configuration';
+import { SLIDE_PANEL_CONFIGURATION_TOKEN } from '../token/slide-panel-configuration-token';
 
 @Injectable({
   providedIn: 'any',

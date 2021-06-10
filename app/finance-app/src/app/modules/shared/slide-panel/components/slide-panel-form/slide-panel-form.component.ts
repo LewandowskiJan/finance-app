@@ -1,10 +1,10 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
-import { Account } from '@modules/containers/account/model/Account';
-
 import { SlidePanelConfiguration } from './../../model/slide-panel-configuration';
 import { SlidePanelService } from './../../services/slide-panel.service';
+
+import { Account } from '@modules/containers/account/model/Account';
 
 @Component({
   selector: 'app-slide-panel-form',

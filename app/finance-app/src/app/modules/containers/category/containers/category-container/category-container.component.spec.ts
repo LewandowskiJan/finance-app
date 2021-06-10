@@ -1,13 +1,15 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterTestingModule } from '@angular/router/testing';
 
 import { MockStore, provideMockStore } from '@ngrx/store/testing';
 
-import { CategoryContainerComponent } from './category-container.component';
-import { MaterialModule } from './../../../../shared/material/material.module';
 import { State } from '../../reducers';
+
+import { MaterialModule } from './../../../../shared/material/material.module';
+
+import { CategoryContainerComponent } from './category-container.component';
 
 import {} from 'jasmine';
 

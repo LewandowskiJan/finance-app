@@ -1,7 +1,8 @@
 import { TestBed } from '@angular/core/testing';
 
-import { SLIDE_PANEL_CONFIGURATION_TOKEN } from '../token/slide-panel-configuration-token';
 import { SlidePanelConfiguration } from '../model/slide-panel-configuration';
+import { SLIDE_PANEL_CONFIGURATION_TOKEN } from '../token/slide-panel-configuration-token';
+
 import { SlidePanelService } from './slide-panel.service';
 
 import {} from 'jasmine';

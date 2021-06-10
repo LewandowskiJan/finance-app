@@ -1,5 +1,5 @@
-import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
 
 import { WelcomePageComponent } from '@modules/core/layout/components/welcome-page/welcome-page.component';
 

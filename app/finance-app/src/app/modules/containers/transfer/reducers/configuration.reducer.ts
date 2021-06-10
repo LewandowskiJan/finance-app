@@ -1,6 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
-import { Currency } from '../../../shared/models/currency.enum';
 
+import { Currency } from '../../../shared/models/currency.enum';
 import { ConfigurationActions } from '../actions';
 import { TransferConfiguration } from '../model/transfer-configuration';
 

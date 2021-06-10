@@ -1,16 +1,18 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { Update } from '@ngrx/entity';
 
+import { Observable } from 'rxjs';
+
 import { HttpRequestMethods } from '@my-lib/util';
+
+import { Transfer } from '../model/transfer';
 
 import { GlobalApiService } from '@src/app/modules/shared/services/global-api.service';
 
-import { Transfer } from '../model/transfer';
 
 @Injectable({ providedIn: 'any' })
 export class TransfersService {

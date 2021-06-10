@@ -6,9 +6,9 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
 import { routeTransitionAnimations } from '../../../../shared/animations/route-transition-animations';
+import * as fromTransfers from '../../reducers';
 
 import * as fromRoot from '@app/reducers';
-import * as fromTransfers from '../../reducers';
 
 @Component({
   selector: 'app-transfer-container',

@@ -4,15 +4,16 @@ import { MAT_DATE_FORMATS, MatDateFormats } from '@angular/material/core';
 
 import { Store } from '@ngrx/store';
 
+import * as fromRoot from '../../../../../reducers';
+import { CurrencySelect } from '../../model/currency-select';
+import * as fromTransfers from '../../reducers';
+
+import { Account } from './../../../account/model/Account';
+
 import { ComboBoxProcessType } from '@modules/shared/combo-box/configuration/combo-box-process-type.enum';
 import { ComboBoxType } from '@modules/shared/combo-box/configuration/combo-box-type.enum';
 import { Currency } from '@modules/shared/models/currency.enum';
 
-import { Account } from './../../../account/model/Account';
-
-import * as fromRoot from '../../../../../reducers';
-import * as fromTransfers from '../../reducers';
-import { CurrencySelect } from '../../model/currency-select';
 
 export const MY_FORMATS: MatDateFormats = {
   parse: {

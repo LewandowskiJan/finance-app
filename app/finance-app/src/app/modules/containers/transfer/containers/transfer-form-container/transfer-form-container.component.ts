@@ -1,20 +1,22 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
+import { map, startWith, switchMap } from 'rxjs/operators';
+
 import { Store, select } from '@ngrx/store';
 
-import { map, startWith, switchMap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+
+import { ConfigurationActions, TransfersActions } from '../../actions';
+import { Transfer } from '../../model/transfer';
+import * as fromTransfers from '../../reducers';
+
+import { Account } from './../../../account/model/Account';
+import { TransferConfiguration } from './../../model/transfer-configuration';
 
 import { ComboBoxProcessType } from '@modules/shared/combo-box/configuration/combo-box-process-type.enum';
 import { ComboBoxType } from '@modules/shared/combo-box/configuration/combo-box-type.enum';
 import { Currency } from '@modules/shared/models/currency.enum';
-
-import * as fromTransfers from '../../reducers';
-import { ConfigurationActions, TransfersActions } from '../../actions';
-import { Account } from './../../../account/model/Account';
-import { Transfer } from '../../model/transfer';
-import { TransferConfiguration } from './../../model/transfer-configuration';
 
 @Component({
   selector: 'app-transfer-form-container',

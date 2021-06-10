@@ -1,23 +1,25 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterTestingModule } from '@angular/router/testing';
 
 import { MockStore, provideMockStore } from '@ngrx/store/testing';
 
+import { cold } from 'jasmine-marbles';
+
 import { mapObjectToArray } from '@my-lib/util';
+
+import { SlidePanelConfiguration } from '../../../../shared/slide-panel/model/slide-panel-configuration';
+import * as fromAccounts from '../../reducers';
 
 import { MaterialModule } from './../../../../shared/material/material.module';
 import { SLIDE_PANEL_CONFIGURATION_TOKEN } from './../../../../shared/slide-panel/token/slide-panel-configuration-token';
-import { SlidePanelConfiguration } from '../../../../shared/slide-panel/model/slide-panel-configuration';
 
-import * as fromAccounts from '../../reducers';
 import { AccountsComponent } from './accounts.component';
 
 import {} from 'jasmine';
-import { cold } from 'jasmine-marbles';
 
 const slidePanelConfigurationMock: SlidePanelConfiguration = {
   name: { enable: true, label: 'Account name' },

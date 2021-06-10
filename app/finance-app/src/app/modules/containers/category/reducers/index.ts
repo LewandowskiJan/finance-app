@@ -1,8 +1,8 @@
 import { Action, combineReducers, createFeatureSelector, createSelector } from '@ngrx/store';
 
-import * as fromCategories from './categories.reducer';
-
 import { Category } from '../model/Category';
+
+import * as fromCategories from './categories.reducer';
 
 export const categoriesModuleFeatureKey = 'categoriesModule';
 

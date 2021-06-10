@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 
-import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { map, switchMap } from 'rxjs/operators';
+
+import { Actions, createEffect, ofType } from '@ngrx/effects';
 
 import { LayoutActions } from '../actions';
 import { LayoutService } from '../service/layout.service';

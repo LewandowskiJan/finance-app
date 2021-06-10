@@ -1,8 +1,8 @@
 import { Action, combineReducers, createFeatureSelector, createSelector } from '@ngrx/store';
 
-import * as fromAccounts from './accounts.reducer';
-
 import { Account } from '../model/Account';
+
+import * as fromAccounts from './accounts.reducer';
 
 export const accountsListFeatureKey = 'accountsModule';
 

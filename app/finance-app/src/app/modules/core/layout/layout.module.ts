@@ -1,6 +1,6 @@
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 
 import { EffectsModule } from '@ngrx/effects';
@@ -10,18 +10,18 @@ import { BannerModule } from '@modules/shared/banner/banner.module';
 import { CsvReaderModule } from '@modules/shared/csv-reader/csv-reader.module';
 import { MaterialModule } from '@modules/shared/material/material.module';
 
+import { AlertDialogComponent } from './components/alert-dialog/alert-dialog.component';
 import { AnimationGraphComponent } from './components/animation-graph/animation-graph.component';
+import { SideNavigationComponent } from './components/side-navigation/side-navigation.component';
+import { WelcomePageComponent } from './components/welcome-page/welcome-page.component';
 import { FooterComponent } from './containers/footer/footer.component';
 import { HeaderComponent } from './containers/header/header.component';
-import { LayoutEffect } from './effects/layout.effect';
-import { LayoutService } from './service/layout.service';
 import { MainComponent } from './containers/main/main.component';
-import { SideNavigationComponent } from './components/side-navigation/side-navigation.component';
-
-import { AlertDialogComponent } from './components/alert-dialog/alert-dialog.component';
-import { WelcomePageComponent } from './components/welcome-page/welcome-page.component';
-
+import { LayoutEffect } from './effects/layout.effect';
 import * as fromLayout from './reducers';
+import { LayoutService } from './service/layout.service';
+
+
 @NgModule({
   declarations: [
     FooterComponent,

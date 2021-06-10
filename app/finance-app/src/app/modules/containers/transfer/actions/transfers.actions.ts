@@ -1,5 +1,5 @@
-import { createAction, props } from '@ngrx/store';
 import { Update } from '@ngrx/entity';
+import { createAction, props } from '@ngrx/store';
 
 import { Transfer } from '../model/transfer';
 
