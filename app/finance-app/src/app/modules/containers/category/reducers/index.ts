@@ -14,7 +14,7 @@ export interface State {
   [categoriesModuleFeatureKey]: CategoryState;
 }
 
-export function reducers(state: CategoryState | undefined, action: Action) {
+export function reducers(state: CategoryState | undefined, action: Action): CategoryState {
   return combineReducers({
     [fromCategories.categoriesFeatureKey]: fromCategories.reducer,
   })(state, action);

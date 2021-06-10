@@ -12,7 +12,7 @@ export interface State {
   [layoutModuleFeatureKey]: LayoutState;
 }
 
-export function reducers(state: LayoutState | undefined, action: Action) {
+export function reducers(state: LayoutState | undefined, action: Action): LayoutState {
   return combineReducers({
     [fromLayout.layoutFeatureKey]: fromLayout.reducer,
   })(state, action);

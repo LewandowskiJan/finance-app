@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { MAT_DATE_LOCALE, MatDateFormats } from '@angular/material/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
@@ -34,32 +34,32 @@ export class TransferEditComponent implements OnInit {
     private formBuilder: FormBuilder
   ) {}
 
-  get currency() {
-    return this.transferForm.get('currency');
+  get currency(): FormControl {
+    return this.transferForm.get('currency') as FormControl;
   }
 
-  get exchangeRate() {
-    return this.transferForm.get('exchangeRate');
+  get exchangeRate(): FormControl {
+    return this.transferForm.get('exchangeRate') as FormControl;
   }
 
-  get value() {
-    return this.transferForm.get('value');
+  get value(): FormControl {
+    return this.transferForm.get('value') as FormControl;
   }
 
-  get accountFrom() {
-    return this.transferForm.get('accountFrom');
+  get accountFrom(): FormControl {
+    return this.transferForm.get('accountFrom') as FormControl;
   }
 
-  get accountTo() {
-    return this.transferForm.get('accountTo');
+  get accountTo(): FormControl {
+    return this.transferForm.get('accountTo') as FormControl;
   }
 
-  get date() {
-    return this.transferForm.get('date');
+  get date(): FormControl {
+    return this.transferForm.get('date') as FormControl;
   }
 
-  get valueInPln() {
-    return this.transferForm.get('valueInPln');
+  get valueInPln(): FormControl {
+    return this.transferForm.get('valueInPln') as FormControl;
   }
 
   ngOnInit(): void {

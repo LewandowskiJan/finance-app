@@ -18,6 +18,7 @@ describe('TransfersService', () => {
     });
     service = TestBed.inject(TransfersService);
     store = TestBed.inject(MockStore);
+    spyOn(store, 'dispatch');
   });
 
   it('should be created', () => {

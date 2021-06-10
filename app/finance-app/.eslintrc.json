@@ -10,6 +10,7 @@
   },
   "plugins": ["@typescript-eslint"],
   "rules": {
+    "@typescript-eslint/explicit-function-return-type": "off",
     "block-spacing": ["error", "always"],
     "max-len": ["error", { "code": 140 }],
     "require-jsdoc": "off",
@@ -38,5 +39,14 @@
     "no-unused-vars": ["warn"],
     "comma-dangle": "off",
     "quote-props": "off"
-  }
+  },
+  "overrides": [
+    {
+      // enable the rule specifically for TypeScript files
+      "files": ["*.ts", "*.tsx"],
+      "rules": {
+        "@typescript-eslint/explicit-function-return-type": ["error"]
+      }
+    }
+  ]
 }

@@ -52,11 +52,11 @@ export class TransferFormContainerComponent implements OnInit {
     this.setupValueInPlnListener();
   }
 
-  public setStep(index: number) {
+  public setStep(index: number): void {
     this.step = index;
   }
 
-  public nextStep() {
+  public nextStep(): void {
     if (this.transferConfigurationForm.invalid) {
       return;
     }
@@ -72,11 +72,11 @@ export class TransferFormContainerComponent implements OnInit {
     this.step++;
   }
 
-  public prevStep() {
+  public prevStep(): void {
     this.step--;
   }
 
-  public removeTransferLine(index: number) {
+  public removeTransferLine(index: number): void {
     this.transferLinesForm.removeAt(index);
   }
 
@@ -119,7 +119,7 @@ export class TransferFormContainerComponent implements OnInit {
     this.transferForm.get('value').setValidators(Validators.max(parseFloat($event.balance)));
   }
 
-  private buildForms() {
+  private buildForms(): void {
     this.transferForm = this.formBuilder.array([this.buildConfigurationForm(), this.buildDestinationForm(), this.buildLinesForm()]);
   }
 

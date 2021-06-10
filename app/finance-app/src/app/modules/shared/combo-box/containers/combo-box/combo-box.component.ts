@@ -34,7 +34,7 @@ export class ComboBoxComponent implements OnInit {
 
   constructor(private comboBoxService: ComboBoxService) {}
 
-  ngOnInit() {
+  public ngOnInit(): void {
     this.setupComboBoxConfiguration();
     this.filteredOptions = this.setupSearchProcess();
   }

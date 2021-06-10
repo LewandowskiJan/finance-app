@@ -21,7 +21,7 @@ export class HeaderComponent {
     this.isNavigationOpen$ = this.store.pipe(select(fromLayout.selectSideNavigationState));
   }
 
-  public toggleMenu() {
+  public toggleMenu(): void {
     this.isNavigationOpen$.pipe(take(1)).subscribe((isOpen) => {
       isOpen ? this.store.dispatch(LayoutActions.closeSideNavigation()) : this.store.dispatch(LayoutActions.openSideNavigation());
     });

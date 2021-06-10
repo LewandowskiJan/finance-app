@@ -43,7 +43,7 @@ export class TransfersComponent implements OnInit {
     this.store.dispatch(TransfersActions.deleteTransfer({ id }));
   }
 
-  openEditTransferDialog(transfer: Transfer) {
+  openEditTransferDialog(transfer: Transfer): void {
     const dialogRef = this.dialog.open(TransferEditComponent, {
       data: transfer,
       disableClose: true,
@@ -59,7 +59,7 @@ export class TransfersComponent implements OnInit {
       });
   }
 
-  private updateTransfer(transfer: Transfer, updates: Transfer) {
+  private updateTransfer(transfer: Transfer, updates: Transfer): void {
     const differences: Partial<Transfer> = compareAndPickDifference<Partial<Transfer>>(transfer, updates);
 
     const updatingTransfer: Update<Transfer> = {

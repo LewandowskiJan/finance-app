@@ -15,6 +15,7 @@ describe('ComboBoxService', () => {
     TestBed.configureTestingModule({ imports: [HttpClientTestingModule], providers: [ComboBoxService, provideMockStore()] });
     store = TestBed.inject(MockStore);
     service = TestBed.inject(ComboBoxService);
+    spyOn(store, 'dispatch');
   });
 
   it('should be created', () => {

@@ -7,6 +7,18 @@ import { HttpErrorResponse, HttpRequestMethods } from '@my-lib/util';
 import { CsvRecord } from '../../model/CsvRecord';
 import { GlobalApiService } from '../../../services/global-api.service';
 
+export function groupBy(arr, key): any {
+  const reducer = (grouped: any, item: any): any => {
+    const groupValue = item[key];
+    if (!grouped[groupValue]) {
+      grouped[groupValue] = [];
+    }
+    grouped[groupValue].push(item);
+    return grouped;
+  };
+  return arr.reduce(reducer, {});
+}
+
 @Component({
   selector: 'app-csv-reader',
   templateUrl: './csv-reader.component.html',
@@ -32,7 +44,7 @@ export class CsvReaderComponent implements OnInit {
       const input = $event.target;
       const reader = new FileReader();
       reader.readAsText(input.files[0]);
-      reader.onload = () => {
+      reader.onload = (): void => {
         const csvData = reader.result;
         const csvRecordsArray = (<string>csvData).split(/\r\n|\n/);
         const headersRow = this.getHeaderArray(csvRecordsArray);
@@ -40,7 +52,7 @@ export class CsvReaderComponent implements OnInit {
         this.records$.next(this.getDataRecordsArrayFromCSVFile(csvRecordsArray, headersRow.length));
         this.mapArrayToJson();
       };
-      reader.onerror = function () {
+      reader.onerror = (): void => {
         console.log('error is occured while reading file!');
       };
     } else {
@@ -51,7 +63,7 @@ export class CsvReaderComponent implements OnInit {
     this.cdr.markForCheck();
   }
 
-  public getDataRecordsArrayFromCSVFile(csvRecordsArray: any, headerLength: any) {
+  public getDataRecordsArrayFromCSVFile(csvRecordsArray: any, headerLength: any): CsvRecord[] {
     const csvArr = [];
     for (let i = 1; i < csvRecordsArray.length; i++) {
       const currentRecord = (<string>csvRecordsArray[i]).split(';');
@@ -84,11 +96,12 @@ export class CsvReaderComponent implements OnInit {
     }
     return csvArr;
   }
-  isValidCSVFile(file: any) {
+
+  private isValidCSVFile(file: any): string {
     return file.name.endsWith('.csv');
   }
 
-  getHeaderArray(csvRecordsArr: any) {
+  private getHeaderArray(csvRecordsArr: any): string[] {
     const headers = (<string>csvRecordsArr[0]).split(';');
     const headerArray = [];
     for (let j = 0; j < headers.length; j++) {
@@ -100,25 +113,13 @@ export class CsvReaderComponent implements OnInit {
     return headerArray;
   }
 
-  fileReset() {
+  public fileReset(): void {
     this.csvReader.nativeElement.value = '';
     this.records = [];
   }
 
-  mapArrayToJson(): void {
+  private mapArrayToJson(): void {
     this.header;
-
-    function groupBy(arr, key) {
-      const reducer = (grouped, item) => {
-        const groupValue = item[key];
-        if (!grouped[groupValue]) {
-          grouped[groupValue] = [];
-        }
-        grouped[groupValue].push(item);
-        return grouped;
-      };
-      return arr.reduce(reducer, {});
-    }
 
     const results = groupBy(this.records, 'date');
     const groupByAccountTo: any[] = [];

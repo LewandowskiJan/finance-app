@@ -14,7 +14,7 @@ export interface State {
   [accountsListFeatureKey]: AccountState;
 }
 
-export function reducers(state: AccountState | undefined, action: Action) {
+export function reducers(state: AccountState | undefined, action: Action): AccountState {
   return combineReducers({
     [fromAccounts.accountsFeatureKey]: fromAccounts.reducer,
   })(state, action);

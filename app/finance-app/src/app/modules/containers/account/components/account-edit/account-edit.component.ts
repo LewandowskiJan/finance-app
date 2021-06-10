@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
@@ -21,19 +21,19 @@ export class AccountEditComponent implements OnInit {
     private formBuilder: FormBuilder
   ) {}
 
-  get name() {
-    return this.accountForm.get('name');
+  get name(): FormControl {
+    return this.accountForm.get('name') as FormControl;
   }
 
-  get balance() {
-    return this.accountForm.get('balance');
+  get balance(): FormControl {
+    return this.accountForm.get('balance') as FormControl;
   }
 
-  get isActive() {
-    return this.accountForm.get('isActive');
+  get isActive(): FormControl {
+    return this.accountForm.get('isActive') as FormControl;
   }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.buildForm();
   }
 

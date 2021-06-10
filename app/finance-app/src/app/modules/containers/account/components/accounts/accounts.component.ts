@@ -50,7 +50,7 @@ export class AccountsComponent implements OnInit {
     this.store.dispatch(AccountsActions.deleteAccount({ id }));
   }
 
-  openEditAccountDialog(account: Account) {
+  openEditAccountDialog(account: Account): void {
     const dialogRef = this.dialog.open(AccountEditComponent, {
       data: account,
     });
@@ -62,7 +62,7 @@ export class AccountsComponent implements OnInit {
     });
   }
 
-  private updateAccount(account: Account, updates: Account) {
+  private updateAccount(account: Account, updates: Account): void {
     const differences: Partial<Account> = compareAndPickDifference<Partial<Account>>(account, updates);
 
     const updatingAccount: Update<Account> = {

@@ -123,4 +123,4 @@ export const reducer = createReducer(
   )
 );
 
-export const getIds = (state: State) => state.ids;
+export const getIds = (state: State): string[] | number[] => state.ids;

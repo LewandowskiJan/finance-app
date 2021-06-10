@@ -27,6 +27,6 @@ export const reducer = createReducer(
   on(LayoutActions.closeAlertDialog, (state) => ({ ...state, alert: null }))
 );
 
-export const selectSidenavDisplay = (state: State) => state.isSideNavigationOpen;
-export const selectState = (state: State) => state;
-export const selectLightTheme = (state: State) => state.showLightTheme;
+export const selectSidenavDisplay = (state: State): boolean => state.isSideNavigationOpen;
+export const selectState = (state: State): State => state;
+export const selectLightTheme = (state: State): boolean => state.showLightTheme;

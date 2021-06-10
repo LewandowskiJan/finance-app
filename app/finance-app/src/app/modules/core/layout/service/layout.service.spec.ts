@@ -21,6 +21,7 @@ describe('LayoutService', () => {
     });
     store = TestBed.inject(MockStore);
     service = TestBed.inject(LayoutService);
+    spyOn(store, 'dispatch');
   });
 
   it('should be created', () => {

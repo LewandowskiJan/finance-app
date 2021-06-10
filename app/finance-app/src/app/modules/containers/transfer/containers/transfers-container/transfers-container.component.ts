@@ -26,7 +26,7 @@ export class TransfersContainerComponent implements OnInit {
     this.errors$ = this.store.select(fromTransfers.selectError);
   }
 
-  public prepareRoute(outlet: RouterOutlet) {
+  public prepareRoute(outlet: RouterOutlet): any {
     return outlet && outlet.activatedRouteData && outlet.activatedRouteData['animationState'];
   }
 }

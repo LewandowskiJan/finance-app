@@ -1,5 +1,7 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, OnInit, Output } from '@angular/core';
 
+import { Account } from '@modules/containers/account/model/Account';
+
 @Component({
   selector: 'app-slide-panel-container',
   templateUrl: './slide-panel-container.component.html',
@@ -15,11 +17,11 @@ export class SlidePanelContainerComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  public toggle() {
+  public toggle(): void {
     this.isOpen = !this.isOpen;
   }
 
-  public emitFormValue(formValue: any) {
+  public emitFormValue(formValue: any): void {
     this.formSubmitEmitter.emit(formValue);
   }
 }

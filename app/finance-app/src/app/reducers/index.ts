@@ -19,14 +19,14 @@ export interface State {
  * and the current or initial state and return a new immutable state.
  */
 export const ROOT_REDUCERS = new InjectionToken<ActionReducerMap<State, Action>>('Root reducers token', {
-  factory: () => ({
+  factory: (): { router: any } => ({
     router: fromRouter.routerReducer,
   }),
 });
 
 // console.log all actions
 export function logger(reducer: ActionReducer<State>): ActionReducer<State> {
-  return (state, action) => {
+  return (state, action): any => {
     const result = reducer(state, action);
     console.groupCollapsed(action.type);
     console.log('prev state', state);
