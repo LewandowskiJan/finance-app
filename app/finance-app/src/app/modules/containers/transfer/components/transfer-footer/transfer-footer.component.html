@@ -11,7 +11,7 @@
       color="accent"
       aria-label="Add transfer button"
       type="submit"
-      [disabled]="!transferForm.valid || !transferLines.length"
+      [disabled]="!isValid"
     >
       Submit
     </button>

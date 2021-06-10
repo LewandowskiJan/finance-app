@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -12,6 +12,7 @@ import { TransferConfiguration } from './../../model/transfer-configuration';
   selector: 'app-configuration-details',
   templateUrl: './configuration-details.component.html',
   styleUrls: ['./configuration-details.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ConfigurationDetailsComponent implements OnInit {
   public configuration$: Observable<{ configuration: TransferConfiguration }>;

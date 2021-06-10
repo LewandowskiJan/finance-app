@@ -1,12 +1,12 @@
 <app-configuration-details></app-configuration-details>
-<form class="main-form" [formGroup]="transferForm">
+<form class="main-form" [formGroup]="transferForm" (ngSubmit)="addTransfer()">
   <div class="transfer-form-container" *ngrxLet="configuration$ as configuration">
     <mat-accordion class="headers-align">
       <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
         <mat-expansion-panel-header>
           <mat-panel-title> Configure transfer </mat-panel-title>
           <mat-panel-description>
-            Transfer details
+            Transfer details: {{ valueInPln.value }} PLN
             <mat-icon>payment</mat-icon>
           </mat-panel-description>
         </mat-expansion-panel-header>
@@ -57,8 +57,8 @@
         </div>
 
         <mat-action-row>
-          <button mat-button color="warn" (click)="prevStep()">Previous</button>
-          <button mat-button color="primary" (click)="nextStep()">End</button>
+          <button mat-button color="warn" type="button" (click)="prevStep()">Previous</button>
+          <button mat-button color="primary" type="button" (click)="nextStep()">End</button>
         </mat-action-row>
       </mat-expansion-panel>
     </mat-accordion>
@@ -66,8 +66,7 @@
   <div class="divider"></div>
 
   <app-transfer-footer
-    [transferForm]="transferForm"
-    [transferLines]="transferLinesForm"
+    [isValid]="transferConfigurationForm.valid && transferDestinationForm.valid && transferLinesForm.valid"
     (addTransferLine)="addTransferLine()"
     class="transfer-footer"
   ></app-transfer-footer>

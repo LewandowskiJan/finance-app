@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { MAT_DATE_LOCALE, MatDateFormats } from '@angular/material/core';
@@ -22,9 +22,8 @@ export const MY_FORMATS: MatDateFormats = {
   selector: 'app-transfer-edit',
   templateUrl: './transfer-edit.component.html',
   styleUrls: ['./transfer-edit.component.scss'],
-  providers: [
-    { provide: MAT_DATE_LOCALE, useValue: 'en-GB' },
-  ],
+  providers: [{ provide: MAT_DATE_LOCALE, useValue: 'en-GB' }],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TransferEditComponent implements OnInit {
   public transferForm: FormGroup;

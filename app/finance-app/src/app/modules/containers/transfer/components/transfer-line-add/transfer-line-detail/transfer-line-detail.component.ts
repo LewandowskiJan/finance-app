@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ComboBoxProcessType } from '@modules/shared/combo-box/configuration/combo-box-process-type.enum';
 
@@ -8,6 +8,7 @@ import { ComboBoxType } from '@modules/shared/combo-box/configuration/combo-box-
   selector: 'app-transfer-line-detail',
   templateUrl: './transfer-line-detail.component.html',
   styleUrls: ['./transfer-line-detail.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TransferLineDetailComponent {
   @Input() public transferLineForm: FormGroup;

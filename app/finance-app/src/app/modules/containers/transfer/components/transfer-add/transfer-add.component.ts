@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 
 import { ComboBoxProcessType } from '@modules/shared/combo-box/configuration/combo-box-process-type.enum';
@@ -10,6 +10,7 @@ import { Account } from './../../../account/model/Account';
   selector: 'app-transfer-add',
   templateUrl: './transfer-add.component.html',
   styleUrls: ['./transfer-add.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TransferAddComponent {
   @Input() public transferForm: FormGroup;

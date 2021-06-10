@@ -1,6 +1,5 @@
 import { TransferLine } from './transfer-line';
 export interface Transfer {
-  _id: string;
   currency: string;
   exchangeRate: string;
   value: string;
@@ -8,6 +7,7 @@ export interface Transfer {
   accountTo: string;
   date: Date;
   valueInPln: string;
+  _id?: string;
   transferLineIds?: string[];
   transferLines?: TransferLine[];
 }

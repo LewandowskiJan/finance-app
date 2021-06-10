@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { Store, select } from '@ngrx/store';
 
-import { map, startWith } from 'rxjs/operators';
+import { map, startWith, switchMap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 
 import { ComboBoxProcessType } from '@modules/shared/combo-box/configuration/combo-box-process-type.enum';
@@ -11,14 +11,16 @@ import { ComboBoxType } from '@modules/shared/combo-box/configuration/combo-box-
 import { Currency } from '@modules/shared/models/currency.enum';
 
 import * as fromTransfers from '../../reducers';
+import { ConfigurationActions, TransfersActions } from '../../actions';
 import { Account } from './../../../account/model/Account';
-import { ConfigurationActions } from '../../actions';
+import { Transfer } from '../../model/transfer';
 import { TransferConfiguration } from './../../model/transfer-configuration';
 
 @Component({
   selector: 'app-transfer-form-container',
   templateUrl: './transfer-form-container.component.html',
   styleUrls: ['./transfer-form-container.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TransferFormContainerComponent implements OnInit {
   public transferForm: FormArray;
@@ -32,13 +34,33 @@ export class TransferFormContainerComponent implements OnInit {
   public comboBoxProcessType: typeof ComboBoxProcessType = ComboBoxProcessType;
   public comboBoxType: typeof ComboBoxType = ComboBoxType;
 
-  step = 0;
+  public step: number = 0;
 
-  setStep(index: number) {
+  constructor(private formBuilder: FormBuilder, private store: Store<fromTransfers.State>) {
+    this.configuration$ = this.store.pipe(
+      select(fromTransfers.selectConfigurationState),
+      map((response: any) => response.configuration)
+    );
+  }
+
+  public get valueInPln(): FormControl {
+    return this.transferConfigurationForm.get('valueInPln') as FormControl;
+  }
+
+  public ngOnInit(): void {
+    this.buildForms();
+    this.setupValueInPlnListener();
+  }
+
+  public setStep(index: number) {
     this.step = index;
   }
 
-  nextStep() {
+  public nextStep() {
+    if (this.transferConfigurationForm.invalid) {
+      return;
+    }
+
     this.store.dispatch(
       ConfigurationActions.createConfiguration({
         configuration: {
@@ -50,50 +72,51 @@ export class TransferFormContainerComponent implements OnInit {
     this.step++;
   }
 
-  prevStep() {
+  public prevStep() {
     this.step--;
-  }
-
-  constructor(private formBuilder: FormBuilder, private store: Store<fromTransfers.State>) {
-    this.configuration$ = this.store.pipe(
-      select(fromTransfers.selectConfigurationState),
-      map((response: any) => response.configuration)
-    );
   }
 
   public removeTransferLine(index: number) {
     this.transferLinesForm.removeAt(index);
   }
 
-  ngOnInit(): void {
-    this.buildForms();
+  public addTransferLine(): void {
+    this.transferLinesForm.push(
+      this.formBuilder.group({
+        value: ['', Validators.compose([(Validators.required, Validators.pattern('^[0-9]{1,8}([.][0-9]{1,4})?$'))])],
+        currency: [{ value: this.transferConfigurationForm.get('currency').value, disabled: true }, Validators.required],
+        categoryId: ['', Validators.required],
+        expensesGroupId: ['', Validators.required],
+        productId: [''],
+        projectId: [''],
+        targetId: [''],
+        eventId: [''],
+        importance: ['1'],
+      })
+    );
+  }
 
-    this.transferConfigurationForm
-      .get('value')
-      .valueChanges.pipe(
-        startWith('0'),
-        map((value) => {
-          const exchangeRateValue = this.transferConfigurationForm.get('exchangeRate').value;
-          return (parseFloat(value) * parseFloat(exchangeRateValue)).toFixed(4).toString();
-        })
-      )
-      .subscribe((result) => {
-        result ? result : '0';
-        this.transferConfigurationForm.get('valueInPln').setValue(result);
-      });
+  public addTransfer(): void {
+    const transfer = this.getTransferValue();
+    this.store.dispatch(TransfersActions.createTransfer({ transfer }));
+  }
 
-    this.transferConfigurationForm
-      .get('exchangeRate')
-      .valueChanges.pipe(
-        startWith('0'),
-        map((value) => {
-          const transferValue = this.transferConfigurationForm.get('value').value;
-          return (parseFloat(value) * parseFloat(transferValue)).toFixed(4).toString();
-        })
-      )
-      .subscribe((result) => {
-        this.transferConfigurationForm.get('valueInPln').setValue(result);
-      });
+  public selectedAccountTo($event: Account): void {
+    this.transferForm.get('transferConfigurationForm').patchValue({
+      accountTo: $event._id,
+    });
+    this.transferToDetails = $event;
+  }
+
+  public selectedAccountFrom($event: Account): void {
+    this.transferForm.get('transferConfigurationForm').patchValue({
+      accountFrom: $event._id,
+      currency: $event.currency,
+      exchangeRate: $event.currency === 'PLN' ? '1' : $event.currency,
+    });
+    this.transferFromDetails = $event;
+    this.transferForm.get('value').reset();
+    this.transferForm.get('value').setValidators(Validators.max(parseFloat($event.balance)));
   }
 
   private buildForms() {
@@ -139,37 +162,36 @@ export class TransferFormContainerComponent implements OnInit {
       ]));
   }
 
-  selectedAccountTo($event: Account): void {
-    this.transferForm.get('transferConfigurationForm').patchValue({
-      accountTo: $event._id,
-    });
-    this.transferToDetails = $event;
+  private getTransferValue(): Transfer {
+    return {
+      currency: this.transferConfigurationForm.get('currency').value,
+      exchangeRate: this.transferConfigurationForm.get('exchangeRate').value,
+      value: this.transferConfigurationForm.get('value').value,
+      accountFrom: this.transferConfigurationForm.get('accountFrom').value,
+      accountTo: this.transferDestinationForm.get('accountTo').value,
+      date: this.transferConfigurationForm.get('date').value,
+      valueInPln: this.transferConfigurationForm.get('valueInPln').value,
+      transferLines: [...this.transferLinesForm.getRawValue()],
+    };
   }
 
-  selectedAccountFrom($event: Account): void {
-    this.transferForm.get('transferConfigurationForm').patchValue({
-      accountFrom: $event._id,
-      currency: $event.currency,
-      exchangeRate: $event.currency === 'PLN' ? '1' : $event.currency,
+  private setupValueInPlnListener(): void {
+    this.valueOnChangeListener().subscribe((result) => {
+      this.transferConfigurationForm.get('valueInPln').setValue(result);
     });
-    this.transferFromDetails = $event;
-    this.transferForm.get('value').reset();
-    this.transferForm.get('value').setValidators(Validators.max(parseFloat($event.balance)));
   }
 
-  public addTransferLine(): void {
-    this.transferLinesForm.push(
-      this.formBuilder.group({
-        value: ['', Validators.compose([(Validators.required, Validators.pattern('^[0-9]{1,8}([.][0-9]{1,4})?$'))])],
-        currency: [{ value: this.transferConfigurationForm.get('currency').value, disabled: true }, Validators.required],
-        categoryId: ['', Validators.required],
-        expensesGroupId: ['', Validators.required],
-        productId: [''],
-        projectId: [''],
-        targetId: [''],
-        eventId: [''],
-        importance: ['1'],
-      })
+  private valueOnChangeListener(): Observable<string> {
+    return this.transferConfigurationForm.get('value').valueChanges.pipe(
+      startWith('0'),
+      switchMap((exchangeRateValue) =>
+        this.transferConfigurationForm.get('exchangeRate').valueChanges.pipe(
+          startWith('1'),
+          map((value) => {
+            return (parseFloat(value || 0) * parseFloat(exchangeRateValue || 0)).toFixed(4).toString();
+          })
+        )
+      )
     );
   }
 

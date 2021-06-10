@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MAT_DATE_FORMATS, MatDateFormats } from '@angular/material/core';
 
@@ -31,6 +31,7 @@ export const MY_FORMATS: MatDateFormats = {
   templateUrl: './configuration-form.component.html',
   styleUrls: ['./configuration-form.component.scss'],
   providers: [{ provide: MAT_DATE_FORMATS, useValue: MY_FORMATS }],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ConfigurationFormComponent {
   @Input() public configurationForm: FormGroup;
@@ -64,6 +65,10 @@ export class ConfigurationFormComponent {
 
   public get date(): FormControl {
     return this.configurationForm.get('date') as FormControl;
+  }
+
+  public get valueInPln(): FormControl {
+    return this.configurationForm.get('valueInPln') as FormControl;
   }
 
   public selectedAccountFrom($event: Account): void {

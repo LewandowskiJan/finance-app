@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 import { importanceConfiguration } from './../configuration/importance';
 
@@ -6,6 +6,7 @@ import { importanceConfiguration } from './../configuration/importance';
   selector: 'app-importance-tag',
   templateUrl: './importance-tag.component.html',
   styleUrls: ['./importance-tag.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ImportanceTagComponent {
   public importanceStyleClass: string;

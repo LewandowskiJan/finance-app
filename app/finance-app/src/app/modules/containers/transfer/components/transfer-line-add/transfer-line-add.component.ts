@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
 import { Observable, Subject } from 'rxjs';
@@ -10,6 +10,7 @@ import { TransferLine } from '../../model/transfer-line';
   selector: 'app-transfer-line-add',
   templateUrl: './transfer-line-add.component.html',
   styleUrls: ['./transfer-line-add.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TransferLineAddComponent implements OnInit {
   @Input() public index: number;
