@@ -1,4 +1,5 @@
-import { HttpStatus } from './HttpStatus';
+import { HttpStatus } from './http-status';
+
 export interface HttpErrorResponse {
   errors: {
     status: HttpStatus;

@@ -78,7 +78,7 @@ export class ComboBoxComponent implements OnInit {
   }
 
   private containsSearchValue(): boolean {
-    return this.currentQuery === '' || this.options.some((item) => item[this.comboBoxConfiguration.queryParamKey] === this.currentQuery);
+    return this.currentQuery === '' ?? this.options.some((item) => item[this.comboBoxConfiguration.queryParamKey] === this.currentQuery);
   }
 
   public create(): void {

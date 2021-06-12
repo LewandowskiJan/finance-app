@@ -11,8 +11,8 @@ import { HttpRequestMethods } from '@my-lib/util';
 
 import { Transfer } from '../model/transfer';
 
-import { GlobalApiService } from '@src/app/modules/shared/services/global-api.service';
-
+import { SearchStrategy } from '@modules/core/enums/SearchStrategy.enum';
+import { GlobalApiService } from '@modules/shared/services/global-api.service';
 
 @Injectable({ providedIn: 'any' })
 export class TransfersService {
@@ -21,7 +21,14 @@ export class TransfersService {
   readTransfers(): Observable<Transfer[] | HttpErrorResponse> {
     return this.apiService.request<Transfer[], HttpErrorResponse>('account/transfer/all', {
       method: HttpRequestMethods.POST,
-      body: { options: { limit: 25 } },
+      body: {
+        options: {
+          limit: 25,
+          sort: { date: -1 },
+          search: { date: { $lt: new Date() } },
+          searchStrategy: SearchStrategy.MATCH_ALL,
+        },
+      },
     });
   }
 

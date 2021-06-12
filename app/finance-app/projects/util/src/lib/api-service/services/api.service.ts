@@ -3,9 +3,9 @@ import { Injectable } from '@angular/core';
 
 import { Observable, from } from 'rxjs';
 
-import { HttpQueryParams } from '../model/HttpQueryParams';
-import { HttpRequestMethods } from '../model/HttpRequestMethods';
-import { HttpRequestOption } from '../model/HttpRequestOptions';
+import { HttpQueryParams } from '../model/http-query-params';
+import { HttpRequestMethods } from '../model/http-request-methods';
+import { HttpRequestOption } from '../model/http-request-options';
 
 @Injectable({
   providedIn: 'root',
@@ -76,7 +76,7 @@ export class ApiService {
     });
   }
 
-  private isNull(value: any) {
+  private isNull(value: any): boolean {
     return value === null || value === undefined;
   }
 }

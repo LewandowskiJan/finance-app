@@ -190,7 +190,7 @@ export class TransferFormContainerComponent implements OnInit {
         this.transferConfigurationForm.get('exchangeRate').valueChanges.pipe(
           startWith('1'),
           map((value) => {
-            return (parseFloat(value || 0) * parseFloat(exchangeRateValue || 0)).toFixed(4).toString();
+            return (parseFloat(value ?? 0) * parseFloat(exchangeRateValue ?? 0)).toFixed(4).toString();
           })
         )
       )

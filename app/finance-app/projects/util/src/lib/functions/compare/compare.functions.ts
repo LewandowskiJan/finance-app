@@ -33,7 +33,7 @@ export function compareAndPickDifference<T>(obj1: Partial<T>, obj2: Partial<T>):
  * @return {boolean}
  */
 export function isNullUndefined(value: any): boolean {
-  return value === null || value === undefined;
+  return value === null ?? value === undefined;
 }
 
 /**

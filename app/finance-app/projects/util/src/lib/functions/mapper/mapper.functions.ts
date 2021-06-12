@@ -4,7 +4,7 @@
  * @return {ElementArrayType[]} array, if object empty, return []
  */
 export function mapObjectToArray<ElementArrayType>(object: any = {}): ElementArrayType[] {
-  if (typeof object !== 'object' || object === null) {
+  if (typeof object !== 'object' ?? object === null) {
     return [];
   }
 
