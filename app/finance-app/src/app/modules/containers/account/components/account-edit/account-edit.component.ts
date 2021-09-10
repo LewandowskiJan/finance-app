@@ -1,6 +1,5 @@
-import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
+import { ChangeDetectionStrategy, Component, Inject, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 import { Account } from '../../model/Account';
@@ -9,6 +8,7 @@ import { Account } from '../../model/Account';
   selector: 'app-account-edit',
   templateUrl: './account-edit.component.html',
   styleUrls: ['./account-edit.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AccountEditComponent implements OnInit {
   public accountForm: FormGroup;
@@ -20,19 +20,19 @@ export class AccountEditComponent implements OnInit {
     private formBuilder: FormBuilder
   ) {}
 
-  get name() {
-    return this.accountForm.get('name');
+  get name(): FormControl {
+    return this.accountForm.get('name') as FormControl;
   }
 
-  get balance() {
-    return this.accountForm.get('balance');
+  get balance(): FormControl {
+    return this.accountForm.get('balance') as FormControl;
   }
 
-  get isActive() {
-    return this.accountForm.get('isActive');
+  get isActive(): FormControl {
+    return this.accountForm.get('isActive') as FormControl;
   }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.buildForm();
   }
 

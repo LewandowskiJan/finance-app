@@ -1,8 +1,8 @@
 import { Action, combineReducers, createFeatureSelector, createSelector } from '@ngrx/store';
 
-import * as fromCategories from './categories.reducer';
-
 import { Category } from '../model/Category';
+
+import * as fromCategories from './categories.reducer';
 
 export const categoriesModuleFeatureKey = 'categoriesModule';
 
@@ -14,7 +14,7 @@ export interface State {
   [categoriesModuleFeatureKey]: CategoryState;
 }
 
-export function reducers(state: CategoryState | undefined, action: Action) {
+export function reducers(state: CategoryState | undefined, action: Action): CategoryState {
   return combineReducers({
     [fromCategories.categoriesFeatureKey]: fromCategories.reducer,
   })(state, action);

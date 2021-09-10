@@ -1,7 +1,7 @@
 import { createReducer, on } from '@ngrx/store';
 
-import { DialogData } from '../model/DialogData';
 import { LayoutActions } from '../actions';
+import { DialogData } from '../model/DialogData';
 
 export const layoutFeatureKey = 'layout';
 
@@ -27,6 +27,6 @@ export const reducer = createReducer(
   on(LayoutActions.closeAlertDialog, (state) => ({ ...state, alert: null }))
 );
 
-export const selectSidenavDisplay = (state: State) => state.isSideNavigationOpen;
-export const selectState = (state: State) => state;
-export const selectLightTheme = (state: State) => state.showLightTheme;
+export const selectSidenavDisplay = (state: State): boolean => state.isSideNavigationOpen;
+export const selectState = (state: State): State => state;
+export const selectLightTheme = (state: State): boolean => state.showLightTheme;

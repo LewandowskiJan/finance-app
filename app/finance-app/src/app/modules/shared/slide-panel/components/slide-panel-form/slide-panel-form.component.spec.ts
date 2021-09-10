@@ -1,12 +1,14 @@
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MaterialModule } from '../../../material/material.module';
-import { SlidePanelFormComponent } from './slide-panel-form.component';
-import { SlidePanelService } from '../../services/slide-panel.service';
 import { SlidePanelServiceMock } from '../../services/fixture/slide-panel.service.mock';
+import { SlidePanelService } from '../../services/slide-panel.service';
+
+import { SlidePanelFormComponent } from './slide-panel-form.component';
+
 
 import {} from 'jasmine';
 

@@ -1,13 +1,13 @@
 import { ChangeDetectionStrategy, Component, OnInit, ViewChild } from '@angular/core';
-import { Event, NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Router } from '@angular/router';
 import { MatDrawer } from '@angular/material/sidenav';
+import { Event, NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Router } from '@angular/router';
 
 import { Store, select } from '@ngrx/store';
 
 import { Observable } from 'rxjs';
 
-import * as fromLayout from '../../reducers';
 import * as fromRoot from '../../../../../reducers';
+import * as fromLayout from '../../reducers';
 
 @Component({
   selector: 'app-main',

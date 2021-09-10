@@ -1,10 +1,11 @@
-import { Component, Input, OnInit } from '@angular/core';
 import { animate, state, style, transition, trigger } from '@angular/animations';
+import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-slide-panel',
   templateUrl: './slide-panel.component.html',
   styleUrls: ['./slide-panel.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   animations: [
     trigger('openClose', [
       state('open', style({ left: '5px' })),

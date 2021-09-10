@@ -20,6 +20,7 @@ describe('GlobalApiService', () => {
     });
     service = TestBed.inject(GlobalApiService);
     store = TestBed.inject(MockStore);
+    spyOn(store, 'dispatch');
   });
 
   it('should be created', () => {

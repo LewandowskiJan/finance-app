@@ -1,1 +1,1 @@
-export { sortByKeyAsc, sortByKeyDesc } from './sort';
+export { sortByKeyAsc, sortByKeyDesc } from './sort.functions';

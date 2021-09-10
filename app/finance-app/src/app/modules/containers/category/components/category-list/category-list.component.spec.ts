@@ -1,15 +1,16 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterTestingModule } from '@angular/router/testing';
 
 import { MockStore, provideMockStore } from '@ngrx/store/testing';
 
-import { CategoryListComponent } from './category-list.component';
 import { MaterialModule } from '../../../../shared/material/material.module';
-import { SLIDE_PANEL_CONFIGURATION_TOKEN } from '../../../../shared/slide-panel/token/slide-panel-configuration-token';
 import { SlidePanelConfiguration } from '../../../../shared/slide-panel/model/slide-panel-configuration';
+import { SLIDE_PANEL_CONFIGURATION_TOKEN } from '../../../../shared/slide-panel/token/slide-panel-configuration-token';
 import { State } from '../../reducers';
+
+import { CategoryListComponent } from './category-list.component';
 
 import {} from 'jasmine';
 

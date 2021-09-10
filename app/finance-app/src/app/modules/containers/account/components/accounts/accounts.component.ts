@@ -1,21 +1,20 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 
-import { MatDialog } from '@angular/material/dialog';
-
-import { Store, select } from '@ngrx/store';
 import { Update } from '@ngrx/entity';
+import { Store, select } from '@ngrx/store';
 
 import { Observable } from 'rxjs';
 
-import * as fromAccounts from '../../reducers';
-import * as fromRoot from './../../../../../reducers';
-
 import { compareAndPickDifference } from '@my-lib/util';
 
-import { Account } from '../../model/Account';
-import { AccountEditComponent } from './../account-edit/account-edit.component';
 import { AccountsActions } from '../../actions';
+import { Account } from '../../model/Account';
+import * as fromAccounts from '../../reducers';
+
+import * as fromRoot from './../../../../../reducers';
+import { AccountEditComponent } from './../account-edit/account-edit.component';
 
 @Component({
   selector: 'app-accounts',
@@ -50,7 +49,7 @@ export class AccountsComponent implements OnInit {
     this.store.dispatch(AccountsActions.deleteAccount({ id }));
   }
 
-  openEditAccountDialog(account: Account) {
+  openEditAccountDialog(account: Account): void {
     const dialogRef = this.dialog.open(AccountEditComponent, {
       data: account,
     });
@@ -62,7 +61,7 @@ export class AccountsComponent implements OnInit {
     });
   }
 
-  private updateAccount(account: Account, updates: Account) {
+  private updateAccount(account: Account, updates: Account): void {
     const differences: Partial<Account> = compareAndPickDifference<Partial<Account>>(account, updates);
 
     const updatingAccount: Update<Account> = {

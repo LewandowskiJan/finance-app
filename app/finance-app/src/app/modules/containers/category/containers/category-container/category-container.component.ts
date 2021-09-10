@@ -1,11 +1,13 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 
-import { Observable } from 'rxjs';
-
 import { Store, select } from '@ngrx/store';
 
+import { Observable } from 'rxjs';
+
 import * as fromCategories from '../../reducers';
+
 import * as fromRoot from '@app/reducers';
+
 @Component({
   selector: 'app-category-container',
   templateUrl: './category-container.component.html',

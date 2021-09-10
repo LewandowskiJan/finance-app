@@ -1,16 +1,18 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-import { BehaviorSubject, Observable } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
+
+import { BehaviorSubject, Observable } from 'rxjs';
 
 import { HttpRequestMethods } from '@my-lib/util';
 
-import { GlobalApiService } from '@src/app/modules/shared/services/global-api.service';
-
-import { ConnectionStatus } from './../configuration/connection-status';
 import { MicroService } from '../configuration/microService';
 import { Status } from '../configuration/status';
+
+import { ConnectionStatus } from './../configuration/connection-status';
+
+import { GlobalApiService } from '@src/app/modules/shared/services/global-api.service';
 
 @Injectable()
 export class TestConnectionService {

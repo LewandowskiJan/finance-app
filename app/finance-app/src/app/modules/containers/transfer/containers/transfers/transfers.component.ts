@@ -1,21 +1,21 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 
-import { Store, select } from '@ngrx/store';
-import { Update } from '@ngrx/entity';
-
-import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
 
-import * as fromRoot from '../../../../../reducers';
-import * as fromTransfers from '../../reducers';
+import { Update } from '@ngrx/entity';
+import { Store, select } from '@ngrx/store';
+
+import { Observable } from 'rxjs';
 
 import { compareAndPickDifference } from '@my-lib/util';
 
-import { Transfer } from '../../model/Transfer';
+import * as fromRoot from '../../../../../reducers';
+import { TransfersActions } from '../../actions';
+import { Transfer } from '../../model/transfer';
+import * as fromTransfers from '../../reducers';
 
 import { TransferEditComponent } from './../../components/transfer-edit/transfer-edit.component';
-import { TransfersActions } from '../../actions';
 
 @Component({
   selector: 'app-transfers',
@@ -36,14 +36,14 @@ export class TransfersComponent implements OnInit {
   }
 
   public showTransfer(): void {
-    // this.store.dispatch(TransfersActions.readTransfers());
+    this.store.dispatch(TransfersActions.readTransfers());
   }
 
   public deleteTransfer(id: string): void {
     this.store.dispatch(TransfersActions.deleteTransfer({ id }));
   }
 
-  openEditTransferDialog(transfer: Transfer) {
+  openEditTransferDialog(transfer: Transfer): void {
     const dialogRef = this.dialog.open(TransferEditComponent, {
       data: transfer,
       disableClose: true,
@@ -59,7 +59,7 @@ export class TransfersComponent implements OnInit {
       });
   }
 
-  private updateTransfer(transfer: Transfer, updates: Transfer) {
+  private updateTransfer(transfer: Transfer, updates: Transfer): void {
     const differences: Partial<Transfer> = compareAndPickDifference<Partial<Transfer>>(transfer, updates);
 
     const updatingTransfer: Update<Transfer> = {

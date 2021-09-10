@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 
+import { catchError, map, switchMap } from 'rxjs/operators';
+
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 
-import { catchError, map, switchMap } from 'rxjs/operators';
 import { of } from 'rxjs';
 
 import { CategoriesActions } from '../actions';
-import { CategoriesService } from '../services/categories.service';
 import { Category } from '../model/Category';
+import { CategoriesService } from '../services/categories.service';
 
 @Injectable()
 export class CategoriesEffects {

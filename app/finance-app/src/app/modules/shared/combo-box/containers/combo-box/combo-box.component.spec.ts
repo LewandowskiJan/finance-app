@@ -1,13 +1,14 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 import { MockStore, provideMockStore } from '@ngrx/store/testing';
 
-import { ComboBoxComponent } from './combo-box.component';
 import { ComboBoxService } from '../../services/combo-box.service';
+
+import { ComboBoxComponent } from './combo-box.component';
 
 import {} from 'jasmine';
 

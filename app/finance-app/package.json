@@ -1,6 +1,6 @@
 {
   "name": "finance-app",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -11,7 +11,10 @@
     "postinstall": "ngcc",
     "lib-util:build": "ng build util",
     "lib-util:watch": "ng build util --watch",
-    "lib-util:pack": "ng build util && cd dist/util && npm pack"
+    "lib-util:pack": "ng build util && cd dist/util && npm pack",
+    "lib-layout:build": "ng build layout",
+    "lib-layout:watch": "ng build layout --watch",
+    "lib-layout:pack": "ng build layout && cd dist/layout && npm pack"
   },
   "private": true,
   "dependencies": {
@@ -27,7 +30,6 @@
     "@angular/platform-browser": "~12.0.0",
     "@angular/platform-browser-dynamic": "~12.0.0",
     "@angular/router": "~12.0.0",
-    "@my-lib/util": "file:dist/util/my-lib-util-1.0.2.tgz",
     "@ngrx/component": "^12.0.0",
     "@ngrx/component-store": "~12.0.0",
     "@ngrx/data": "~12.0.0",
@@ -36,6 +38,7 @@
     "@ngrx/router-store": "~12.0.0",
     "@ngrx/store": "~12.0.0",
     "@ngrx/store-devtools": "~12.0.0",
+    "@my-lib/util": "file:dist/util/my-lib-util-1.0.3.tgz",
     "moment": "~2.29.1",
     "ngrx-store-localstorage": "~12.0.0",
     "postcss": "^8.3.0",
@@ -61,9 +64,10 @@
     "@typescript-eslint/parser": "~4.23.0",
     "eslint": "~7.27.0",
     "eslint-config-google": "~0.14.0",
-    "eslint-plugin-import": "~2.23.3",
+    "eslint-plugin-import": "^2.23.4",
     "eslint-plugin-jsdoc": "~34.8.2",
     "eslint-plugin-prefer-arrow": "~1.2.3",
+    "eslint-plugin-simple-import-sort": "^7.0.0",
     "jasmine-core": "~3.7.1",
     "jasmine-marbles": "~0.8.1",
     "jasmine-spec-reporter": "~7.0.0",

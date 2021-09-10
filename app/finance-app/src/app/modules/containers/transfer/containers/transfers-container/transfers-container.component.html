@@ -1,3 +1,7 @@
+<mat-toolbar color="primary" class="sub-menu">
+  <a mat-button routerLink="/transfer/add" routerLinkActive="active">Add</a>
+  <a mat-button routerLink="/transfer/list" routerLinkActive="active">List</a>
+</mat-toolbar>
 <ng-container *ngIf="errors$ | async as error">
   <app-network-error-banner></app-network-error-banner>
 </ng-container>

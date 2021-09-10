@@ -18,6 +18,7 @@ describe('TestConnectionService', () => {
     });
     store = TestBed.inject(MockStore);
     service = TestBed.inject(TestConnectionService);
+    spyOn(store, 'dispatch');
   });
 
   it('should be created', () => {

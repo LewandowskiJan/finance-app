@@ -1,0 +1,16 @@
+@import '~@angular/material/_theming.scss';
+@import './../../../../../assets/theme';
+
+.importance {
+  &.low {
+    color: mat-color($mat-accent, 200);
+  }
+
+  &.medium {
+    color: mat-color($mat-primary, main);
+  }
+
+  &.high {
+    color: mat-color($mat-warn, darker);
+  }
+}

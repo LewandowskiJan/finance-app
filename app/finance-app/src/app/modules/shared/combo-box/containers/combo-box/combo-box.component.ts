@@ -1,14 +1,16 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
 
-import { BehaviorSubject, Observable } from 'rxjs';
 import { skip, startWith, switchMap, take, tap } from 'rxjs/operators';
 
+import { BehaviorSubject, Observable } from 'rxjs';
+
 import { ComboBoxConfiguration } from '../../configuration/combo-box-configuration';
-import { ComboBoxConfigurationMap } from './../../configuration/configuration.map';
+
 import { ComboBoxProcessType } from './../../configuration/combo-box-process-type.enum';
-import { ComboBoxService } from './../../services/combo-box.service';
 import { ComboBoxType } from './../../configuration/combo-box-type.enum';
+import { ComboBoxConfigurationMap } from './../../configuration/configuration.map';
+import { ComboBoxService } from './../../services/combo-box.service';
 
 @Component({
   selector: 'app-combo-box',
@@ -34,7 +36,7 @@ export class ComboBoxComponent implements OnInit {
 
   constructor(private comboBoxService: ComboBoxService) {}
 
-  ngOnInit() {
+  public ngOnInit(): void {
     this.setupComboBoxConfiguration();
     this.filteredOptions = this.setupSearchProcess();
   }
@@ -76,7 +78,7 @@ export class ComboBoxComponent implements OnInit {
   }
 
   private containsSearchValue(): boolean {
-    return this.currentQuery === '' || this.options.some((item) => item[this.comboBoxConfiguration.queryParamKey] === this.currentQuery);
+    return this.currentQuery === '' ?? this.options.some((item) => item[this.comboBoxConfiguration.queryParamKey] === this.currentQuery);
   }
 
   public create(): void {

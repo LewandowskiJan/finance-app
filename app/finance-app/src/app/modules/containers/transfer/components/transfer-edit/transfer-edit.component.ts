@@ -1,10 +1,9 @@
-import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
-import { MAT_DATE_FORMATS, MAT_DATE_LOCALE, MatDateFormats } from '@angular/material/core';
+import { ChangeDetectionStrategy, Component, Inject, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { MAT_DATE_LOCALE, MatDateFormats } from '@angular/material/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
-import { Transfer } from '../../model/Transfer';
+import { Transfer } from '../../model/transfer';
 
 export const MY_FORMATS: MatDateFormats = {
   parse: {
@@ -22,10 +21,8 @@ export const MY_FORMATS: MatDateFormats = {
   selector: 'app-transfer-edit',
   templateUrl: './transfer-edit.component.html',
   styleUrls: ['./transfer-edit.component.scss'],
-  providers: [
-    // { provide: MAT_DATE_FORMATS, useValue: MY_FORMATS },
-    { provide: MAT_DATE_LOCALE, useValue: 'en-GB' },
-  ],
+  providers: [{ provide: MAT_DATE_LOCALE, useValue: 'en-GB' }],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TransferEditComponent implements OnInit {
   public transferForm: FormGroup;
@@ -36,32 +33,32 @@ export class TransferEditComponent implements OnInit {
     private formBuilder: FormBuilder
   ) {}
 
-  get currency() {
-    return this.transferForm.get('currency');
+  get currency(): FormControl {
+    return this.transferForm.get('currency') as FormControl;
   }
 
-  get exchangeRate() {
-    return this.transferForm.get('exchangeRate');
+  get exchangeRate(): FormControl {
+    return this.transferForm.get('exchangeRate') as FormControl;
   }
 
-  get value() {
-    return this.transferForm.get('value');
+  get value(): FormControl {
+    return this.transferForm.get('value') as FormControl;
   }
 
-  get accountFrom() {
-    return this.transferForm.get('accountFrom');
+  get accountFrom(): FormControl {
+    return this.transferForm.get('accountFrom') as FormControl;
   }
 
-  get accountTo() {
-    return this.transferForm.get('accountTo');
+  get accountTo(): FormControl {
+    return this.transferForm.get('accountTo') as FormControl;
   }
 
-  get date() {
-    return this.transferForm.get('date');
+  get date(): FormControl {
+    return this.transferForm.get('date') as FormControl;
   }
 
-  get valueInPln() {
-    return this.transferForm.get('valueInPln');
+  get valueInPln(): FormControl {
+    return this.transferForm.get('valueInPln') as FormControl;
   }
 
   ngOnInit(): void {

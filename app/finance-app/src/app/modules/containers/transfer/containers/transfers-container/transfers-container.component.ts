@@ -6,9 +6,9 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
 import { routeTransitionAnimations } from '../../../../shared/animations/route-transition-animations';
+import * as fromTransfers from '../../reducers';
 
 import * as fromRoot from '@app/reducers';
-import * as fromTransfers from '../../reducers';
 
 @Component({
   selector: 'app-transfer-container',
@@ -26,7 +26,7 @@ export class TransfersContainerComponent implements OnInit {
     this.errors$ = this.store.select(fromTransfers.selectError);
   }
 
-  public prepareRoute(outlet: RouterOutlet) {
+  public prepareRoute(outlet: RouterOutlet): any {
     return outlet && outlet.activatedRouteData && outlet.activatedRouteData['animationState'];
   }
 }

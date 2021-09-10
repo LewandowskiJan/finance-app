@@ -1,10 +1,11 @@
-import { Component, Input, OnInit } from '@angular/core';
 import { animate, state, style, transition, trigger } from '@angular/animations';
+import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-add-button',
   templateUrl: './add-button.component.html',
   styleUrls: ['./add-button.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   animations: [
     trigger('openClose', [
       state('open', style({ transform: 'rotateY(0)' })),

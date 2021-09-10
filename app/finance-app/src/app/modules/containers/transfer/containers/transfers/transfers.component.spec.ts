@@ -1,11 +1,13 @@
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterTestingModule } from '@angular/router/testing';
 
 import { MockStore, provideMockStore } from '@ngrx/store/testing';
 
+import { Currency } from '../../../../shared/models/currency.enum';
 import { State } from '../../reducers';
+
 import { TransfersComponent } from './transfers.component';
 
 import {} from 'jasmine';
@@ -17,6 +19,23 @@ describe('TransfersComponent', () => {
 
   const initialState: State = {
     transfersModule: {
+      transfersConfiguration: {
+        loaded: true,
+        loading: false,
+        failure: false,
+        error: null,
+        configuration: {
+          accountFrom: '606604517506a15a68f32830',
+          accountFromName: 'Delikatesy',
+          accountTo: '6071783408842102e4d55704',
+          accountToName: 'Konto Millenium',
+          currency: Currency.PLN,
+          exchangeRate: '1',
+          balance: '1200',
+          value: '100',
+          date: new Date(),
+        },
+      },
       transfers: {
         loaded: true,
         loading: false,

@@ -6,10 +6,10 @@ import { RouterTestingModule } from '@angular/router/testing';
 
 import { MockStore, provideMockStore } from '@ngrx/store/testing';
 
-import { AccountContainerComponent } from './account-container.component';
 import { MaterialModule } from '../../../../shared/material/material.module';
-
 import * as fromAccounts from '../../reducers';
+
+import { AccountContainerComponent } from './account-container.component';
 
 import {} from 'jasmine';
 

@@ -1,7 +1,7 @@
 import { InjectionToken } from '@angular/core';
 
 import * as fromRouter from '@ngrx/router-store';
-import { Action, ActionReducer, ActionReducerMap, MetaReducer } from '@ngrx/store';
+import { Action, ActionReducer, ActionReducerMap, createFeatureSelector, createSelector, MetaReducer } from '@ngrx/store';
 
 import { environment } from '@src/environments/environment';
 
@@ -19,14 +19,14 @@ export interface State {
  * and the current or initial state and return a new immutable state.
  */
 export const ROOT_REDUCERS = new InjectionToken<ActionReducerMap<State, Action>>('Root reducers token', {
-  factory: () => ({
+  factory: (): { router: any } => ({
     router: fromRouter.routerReducer,
   }),
 });
 
 // console.log all actions
 export function logger(reducer: ActionReducer<State>): ActionReducer<State> {
-  return (state, action) => {
+  return (state, action): any => {
     const result = reducer(state, action);
     console.groupCollapsed(action.type);
     console.log('prev state', state);
@@ -44,3 +44,7 @@ export function logger(reducer: ActionReducer<State>): ActionReducer<State> {
  * that will be composed to form the root meta-reducer.
  */
 export const metaReducers: MetaReducer<State>[] = !environment.production ? [logger] : [];
+
+export const selectRouteState = createFeatureSelector<State>(fromRouter.DEFAULT_ROUTER_FEATURENAME);
+
+export const selectRoute = createSelector(selectRouteState, (state) => state);

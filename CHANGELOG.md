@@ -1,3 +1,6 @@
+#### 1.0.3 (2021-06-12)
+
+[lib-util] added types for mongoose search query
 #### 1.0.2 (2021-05-30)
 
 [lib-util] added map-object-to-array-function with jsdocs

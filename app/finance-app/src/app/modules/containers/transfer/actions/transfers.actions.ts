@@ -1,7 +1,7 @@
-import { createAction, props } from '@ngrx/store';
 import { Update } from '@ngrx/entity';
+import { createAction, props } from '@ngrx/store';
 
-import { Transfer } from '../model/Transfer';
+import { Transfer } from '../model/transfer';
 
 export const createTransfer = createAction('[Transfer] Create one', props<{ transfer: Transfer }>());
 export const createTransferSuccess = createAction('[Transfer] Create success', props<{ transfer: Transfer }>());

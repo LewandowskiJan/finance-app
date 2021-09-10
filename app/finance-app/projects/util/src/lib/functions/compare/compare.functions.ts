@@ -1,3 +1,11 @@
+/**
+ * Function compare two objects of the same type and return the object difference
+ * If first object is null/undefined return second object as the difference
+ * If second object is null/undefined return empty object, there is no difference
+ * @param {Partial<T>}  obj1
+ * @param {Partial<T>} obj2
+ * @return {Partial<T>}
+ */
 export function compareAndPickDifference<T>(obj1: Partial<T>, obj2: Partial<T>): Partial<T> {
   if (isNullUndefined(obj2)) {
     return {};
@@ -19,10 +27,30 @@ export function compareAndPickDifference<T>(obj1: Partial<T>, obj2: Partial<T>):
   return result;
 }
 
+/**
+ * Check is object null / undefined
+ * @param {any} value
+ * @return {boolean}
+ */
 export function isNullUndefined(value: any): boolean {
-  return value === null || value === undefined;
+  return value === null ?? value === undefined;
 }
 
+/**
+ * Function check given object keys, are not null. Is value of key is null function delete this key
+ * for example:
+ * obj = {
+ *  a: 'some value',
+ *  b: null
+ * }
+ * notNull(obj)
+ * result:
+ * {
+ *  a: 'some value'
+ * }
+ * @param {Partial<T>} object
+ * @return {Partial<T>}
+ */
 export function notNull<T>(object: Partial<T>): Partial<T> {
   if (isNullUndefined(object)) {
     return {};

@@ -1,9 +1,9 @@
-import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
 
 import { TransferFormContainerComponent } from './containers/transfer-form-container/transfer-form-container.component';
-import { TransfersComponent } from './containers/transfers/transfers.component';
 import { TransfersContainerComponent } from './containers/transfers-container/transfers-container.component';
+import { TransfersComponent } from './containers/transfers/transfers.component';
 
 const routes: Routes = [
   {
@@ -11,11 +11,12 @@ const routes: Routes = [
     component: TransfersContainerComponent,
     children: [
       { path: 'add', component: TransferFormContainerComponent, data: { animationState: 'One' } },
-      { path: 'added-list', component: TransfersComponent, data: { animationState: 'Two' } },
+      { path: 'list', component: TransfersComponent, data: { animationState: 'Two' } },
     ],
   },
   {
     path: '**',
+
     redirectTo: 'add',
   },
 ];

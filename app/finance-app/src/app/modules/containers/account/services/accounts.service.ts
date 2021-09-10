@@ -1,16 +1,18 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { Update } from '@ngrx/entity';
 
+import { Observable } from 'rxjs';
+
 import { HttpRequestMethods } from '@my-lib/util';
+
+import { Account } from '../model/Account';
 
 import { GlobalApiService } from '@src/app/modules/shared/services/global-api.service';
 
-import { Account } from '../model/Account';
 
 @Injectable({
   providedIn: 'any',

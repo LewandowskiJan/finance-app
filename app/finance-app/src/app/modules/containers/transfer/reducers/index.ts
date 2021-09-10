@@ -1,28 +1,31 @@
-import { Action, combineReducers, createFeatureSelector, createSelector } from '@ngrx/store';
+import { combineReducers, createFeatureSelector, createSelector } from '@ngrx/store';
 
+import { Transfer } from '../model/transfer';
+
+import * as fromConfiguration from './configuration.reducer';
 import * as fromTransfers from './transfers.reducer';
-
-import { Transfer } from '../model/Transfer';
 
 export const transfersModuleFeatureKey = 'transfersModule';
 
 export interface TransferState {
   [fromTransfers.transfersFeatureKey]: fromTransfers.State;
+  [fromConfiguration.transfersConfigurationFeatureKey]: fromConfiguration.State;
 }
 
 export interface State {
   [transfersModuleFeatureKey]: TransferState;
 }
 
-export function reducers(state: TransferState | undefined, action: Action) {
-  return combineReducers({
-    [fromTransfers.transfersFeatureKey]: fromTransfers.reducer,
-  })(state, action);
-}
+export const reducers = combineReducers({
+  [fromTransfers.transfersFeatureKey]: fromTransfers.reducer,
+  [fromConfiguration.transfersConfigurationFeatureKey]: fromConfiguration.reducer,
+});
 
 export const selectTransferState = createFeatureSelector<State, TransferState>(transfersModuleFeatureKey);
 
 export const selectTransfersEntitiesState = createSelector(selectTransferState, (state) => state.transfers);
+
+export const selectConfigurationState = createSelector(selectTransferState, (state) => state.transfersConfiguration);
 
 export const {
   selectIds: selectTransfersIds,

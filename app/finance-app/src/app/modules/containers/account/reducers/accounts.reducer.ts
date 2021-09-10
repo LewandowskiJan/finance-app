@@ -1,8 +1,8 @@
 import { EntityAdapter, EntityState, createEntityAdapter } from '@ngrx/entity';
 import { createReducer, on } from '@ngrx/store';
 
-import { Account } from '../model/Account';
 import { AccountsActions } from '../actions';
+import { Account } from '../model/Account';
 
 export const accountsFeatureKey = 'accountsList';
 
@@ -123,4 +123,4 @@ export const reducer = createReducer(
   )
 );
 
-export const getIds = (state: State) => state.ids;
+export const getIds = (state: State): string[] | number[] => state.ids;

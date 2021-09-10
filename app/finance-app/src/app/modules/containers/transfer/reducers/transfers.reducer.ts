@@ -1,8 +1,8 @@
 import { EntityAdapter, EntityState, createEntityAdapter } from '@ngrx/entity';
 import { createReducer, on } from '@ngrx/store';
 
-import { Transfer } from '../model/Transfer';
 import { TransfersActions } from '../actions';
+import { Transfer } from '../model/transfer';
 
 export const transfersFeatureKey = 'transfers';
 

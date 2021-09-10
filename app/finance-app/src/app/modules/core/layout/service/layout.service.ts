@@ -1,16 +1,16 @@
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Injectable } from '@angular/core';
-
-import { Observable, of } from 'rxjs';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 
 import { Store } from '@ngrx/store';
 
-import { AlertDialogComponent } from '../components/alert-dialog/alert-dialog.component';
-import { DialogData } from '../model/DialogData';
+import { Observable, of } from 'rxjs';
 
-import * as fromLayout from '../reducers';
 import * as fromRoot from '../../../../reducers';
 import { LayoutActions } from '../actions';
+import { AlertDialogComponent } from '../components/alert-dialog/alert-dialog.component';
+import { DialogData } from '../model/DialogData';
+import * as fromLayout from '../reducers';
+
 @Injectable()
 export class LayoutService {
   private openedDialog: MatDialogRef<any>;

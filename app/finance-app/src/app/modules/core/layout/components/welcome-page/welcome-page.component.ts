@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 
 import { BannerType } from '@modules/shared/banner/model/banner-type.enum';
 
@@ -6,6 +6,7 @@ import { BannerType } from '@modules/shared/banner/model/banner-type.enum';
   selector: 'app-welcome-page',
   templateUrl: './welcome-page.component.html',
   styleUrls: ['./welcome-page.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class WelcomePageComponent implements OnInit {
   public bannerType: typeof BannerType = BannerType;
