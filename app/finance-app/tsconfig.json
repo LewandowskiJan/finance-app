@@ -10,7 +10,9 @@
       "@app/*": ["src/app/*"],
       "@src/*": ["src/*"],
       "@my-lib/util/src/lib/*": ["projects/util/*", "projects/util"],
-      "@my-lib/util": ["dist/util/*", "dist/util"]
+      "@my-lib/util": ["dist/util/*", "dist/util"],
+      "@my-lib/layout/src/lib/*": ["projects/layout/*", "projects/layout"],
+      "@my-lib/layout": ["dist/layout/*", "dist/layout"]
     },
     "sourceMap": true,
     "declaration": false,

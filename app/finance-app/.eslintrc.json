@@ -11,6 +11,7 @@
   "plugins": ["@typescript-eslint", "simple-import-sort", "import"],
   "rules": {
     "block-spacing": ["error", "always"],
+    "operator-linebreak": "off",
     "max-len": ["error", { "code": 140 }],
     "no-duplicate-imports": ["error", { "includeExports": true }],
     "object-curly-spacing": ["error", "always"],

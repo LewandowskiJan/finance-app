@@ -11,7 +11,10 @@
     "postinstall": "ngcc",
     "lib-util:build": "ng build util",
     "lib-util:watch": "ng build util --watch",
-    "lib-util:pack": "ng build util && cd dist/util && npm pack"
+    "lib-util:pack": "ng build util && cd dist/util && npm pack",
+    "lib-layout:build": "ng build layout",
+    "lib-layout:watch": "ng build layout --watch",
+    "lib-layout:pack": "ng build layout && cd dist/layout && npm pack"
   },
   "private": true,
   "dependencies": {
