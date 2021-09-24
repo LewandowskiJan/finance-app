@@ -16,6 +16,12 @@
     "lib-layout:watch": "ng build layout --watch",
     "lib-layout:pack": "ng build layout && cd dist/layout && npm pack"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged && ng test --watch=false --browsers=ChromeHeadless",
+      "pre-push": "npm test"
+    }
+  },
   "private": true,
   "dependencies": {
     "@angular-devkit/architect": "~0.1200.2",
@@ -68,6 +74,7 @@
     "eslint-plugin-jsdoc": "~34.8.2",
     "eslint-plugin-prefer-arrow": "~1.2.3",
     "eslint-plugin-simple-import-sort": "^7.0.0",
+    "husky": "^7.0.2",
     "jasmine-core": "~3.7.1",
     "jasmine-marbles": "~0.8.1",
     "jasmine-spec-reporter": "~7.0.0",
@@ -80,6 +87,7 @@
     "ng-packagr": "^12.0.0",
     "prettier": "~2.3.0",
     "prettier-eslint": "~12.0.0",
+    "pretty-quick": "^3.1.1",
     "protractor": "~7.0.0",
     "ts-node": "~9.1.1",
     "typescript": "~4.2.4"
