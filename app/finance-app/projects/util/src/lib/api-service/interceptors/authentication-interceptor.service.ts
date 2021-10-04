@@ -1,9 +1,9 @@
+import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
+import { catchError, filter, finalize, switchMap, take } from 'rxjs/operators';
 
 import { BehaviorSubject, Observable, of, throwError } from 'rxjs';
-import { catchError, filter, finalize, switchMap, take } from 'rxjs/operators';
 
 // todo: waiting for authorization micro-service will work
 @Injectable()
