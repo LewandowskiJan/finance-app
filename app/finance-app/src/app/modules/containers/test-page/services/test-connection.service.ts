@@ -18,12 +18,8 @@ import { GlobalApiService } from '@src/app/modules/shared/services/global-api.se
 export class TestConnectionService {
   public microServicesCheckConnectionTestArray: MicroService[] = [
     {
-      microServicesName: 'api/account/checkConnection',
+      microServicesName: 'api/checkConnection',
       microServiceCheckEndpoint: this.checkConnectionWithAccount(),
-    },
-    {
-      microServicesName: 'api/authorization/checkConnection',
-      microServiceCheckEndpoint: this.checkConnectionWithAuthorization(),
     },
   ];
 
@@ -42,12 +38,8 @@ export class TestConnectionService {
     this.apiFailed.next(this.checked);
   }
 
-  public checkConnectionWithAuthorization(): Observable<ConnectionStatus> {
-    return this.checkConnection('http://localhost:8080/api', 'authorization/checkConnection');
-  }
-
   public checkConnectionWithAccount(): Observable<ConnectionStatus> {
-    return this.checkConnection('http://localhost:8081/api', 'account/checkConnection');
+    return this.checkConnection('http://localhost:8080/api', 'checkConnection');
   }
 
   private checkConnection(endpoint: string, url: string): Observable<ConnectionStatus> {

@@ -13,23 +13,23 @@ export class AuthenticationInterceptor implements HttpInterceptor {
   private refreshTokenInProgress = false;
   private refreshTokenSubject: BehaviorSubject<any> = new BehaviorSubject<any>(null);
 
-  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    if (!req.headers.has('Content-Type')) {
-      req = req.clone({
-        headers: req.headers.set('Content-Type', 'application/json'),
+  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    if (!request.headers.has('Content-Type')) {
+      request = request.clone({
+        headers: request.headers.set('Content-Type', 'application/json'),
       });
     }
 
-    req = this.addAuthenticationToken(req);
+    request = this.addAuthenticationToken(request);
 
-    return next.handle(req).pipe(
+    return next.handle(request).pipe(
       catchError((error: HttpErrorResponse) => {
         if (error && error.status === 401) {
           if (this.refreshTokenInProgress) {
             return this.refreshTokenSubject.pipe(
               filter((result) => result !== null),
               take(1),
-              switchMap(() => next.handle(this.addAuthenticationToken(req)))
+              switchMap(() => next.handle(this.addAuthenticationToken(request)))
             );
           } else {
             this.refreshTokenInProgress = true;
@@ -38,7 +38,7 @@ export class AuthenticationInterceptor implements HttpInterceptor {
             return this.refreshAccessToken().pipe(
               switchMap((success: boolean) => {
                 this.refreshTokenSubject.next(success);
-                return next.handle(this.addAuthenticationToken(req));
+                return next.handle(this.addAuthenticationToken(request));
               }),
               finalize(() => (this.refreshTokenInProgress = false))
             );
