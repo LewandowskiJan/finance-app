@@ -1,0 +1,46 @@
+.container {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  height: 100vh;
+
+  .menu-container {
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(rgb(39, 30, 88), .5);
+
+    .menu-button {
+      display: flex;
+      align-content: center;
+      justify-content: center;
+      width: 200px;
+      padding: 20px;
+    }
+
+    .button {
+      display: flex;
+      align-content: center;
+      justify-content: center;
+
+      input {
+        padding: 20px;
+        width: 200px;
+        margin: 20px;
+        color: sandybrown;
+        background-color: rgba($color: #000000, $alpha: 0.3);
+        border-left-color: rgba($color: sandybrown, $alpha: 0.8);
+        border-top-color: rgba($color: sandybrown, $alpha: 0.8);
+
+        &:active {
+          border-color: rgba($color: sandybrown, $alpha: 0.7);
+        }
+      }
+    }
+  }
+
+  .option-container {
+    padding: 20px;
+    width: 100%;
+    height: 100%;
+  }
+}

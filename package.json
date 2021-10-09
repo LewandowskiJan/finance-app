@@ -20,8 +20,8 @@
   "husky": {
     "hooks": {
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
-      "pre-commit": "cd app/finance-app/ && ng eslint && ng test",
-      "pre-push": "cd app/finance-app/ && ng build --aot true"
+      "pre-commit": "cd apps/ && ng eslint && ng test",
+      "pre-push": "cd apps/ && ng build --aot true"
     }
   },
   "version": "1.0.3"

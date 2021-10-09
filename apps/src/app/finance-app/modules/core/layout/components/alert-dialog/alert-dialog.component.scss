@@ -1,0 +1,57 @@
+@use './../../../../../../../assets/scroll';
+@import './../../../../../../../assets/theme';
+@import '~@angular/material/_theming.scss';
+
+:host {
+  ::ng-deep {
+    mat-dialog-content.mat-dialog-content {
+      @extend %custom-scroll;
+      padding: 24px;
+    }
+
+    mat-dialog-actions.mat-dialog-actions {
+      padding: 0;
+      min-height: unset;
+      margin: 0;
+    }
+  }
+}
+
+.dialog-header,
+.dialog-footer {
+  display: flex;
+  background-color: $dark-background;
+}
+
+.dialog-header {
+  padding: 20px;
+  align-content: center;
+  margin: -24px -24px 0 -24px;
+  height: 24px;
+
+  .dialog-title {
+    margin-left: 10px;
+  }
+}
+
+.dialog-footer {
+  justify-content: flex-end;
+  padding: 14px;
+  margin: 0px -24px -24px -24px;
+
+}
+
+h2 {
+  display: flex;
+  align-items: center;
+  height: 24px;
+  margin: 0;
+}
+
+.error {
+  color: mat-color($mat-warn, main);
+}
+
+.warning {
+  color: mat-color($mat-primary, main);
+}

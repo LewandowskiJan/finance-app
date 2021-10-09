@@ -1,0 +1,21 @@
+{
+  "extends": "./../../.eslintrc.json",
+  "ignorePatterns": ["!**/*"],
+  "overrides": [
+    {
+      "files": ["src/*.ts"],
+      "parserOptions": {
+        "project": ["apps/projects/util/tsconfig.lib.json", "apps/projects/util/tsconfig.spec.json"],
+        "createDefaultProgram": true
+      },
+      "rules": {
+        "@angular-eslint/directive-selector": "off",
+        "@angular-eslint/component-selector": "off"
+      }
+    },
+    {
+      "files": ["*.html"],
+      "rules": {}
+    }
+  ]
+}

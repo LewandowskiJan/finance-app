@@ -1,0 +1,4 @@
+<ng-container *ngIf="errors$ | async as error">
+  <app-network-error-banner></app-network-error-banner>
+</ng-container>
+<router-outlet></router-outlet>

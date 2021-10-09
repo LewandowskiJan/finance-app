@@ -1,0 +1,16 @@
+@use './../../../../../../../assets/scroll.scss';
+
+mat-card {
+  flex-direction: row;
+  margin: 5px;
+}
+
+::ng-deep {
+  .mat-select-panel {
+    @extend %custom-scroll;
+  }
+}
+
+.list-container {
+  height: calc(100vh - 250px);
+}

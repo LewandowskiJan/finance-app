@@ -1,0 +1,8 @@
+mat-drawer::ng-deep {
+  height: calc(100vh - 64px);
+  @extend %custom-scroll;
+
+  @media (min-width: 600px) {
+    height: calc(100vh - 64px);
+  }
+}

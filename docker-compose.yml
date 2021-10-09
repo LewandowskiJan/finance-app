@@ -8,7 +8,7 @@ services:
     ports:
       - 27017:27017
     networks:
-      - finance-app-network
+      - apps-network
   mongo-express:
     image: mongo-express
     container_name: mongo-express
@@ -20,7 +20,7 @@ services:
     ports:
       - 8081:8081
     networks:
-      - finance-app-network
+      - apps-network
     depends_on:
       - database
   api-service:
@@ -38,19 +38,19 @@ services:
     depends_on:
       - database
     networks:
-      - finance-app-network
-  finance-app:
-    container_name: finance-app
+      - apps-network
+  fe-apps:
+    container_name: fe-apps
     build:
-      context: './app/finance-app'
+      context: './apps/'
       dockerfile: Dockerfile
     volumes:
-      - ./app/finance-app:/home/node/app
+      - ./apps:/home/node/app
     ports:
       - 4200:80
     depends_on:
       - database
       - api-service
 networks:
-  finance-app-network:
+  apps-network:
     driver: bridge

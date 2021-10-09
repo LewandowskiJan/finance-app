@@ -1,0 +1,116 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": ["google"],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 12
+  },
+  "plugins": ["@typescript-eslint", "simple-import-sort", "import"],
+  "rules": {
+    "block-spacing": ["error", "always"],
+    "operator-linebreak": "off",
+    "max-len": ["error", { "code": 140 }],
+    "no-duplicate-imports": ["error", { "includeExports": true }],
+    "object-curly-spacing": ["error", "always"],
+    "space-before-function-paren": [
+      "error",
+      {
+        "anonymous": "always",
+        "named": "never",
+        "asyncArrow": "always"
+      }
+    ],
+    "no-unused-vars": ["warn"],
+    "simple-import-sort/imports": "error",
+    "simple-import-sort/exports": "error",
+    "import/first": "error",
+    "import/newline-after-import": "error",
+    "import/no-duplicates": "error",
+    "require-jsdoc": "off",
+    "new-cap": "off",
+    "sort-imports": "off",
+    "indent": "off",
+    "comma-dangle": "off",
+    "quote-props": "off",
+    "@typescript-eslint/explicit-function-return-type": "off"
+  },
+  "overrides": [
+    {
+      "files": "src/**/*.ts",
+      "env": { "node": true },
+      "rules": {
+        "simple-import-sort/imports": "off",
+        "import/order": [
+          "error",
+          {
+            "pathGroups": [
+              {
+                "pattern": "@angular/**",
+                "group": "builtin",
+                "position": "before"
+              },
+              {
+                "pattern": "rxjs/**",
+                "group": "builtin",
+                "position": "after"
+              },
+              {
+                "pattern": "@ngrx/**",
+                "group": "builtin",
+                "position": "after"
+              },
+              {
+                "pattern": "ngrx**",
+                "group": "builtin",
+                "position": "after"
+              },
+              {
+                "pattern": "@my-lib/**",
+                "group": "external",
+                "position": "after"
+              },
+              {
+                "pattern": "./modules/**",
+                "group": "internal",
+                "position": "after"
+              },
+              {
+                "pattern": "@environments/**",
+                "group": "internal",
+                "position": "after"
+              },
+              {
+                "pattern": "@app/**",
+                "group": "internal",
+                "position": "after"
+              },
+              {
+                "pattern": "@src/**",
+                "group": "internal",
+                "position": "after"
+              },
+              {
+                "pattern": "./**",
+                "group": "internal",
+                "position": "after"
+              }
+            ],
+            "pathGroupsExcludedImportTypes": ["builtin"],
+            "alphabetize": { "order": "asc" },
+            "newlines-between": "always"
+          }
+        ]
+      }
+    },
+    {
+      // enable the rule specifically for TypeScript files
+      "files": ["*.ts", "*.tsx"],
+      "rules": {
+        "@typescript-eslint/explicit-function-return-type": ["error"]
+      }
+    }
+  ]
+}
