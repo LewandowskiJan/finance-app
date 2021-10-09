@@ -1,8 +1,0 @@
-<form class="transfer-form" [formGroup]="transferForm" #form="ngForm">
-  <app-combo-box
-    (selectedValue)="selectedAccountTo($event)"
-    [comboBoxProcessType]="comboBoxProcessType.ACCOUNT_SEARCH"
-    [comboBoxType]="comboBoxType.SEARCH_AND_FIND"
-    [label]="'To Account'"
-  ></app-combo-box>
-</form>

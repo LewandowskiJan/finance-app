@@ -1,0 +1,56 @@
+<mat-card class="example-card">
+  <mat-card-header>
+    <mat-card-title>Welcome</mat-card-title>
+    <mat-card-subtitle>Hello World</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <app-animation-graph></app-animation-graph>
+  </mat-card-content>
+  <mat-card-actions>
+    <a mat-raised-button color="primary" [routerLink]="['test-connection']">
+      Check connection
+      <mat-icon>rule</mat-icon>
+    </a>
+  </mat-card-actions>
+</mat-card>
+
+<div>{{ data$ | async | json }}</div>
+
+<app-base-banner [bannerType]="bannerType.ERROR">
+  <p class="banner-title">Error</p>
+  <p class="banner-subtitle">SubTitle</p>
+  <p class="banner-content">
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum eius fugit voluptatum, fugiat iste quidem qui facere officiis ratione
+    iusto quod ipsa nemo culpa vero a possimus quisquam minima modi!
+  </p>
+</app-base-banner>
+
+<app-base-banner [bannerType]="bannerType.WARN">
+  <p class="banner-title">WARN</p>
+  <p class="banner-subtitle">SubTitle</p>
+  <p class="banner-content">
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum eius fugit voluptatum, fugiat iste quidem qui facere officiis ratione
+    iusto quod ipsa nemo culpa vero a possimus quisquam minima modi!
+  </p>
+</app-base-banner>
+
+<app-base-banner [bannerType]="bannerType.INFO">
+  <p class="banner-title">INFO</p>
+  <p class="banner-subtitle">SubTitle</p>
+  <p class="banner-content">
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum eius fugit voluptatum, fugiat iste quidem qui facere officiis ratione
+    iusto quod ipsa nemo culpa vero a possimus quisquam minima modi!
+  </p>
+</app-base-banner>
+
+<app-base-banner [bannerType]="bannerType.SUCCESS">
+  <p class="banner-title">SUCCESS</p>
+  <p class="banner-subtitle">SubTitle</p>
+  <p class="banner-content">
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum eius fugit voluptatum, fugiat iste quidem qui facere officiis ratione
+    iusto quod ipsa nemo culpa vero a possimus quisquam minima modi!
+  </p>
+</app-base-banner>
+
+<!-- For data migration only -->
+<!-- <app-csv-reader></app-csv-reader> -->

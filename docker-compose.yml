@@ -4,56 +4,53 @@ services:
   database:
     image: mongo
     container_name: finance-app-db
+    restart: always
     ports:
       - 27017:27017
     networks:
-      - finance-app-network
-  authorization-service:
-    container_name: authorization-service
+      - apps-network
+  mongo-express:
+    image: mongo-express
+    container_name: mongo-express
+    restart: always
+    environment:
+      ME_CONFIG_MONGODB_SERVER: database
+      ME_CONFIG_MONGODB_PORT: 27017
+      ME_CONFIG_MONGODB_AUTH_DATABASE: 'finance-app-db'
+    ports:
+      - 8081:8081
+    networks:
+      - apps-network
+    depends_on:
+      - database
+  api-service:
+    container_name: api-service
     build:
-      context: './api/authorization'
+      context: './api/'
       dockerfile: Dockerfile
     environment:
       env_file: .env
       NODE_ENV: production
     volumes:
-      - ./api/authorization:/home/node/api/authorization
+      - ./api/:/home/node/api/
     ports:
       - 8080:8080
     depends_on:
       - database
     networks:
-      - finance-app-network
-  account-service:
-    container_name: account-service
+      - apps-network
+  fe-apps:
+    container_name: fe-apps
     build:
-      context: './api/account'
-      dockerfile: Dockerfile
-    environment:
-      env_file: .env
-      NODE_ENV: production
-    volumes:
-      - ./api/account:/home/node/api/account
-    ports:
-      - 8081:8081
-    depends_on:
-      - database
-      - authorization-service
-    networks:
-      - finance-app-network
-  finance-app:
-    container_name: finance-app
-    build:
-      context: './app/finance-app'
+      context: './apps/'
       dockerfile: Dockerfile
     volumes:
-      - ./app/finance-app:/home/node/app
+      - ./apps:/home/node/app
     ports:
       - 4200:80
     depends_on:
       - database
-      - account-service
-      - authorization-service
+      - api-service
 networks:
-  finance-app-network:
+  apps-network:
     driver: bridge

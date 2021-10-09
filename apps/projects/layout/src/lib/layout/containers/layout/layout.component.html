@@ -1,0 +1,17 @@
+<app-header>
+  <ng-content select="[header]"></ng-content>
+</app-header>
+
+<mat-drawer-container>
+  <app-side-menu>
+    <ng-content select="[side-menu]"></ng-content>
+  </app-side-menu>
+
+  <app-content>
+    <ng-content select="[content]"></ng-content>
+  </app-content>
+</mat-drawer-container>
+
+<app-footer>
+  <ng-content select="[footer]"></ng-content>
+</app-footer>

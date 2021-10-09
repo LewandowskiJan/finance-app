@@ -1,0 +1,52 @@
+.banner {
+  display: flex;
+  width: 300px;
+  height: 300px;
+
+  flex-direction: column-reverse;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  .banner-data {
+    display: flex;
+    height: 50%;
+    width: 100%;
+    background-color: rgba(black, .7);
+    box-shadow: 0px -20px 10px rgba(black, .7);
+
+    flex-direction: column;
+
+    .banner-information {
+      margin: 5px 15px;
+    }
+
+    .banner-button {
+      display: flex;
+      background-color: #a14401;
+
+      align-content: center;
+      justify-content: center;
+
+      cursor: pointer;
+      padding: 10px;
+      margin: 5px 15px;
+
+      &:hover {
+        animation:
+          example 1.5s ease-out 0s alternate infinite none running;
+      }
+    }
+  }
+}
+
+/* The animation code */
+@keyframes example {
+  from {
+    background-color: #a14401;
+  }
+
+  to {
+    background-color: #ee6300;
+  }
+}

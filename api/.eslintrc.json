@@ -1,22 +1,67 @@
 {
   "env": {
     "browser": true,
-    "commonjs": true,
-    "es6": true
+    "es2021": true
   },
   "extends": ["google"],
-  "globals": {
-    "Atomics": "readonly",
-    "SharedArrayBuffer": "readonly"
-  },
+  "parser": "@typescript-eslint/parser",
   "parserOptions": {
-    "ecmaVersion": 2021
+    "ecmaVersion": 12,
+    "ecmaFeatures": {
+      "experimentalObjectRestSpread": true
+    }
   },
+  "plugins": ["@typescript-eslint", "simple-import-sort", "import"],
   "rules": {
-    "max-len": ["error", { "code": 140, "tabWidth": 4 }],
-    "new-cap": ["off"],
+    "block-spacing": ["error", "always"],
+    "operator-linebreak": "off",
+    "max-len": ["error", { "code": 140 }],
+    "no-duplicate-imports": ["error", { "includeExports": true }],
     "object-curly-spacing": ["error", "always"],
+    "space-before-function-paren": [
+      "error",
+      {
+        "anonymous": "always",
+        "named": "never",
+        "asyncArrow": "always"
+      }
+    ],
+    "no-unused-vars": ["warn"],
+    "simple-import-sort/imports": "error",
+    "simple-import-sort/exports": "error",
+    "import/first": "error",
+    "import/newline-after-import": "error",
+    "import/no-duplicates": "error",
+    "require-jsdoc": "off",
+    "new-cap": "off",
+    "sort-imports": "off",
     "indent": "off",
-    "comma-dangle": "off"
-  }
+    "comma-dangle": "off",
+    "quote-props": "off",
+    "@typescript-eslint/explicit-function-return-type": "off"
+  },
+  "overrides": [
+    {
+      "files": "src/**/*.ts",
+      "env": { "node": true },
+      "rules": {
+        "simple-import-sort/imports": "off",
+        "import/order": [
+          "error",
+          {
+            "pathGroupsExcludedImportTypes": ["builtin"],
+            "alphabetize": { "order": "asc" },
+            "newlines-between": "always"
+          }
+        ]
+      }
+    },
+    {
+      // enable the rule specifically for TypeScript files
+      "files": ["*.ts", "*.tsx"],
+      "rules": {
+        "@typescript-eslint/explicit-function-return-type": ["error"]
+      }
+    }
+  ]
 }
