@@ -6,11 +6,11 @@ import { ReactiveComponentModule } from '@ngrx/component';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 
+import { MaterialModule } from '../../../../core/material/material.module';
 import { BannerModule } from '../../shared/banner/banner.module';
 import { ComboBoxModule } from '../../shared/combo-box/combo-box.module';
 import { ImportanceTagModule } from '../../shared/importance-tag/importance-tag.module';
 import { LabelModule } from '../../shared/label/label.module';
-import { MaterialModule } from '../../shared/material/material.module';
 import { SlidePanelModule } from '../../shared/slide-panel/slide-panel.module';
 
 import { TransfersListComponent } from './components/transfers-list/transfers-list.component';

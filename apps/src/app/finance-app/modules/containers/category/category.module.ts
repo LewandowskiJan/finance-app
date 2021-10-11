@@ -6,8 +6,8 @@ import { ReactiveComponentModule } from '@ngrx/component';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 
+import { MaterialModule } from '../../../../core/material/material.module';
 import { BannerModule } from '../../shared/banner/banner.module';
-import { MaterialModule } from '../../shared/material/material.module';
 import { SlidePanelModule } from '../../shared/slide-panel/slide-panel.module';
 import { SLIDE_PANEL_CONFIGURATION_TOKEN } from '../../shared/slide-panel/token/slide-panel-configuration-token';
 

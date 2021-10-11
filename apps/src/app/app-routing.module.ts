@@ -13,10 +13,10 @@ const routes: Routes = [
     path: 'game',
     loadChildren: (): any => import('./game/game.module').then((m) => m.GameModule),
   },
-  // {
-  //   path: 'plant-diary',
-  //   loadChildren: (): any => import('./plant-diary/plant-diary.module').then((m) => m.LandingPageModule),
-  // },
+  {
+    path: 'plant-diary',
+    loadChildren: (): any => import('./plant-diary/plant-diary.module').then((m) => m.PlantDiaryModule),
+  },
   { path: '', redirectTo: '/', pathMatch: 'full' },
   // { path: '**', component: LandingPageComponent },
 ];

@@ -1,0 +1,9 @@
+<div class="containier" *ngIf="plantDiaryService.plantList$ | async as plantList">
+  <mat-card routerLink="plant/{{ plant.id }}" class="plant-item" *ngFor="let plant of plantList">
+    <mat-card-title-group>
+      <mat-card-title>{{ plant.name }}</mat-card-title>
+      <mat-card-subtitle>{{ plant.type }} <br />watering : {{ plant.lastWatering | date: 'YYYY-MM-dd' }}</mat-card-subtitle>
+      <img mat-card-sm-image src="{{ plant.img }}" />
+    </mat-card-title-group>
+  </mat-card>
+</div>

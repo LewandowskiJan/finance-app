@@ -1,0 +1,3 @@
+<div class="gallery-container" *ngIf="plantDiaryService.plantList$ | async as plants">
+  <img width="100" height="100" src="{{ plant.img }}" *ngFor="let plant of plants" />
+</div>

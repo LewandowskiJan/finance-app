@@ -5,9 +5,9 @@ import { RouterModule } from '@angular/router';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 
+import { MaterialModule } from '../../../../core/material/material.module';
 import { BannerModule } from '../../shared/banner/banner.module';
 import { CsvReaderModule } from '../../shared/csv-reader/csv-reader.module';
-import { MaterialModule } from '../../shared/material/material.module';
 
 import { AlertDialogComponent } from './components/alert-dialog/alert-dialog.component';
 import { AnimationGraphComponent } from './components/animation-graph/animation-graph.component';

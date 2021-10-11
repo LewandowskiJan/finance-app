@@ -1,0 +1,58 @@
+<div class="dashboard">
+  <mat-toolbar>
+    <h1>{{ appName }}</h1>
+  </mat-toolbar>
+  <div class="app-content">
+    <router-outlet></router-outlet>
+  </div>
+  <ng-container *ngIf="plantDiaryService.currentContext | async as context">
+    <mat-toolbar class="action-toolbar" *ngIf="context === plantDiaryContext.PLANT_SEARCH">
+      <input
+        class="search-input"
+        type="text"
+        placeholder="search plant..."
+        [(ngModel)]="searchValue"
+        (ngModelChange)="searchPlant($event)"
+      />
+      <button (click)="(true)" mat-icon-button color="accent" aria-label="Example icon button with a open in new tab icon">
+        <mat-icon>qr_code_scanner</mat-icon>
+      </button>
+      <button (click)="toggleSearchBar()" mat-icon-button color="accent" aria-label="Example icon button with a open in new tab icon">
+        <mat-icon>search</mat-icon>
+      </button>
+    </mat-toolbar>
+
+    <mat-toolbar class="action-toolbar" *ngIf="context === plantDiaryContext.PLANT_LIST">
+      <button routerLink="education" mat-icon-button color="primary" aria-label="Example icon button with a heart icon">
+        <mat-icon>school</mat-icon>
+      </button>
+      <button routerLink="gallery" mat-icon-button color="primary" aria-label="Example icon button with a open in new tab icon">
+        <mat-icon>image_search</mat-icon>
+      </button>
+      <button mat-fab color="accent" aria-label="Example icon button with a menu icon">
+        <mat-icon>waves</mat-icon>
+      </button>
+      <button mat-icon-button color="accent" aria-label="Example icon button with a heart icon">
+        <mat-icon>local_florist</mat-icon>
+      </button>
+      <button (click)="toggleSearchBar()" mat-icon-button color="accent" aria-label="Example icon button with a open in new tab icon">
+        <mat-icon>search</mat-icon>
+      </button>
+    </mat-toolbar>
+
+    <mat-toolbar class="action-toolbar" *ngIf="context === plantDiaryContext.PLANT_DETAILS">
+      <button routerLink="/plant-diary" mat-icon-button color="primary" aria-label="Example icon button with a open in new tab icon">
+        <mat-icon>arrow_back</mat-icon>
+      </button>
+      <button routerLink="/plant-diary" mat-icon-button color="primary" aria-label="Example icon button with a open in new tab icon">
+        <mat-icon>add_a_photo</mat-icon>
+      </button>
+      <button routerLink="/plant-diary" mat-icon-button color="primary" aria-label="Example icon button with a open in new tab icon">
+        <mat-icon>qr_code_2</mat-icon>
+      </button>
+      <button routerLink="/plant-diary" mat-icon-button color="primary" aria-label="Example icon button with a open in new tab icon">
+        <mat-icon>edit</mat-icon>
+      </button>
+    </mat-toolbar>
+  </ng-container>
+</div>

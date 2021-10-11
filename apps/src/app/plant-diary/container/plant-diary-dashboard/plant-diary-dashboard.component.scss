@@ -1,0 +1,45 @@
+@use './../../../../assets/scroll.scss';
+@import '~@angular/material/_theming.scss';
+@import './../../../../assets/theme';
+
+
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  max-height: 100vh;
+}
+
+.app-content {
+  @extend %custom-scroll;
+
+  height: calc(100vh - (56px + 56px));
+
+  @media (min-width: 600px) {
+    height: calc(100vh - (64px + 64px));
+  }
+}
+
+.action-toolbar {
+  display: flex;
+  justify-content: space-between;
+}
+
+.search-input {
+  width: 185px;
+  height: 30px;
+
+  color: #fff;
+  font-size: 16px;
+  font-size: max(16px, 1em);
+  font-family: inherit;
+  padding: 0.25em 0.5em;
+  background-color: lighten($dark-background, 10%);
+  border: 2px solid mat-color($mat-accent, darker);
+  border-radius: 4px;
+
+
+  &:focus-visible {
+    border: 2px solid mat-color($mat-accent, main);
+    outline: none;
+  }
+}

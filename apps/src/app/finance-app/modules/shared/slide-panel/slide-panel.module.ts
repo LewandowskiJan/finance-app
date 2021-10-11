@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { MaterialModule } from '../material/material.module';
+import { MaterialModule } from '../../../../core/material/material.module';
 
 import { AddButtonComponent } from './components/add-button/add-button.component';
 import { SlidePanelFormComponent } from './components/slide-panel-form/slide-panel-form.component';

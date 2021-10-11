@@ -1,0 +1,32 @@
+<mat-card class="plant-details-card">
+  <mat-card-header>
+    <mat-card-title>{{ plantDetails.name }}</mat-card-title>
+    <mat-card-subtitle>{{ plantDetails.type }}</mat-card-subtitle>
+  </mat-card-header>
+  <img mat-card-image src="{{ plantDetails.img }}" />
+  <mat-card-content>
+    <p>
+      {{ plantDetails.description }}
+    </p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button>LIKE</button>
+    <button mat-button>GALLERY</button>
+  </mat-card-actions>
+</mat-card>
+<mat-card class="plant-waterings">
+  <mat-card-header>
+    <mat-card-title>Watering</mat-card-title>
+    <mat-card-subtitle>Last: {{ plantDetails.lastWatering | date: 'YYYY-MM-dd' }}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <ul>
+      <li *ngFor="let watering of plantDetails.waterings">
+        {{ watering | date: 'YYYY-MM-dd' }}
+      </li>
+    </ul>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button>ADD WATERING</button>
+  </mat-card-actions>
+</mat-card>
