@@ -45,7 +45,7 @@
     "@ngrx/store": "~12.0.0",
     "@ngrx/store-devtools": "~12.0.0",
     "@my-lib/util": "file:dist/util/my-lib-util-1.0.4.tgz",
-    "moment": "~2.29.1",
+    "moment": "~2.29.2",
     "ngrx-store-localstorage": "~12.0.0",
     "postcss": "^8.3.0",
     "rxjs": "~6.6.7",
